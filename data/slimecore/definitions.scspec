@@ -1,0 +1,51 @@
+
+@DATA {
+    packs[]: PackInfo
+    order: {
+        load[]: PackID
+        pre_load[]: PackID
+        post_load[]: PackID
+    }
+    version: Version
+    constants: {
+        BEFORE: byte = -1b
+        AFTER: byte = 1b
+    }
+}
+
+@CONFIG {
+    auto_rebuild: bool = true
+    
+}
+
+PackInfo {
+    pack: PackID
+    display_name: string
+    url: string
+    abstract: bool
+    dependencies[]: PackRequirement
+    supports[]: PackRequirement
+    implements[]: AbstractRequirement
+}
+
+PackRequirement {
+    pack: PackID
+    version: Version
+    load: LoadOrderRequirement
+    pre_load: LoadOrderRequirement
+    post_load: LoadOrderRequirement
+}
+
+PackID: string
+
+Version {
+    major: int
+    minor: int
+    patch: int
+}
+
+LoadOrderRequirement: -1 | 1
+AbstractRequirement: {
+    pack: PackID
+    version: Version
+}

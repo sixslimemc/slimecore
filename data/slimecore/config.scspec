@@ -1,0 +1,6 @@
+{
+    auto_rebuild
+        : bool
+        = true
+        # automatically attempt to rebuild the world's slimecore pack composition upon reloading if changes are detected.
+}
