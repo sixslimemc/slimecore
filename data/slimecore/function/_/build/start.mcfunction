@@ -13,6 +13,7 @@ scoreboard players set *build.error _slimecore 0
 # packs cannot specify the same pack as both a support and a dependecy
 # packs cannot have implements that are not included in either their supports or dependencies
 # packs must have all data, and no invalid data
+# abstracts must only be implemented once
 data modify storage slimecore:_ build.pmap.manifests set value {}
 
 data modify storage slimecore:_ build.manifests set from storage slimecore:_ init.manifests

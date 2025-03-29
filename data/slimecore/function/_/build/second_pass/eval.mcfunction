@@ -3,10 +3,12 @@
 # ./each
 #--------------------
 
-data modify storage slimecore:_ build.deproot set from storage slimecore:_ build.depstack[-1]
+data modify storage slimecore:_ build.depstack append value {}
+data modify storage slimecore:_ build.depstack[-1].root set from storage build.evalroot
 
-# 'build.deps' includes deps and sups
-data modify storage slimecore:_ build.deps set from storage slimecore:_ build.deproot.dependencies
-data modify storage slimecore:_ build.deps append from storage slimecore:_ build.deproot.supports[]
+# 'deps' includes deps and sups.
+data modify storage slimecore:_ build.depstack[-1].deps set from storage slimecore:_ build.depstack[-1].root.dependencies
+data modify storage slimecore:_ build.depstack[-1].deps append from storage slimecore:_ build.depstack[-1].root.supports[]
+execute if data storage slimecore:_ build.depstack[-1].deps[0] run function slimecore:_/build/second_pass/deps/each
 
 data remove storage slimecore:_ build.depstack[-1]
