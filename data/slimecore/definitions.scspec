@@ -22,6 +22,10 @@ PackInfo {
     pack: PackID
     display_name: string
     url: string
+    author: {
+        display_name: string
+        url: string
+    }
     abstract: bool
     dependencies[]: PackRequirement
     supports[]: PackRequirement
@@ -31,6 +35,7 @@ PackInfo {
 PackRequirement {
     pack: PackID
     version: Version
+    url: string
     load: LoadOrderRequirement
     pre_load: LoadOrderRequirement
     post_load: LoadOrderRequirement
