@@ -1,11 +1,7 @@
 
 @DATA {
     packs[]: PackInfo
-    order: {
-        load[]: PackID
-        pre_load[]: PackID
-        post_load[]: PackID
-    }
+    order: LoadSpec<PackID[]>
     version: Version
     constants: {
         BEFORE: byte = -1b
@@ -36,9 +32,13 @@ PackRequirement {
     pack: PackID
     version: Version
     url: string
-    load: LoadOrderRequirement
-    pre_load: LoadOrderRequirement
-    post_load: LoadOrderRequirement
+    order: LoadSpec<LoadOrderRequirement>
+}
+
+LoadSpec<&T> {
+    load: &T
+    pre_load: &T
+    post_load: &T
 }
 
 PackID: string
@@ -49,7 +49,8 @@ Version {
     patch: int
 }
 
-LoadOrderRequirement: -1 | 1
+LoadOrderRequirement: -1 | 1 | 0
+
 AbstractRequirement: {
     pack: PackID
     version: Version

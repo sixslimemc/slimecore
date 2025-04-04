@@ -7,13 +7,13 @@
 # -> build.make_relation.a
 # -> build.make_relation.b
 # -> build.make_relation.orderset: 'load' | 'pre_load' | 'post_load'
-# -> build.make_relation.direction: -1|1
+# -> build.make_relation.direction: LoadOrderRequirement
 # 'direction' is <b>'s relation to <a>
 
 data merge storage slimecore:_ {build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}
 
-$data modify storage slimecore:_ build.rel.a set from storage slimecore:_ build.pmap.relations.'$(a)'
-$data modify storage slimecore:_ build.rel.b set from storage slimecore:_ build.pmap.relations.'$(b)'
+$data modify storage slimecore:_ build.rel.a set from storage slimecore:_ build.pmap.relations.$(a)
+$data modify storage slimecore:_ build.rel.b set from storage slimecore:_ build.pmap.relations.$(b)
 
 execute unless data storage slimecore:_ build.rel.a run data modify storage slimecore:_ build.rel.dep set from storage slimecore:_ build.rel.template
 execute unless data storage slimecore:_ build.rel.b run data modify storage slimecore:_ build.rel.parent set from storage slimecore:_ build.rel.template
@@ -46,4 +46,7 @@ execute store success score *build.rel.should_add _slimecore unless score *build
 $execute if score *build.rel.should_add _slimecore matches 1.. run data modify storage slimecore:_ build.rel.b.$(orderset) append value {pack:'$(a)', direction:0}
 $execute if score *build.rel.should_add _slimecore matches 1.. store result storage slimecore:_ build.rel.b.$(orderset)[-1].direction int 1 run scoreboard players get *build.rel.r _slimecore
 
-$execute if data storage slimecore:_ build.errorss.relations.$(orderset) run scoreboard players set *build.error _slimecore 3
+$execute if data storage slimecore:_ build.errors.relations.$(orderset) run scoreboard players set *build.error _slimecore 1
+
+$data modify storage slimecore:_ build.pmap.relations.$(a) set from storage slimecore:_ build.rel.a
+$data modify storage slimecore:_ build.pmap.relations.$(b) set from storage slimecore:_ build.rel.b
