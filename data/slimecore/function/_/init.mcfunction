@@ -1,6 +1,8 @@
 
 scoreboard objectives add _slimecore dummy
 
+scoreboard players set *-1 _slimecore -1
+
 data modify storage slimecore:data constants.BEFORE set value 1b
 data modify storage slimecore:data constants.AFTER set value -1b
 

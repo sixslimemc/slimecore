@@ -11,5 +11,3 @@ function slimecore:_/build/second_pass/eval
 
 data remove storage slimecore:_ build.manifests[-1]
 execute if data storage slimecore:_ build.manifests[0] run function slimecore:_/build/second_pass/each
-
-# PackID -> {needed_by[]: PackID, relations[]: {PackID, order:-1|1}}
