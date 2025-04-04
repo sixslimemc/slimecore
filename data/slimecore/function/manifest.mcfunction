@@ -22,6 +22,7 @@ data modify storage slimecore:_ init.manifests append from storage slimecore:in 
 data remove storage slimecore:in manifest
 
 # ORDER OF OPS/FAIL
+#- invalid data
 #- duplicate packs
 #- impossible dependency order
 #- missing dep

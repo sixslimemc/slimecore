@@ -17,4 +17,17 @@
         }
             
     }
+    messages: {
+        show: {
+            critical: bool
+            warning: bool
+            info: bool
+            debug: {
+                manifest_validation: bool
+                cycle_detection: bool
+                load_order_validation: bool
+                load_ordering: bool
+            }
+        }
+    }
 }
