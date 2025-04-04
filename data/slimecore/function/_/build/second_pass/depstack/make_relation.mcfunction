@@ -8,6 +8,7 @@
 # -> build.make_relation.b
 # -> build.make_relation.orderset: 'load' | 'pre_load' | 'post_load'
 # -> build.make_relation.direction: -1|1
+# 'direction' is <b>'s relation to <a>
 
 data merge storage slimecore:_ {build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}
 
@@ -44,3 +45,5 @@ $execute if score *build.rel.fail _slimecore matches 1.. run data modify storage
 execute store success score *build.rel.should_add _slimecore unless score *build.rel.r _slimecore matches 0 unless score *build.rel.fail _slimecore matches 1.. unless data storage slimecore:_ build.rel.this_r
 $execute if score *build.rel.should_add _slimecore matches 1.. run data modify storage slimecore:_ build.rel.b.$(orderset) append value {pack:'$(a)', direction:0}
 $execute if score *build.rel.should_add _slimecore matches 1.. store result storage slimecore:_ build.rel.b.$(orderset)[-1].direction int 1 run scoreboard players get *build.rel.r _slimecore
+
+$execute if data storage slimecore:_ build.errorss.relations.$(orderset) run scoreboard players set *build.error _slimecore 3

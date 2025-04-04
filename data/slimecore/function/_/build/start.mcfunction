@@ -6,6 +6,15 @@
 
 data remove storage slimecore:_ build.errors
 scoreboard players set *build.error _slimecore 0
+# error codes (in build.errors)
+# 1 - duplicate packs
+#- duplicates[]: PackInfo
+# 2 - dependency cycle
+#- dependency_cycles: { root: PackInfo, cycle[]: PackID }
+# 3 - conflicting dependency order
+#- let &Conflict: {a: PackID, b: PackID}
+#- relations: {load[]: &Conflict, pre_load[]: &Conflict, post_load[]: &Conflict}
+
 
 # duplicate check
 # packmap creation
