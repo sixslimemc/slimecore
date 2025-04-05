@@ -1,10 +1,10 @@
 {
-    build: {
-        auto_rebuild
+    auto_rebuild
             : bool
             = true
             # automatically attempt to rebuild the world's SlimeCore pack composition upon reloading if changes are detected.
-        max_command_chain_length_override {
+    build: {
+        max_command_chain_length_override: {
             enable
                 : bool
                 = true
@@ -15,8 +15,16 @@
                 = 999999
                 # the value to temporarily set 'MaxCommandChainLength' to if <enable> is true.
         }
-            
+        ignore_packs[]: PackID
+        mock_packs[]: {
+            pack: PackID
+            version: Version
+            dependencies: PackRequirement
+            supports: PackRequirement
+            implements: PackRequirement
+        }
     }
+
     messages: {
         show: {
             critical: bool
@@ -30,4 +38,5 @@
             }
         }
     }
+
 }

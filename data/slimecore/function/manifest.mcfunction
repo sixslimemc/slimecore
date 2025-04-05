@@ -18,8 +18,10 @@
 # .
 #--------------------
 
-data modify storage slimecore:_ init.manifests append from storage slimecore:in manifest
+function slimecore:_/impl/manifest/main
+
 data remove storage slimecore:in manifest
+data remove storage slimecore:_ impl.manifest
 
 # ORDER OF OPS/FAIL
 #- invalid data
