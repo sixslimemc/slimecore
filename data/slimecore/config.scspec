@@ -1,50 +1,87 @@
 {
-    auto_rebuild
-            ? bool
+    auto_rebuild? bool
             = true
             # automatically attempt to rebuild the world's SlimeCore pack composition upon reloading if changes are detected.
     build? {
         max_command_chain_length_override? {
-            enable
-                ? bool
+            enable? bool
                 = true
                 # temporarily set the 'MaxCommandChainLength' gamerule when SlimeCore builds.
                 # this is highly recommended; unsavory problems can arise if SlimeCore hits the command chain limit while building.
-            value
-                ? int
+            value? int
                 = 999999
                 # the value to temporarily set 'MaxCommandChainLength' to if <enable> is true.
         }
+        = {}
     }
-
+    = {}
     messages? {
-        show? {
-            critical: bool
-            warning: bool
-            info: bool
-        }
-    }
-    debug: {
-        packs: {
-            ignore[]: PackID
-            mock_manifests[]: {
-                pack: PackID
-                version: Version
-                dependencies: PackRequirement
-                supports: PackRequirement
-                implements: PackRequirement
-            }
-        }
-        messages: {
-            manifest_validation: bool
-            cycle_detection: bool
-            load_order_validation: bool
-            load_ordering: bool
+        hide? {
+            critical? bool
+                = false
+                #
+            warning? bool
+                = false
+                #
+            info? bool
+                = false
+                #
         } | bool
+        = false
+        #
+    }
+    = {}
+    debug? {
+        packs? {
+            ignore[]? PackID
+                = []
+                #
+            mock_manifests[]? {
+                pack: PackID
+                    #
+                version: Version
+                    #
+                dependencies[]? PackRequirement
+                    = []
+                    #
+                supports[]? PackRequirement
+                    = []
+                    #
+                implements[]? PackRequirement
+                    = []
+                    #
+            }
+            = []
+            #
+        }
+        = {}
+        messages? {
+            manifest_validation? bool
+                = false
+                #
+            cycle_detection? bool
+                = false
+                #
+            load_order_validation? bool
+                = false
+                #
+            load_ordering? bool
+                = false
+                #
+        } | bool
+        = false
         skip_validation: {
             manifest: bool
+                = false
+                #
             cycle_detection: bool
+                = false
+                #
             load_order: bool
+                = false
+                #
         } | bool
+        = false
+        #
     }
 }
