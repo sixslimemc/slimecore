@@ -9,9 +9,9 @@
 
 # CODES:
 # 1 - missing required data
-# {fields: $field}
+# {instances[]: {field: $field}}
 # 2 - invalid data
-# {field: $field, expected: $expectation, got: any}
+# {instances[]: {field: $field, expected: $expectation, got: any}}
 # 3 - duplicate deps/sups
 # {instances[]: PackRequirement}
 # 4 - duplicate implements
