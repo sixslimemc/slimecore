@@ -9,11 +9,6 @@
     }
 }
 
-@CONFIG {
-    auto_rebuild: bool = true
-    
-}
-
 PackInfo {
     pack: PackID
     display_name: string
@@ -41,13 +36,7 @@ PackProvision {
     pack: PackID
 }
 
-LoadSpec<&T> {
-    load: &T
-    pre_load: &T
-    post_load: &T
-}
-
-PackID: string
+PackID: $namespace
 
 Version {
     major: int
@@ -55,9 +44,10 @@ Version {
     patch: int
 }
 
-LoadOrderRequirement: -1 | 1 | 0
-
-AbstractRequirement: {
-    pack: PackID
-    version: Version
+LoadSpec<&T> {
+    load: &T
+    pre_load: &T
+    post_load: &T
 }
+
+LoadOrderRequirement: -1 | 1 | 0
