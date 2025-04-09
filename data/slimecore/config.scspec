@@ -15,6 +15,16 @@
                 = 999999
                 # the value to temporarily set 'MaxCommandChainLength' to if <enable> is true.
         }
+    }
+
+    messages: {
+        show: {
+            critical: bool
+            warning: bool
+            info: bool
+        }
+    }
+    debug: {
         ignore_packs[]: PackID
         mock_packs[]: {
             pack: PackID
@@ -23,20 +33,11 @@
             supports: PackRequirement
             implements: PackRequirement
         }
-    }
-
-    messages: {
-        show: {
-            critical: bool
-            warning: bool
-            info: bool
-            debug: {
-                manifest_validation: bool
-                cycle_detection: bool
-                load_order_validation: bool
-                load_ordering: bool
-            }
+        messages: {
+            manifest_validation: bool
+            cycle_detection: bool
+            load_order_validation: bool
+            load_ordering: bool
         }
     }
-
 }

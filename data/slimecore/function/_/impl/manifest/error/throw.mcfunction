@@ -9,7 +9,7 @@
 
 # CODES:
 # 1 - missing required data
-# {field: $field}
+# {fields: $field}
 # 2 - invalid data
 # {field: $field, expected: $expectation, got: any}
 # 3 - duplicate deps/sups
@@ -18,3 +18,5 @@
 # {instances[]: PackProvision}
 # 5 - implementations not found in deps/sups
 # {instances[]: PackProvision}
+
+return run data get storage slimecore:_ impl.manifest.throw.error -1
