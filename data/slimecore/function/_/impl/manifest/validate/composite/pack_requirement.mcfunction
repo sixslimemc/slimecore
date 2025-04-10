@@ -1,6 +1,7 @@
 #> slimecore:_/impl/manifest/validate/composite/pack_requirement
 #--------------------
-# ./do
+# ../each/dependency.1
+# ../each/support.1
 #--------------------
 
 # pack:
