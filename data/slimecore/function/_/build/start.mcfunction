@@ -4,33 +4,29 @@
 #--------------------
 
 
-data remove storage slimecore:_ build.errors
+data remove storage slimecore:_ _.build.errors
 scoreboard players set *build.error _slimecore 0
-# error data in {build.errors}
-# if any of these exist, *build.error will be 1
+# if any of these exist in {build.errors}, *build.error should be 1:
 #- duplicates[]: PackInfo
 #- dependency_cycles: { root: PackInfo, cycle[]: PackID }
 #- relations: {load[]: &Conflict, pre_load[]: &Conflict, post_load[]: &Conflict}
-# - let &Conflict: {a: PackID, b: PackID}
-
+#-- where &Conflict := {a: PackID, b: PackID}
 
 # duplicate check
 # packmap creation
 # TODO:
-# packs cannot specify the same pack as both a support and a dependecy
-# packs cannot have implements that are not included in either their supports or dependencies
-# packs must have all data, and no invalid data
-# abstracts must only be implemented once
-data modify storage slimecore:_ build.pmap.manifests set value {}
-# PackID -> PackInfo
+#- abstracts must only be implemented once
 
-data modify storage slimecore:_ build.manifests set from storage slimecore:_ init.manifests
-execute if data storage slimecore:_ build.manifests[0] run function slimecore:_/build/first_pass/each
+
+# PackID => PackInfo :
+data modify storage slimecore:_ _.build.pmap.manifests set value {}
+data modify storage slimecore:_ _.build.manifests set from storage slimecore:_ manifests
+execute if data storage slimecore:_ _.build.manifests[0] run function slimecore:_/build/first_pass/each
 
 execute if score *build.error _slimecore matches 1.. run return run function slimecore:_/build/end/error
 
-data modify storage slimecore:_ build.pmap.relations set value {}
-# PackID -> LoadSpec<[]{pack: PackID, direction: LoadOrderRequirement}>
+# PackID => LoadSpec<[]{pack: PackID, direction: LoadOrderRequirement}> :
+data modify storage slimecore:_ _.build.pmap.relations set value {}
 
-data modify storage slimecore:_ build.manifests set from storage slimecore:_ init.manifests
-execute if data storage slimecore:_ build.manifests[0] run function slimecore:_/build/second_pass/each
+data modify storage slimecore:_ _.build.manifests set from storage slimecore:_ manifests
+execute if data storage slimecore:_ _.build.manifests[0] run function slimecore:_/build/second_pass/each

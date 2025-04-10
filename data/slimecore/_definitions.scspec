@@ -3,13 +3,23 @@
     cache: {
         this_build: {
             manifests[]: PackInfo
+                # value of <..manifests>.
+                
         }
         # information about the last working build.
+
     }
+
     manifests[]: PackInfo
-    # ':manifest' function adds to this at manifest-time.
+        # ':manifest' function adds to this at manifest-time.
+
     impl: {
         ...
     }
-    # for api implementations.
+    # vars for _/impl/**.
+
+    _: {
+        ...
+    }
+    # vars for  _/[!"impl"]**
 }

@@ -5,6 +5,6 @@
 
 scoreboard players set *build.error _slimecore 1
 
-execute unless data storage slimecore:_ build.errors.duplicates[] run data modify storage slimecore:_ build.errors.duplicates append from storage slimecore:_ build.first_duplicate
+execute unless data storage slimecore:_ _.build.errors.duplicates[] run data modify storage slimecore:_ _.build.errors.duplicates append from storage slimecore:_ _.build.first_duplicate
 
-data modify storage slimecore:_ build.errors.duplicates append from storage slimecore:_ build.this_manifest
+data modify storage slimecore:_ _.build.errors.duplicates append from storage slimecore:_ _.build.this_manifest

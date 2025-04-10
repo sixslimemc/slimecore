@@ -5,4 +5,4 @@
 
 # build.errors: { duplicates[]: PackInfo }
 
-data remove storage slimecore:_ build
+data remove storage slimecore:_ _.build
