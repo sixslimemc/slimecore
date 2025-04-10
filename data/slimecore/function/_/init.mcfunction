@@ -3,7 +3,7 @@ scoreboard objectives add _slimecore dummy
 
 scoreboard players set *-1 _slimecore -1
 
-# MANIFESTS:
+# manifests:
 data modify storage slimecore:_ manifests set value []
 scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest

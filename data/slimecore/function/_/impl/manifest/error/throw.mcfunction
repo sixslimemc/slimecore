@@ -18,7 +18,9 @@
 # {instances[]: PackProvision}
 # 5 - implementations not found in deps/sups
 # {instances[]: PackProvision}
+# 6 - not manifest time (*manifest_time != 1)
+# (no data)
 
-# TODO: implement this
+# TODO: implement
 
 return run data get storage slimecore:_ impl.manifest.throw.error -1

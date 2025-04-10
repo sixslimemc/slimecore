@@ -30,6 +30,10 @@ execute unless data storage simecore:in manifest.implements run data merge stora
 
 data modify storage slimecore:_ impl.manifest.in set from storage slimecore:in manifest
 
+# check manifest_time
+execute unless score *manifest_time _slimecore matches 1 run data merge storage slimecore:_ {impl:{manifest:{throw:{error:6}}}}
+execute unless score *manifest_time _slimecore matches 1 run return run function slimecore:_/impl/manifest/error/throw
+
 # check required:
 execute store result score *x _slimecore run function slimecore:_/impl/manifest/require/do
 execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore

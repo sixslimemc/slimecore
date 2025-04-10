@@ -1,11 +1,11 @@
 
-@DATA {
+@data := {
     packs[]: PackInfo
     order: LoadSpec<PackID[]>
     slimecore_version: Version
 }
 
-PackInfo {
+PackInfo := {
     pack: PackID
     display_name: string
     url: string
@@ -16,34 +16,34 @@ PackInfo {
     implements[]: PackProvision
 }
 
-PackAuthor {
+PackAuthor := {
     display_name: string
     url? string
 }
 
-PackRequirement {
+PackRequirement := {
     pack: PackID
     version: Version
     url: string
     order: LoadSpec<LoadOrderRequirement>
 }
 
-PackProvision {
+PackProvision := {
     pack: PackID
 }
 
-PackID: $namespace
+PackID := $namespace
 
-Version {
+Version := {
     major: int
     minor: int
     patch: int
 }
 
-LoadSpec<&T> {
+LoadSpec<&T> := {
     load: &T
     pre_load: &T
     post_load: &T
 }
 
-LoadOrderRequirement: -1 | 1 | 0
+LoadOrderRequirement := -1 | 1 | 0
