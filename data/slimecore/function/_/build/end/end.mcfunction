@@ -5,4 +5,4 @@
 #--------------------
 
 data remove storage slimecore:_ var.build
-scoreboard players reset *build.dupe_has_entry _slimecore
+scoreboard players reset *build.has_error_entry _slimecore
