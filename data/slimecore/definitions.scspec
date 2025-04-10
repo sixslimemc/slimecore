@@ -1,10 +1,4 @@
 
-@data := {
-    packs[]: PackInfo
-    order: LoadSpec<PackID[]>
-    slimecore_version: Version
-}
-
 PackInfo := {
     pack: PackID
     display_name: string
@@ -46,4 +40,4 @@ LoadSpec<&T> := {
     post_load: &T
 }
 
-LoadOrderRequirement := -1 | 1 | 0
+LoadOrderRequirement := -1b | 1b | 0b

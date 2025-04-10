@@ -1,0 +1,5 @@
+{
+    packs[]: PackInfo
+    order: LoadSpec<PackID[]>
+    slimecore_version: Version
+}
