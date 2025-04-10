@@ -1,4 +1,4 @@
-#> slimecore:_/impl/manifest/dupe_deps/check_seen
+#> slimecore:_/impl/manifest/dupes/check_seen
 #--------------------
 # ./each
 #--------------------
