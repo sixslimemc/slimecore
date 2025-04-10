@@ -10,6 +10,20 @@
 
     }
 
+    build: {
+        in: {
+            manifests[]: PackInfo
+        }
+        # build inputs.
+
+        out: {
+            
+        }
+        # build outputs.
+
+    }
+    # interaction with ':_/build/main'
+
     manifests[]: PackInfo
         # ':manifest' function adds to this at manifest-time.
 

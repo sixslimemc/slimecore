@@ -1,6 +1,6 @@
 #> slimecore:_/build/end/success
 #--------------------
-# ../start
+# ../main
 #--------------------
 
 function slimecore:_/build/end/end

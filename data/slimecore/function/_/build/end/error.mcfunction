@@ -1,6 +1,6 @@
 #> slimecore:_/build/end/error
 #--------------------
-# ../start
+# ../main
 #--------------------
 
 # {var.build.error} :

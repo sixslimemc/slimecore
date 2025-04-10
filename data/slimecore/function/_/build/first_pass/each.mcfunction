@@ -1,6 +1,6 @@
 #> slimecore:_/build/first_pass/each
 #--------------------
-# ../start
+# ../main
 #--------------------
 
 data modify storage slimecore:_ var.build.this_man set from storage slimecore:_ var.build.manifests[-1]

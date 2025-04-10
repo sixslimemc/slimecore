@@ -15,6 +15,7 @@ scoreboard players reset *manifest_time _slimecore
 data modify storage slimecore:_ var.init.compare set from storage slimecore:_ cache.this_build.manifests
 execute store success score *x _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ manifests
 execute unless data storage slimecore:_ cache.this_build run scoreboard players set *x _slimecore 1
-execute if score *x _slimecore matches 1.. run function slimecore:_/build/start
+execute if score *x _slimecore matches 1.. run data modify storage slimecore:_ build.in.manifests set from storage slimecore:_ manifests
+execute if score *x _slimecore matches 1.. run function slimecore:_/build/main
 
 data remove storage slimecore:_ var.init
