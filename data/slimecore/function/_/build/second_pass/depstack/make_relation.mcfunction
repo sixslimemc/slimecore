@@ -12,8 +12,8 @@
 
 data merge storage slimecore:_ {build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}
 
-$data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.pmap.relations.$(a)
-$data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.pmap.relations.$(b)
+$data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.maps.relations.$(a)
+$data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.maps.relations.$(b)
 
 execute unless data storage slimecore:_ var.build.rel.a run data modify storage slimecore:_ var.build.rel.dep set from storage slimecore:_ var.build.rel.template
 execute unless data storage slimecore:_ var.build.rel.b run data modify storage slimecore:_ var.build.rel.parent set from storage slimecore:_ var.build.rel.template
@@ -48,5 +48,5 @@ $execute if score *build.rel.should_add _slimecore matches 1.. store result stor
 
 $execute if data storage slimecore:_ var.build.error.relations.$(orderset) run scoreboard players set *build.error _slimecore 1
 
-$data modify storage slimecore:_ var.build.pmap.relations.$(a) set from storage slimecore:_ var.build.rel.a
-$data modify storage slimecore:_ var.build.pmap.relations.$(b) set from storage slimecore:_ var.build.rel.b
+$data modify storage slimecore:_ var.build.maps.relations.$(a) set from storage slimecore:_ var.build.rel.a
+$data modify storage slimecore:_ var.build.maps.relations.$(b) set from storage slimecore:_ var.build.rel.b
