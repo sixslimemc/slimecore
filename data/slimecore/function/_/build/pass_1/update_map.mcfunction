@@ -1,4 +1,4 @@
-#> slimecore:_/build/first_pass/update_map
+#> slimecore:_/build/pass_1/update_map
 #--------------------
 # ./each
 #--------------------

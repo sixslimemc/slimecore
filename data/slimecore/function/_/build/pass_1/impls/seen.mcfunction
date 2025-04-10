@@ -1,4 +1,4 @@
-#> slimecore:_/build/first_pass/impls/seen
+#> slimecore:_/build/pass_1/impls/seen
 #--------------------
 # ./check_seen
 #--------------------

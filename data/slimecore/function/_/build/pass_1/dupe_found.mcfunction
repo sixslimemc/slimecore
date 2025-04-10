@@ -1,4 +1,4 @@
-#> slimecore:_/build/first_pass/dupe_found
+#> slimecore:_/build/pass_1/dupe_found
 #--------------------
 # ./each.1
 #--------------------

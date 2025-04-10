@@ -24,19 +24,22 @@ data modify storage slimecore:_ var.build.maps.relations set value {}
 #- dependency installed checking
 #- load ordering
 
-# first pass:
+# pass 1:
 #- check duplicate packs
 #- check multiple implementations
 #- populate {..maps.manifests}
 data modify storage slimecore:_ var.build.seen_impls set value {}
 data modify storage slimecore:_ var.build.manifests set from storage slimecore:_ build.in.manifests
-execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/first_pass/each
+execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_1/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
 
-# second pass:
+# pass 2:
 #- dependency cycles
 #- load order validation
 #- populate {..maps.relations}
 data modify storage slimecore:_ var.build.manifests set from storage slimecore:_ build.in.manifests
-execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/second_pass/each
+execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
+
+# pass 3:
+#- check for all installed dependencies
