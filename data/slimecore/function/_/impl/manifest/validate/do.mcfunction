@@ -65,3 +65,9 @@ execute unless score *x _slimecore matches 1 run data modify storage slimecore:_
 scoreboard players set *i _slimecore 0
 data modify storage slimecore:_ impl.manifest.validate.each.implements set from storage slimecore:_ impl.manifest.in.implements
 execute if data storage slimecore:_ impl.manifest.validate.each.implements[0] run function slimecore:_/impl/manifest/validate/each/implement
+
+# finalize:
+execute if data storage slimecore:_ impl.manifest.throw.data run data merge storage slimecore:_ {impl:{manifest:{throw:{error:2}}}}
+execute if data storage slimecore:_ impl.manifest.throw.error run return run function slimecore:_/impl/manifest/error/throw
+
+return 1

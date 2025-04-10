@@ -30,5 +30,12 @@ execute unless data storage simecore:in manifest.implements run data merge stora
 
 data modify storage slimecore:_ impl.manifest.in set from storage slimecore:in manifest
 
+# require:
 execute store success score *x _slimecore run function slimecore:_/impl/manifest/require/do
 execute if score *x _slimecore matches ..-1 run return run scoreboard players get *x _slimecore
+
+# validate:
+execute store success score *x _slimecore run function slimecore:_/impl/manifest/validate/do
+execute if score *x _slimecore matches ..-1 run return run scoreboard players get *x _slimecore
+
+# transform:
