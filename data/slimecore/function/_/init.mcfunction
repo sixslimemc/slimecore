@@ -12,9 +12,9 @@ function #slimecore:manifest
 scoreboard players reset *manifest_time _slimecore
 
 # auto rebuild if needed:
-data modify storage slimecore:_ init.compare set from storage slimecore:_ cache.this_build.manifests
-execute store success score *x _slimecore run data modify storage slimecore:_ init.compare set from storage slimecore:_ manifests
+data modify storage slimecore:_ var.init.compare set from storage slimecore:_ cache.this_build.manifests
+execute store success score *x _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ manifests
 execute unless data storage slimecore:_ cache.this_build run scoreboard players set *x _slimecore 1
 execute if score *x _slimecore matches 1.. run function slimecore:_/build/start
 
-data remove storage slimecore:_ init
+data remove storage slimecore:_ var.init
