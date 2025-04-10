@@ -5,6 +5,8 @@
 # could be made "clean" with a reused function but I don't mind copy-paste for this.
 # it's better for perfomance or something.
 
+# at the end of this function {impl.manifest.throw.data.instances} will contain all instances of invalid data
+# it will not exist if all data is valid
 data remove storage slimecore:_ impl.manifest.throw
 
 # pack:
@@ -50,8 +52,16 @@ execute store success score *x _slimecore run function slimecore:_/impl/manifest
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'supports', expected:"list"}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.supports
 
+scoreboard players set *i _slimecore 0
+data modify storage slimecore:_ impl.manifest.validate.each.supports set from storage slimecore:_ impl.manifest.in.supports
+execute if data storage slimecore:_ impl.manifest.validate.each.supports[0] run function slimecore:_/impl/manifest/validate/each/support
+
 # implements:
 data modify storage slimecore:_ impl.manifest.validate.array set from storage slimecore:_ impl.manifest.in.implements
 execute store success score *x _slimecore run function slimecore:_/impl/manifest/validate/array
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'implements', expected:"list"}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.implements
+
+scoreboard players set *i _slimecore 0
+data modify storage slimecore:_ impl.manifest.validate.each.implements set from storage slimecore:_ impl.manifest.in.implements
+execute if data storage slimecore:_ impl.manifest.validate.each.implements[0] run function slimecore:_/impl/manifest/validate/each/implement
