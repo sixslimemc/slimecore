@@ -1,6 +1,8 @@
 
+# init declarations:
 scoreboard objectives add _slimecore dummy
 
+# constants:
 scoreboard players set *-1 _slimecore -1
 
 # manifests:
