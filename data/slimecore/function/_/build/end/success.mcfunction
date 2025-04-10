@@ -3,5 +3,5 @@
 # ../start
 #--------------------
 
+function slimecore:_/build/end/end
 
-data remove storage slimecore:_ var.build

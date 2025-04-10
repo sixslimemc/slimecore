@@ -3,6 +3,4 @@
 # ../start
 #--------------------
 
-# build.errors: { duplicates[]: PackInfo }
-
-data remove storage slimecore:_ var.build
+function slimecore:_/build/end/end
