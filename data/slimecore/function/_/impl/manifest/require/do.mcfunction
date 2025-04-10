@@ -1,4 +1,4 @@
-#> slimecore:_/impl/manifest/require/main
+#> slimecore:_/impl/manifest/require/do
 #--------------------
 # ../main
 #--------------------

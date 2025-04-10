@@ -39,9 +39,15 @@ execute store result score *x _slimecore run function slimecore:_/impl/manifest/
 execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
 
 # check duplicate deps:
-execute store result score *x _slimecore run function slimecore:_/impl/manifest/dupe_deps/do
+execute store result score *x _slimecore run function slimecore:_/impl/manifest/dupes/do.deps
 execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
 
 # check duplicate impls:
+execute store result score *x _slimecore run function slimecore:_/impl/manifest/dupes/do.impls
+execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
+
+# check impls contained in deps/sups:
+execute store result score *x _slimecore run function slimecore:_/impl/manifest/contains_impl/do
+execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
 
 # transform data:
