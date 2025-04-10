@@ -34,7 +34,7 @@ data modify storage slimecore:_ impl.manifest.in set from storage slimecore:in m
 execute store result score *x _slimecore run function slimecore:_/impl/manifest/require/do
 execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
 
-# validate data types:
+# check valid data types:
 execute store result score *x _slimecore run function slimecore:_/impl/manifest/validate/do
 execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
 
@@ -50,4 +50,4 @@ execute unless score *x _slimecore matches 1.. run return run scoreboard players
 execute store result score *x _slimecore run function slimecore:_/impl/manifest/contains_impl/do
 execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
 
-# transform data:
+# datafix:

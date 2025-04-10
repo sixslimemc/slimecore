@@ -1,4 +1,4 @@
-#> slimecore:_/impl/manifest/validate/main
+#> slimecore:_/impl/manifest/validate/do
 #--------------------
 # ../main
 #--------------------

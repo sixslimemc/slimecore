@@ -70,14 +70,14 @@
                 #
         } | bool
         = false
-        skip_validation: {
-            manifest: bool
+        skip_validation? {
+            manifest? bool
                 = false
                 #
-            cycle_detection: bool
+            cycle_detection? bool
                 = false
                 #
-            load_order: bool
+            load_order? bool
                 = false
                 #
         } | bool
