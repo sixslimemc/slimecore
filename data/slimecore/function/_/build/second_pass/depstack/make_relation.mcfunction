@@ -50,3 +50,4 @@ $execute if data storage slimecore:_ var.build.error.relations.$(orderset) run s
 
 $data modify storage slimecore:_ var.build.maps.relations.$(a) set from storage slimecore:_ var.build.rel.a
 $data modify storage slimecore:_ var.build.maps.relations.$(b) set from storage slimecore:_ var.build.rel.b
+

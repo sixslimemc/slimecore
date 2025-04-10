@@ -7,8 +7,8 @@ data modify storage slimecore:_ var.build.this_parent set from storage slimecore
 
 data modify storage slimecore:_ var.build.e.depcycle append from storage slimecore:_ var.build.this_parent
 data modify storage slimecore:_ var.build.e.check set from storage slimecore:_ var.build.this_parent.pack
-execute store success score *c _slimecore run data modify storage slimecore:_ var.build.e.check set from storage slimecore:_ var.build.this_dep.pack
-execute if score *c _slimecore matches 0 run function slimecore:_/build/second_pass/depstack/cycle_found
+execute store success score *x _slimecore run data modify storage slimecore:_ var.build.e.check set from storage slimecore:_ var.build.this_dep.pack
+execute if score *x _slimecore matches 0 run function slimecore:_/build/second_pass/depstack/cycle_found
 
 data modify storage slimecore:_ var.build.make_relation.a set from storage slimecore:_ var.build.this_parent.pack
 data modify storage slimecore:_ var.build.make_relation.b set from storage slimecore:_ var.build.this_dep.pack
