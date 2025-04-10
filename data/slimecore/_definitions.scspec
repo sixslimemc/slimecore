@@ -1,0 +1,15 @@
+
+@_ {
+    cache: {
+        this_build: {
+            manifests[]: PackInfo
+        }
+        # information about the last working build.
+    }
+    manifests[]: PackInfo
+    # ':manifest' function adds to this at manifest-time.
+    impl: {
+        ...
+    }
+    # for api implementations.
+}

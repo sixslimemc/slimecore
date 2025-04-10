@@ -8,9 +8,9 @@ data remove storage slimecore:_ impl.manifest.throw
 data modify storage slimecore:_ impl.manifest.dupes.seen set value []
 data modify storage slimecore:_ impl.manifest.dupes.entries set value []
 
-data modify storage slimecore:_ impl.manifest.implfix.implfixes set from storage slimecore:_ impl.manifest.in.implements
-execute if data storage slimecore:_ impl.manifest.dupes.implfixes[0] run function slimecore:_/impl/manifest/implfix/each
-data modify storage slimecore:_ impl.manifest.dupes.entries set from storage slimecore:_ impl.manifest.implfix.fixed
+data modify storage slimecore:_ impl.manifest.datafix.provisions.in set from storage slimecore:_ impl.manifest.in.implements
+execute if data storage slimecore:_ impl.manifest.datafix.provisions.in[0] run function slimecore:_/impl/manifest/datafix/provisions/each
+data modify storage slimecore:_ impl.manifest.dupes.entries set from storage slimecore:_ impl.manifest.datafix.provisions.out
 execute if data storage slimecore:_ impl.manifest.dupes.entries[0] run function slimecore:_/impl/manifest/dupes/each
 
 execute if data storage slimecore:_ impl.manifest.throw.data run data merge storage slimecore:_ {impl:{manifest:{throw:{error:4}}}}

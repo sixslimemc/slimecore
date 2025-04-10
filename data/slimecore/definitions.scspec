@@ -2,11 +2,7 @@
 @DATA {
     packs[]: PackInfo
     order: LoadSpec<PackID[]>
-    version: Version
-    constants: {
-        BEFORE: byte = -1b
-        AFTER: byte = 1b
-    }
+    slimecore_version: Version
 }
 
 PackInfo {

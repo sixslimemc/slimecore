@@ -51,3 +51,6 @@ execute store result score *x _slimecore run function slimecore:_/impl/manifest/
 execute unless score *x _slimecore matches 1.. run return run scoreboard players get *x _slimecore
 
 # datafix:
+function slimecore:_/impl/manifest/datafix/do
+
+data modify storage slimecore:_ manifests append from storage slimecore:_ impl.manifest.final
