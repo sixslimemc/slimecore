@@ -12,3 +12,9 @@ scoreboard players reset *build.rel.er _slimecore
 scoreboard players reset *build.rel.r _slimecore
 scoreboard players reset *build.rel.fail _slimecore
 scoreboard players reset *build.rel.should_add _slimecore
+
+scoreboard players reset *build.i_major _slimecore
+scoreboard players reset *build.i_minor _slimecore
+scoreboard players reset *build.r_major _slimecore
+scoreboard players reset *build.r_minor _slimecore
+scoreboard players reset *build.bad_index _slimecore

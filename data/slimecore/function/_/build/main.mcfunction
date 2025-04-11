@@ -44,7 +44,7 @@ data modify storage slimecore:_ var.build.manifests set from storage slimecore:_
 execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
 
-# TODO: implement
+# TODO: check for bad versions
 # pass 3:
 #- all dependencies fulfilled
 #- all abstracts implemented
