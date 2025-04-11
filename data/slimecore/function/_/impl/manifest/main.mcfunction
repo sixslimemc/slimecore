@@ -23,10 +23,10 @@
 # .
 #--------------------
 
-execute unless data storage simecore:in manifest.abstract run data merge storage slimecore:in {manifest:{abstract:false}}
-execute unless data storage simecore:in manifest.dependencies run data merge storage slimecore:in {manifest:{dependencies:[]}}
-execute unless data storage simecore:in manifest.supports run data merge storage slimecore:in {manifest:{supports:[]}}
-execute unless data storage simecore:in manifest.implements run data merge storage slimecore:in {manifest:{implements:[]}}
+execute unless data storage slimecore:in manifest.abstract run data merge storage slimecore:in {manifest:{abstract:false}}
+execute unless data storage slimecore:in manifest.dependencies run data merge storage slimecore:in {manifest:{dependencies:[]}}
+execute unless data storage slimecore:in manifest.supports run data merge storage slimecore:in {manifest:{supports:[]}}
+execute unless data storage slimecore:in manifest.implements run data merge storage slimecore:in {manifest:{implements:[]}}
 
 data modify storage slimecore:_ impl.manifest.in set from storage slimecore:in manifest
 
