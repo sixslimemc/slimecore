@@ -7,7 +7,21 @@
 # -> manifests[]: PackInfo
 
 # OUTPUTS: {build.out}
-# <- 
+# & Conflict := {a: PackID, b: PackID}
+# & BadVersionInfo := {installed: PackInfo, version_index: 0b | 1b (major | minor)}
+# <- result? {order: LoadSpec<[]PackID>, pack_map: PackID => PackInfo}
+# <- error? {
+#- duplicates[]: {pack: PackID, instances[]: PackInfo}
+#- multiple_implementations[]: {pack: PackID, sources[]: PackInfo}
+#- dependency_cycles[]: { root: PackInfo, cycle[]: PackID }
+#- relations: LoadSpec<[]&Conflict>
+#- missing_dependencies[]: {dependency: PackRequirement, dependent: PackInfo, bad_version? &BadVersionInfo}
+#- missing_implementations[]: {manifest: PackInfo}
+# }
+
+# RETURNS:
+# 1 - build success, {build.out.result} populated.
+# 0 - build failure, {build.out.error} populated.
 
 # *build.error should be set to 1 if any data is contained in {build.error}
 # see ./end/error for error data format.
@@ -44,7 +58,6 @@ data modify storage slimecore:_ var.build.manifests set from storage slimecore:_
 execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
 
-# TODO: check for bad versions
 # pass 3:
 #- all dependencies fulfilled
 #- all abstracts implemented
