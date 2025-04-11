@@ -65,11 +65,16 @@ data modify storage slimecore:_ var.build.manifests set from storage slimecore:_
 execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_3/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
 
-# initial order:
+# pass 4:
+#- initial ordering
+data modify storage slimecore:_ var.build.manifests set from storage slimecore:_ build.in.manifests
+execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_4/each
+execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
+
 # TODO: the fucking alphabetical ordering
 # TODO: implement
-# pass 4:
-#- load ordering
+# pass 5:
+#- relationship ordering
 data modify storage slimecore:_ var.build.manifests set from storage slimecore:_ build.in.manifests
 execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_4/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error

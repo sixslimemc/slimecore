@@ -27,6 +27,16 @@
     manifests[]: PackInfo
         # ':manifest' function adds to this at manifest-time.
 
+    util: {
+        in: {
+            ...
+        }
+        out: {
+            ...
+        }
+    }
+    # for interacting with _/util/**
+    
     impl: {
         ...
     }
@@ -39,9 +49,9 @@
 
     const: {
         alphabet: {
-            max_index: 27
+            max_index: 28
             map: {
-                <[a-z, -, _]>: <0..{max_index}>
+                <[a-z, ., -, _]>: <0..{max_index}>
             }
             # for sorting initial pack order alphabetically (for deterministic load order)
 
