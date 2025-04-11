@@ -2,8 +2,8 @@
 # init declarations:
 scoreboard objectives add _slimecore dummy
 
-# constants:
-scoreboard players set *-1 _slimecore -1
+# consts:
+execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main
 
 # manifests:
 data modify storage slimecore:_ manifests set value []
@@ -18,4 +18,6 @@ execute unless data storage slimecore:_ cache.this_build run scoreboard players 
 execute if score *x _slimecore matches 1.. run data modify storage slimecore:_ build.in.manifests set from storage slimecore:_ manifests
 execute if score *x _slimecore matches 1.. run function slimecore:_/build/main
 
+# end
 data remove storage slimecore:_ var.init
+scoreboard players set *installed _slimecore 1

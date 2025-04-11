@@ -3,7 +3,7 @@
     cache: {
         this_build: {
             manifests[]: PackInfo
-                # value of <..manifests>.
+                # value of {..manifests}.
                 
         }
         # information about the last working build.
@@ -36,4 +36,17 @@
         ...
     }
     # vars for  _/[!"impl"]**
+
+    const: {
+        alphabet: {
+            max_index: 27
+            map: {
+                <[a-z, -, _]>: <0..{max_index}>
+            }
+            # for sorting initial pack order alphabetically (for deterministic load order)
+
+            empty_buffer[{max_index}+1]: []
+                # array of empty arrays large enough to be safely alphabet indexed
+        }
+    }
 }
