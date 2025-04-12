@@ -17,7 +17,7 @@ scoreboard players set *order.index _slimecore 0
 execute store result score *order.max_index _slimecore run data get storage slimecore:_ const.alphabet.max_index
 data modify storage slimecore:_ var.order.tbd set from storage slimecore:_ util.order.in.strings
 
-execute if data storage slimecore:_ var.order.tbd[0] run function slimecore:_/util/order/tbd_loop
+execute if data storage slimecore:_ var.order.tbd[0] run function slimecore:_/util/order/eval_tbd
 
 scoreboard players reset *order.index _slimecore
 scoreboard players reset *order.max_index _slimecore

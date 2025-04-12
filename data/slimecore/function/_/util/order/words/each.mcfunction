@@ -8,6 +8,7 @@
 
 data modify storage slimecore:_ var.order.this_word set from storage slimecore:_ var.order.tbd[-1]
 
+data remove storage slimecore:_ var.order.letter
 $execute store success score *order.has_next _slimecore run data modify storage slimecore:_ var.order.letter set string storage slimecore:_ var.order.this_word $(istart) $(iend)
 
 # if string length has been reached, immediately add it to out:
