@@ -1,6 +1,6 @@
 #> slimecore:_/def_consts/alphabet/empty_buffer
 #--------------------
-# ./main
+# ../main
 #--------------------
 
 data modify storage slimecore:_ const.alphabet.empty_buffer append value []
