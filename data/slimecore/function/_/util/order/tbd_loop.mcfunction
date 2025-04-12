@@ -3,6 +3,11 @@
 # ./main
 #--------------------
 
+# TODO:
+# needs to recursively call for each buf, need a buf stack or sumn.
+
+tellraw @a ["TBD: ", {'nbt':'var.order.tbd', 'storage': 'slimecore:_'}]
+
 # empty buffer:
 data modify storage slimecore:_ var.order.buffer set from storage slimecore:_ const.alphabet.empty_buffer
 
@@ -12,6 +17,8 @@ execute store result storage slimecore:_ var.order.each.iend int 1 run scoreboar
 
 # iter through tbd, fill buffer:
 execute if data storage slimecore:_ var.order.tbd[0] run function slimecore:_/util/order/words/each with storage slimecore:_ var.order.each
+
+tellraw @a ["BUFFER: ", {'nbt':'var.order.buffer', 'storage': 'slimecore:_'}]
 
 # iter through buffer, update out and tbd:
 data modify storage slimecore:_ var.order.tbd set value []
