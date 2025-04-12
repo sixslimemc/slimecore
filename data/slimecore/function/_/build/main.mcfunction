@@ -41,6 +41,10 @@ data modify storage slimecore:_ var.build.maps.impls set value {}
 # (pack's id) => (its relations to other packs)
 data modify storage slimecore:_ var.build.maps.relations set value {}
 
+# PackID => LoadSpec<{pack: PackID, index: int}>
+# (pack's id) => (it's index in load order)
+data modify storage slimecore:_ var.build.maps.order_index set value {}
+
 # pass 1:
 #- duplicate packs
 #- multiple implementations
@@ -65,16 +69,32 @@ data modify storage slimecore:_ var.build.manifests set from storage slimecore:_
 execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_3/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
 
+# initial load order (alphabetical):
+data merge storage slimecore:_ {util:{order:{in:{strings:[]}}}}
+data modify storage slimecore:_ util.order.in.strings append from storage slimecore:_ build.in.manifests[].pack
+function slimecore:_/util/order/main
+data modify storage slimecore:_ var.build.initial_order set from storage slimecore:_ util.order.out.result
+
+data modify storage slimecore:_ var.build.order set value {}
+data modify storage slimecore:_ var.build.order.load set from storage slimecore:_ var.build.initial_order
+data modify storage slimecore:_ var.build.order.pre_load set from storage slimecore:_ var.build.initial_order
+data modify storage slimecore:_ var.build.order.post_load set from storage slimecore:_ var.build.initial_order
+
+# initial order index cache:
+#- populate {..inital_order_map}
+data modify storage slimecore:_ var.build.order_iter set from storage slimecore:_ var.build.initial_order
+execute store result score *i _slimecore if data storage slimecore:_ var.build.order_iter[]
+data modify storage slimecore:_ var.build.maps.inital_order_map set value {}
+execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/order_cache/each
+
+# populate {..maps.order_index}:
+data modify storage slimecore:_ var.build.maps.order_index.pre_load set from storage slimecore:_ var.build.initial_order_map
+data modify storage slimecore:_ var.build.maps.order_index.load set from storage slimecore:_ var.build.initial_order_map
+data modify storage slimecore:_ var.build.maps.order_index.post_load set from storage slimecore:_ var.build.initial_order_map
+
 # pass 4:
-#- initial ordering
+#- relational ordering
 data modify storage slimecore:_ var.build.manifests set from storage slimecore:_ build.in.manifests
 execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_4/each
 execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
 
-# TODO: the fucking alphabetical ordering
-# TODO: implement
-# pass 5:
-#- relationship ordering
-data modify storage slimecore:_ var.build.manifests set from storage slimecore:_ build.in.manifests
-execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_4/each
-execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error

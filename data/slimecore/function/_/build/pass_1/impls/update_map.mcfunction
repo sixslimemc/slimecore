@@ -3,4 +3,4 @@
 # ./each
 #--------------------
 
-$data modify storage slimecore:_ var.build.maps.impls.$(pack) set from storage slimecore:_ var.build.this_man
+$data modify storage slimecore:_ var.build.maps.impls.'$(pack)' set from storage slimecore:_ var.build.this_man

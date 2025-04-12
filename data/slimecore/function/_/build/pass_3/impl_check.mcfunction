@@ -3,4 +3,4 @@
 # ./each
 #--------------------
 
-$execute unless data storage slimecore:_ var.build.maps.impls.$(pack) run function slimecore:_/build/pass_3/not_implemented
+$execute unless data storage slimecore:_ var.build.maps.impls.'$(pack)' run function slimecore:_/build/pass_3/not_implemented
