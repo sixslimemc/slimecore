@@ -41,9 +41,8 @@ data modify storage slimecore:_ var.build.maps.impls set value {}
 # (pack's id) => (its relations to other packs)
 data modify storage slimecore:_ var.build.maps.relations set value {}
 
-# PackID => LoadSpec<{pack: PackID, index: int}>
-# (pack's id) => (it's index in load order)
-data modify storage slimecore:_ var.build.maps.order_index set value {}
+# LoadSpec<[]PackID>
+data modify storage slimecore:_ var.build.final_order set value {load:[], pre_load:[], post_load:[]}
 
 # pass 1:
 #- duplicate packs
@@ -77,6 +76,7 @@ data modify storage slimecore:_ var.build.initial_order set from storage slimeco
 
 # pass order:
 #- relational ordering
+#- populate {..final_order}
 data modify storage slimecore:_ var.build.order_iter set from storage slimecore:_ var.build.initial_order
 scoreboard players set *build.order_ptr _slimecore 0
 execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/pass_order/each
