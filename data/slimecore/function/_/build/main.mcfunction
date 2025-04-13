@@ -75,14 +75,8 @@ data modify storage slimecore:_ util.order.in.strings append from storage slimec
 function slimecore:_/util/order/main
 data modify storage slimecore:_ var.build.initial_order set from storage slimecore:_ util.order.out.result
 
-data modify storage slimecore:_ var.build.order set value {}
-data modify storage slimecore:_ var.build.order.load set from storage slimecore:_ var.build.initial_order
-data modify storage slimecore:_ var.build.order.pre_load set from storage slimecore:_ var.build.initial_order
-data modify storage slimecore:_ var.build.order.post_load set from storage slimecore:_ var.build.initial_order
-
 # pass order:
 #- relational ordering
-data merge storage slimecore:_ {var:{build:{load_words:['pre_load','post', 'post_load']}}}
 data modify storage slimecore:_ var.build.order_iter set from storage slimecore:_ var.build.initial_order
 scoreboard players set *build.order_ptr _slimecore 0
 execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/pass_order/each

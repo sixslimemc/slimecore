@@ -18,3 +18,5 @@ scoreboard players reset *build.i_minor _slimecore
 scoreboard players reset *build.r_major _slimecore
 scoreboard players reset *build.r_minor _slimecore
 scoreboard players reset *build.bad_index _slimecore
+
+scoreboard players reset *build.order_ptr _slimecore
