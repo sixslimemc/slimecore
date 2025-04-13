@@ -6,3 +6,4 @@
 execute if data storage slimecore:_ impl.manifest.datafix.fix{order_spec:'ANY'} run return run data modify storage slimecore:_ impl.manifest.datafix.fix.order_spec set value 0b
 execute if data storage slimecore:_ impl.manifest.datafix.fix{order_spec:'BEFORE'} run return run data modify storage slimecore:_ impl.manifest.datafix.fix.order_spec set value 1b
 execute if data storage slimecore:_ impl.manifest.datafix.fix{order_spec:'AFTER'} run return run data modify storage slimecore:_ impl.manifest.datafix.fix.order_spec set value -1b
+
