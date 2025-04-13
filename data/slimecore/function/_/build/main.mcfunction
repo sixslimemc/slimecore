@@ -80,21 +80,10 @@ data modify storage slimecore:_ var.build.order.load set from storage slimecore:
 data modify storage slimecore:_ var.build.order.pre_load set from storage slimecore:_ var.build.initial_order
 data modify storage slimecore:_ var.build.order.post_load set from storage slimecore:_ var.build.initial_order
 
-# initial order index cache:
-#- populate {..inital_order_map}
-data modify storage slimecore:_ var.build.order_iter set from storage slimecore:_ var.build.initial_order
-execute store result score *i _slimecore if data storage slimecore:_ var.build.order_iter[]
-data modify storage slimecore:_ var.build.maps.inital_order_map set value {}
-execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/order_cache/each
-
-# populate {..maps.order_index}:
-data modify storage slimecore:_ var.build.maps.order_index.pre_load set from storage slimecore:_ var.build.initial_order_map
-data modify storage slimecore:_ var.build.maps.order_index.load set from storage slimecore:_ var.build.initial_order_map
-data modify storage slimecore:_ var.build.maps.order_index.post_load set from storage slimecore:_ var.build.initial_order_map
-
-# pass 4:
+# pass order:
 #- relational ordering
-data modify storage slimecore:_ var.build.manifests set from storage slimecore:_ build.in.manifests
-execute if data storage slimecore:_ var.build.manifests[0] run function slimecore:_/build/pass_4/each
-execute if score *build.error _slimecore matches 1 run return run function slimecore:_/build/end/error
+data merge storage slimecore:_ {var:{build:{load_words:['pre_load','post', 'post_load']}}}
+data modify storage slimecore:_ var.build.order_iter set from storage slimecore:_ var.build.initial_order
+scoreboard players set *build.order_ptr _slimecore 0
+execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/pass_order/each
 
