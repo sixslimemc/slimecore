@@ -14,3 +14,4 @@
 #-- where &BadVersionInfo := {installed: PackInfo, version_index: 0b | 1b (major | minor)}
 
 function slimecore:_/build/end/end
+return 0

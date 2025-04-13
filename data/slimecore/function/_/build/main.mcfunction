@@ -26,22 +26,23 @@
 # *build.error should be set to 1 if any data is contained in {build.error}
 # see ./end/error for error data format.
 
-data remove storage slimecore:_ var.build.error
+# init:
+data remove storage slimecore:_ build.out
 scoreboard players set *build.error _slimecore 0
 
-# PackID => PackInfo :
+# PackID => PackInfo ::
 # (pack's id) => (its manifest)
 data modify storage slimecore:_ var.build.maps.manifests set value {}
 
-# PackID => PackInfo :
+# PackID => PackInfo ::
 # (abstract's id) => (its implementation's manifest)
 data modify storage slimecore:_ var.build.maps.impls set value {}
 
-# PackID => LoadSpec<[]{pack: PackID, direction: LoadOrderRequirement}> :
+# PackID => LoadSpec<[]{pack: PackID, direction: LoadOrderRequirement}> ::
 # (pack's id) => (its relations to other packs)
 data modify storage slimecore:_ var.build.maps.relations set value {}
 
-# LoadSpec<[]PackID>
+# LoadSpec<[]PackID> ::
 data modify storage slimecore:_ var.build.final_order set value {load:[], pre_load:[], post_load:[]}
 
 # pass 1:
@@ -81,3 +82,6 @@ data modify storage slimecore:_ var.build.order_iter set from storage slimecore:
 scoreboard players set *build.order_ptr _slimecore 0
 execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/pass_order/each
 
+# ASSERT) *build.error != 1
+
+return run function slimecore:_/build/end/success
