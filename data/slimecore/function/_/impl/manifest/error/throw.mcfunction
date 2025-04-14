@@ -23,4 +23,8 @@
 
 # TODO: implement
 
+# DEBUG:
+data modify storage test: out.manifest_throws append from storage slimecore:_ impl.manifest.throw
+say MANIFEST THROW
+
 return run data get storage slimecore:_ impl.manifest.throw.error -1

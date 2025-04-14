@@ -13,5 +13,7 @@
 #-- where &Conflict := {a: PackID, b: PackID}
 #-- where &BadVersionInfo := {installed: PackInfo, version_index: 0b | 1b (major | minor)}
 
+data modify storage slimecore:_ build.out.error set from storage slimecore:_ var.build.error
+
 function slimecore:_/build/end/end
 return 0

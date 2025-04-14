@@ -8,6 +8,9 @@ scoreboard players reset *installed _slimecore
 # consts:
 execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main
 
+# DEBUG:
+data modify storage test: out.manifest_throws set value []
+
 # manifests:
 data modify storage slimecore:_ manifests set value []
 scoreboard players set *manifest_time _slimecore 1
