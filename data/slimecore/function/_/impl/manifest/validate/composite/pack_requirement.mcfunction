@@ -23,27 +23,6 @@ execute store success score *x _slimecore run function slimecore:_/impl/manifest
 $execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).version.minor', expected:'integer'}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.validate.pack_requirement.version.minor
 
-# order:
-data modify storage slimecore:_ impl.manifest.validate.order_spec set from storage slimecore:_ impl.manifest.validate.pack_requirement.order.pre_load
-execute store success score *x _slimecore run function slimecore:_/impl/manifest/validate/order_spec with storage slimecore:_ impl.manifest.validate
-#- make optional:
-execute unless data storage slimecore:_ impl.manifest.pack_requirement.order.pre_load run scoreboard players set *x _slimecore 1
-
-$execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).order.pre_load', expected:'0b | 1b | -1b (or "ANY" | "BEFORE" | "AFTER" respectively)'}
-execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.validate.pack_requirement.order.pre_load
-
-data modify storage slimecore:_ impl.manifest.validate.order_spec set from storage slimecore:_ impl.manifest.validate.pack_requirement.order.load
-execute store success score *x _slimecore run function slimecore:_/impl/manifest/validate/order_spec with storage slimecore:_ impl.manifest.validate
-#- make optional:
-execute unless data storage slimecore:_ impl.manifest.pack_requirement.order.load run scoreboard players set *x _slimecore 1
-
-$execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).order.load', expected:'0b | 1b | -1b (or "ANY" | "BEFORE" | "AFTER" respectively)'}
-execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.validate.pack_requirement.order.load
-
-data modify storage slimecore:_ impl.manifest.validate.order_spec set from storage slimecore:_ impl.manifest.validate.pack_requirement.order.post_load
-execute store success score *x _slimecore run function slimecore:_/impl/manifest/validate/order_spec with storage slimecore:_ impl.manifest.validate
-#- make optional:
-execute unless data storage slimecore:_ impl.manifest.pack_requirement.order.post_load run scoreboard players set *x _slimecore 1
-
-$execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).order.post_load', expected:'0b | 1b | -1b (or "ANY" | "BEFORE" | "AFTER" respectively)'}
-execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.validate.pack_requirement.order.post_load
+# loads:
+data modify storage slimecore:_ impl.manifest.validate.load_words set from storage slimecore:_ const.load_words
+execute if data storage slimecore:_ impl.manifest.validate.load_words[0] run function slimecore:_/impl/manifest/validate/composite/loads/each
