@@ -5,10 +5,14 @@
 
 data modify storage slimecore:_ var.build.this_parent set from storage slimecore:_ var.build.depstack[-1]
 
+# DEBUG:
+tellraw @a ["PARENT ROOT: ", {'storage':'slimecore:_', 'nbt':'var.build.this_parent.root.pack'}]
+
+
 data modify storage slimecore:_ var.build.e.depcycle append from storage slimecore:_ var.build.this_parent
 data modify storage slimecore:_ var.build.e.check set from storage slimecore:_ var.build.this_parent.pack
 execute store success score *x _slimecore run data modify storage slimecore:_ var.build.e.check set from storage slimecore:_ var.build.this_dep.pack
-execute if score *x _slimecore matches 0 run function slimecore:_/build/pass_2/depstack/cycle_found
+execute if score *x _slimecore matches 0 run return run function slimecore:_/build/pass_2/depstack/cycle_found
 
 data modify storage slimecore:_ var.build.make_relation.a set from storage slimecore:_ var.build.this_parent.root.pack
 data modify storage slimecore:_ var.build.make_relation.b set from storage slimecore:_ var.build.this_dep.pack
