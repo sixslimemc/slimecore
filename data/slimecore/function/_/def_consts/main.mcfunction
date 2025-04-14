@@ -23,6 +23,6 @@ execute store result score *i _slimecore run data get storage slimecore:_ const.
 execute if score *i _slimecore matches 0.. run function slimecore:_/def_consts/alphabet/empty_buffer
 
 # load words:
-data modify storage slimecore:_ const.load_words set value ["pre_load", "load", "post_load"]
+data modify storage slimecore:_ const.load_words set value ["pre_load", "load", "post_load", "tick"]
 
 data remove storage slimecore:_ var.const

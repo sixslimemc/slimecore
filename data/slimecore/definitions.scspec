@@ -35,9 +35,10 @@ Version := {
 }
 
 LoadSpec<&T> := {
-    load: &T
     pre_load: &T
+    load: &T
     post_load: &T
+    tick: &T
 }
 
 LoadOrderRequirement := -1b | 1b | 0b
