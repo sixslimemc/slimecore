@@ -15,4 +15,4 @@ data modify storage slimecore:_ util.equal.in.b set from storage slimecore:_ uti
 execute if function slimecore:_/util/six/object/equal/main run return run function slimecore:_/util/six/array/intersection/add_match with storage slimecore:_ util.intersection.var
 
 data remove storage slimecore:_ util.intersection.var.matches[-1]
-execute if data storage slimecore:_ util.intersection.var.matches[] run function slimecore:_/util/six/array/intersection/each_match
+execute if data storage slimecore:_ util.intersection.var.matches[0] run function slimecore:_/util/six/array/intersection/each_match

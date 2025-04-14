@@ -13,7 +13,7 @@ data modify storage slimecore:_ util.intersection.var.a_compare set from storage
 data modify storage slimecore:_ util.intersection.var.matches set value []
 function slimecore:_/util/six/array/intersection/each.1 with storage slimecore:_ util.intersection.var
 
-execute if data storage slimecore:_ util.intersection.var.matches[] run function slimecore:_/util/six/array/intersection/each_match
+execute if data storage slimecore:_ util.intersection.var.matches[0] run function slimecore:_/util/six/array/intersection/each_match
 
 data remove storage slimecore:_ util.intersection.in.a[-1]
-execute if data storage slimecore:_ util.intersection.in.a[] run function slimecore:_/util/six/array/intersection/each
+execute if data storage slimecore:_ util.intersection.in.a[0] run function slimecore:_/util/six/array/intersection/each
