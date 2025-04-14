@@ -26,10 +26,10 @@ data modify storage slimecore:_ util.intersection.out.shared set value []
 execute store success score *intersection.direct _slimecore unless data storage slimecore:_ util.intersection.in.compare.only unless data storage slimecore:_ util.intersection.in.compare.without
 
 execute if score *intersection.direct _slimecore matches 1 if data storage slimecore:_ util.intersection.in.a[0] run function slimecore:_/util/six/array/intersection/direct/each
+execute unless score *intersection.direct _slimecore matches 1 if data storage slimecore:_ util.intersection.in.a[0] run function slimecore:_/util/six/array/intersection/each
+
 execute if score *intersection.direct _slimecore matches 1 run data modify storage slimecore:_ util.intersection.out.shared_a set from storage slimecore:_ util.intersection.out.shared
 execute if score *intersection.direct _slimecore matches 1 run data modify storage slimecore:_ util.intersection.out.shared_b set from storage slimecore:_ util.intersection.out.shared
-
-execute unless score *intersection.direct _slimecore matches 1 if data storage slimecore:_ util.intersection.in.a[0] run function slimecore:_/util/six/array/intersection/each
 
 data remove storage slimecore:_ util.intersection.in
 data remove storage slimecore:_ util.intersection.var

@@ -10,13 +10,13 @@
 # -> build.make_relation.direction: LoadOrderRequirement
 # 'direction' is <b>'s relation to <a>
 
-data merge storage slimecore:_ {build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}
+data merge storage slimecore:_ {var:{build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}}
 
-$data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.maps.relations.$(a)
-$data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.maps.relations.$(b)
+$data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.maps.relations.'$(a)'
+$data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.maps.relations.'$(b)'
 
-execute unless data storage slimecore:_ var.build.rel.a run data modify storage slimecore:_ var.build.rel.dep set from storage slimecore:_ var.build.rel.template
-execute unless data storage slimecore:_ var.build.rel.b run data modify storage slimecore:_ var.build.rel.parent set from storage slimecore:_ var.build.rel.template
+execute unless data storage slimecore:_ var.build.rel.a run data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.rel.template
+execute unless data storage slimecore:_ var.build.rel.b run data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.rel.template
 
 # a -> b
 execute store result score *build.rel.r _slimecore run data get storage slimecore:_ var.build.make_relation.direction
@@ -33,7 +33,6 @@ $execute if score *build.rel.should_add _slimecore matches 1.. store result stor
 data remove storage slimecore:_ var.build.rel.this_r
 scoreboard players reset *build.rel.er _slimecore
 scoreboard players reset *build.rel.fail _slimecore
-
 # b -> a
 scoreboard players operation *build.rel.r _slimecore *= *-1 _slimecore
 $data modify storage slimecore:_ var.build.rel.this_r set from storage slimecore:_ var.build.rel.b.$(orderset)[{pack:'$(a)'}]
@@ -48,6 +47,7 @@ $execute if score *build.rel.should_add _slimecore matches 1.. store result stor
 
 $execute if data storage slimecore:_ var.build.error.relations.$(orderset) run scoreboard players set *build.error _slimecore 1
 
-$data modify storage slimecore:_ var.build.maps.relations.$(a) set from storage slimecore:_ var.build.rel.a
-$data modify storage slimecore:_ var.build.maps.relations.$(b) set from storage slimecore:_ var.build.rel.b
+$data modify storage slimecore:_ var.build.maps.relations.'$(a)' set from storage slimecore:_ var.build.rel.a
+$data modify storage slimecore:_ var.build.maps.relations.'$(b)' set from storage slimecore:_ var.build.rel.b
 
+data remove storage slimecore:_ var.build.rel

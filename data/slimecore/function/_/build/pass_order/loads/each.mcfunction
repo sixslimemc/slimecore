@@ -9,10 +9,12 @@ data modify storage slimecore:_ var.build.this_load set from storage slimecore:_
 # get {..current_order}, {..required_before}:
 function slimecore:_/build/pass_order/loads/get_m with storage slimecore:_ var.build
 
-# filter required so it only contains packs in current_order:
+# filter {..required_before} so it only contains packs in current_order:
 # INEFF: this is a heavy operation and probably could be optimized
-data merge storage slimecore:_ {util:{intersection:{in:{a:[], b:[]}}})
-data modify storage slimecore:_ util.intersection.a append from storage slimecore:_ var.build.required_before[]
+data modify storage slimecore:_ util.intersection.in.a set from storage slimecore:_ var.build.required_before
+data modify storage slimecore:_ util.intersection.in.b set from storage slimecore:_ var.build.current_order
+function slimecore:_/util/six/array/intersection/main
+data modify storage slimecore:_ var.build.required_before set from storage slimecore:_ util.intersection.out.shared
 
 # sets *build.insertion_index to where this pack should be inserted in order:
 scoreboard players operation *build.insertion_index _slimecore = *build.order_ptr _slimecore
