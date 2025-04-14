@@ -5,9 +5,9 @@
 
 data modify storage slimecore:_ var.build.this_load set from storage slimecore:_ var.build.load_words[-1]
 
+
 # get {..current_order}, {..required_before}:
 function slimecore:_/build/pass_order/loads/get_m with storage slimecore:_ var.build
-
 
 # sets *build.insertion_index to where this pack should be inserted in order:
 scoreboard players operation *build.insertion_index _slimecore = *build.order_ptr _slimecore

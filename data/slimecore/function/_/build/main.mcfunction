@@ -79,7 +79,7 @@ data modify storage slimecore:_ var.build.initial_order set from storage slimeco
 tellraw @a ["INITIAL ORDER: ", {'storage':'slimecore:_', 'nbt':'var.build.initial_order'}]
 
 # DEBUG:
-tellraw @a ["relations: ", {'storage':'slimecore:_', 'nbt':'var.build.maps.relations'}]
+tellraw @a ["RELATIONS: ", {'storage':'slimecore:_', 'nbt':'var.build.maps.relations'}]
 # pass order:
 #- relational ordering
 #- populate {..final_order}
