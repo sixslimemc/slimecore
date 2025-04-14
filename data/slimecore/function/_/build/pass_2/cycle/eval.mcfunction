@@ -11,16 +11,16 @@ data modify storage slimecore:_ var.build.e.depcycle append from storage slimeco
 
 data modify storage slimecore:_ var.build.xstack set from storage slimecore:_ var.build.depstack
 
-execute if data storage slimecore:_ var.build.depstack[0] run function slimecore:_/build/pass_2/depstack/each
+execute if data storage slimecore:_ var.build.depstack[0] run function slimecore:_/build/pass_2/cycle/depstack/each
 data modify storage slimecore:_ var.build.depstack set from storage slimecore:_ var.build.xstack
 
 data modify storage slimecore:_ var.build.depstack append value {}
 data modify storage slimecore:_ var.build.depstack[-1].root set from storage slimecore:_ var.build.evalroot
 
 # 'deps' includes deps and sups.
-function slimecore:_/build/pass_2/get_deps with storage slimecore:_ var.build.evalroot
+function slimecore:_/build/pass_2/cycle/get_deps with storage slimecore:_ var.build.evalroot
 
-execute if data storage slimecore:_ var.build.depstack[-1].deps[0] run function slimecore:_/build/pass_2/deps/each
+execute if data storage slimecore:_ var.build.depstack[-1].deps[0] run function slimecore:_/build/pass_2/cycle/deps/each
 
 data remove storage slimecore:_ var.build.depstack[-1]
 

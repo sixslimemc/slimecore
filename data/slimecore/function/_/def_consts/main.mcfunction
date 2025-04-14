@@ -11,7 +11,6 @@ scoreboard players set *-1 _slimecore -1
 # alphabet:
 data modify storage slimecore:_ var.const.alphabet_order set value ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", ".", "-", "_"]
 
-
 execute store result score *i _slimecore if data storage slimecore:_ var.const.alphabet_order[]
 scoreboard players remove *i _slimecore 1
 execute store result storage slimecore:_ const.alphabet.max_index int 1 run scoreboard players get *i _slimecore
@@ -22,5 +21,8 @@ execute if score *i _slimecore matches 0.. run function slimecore:_/def_consts/a
 data modify storage slimecore:_ const.alphabet.empty_buffer set value []
 execute store result score *i _slimecore run data get storage slimecore:_ const.alphabet.max_index
 execute if score *i _slimecore matches 0.. run function slimecore:_/def_consts/alphabet/empty_buffer
+
+# load words:
+data modify storage slimecore:_ const.load_words set value ["pre_load", "load", "post_load"]
 
 data remove storage slimecore:_ var.const
