@@ -10,6 +10,9 @@
 # -> build.make_relation.direction: LoadOrderRequirement
 # 'direction' is <b>'s relation to <a>
 
+# DEBUG:
+tellraw @a ["RELATE: ", {'storage':'slimecore:_', 'nbt':'var.build.make_relation'}]
+
 data merge storage slimecore:_ {var:{build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}}
 
 $data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.maps.relations.'$(a)'

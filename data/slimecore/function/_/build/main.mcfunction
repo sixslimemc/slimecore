@@ -75,12 +75,16 @@ data modify storage slimecore:_ util.order.in.strings append from storage slimec
 function slimecore:_/util/order/main
 data modify storage slimecore:_ var.build.initial_order set from storage slimecore:_ util.order.out.result
 
+
 # pass order:
 #- relational ordering
 #- populate {..final_order}
 data modify storage slimecore:_ var.build.order_iter set from storage slimecore:_ var.build.initial_order
 scoreboard players set *build.order_ptr _slimecore 0
 execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/pass_order/each
+
+# DEBUG:
+tellraw @a ["> RELATIONS: ", {'storage':'slimecore:_', 'nbt':'var.build.maps.relations.alpha'}]
 
 # ASSERT) *build.error != 1
 
