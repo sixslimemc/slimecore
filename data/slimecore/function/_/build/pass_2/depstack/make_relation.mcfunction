@@ -1,6 +1,6 @@
 # slimecore:_/build/pass_2/depstack/make_relation
 #--------------------
-# ./relation
+# ./each
 #--------------------
 
 # WITH

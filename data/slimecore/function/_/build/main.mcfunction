@@ -75,6 +75,11 @@ data modify storage slimecore:_ util.order.in.strings append from storage slimec
 function slimecore:_/util/order/main
 data modify storage slimecore:_ var.build.initial_order set from storage slimecore:_ util.order.out.result
 
+# DEBUG:
+tellraw @a ["INITIAL ORDER: ", {'storage':'slimecore:_', 'nbt':'var.build.initial_order'}]
+
+# DEBUG:
+tellraw @a ["relations: ", {'storage':'slimecore:_', 'nbt':'var.build.maps.relations'}]
 # pass order:
 #- relational ordering
 #- populate {..final_order}
