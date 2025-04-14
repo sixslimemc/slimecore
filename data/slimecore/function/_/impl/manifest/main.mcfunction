@@ -23,6 +23,9 @@
 # .
 #--------------------
 
+# TODO:
+# validate that no dependencies/sups/impls are this pack itself
+
 execute unless data storage slimecore:in manifest.abstract run data merge storage slimecore:in {manifest:{abstract:false}}
 execute unless data storage slimecore:in manifest.dependencies run data merge storage slimecore:in {manifest:{dependencies:[]}}
 execute unless data storage slimecore:in manifest.supports run data merge storage slimecore:in {manifest:{supports:[]}}

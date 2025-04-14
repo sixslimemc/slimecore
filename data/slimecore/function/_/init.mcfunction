@@ -4,6 +4,11 @@ scoreboard objectives add _slimecore dummy
 
 # DEBUG:
 scoreboard players reset *installed _slimecore
+tellraw @a ">"
+tellraw @a "------------------"
+tellraw @a "===== RELOAD ====="
+tellraw @a "------------------"
+tellraw @a ">"
 
 # consts:
 execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main

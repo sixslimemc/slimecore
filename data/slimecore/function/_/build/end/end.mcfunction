@@ -24,3 +24,4 @@ scoreboard players reset *build.insertion_index _slimecore
 
 # DEBUG:
 data modify storage test: out.build set from storage slimecore:_ build.out
+say BUILD DONE
