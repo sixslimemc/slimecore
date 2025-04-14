@@ -46,7 +46,7 @@ data modify storage slimecore:_ var.build.maps.impls set value {}
 data modify storage slimecore:_ var.build.maps.relations set value {}
 
 # LoadSpec<[]PackID> ::
-data modify storage slimecore:_ var.build.final_order set value {load:[], pre_load:[], post_load:[]}
+data modify storage slimecore:_ var.build.final_order set value {}
 
 # pass 1:
 #- duplicate packs

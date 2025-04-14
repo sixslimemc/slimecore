@@ -1,7 +1,7 @@
 #> slimecore:manifest
 #--------------------
 # &PackOrderSpec := 'BEFORE' | 'AFTER' | 'ANY' | 1b | -1b | 0b
-# &ManifestPackRequirement := { pack: PackID, version: {major: int, minor: int}, load: &PackOrderSpec = 'BEFORE', pre_load: &PackOrderSpec = 'BEFORE', post_load: &PackOrderSpec = 'BEFORE' }
+# &ManifestPackRequirement := { pack: PackID, version: {major: int, minor: int}, order? LoadSpec<&PackOrderSpec = 1b> }
 # -> pack: PackID
 # -> version: Version
 # -> display_name: string

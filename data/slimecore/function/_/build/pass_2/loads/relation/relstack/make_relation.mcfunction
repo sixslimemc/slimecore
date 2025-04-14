@@ -10,13 +10,8 @@
 # -> build.make_relation.direction: LoadOrderRequirement
 # 'direction' is <b>'s relation to <a>
 
-data merge storage slimecore:_ {var:{build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}}
-
 $data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.maps.relations.'$(a)'
 $data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.maps.relations.'$(b)'
-
-execute unless data storage slimecore:_ var.build.rel.a run data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.rel.template
-execute unless data storage slimecore:_ var.build.rel.b run data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.rel.template
 
 # a -> b
 execute store result score *build.rel.r _slimecore run data get storage slimecore:_ var.build.make_relation.direction
