@@ -15,5 +15,8 @@
 
 data modify storage slimecore:_ build.out.error set from storage slimecore:_ var.build.error
 
+# DEBUG
+say BUILD FAILED
+
 function slimecore:_/build/end/end
 return 0

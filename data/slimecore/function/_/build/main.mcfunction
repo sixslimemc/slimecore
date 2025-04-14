@@ -9,7 +9,7 @@
 # OUTPUTS: {build.out}
 # & Conflict := {a: PackID, b: PackID}
 # & BadVersionInfo := {installed: PackInfo, version_index: 0b | 1b (major | minor)}
-# <- result? {order: LoadSpec<[]PackID>, pack_map: PackID => PackInfo}
+# <- result? {order: LoadSpec<[]{pack: PackID}>, pack_map: PackID => PackInfo}
 # <- error? {
 #- duplicates[]: {pack: PackID, instances[]: PackInfo}
 #- multiple_implementations[]: {pack: PackID, sources[]: PackInfo}
@@ -25,6 +25,9 @@
 
 # *build.error should be set to 1 if any data is contained in {build.error}
 # see ./end/error for error data format.
+
+# DEBUG:
+say BUILD START
 
 # init:
 data remove storage slimecore:_ build.out
