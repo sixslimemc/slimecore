@@ -5,9 +5,6 @@
 
 data modify storage slimecore:_ var.build.this_parent set from storage slimecore:_ var.build.relstack[-1]
 
-# DEBUG:
-tellraw @a [" :: ", {'storage':'slimecore:_', 'nbt':'var.build.this_parent.root.pack'}, ": [", {'storage':'slimecore:_', 'nbt':'var.build.this_dep.pack'}, "]"]
-
 data modify storage slimecore:_ var.build.make_relation.a set from storage slimecore:_ var.build.this_parent.root.pack
 data modify storage slimecore:_ var.build.make_relation.b set from storage slimecore:_ var.build.this_dep.pack
 data modify storage slimecore:_ var.build.make_relation.direction set from storage slimecore:_ var.build.dep_direction

@@ -5,9 +5,6 @@
 
 data modify storage slimecore:_ var.build.this_man set from storage slimecore:_ var.build.manifests[-1]
 
-# DEBUG:
-tellraw @a ["=====[ ", {'storage':'slimecore:_', 'nbt':'var.build.this_man.pack'}, " ]====="]
-
 # check for cycles:
 data modify storage slimecore:_ var.build.depstack set value []
 data modify storage slimecore:_ var.build.evalroot set from storage slimecore:_ var.build.this_man

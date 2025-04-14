@@ -5,8 +5,6 @@
 
 data modify storage slimecore:_ var.build.this_dep set from storage slimecore:_ var.build.evalroot
 
-# DEBUG:
-tellraw @a ["DEPCYCE: ", {'storage':'slimecore:_', 'nbt':'var.build.this_dep.pack'}]
 # dependency cycle builder
 data modify storage slimecore:_ var.build.e.depcycle set value []
 data modify storage slimecore:_ var.build.e.depcycle append from storage slimecore:_ var.build.this_dep

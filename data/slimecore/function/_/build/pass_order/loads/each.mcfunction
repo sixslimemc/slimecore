@@ -9,20 +9,12 @@ data modify storage slimecore:_ var.build.this_load set from storage slimecore:_
 # get {..current_order}, {..required_before}:
 function slimecore:_/build/pass_order/loads/get_m with storage slimecore:_ var.build
 
-# DEBUG:
-tellraw @a ["PRE: ", {'storage':'slimecore:_', 'nbt':'var.build.required_before'}]
-
 # filter {..required_before} so it only contains packs in current_order:
 # INEFF: this is a heavy operation and probably could be optimized
 data modify storage slimecore:_ util.intersection.in.a set from storage slimecore:_ var.build.required_before
 data modify storage slimecore:_ util.intersection.in.b set from storage slimecore:_ var.build.current_order
 function slimecore:_/util/six/array/intersection/main
 data modify storage slimecore:_ var.build.required_before set from storage slimecore:_ util.intersection.out.shared
-
-# DEBUG:
-tellraw @a ["ORDER: ", {'storage':'slimecore:_', 'nbt':'var.build.current_order'}]
-# DEBUG:
-tellraw @a ["LOOK FOR: ", {'storage':'slimecore:_', 'nbt':'var.build.required_before'}]
 
 # sets *build.insertion_index to where this pack should be inserted in order:
 scoreboard players operation *build.insertion_index _slimecore = *build.order_ptr _slimecore

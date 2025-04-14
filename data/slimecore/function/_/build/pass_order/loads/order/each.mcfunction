@@ -6,9 +6,6 @@
 data modify storage slimecore:_ var.build.this_order_entry set from storage slimecore:_ var.build.current_order[-1].pack
 scoreboard players remove *build.insertion_index _slimecore 1
 
-# DEBUG:
-tellraw @a ["SEARCH: ", {'storage':'slimecore:_', 'nbt':'var.build.this_order_entry'}]
-
 function slimecore:_/build/pass_order/loads/order/fulfill_requirement with storage slimecore:_ var.build
 
 data remove storage slimecore:_ var.build.current_order[-1]

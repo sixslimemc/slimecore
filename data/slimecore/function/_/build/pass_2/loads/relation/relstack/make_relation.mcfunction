@@ -10,8 +10,6 @@
 # -> build.make_relation.direction: LoadOrderRequirement
 # 'direction' is <b>'s relation to <a>
 
-
-
 data merge storage slimecore:_ {var:{build:{rel:{template:{load:[], pre_load:[], post_load:[]}}}}}
 
 $data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.maps.relations.'$(a)'
@@ -20,25 +18,11 @@ $data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ va
 execute unless data storage slimecore:_ var.build.rel.a run data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.rel.template
 execute unless data storage slimecore:_ var.build.rel.b run data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ var.build.rel.template
 
-# DEBUG:
-execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} run tellraw @a ["=> ", {'storage':'slimecore:_', 'nbt':'var.build.make_relation'}]
-# execute if data storage slimecore:_ var.build.make_relation{orderset:'pre_load'} unless data storage slimecore:_ var.build.make_relation{direction:0b} run tellraw @a ["a: ", {'storage':'slimecore:_', 'nbt':'var.build.rel.a.pre_load'}]
-# execute if data storage slimecore:_ var.build.make_relation{orderset:'pre_load'} unless data storage slimecore:_ var.build.make_relation{direction:0b} run tellraw @a ["b: ", {'storage':'slimecore:_', 'nbt':'var.build.rel.b.pre_load'}]
-# execute if data storage slimecore:_ var.build.make_relation{orderset:'post_load'} unless data storage slimecore:_ var.build.make_relation{direction:0b} run tellraw @a ["a: ", {'storage':'slimecore:_', 'nbt':'var.build.rel.a.post_load'}]
-# execute if data storage slimecore:_ var.build.make_relation{orderset:'post_load'} unless data storage slimecore:_ var.build.make_relation{direction:0b} run tellraw @a ["b: ", {'storage':'slimecore:_', 'nbt':'var.build.rel.b.post_load'}]
-#execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} unless data storage slimecore:_ var.build.make_relation{direction:0b} run tellraw @a ["a: ", {'storage':'slimecore:_', 'nbt':'var.build.rel.a.load'}]
-#execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} unless data storage slimecore:_ var.build.make_relation{direction:0b} run tellraw @a ["b: ", {'storage':'slimecore:_', 'nbt':'var.build.rel.b.load'}]
-
 # a -> b
 execute store result score *build.rel.r _slimecore run data get storage slimecore:_ var.build.make_relation.direction
 $data modify storage slimecore:_ var.build.rel.this_r set from storage slimecore:_ var.build.rel.a.$(orderset)[{pack:'$(b)'}]
 execute store result score *build.rel.er _slimecore run data get storage slimecore:_ var.build.rel.this_r.direction -1
 execute store success score *build.rel.fail _slimecore run execute if data storage slimecore:_ var.build.rel.this_r unless score *build.rel.r _slimecore matches 0 unless score *build.rel.r _slimecore = *build.rel.er _slimecore
-
-# DEBUG:
-execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} run tellraw @a ["a r: ", {'score':{'name':'*build.rel.r', 'objective':'_slimecore'}}]
-execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} run tellraw @a ["a er: ", {'score':{'name':'*build.rel.er', 'objective':'_slimecore'}}]
-execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} run execute if score *build.rel.fail _slimecore matches 1 run say ERR1
 
 $execute if score *build.rel.fail _slimecore matches 1.. run data modify storage slimecore:_ var.build.error.relations.$(orderset) append value {a:'$(a)', b:'$(b)'}
 
@@ -55,11 +39,6 @@ scoreboard players operation *build.rel.r _slimecore *= *-1 _slimecore
 $data modify storage slimecore:_ var.build.rel.this_r set from storage slimecore:_ var.build.rel.b.$(orderset)[{pack:'$(a)'}]
 execute store result score *build.rel.er _slimecore run data get storage slimecore:_ var.build.rel.this_r.direction -1
 execute store success score *build.rel.fail _slimecore if data storage slimecore:_ var.build.rel.this_r unless score *build.rel.r _slimecore matches 0 unless score *build.rel.r _slimecore = *build.rel.er _slimecore
-
-# DEBUG:
-execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} run tellraw @a ["b r: ", {'score':{'name':'*build.rel.r', 'objective':'_slimecore'}}]
-execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} run tellraw @a ["b er: ", {'score':{'name':'*build.rel.er', 'objective':'_slimecore'}}]
-execute if data storage slimecore:_ var.build.make_relation{orderset:'load'} run execute if score *build.rel.fail _slimecore matches 1 run say ERR2
 
 $execute if score *build.rel.fail _slimecore matches 1.. run data modify storage slimecore:_ var.build.error.relations.$(orderset) append value {a:'$(a)', b:'$(b)'}
 

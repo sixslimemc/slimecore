@@ -4,7 +4,6 @@
 #--------------------
 
 data modify storage slimecore:_ var.build.this_parent set from storage slimecore:_ var.build.depstack[-1]
-tellraw @a ["PARENT: ", {'storage':'slimecore:_', 'nbt':'var.build.this_parent.root.pack'}]
 
 data modify storage slimecore:_ var.build.e.depcycle append from storage slimecore:_ var.build.this_parent.root
 data modify storage slimecore:_ var.build.e.check set from storage slimecore:_ var.build.this_parent.root.pack
