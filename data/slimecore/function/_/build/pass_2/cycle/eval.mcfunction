@@ -5,6 +5,8 @@
 
 data modify storage slimecore:_ var.build.this_dep set from storage slimecore:_ var.build.evalroot
 
+# DEBUG:
+tellraw @a ["DEPCYCE: ", {'storage':'slimecore:_', 'nbt':'var.build.this_dep.pack'}]
 # dependency cycle builder
 data modify storage slimecore:_ var.build.e.depcycle set value []
 data modify storage slimecore:_ var.build.e.depcycle append from storage slimecore:_ var.build.this_dep
@@ -20,6 +22,7 @@ data modify storage slimecore:_ var.build.depstack[-1].root set from storage sli
 # 'deps' includes deps and sups.
 function slimecore:_/build/pass_2/cycle/get_deps with storage slimecore:_ var.build.evalroot
 
+execute if score *build.error _slimecore matches 1 run return fail
 execute if data storage slimecore:_ var.build.depstack[-1].deps[0] run function slimecore:_/build/pass_2/cycle/deps/each
 
 data remove storage slimecore:_ var.build.depstack[-1]

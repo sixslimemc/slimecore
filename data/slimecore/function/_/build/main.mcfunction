@@ -84,7 +84,8 @@ scoreboard players set *build.order_ptr _slimecore 0
 execute if data storage slimecore:_ var.build.order_iter[0] run function slimecore:_/build/pass_order/each
 
 # DEBUG:
-tellraw @a ["> RELATIONS: ", {'storage':'slimecore:_', 'nbt':'var.build.maps.relations.alpha'}]
+tellraw @a ["> BETA: ", {'storage':'slimecore:_', 'nbt':'var.build.maps.relations.beta'}]
+tellraw @a ["> ABSTRA: ", {'storage':'slimecore:_', 'nbt':'var.build.maps.relations.abstra'}]
 
 # ASSERT) *build.error != 1
 
