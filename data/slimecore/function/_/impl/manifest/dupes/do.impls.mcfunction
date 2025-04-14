@@ -9,7 +9,9 @@ data modify storage slimecore:_ impl.manifest.dupes.seen set value []
 data modify storage slimecore:_ impl.manifest.dupes.entries set value []
 
 data modify storage slimecore:_ impl.manifest.datafix.provisions.in set from storage slimecore:_ impl.manifest.in.implements
+
 execute if data storage slimecore:_ impl.manifest.datafix.provisions.in[0] run function slimecore:_/impl/manifest/datafix/provisions/each
+
 data modify storage slimecore:_ impl.manifest.dupes.entries set from storage slimecore:_ impl.manifest.datafix.provisions.out
 execute if data storage slimecore:_ impl.manifest.dupes.entries[0] run function slimecore:_/impl/manifest/dupes/each
 
