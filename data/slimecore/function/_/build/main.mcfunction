@@ -14,7 +14,7 @@
 #- duplicates[]: {pack: PackID, instances[]: PackInfo}
 #- multiple_implementations[]: {pack: PackID, sources[]: PackInfo}
 #- dependency_cycles[]: { root: PackInfo, cycle[]: PackID }
-#- relations: LoadSpec<[]&Conflict>
+#- order_conflicts: LoadSpec<[]&Conflict>
 #- missing_dependencies[]: {dependency: PackRequirement, dependent: PackInfo, bad_version? &BadVersionInfo}
 #- missing_implementations[]: {manifest: PackInfo}
 # }

@@ -9,12 +9,10 @@ tellraw @a "------------------"
 tellraw @a "===== RELOAD ====="
 tellraw @a "------------------"
 tellraw @a ">"
+data modify storage test: out.manifest_throws set value []
 
 # consts:
 execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main
-
-# DEBUG:
-data modify storage test: out.manifest_throws set value []
 
 # manifests:
 data modify storage slimecore:_ manifests set value []
@@ -27,7 +25,8 @@ data modify storage slimecore:_ var.init.compare set from storage slimecore:_ ca
 execute store success score *x _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ manifests
 execute unless data storage slimecore:_ cache.this_build run scoreboard players set *x _slimecore 1
 execute if score *x _slimecore matches 1.. run data modify storage slimecore:_ build.in.manifests set from storage slimecore:_ manifests
-execute if score *x _slimecore matches 1.. run function slimecore:_/build/main
+scoreboard players reset *y _slimecore
+execute if score *x _slimecore matches 1.. store result score *y _slimecore run function slimecore:_/build/main
 
 # end
 data remove storage slimecore:_ var.init
