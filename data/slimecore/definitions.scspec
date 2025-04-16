@@ -43,6 +43,49 @@ LoadSpec<&T> := {
     tick: &T
 }
 
+BuildEvaluationError := {
+    duplicates[]? {
+        pack: PackID
+        instances[]: PackInfo
+    }
+    multiple_implementations[]? {
+        pack: PackID
+        sources[]: PackInfo
+    }
+    dependency_cycles[]? {
+        root: PackInfo
+        cycle[]: PackID
+    }
+    order_conflicts? LoadSpec<[]{a: PackID, b: PackID}>
+    missing_dependencies[]? {
+        dependency: PackRequirement
+        dependent: PackInfo
+        bad_version? {
+            installed: PackInfo
+            versionIndex: 0b | 1b
+        }
+        missing_implementations[]? {
+            unimplemented: PackInfo
+        }
+    }
+    missing_dependencies[]? {dependency: PackRequirement, dependent: PackInfo, bad_version? {installed: PackInfo, version_index: 0b | 1b}}
+    missing_implementations[]? {manifest: PackInfo}
+}
+
+ManifestEvaluationError := {
+    missing_data[]? {
+        field: string
+    }
+    invalid_data[]? {
+        field: string
+        expected: string
+        got: any
+    }
+    duplicate_dependencies[]? PackRequirement
+    duplicate_implements[]? PackProvision
+    unspecified_implements[]? PackProvision
+}
+
 ManifestPackRequirement := PackRequirement << {
     order? LoadSpec<ManifestOrderRequirement = 1b> = LoadSpec<1b>
 }

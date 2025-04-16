@@ -10,7 +10,7 @@
 # ~> supports[]: ManifestPackRequirement = []
 # ~> implements[]: PackID | PackProvision = []
 #--------------------
-# <~ result? PackInfo
+# <~ value? PackInfo
 # <~ error? {
 #- missing_data[]? {field: string}
 #- invalid_data[]? {field: string, expected: string, got: any}

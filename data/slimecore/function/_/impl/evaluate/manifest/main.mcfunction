@@ -11,12 +11,12 @@
 # => supports[]: &ManifestPackRequirement = []
 # => implements[]: PackID | PackProvision = []
 #--------------------
-# <- result? PackInfo
+# <- value? PackInfo
 # <- error?
 #--------------------
 # The manifest function.
 #--------------------
-# 1: valid manifest; >result< contains data.
+# 1: valid manifest; >value< contains data.
 # 0: invalid manifest; >error< contains data.
 #--------------------
 
@@ -52,6 +52,6 @@ execute unless score *x _slimecore matches 1.. run return run scoreboard players
 # datafix:
 function slimecore:_/impl/evaluate/manifest/datafix/do
 
-data modify storage slimecore:out manifest.result set from storage slimecore:_ impl.manifest.final
+data modify storage slimecore:out manifest.value set from storage slimecore:_ impl.manifest.final
 
 return 1
