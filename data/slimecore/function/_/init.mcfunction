@@ -4,11 +4,11 @@ scoreboard objectives add _slimecore dummy
 
 # DEBUG:
 scoreboard players reset *installed _slimecore
-tellraw @a ">"
+tellraw @a ":"
 tellraw @a "------------------"
 tellraw @a "===== RELOAD ====="
 tellraw @a "------------------"
-tellraw @a ">"
+tellraw @a ":"
 data modify storage test: out.manifest_throws set value []
 
 # consts:
