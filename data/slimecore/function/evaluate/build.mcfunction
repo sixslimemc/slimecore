@@ -12,7 +12,7 @@
 #- missing_implementations[]? {manifest: PackInfo}
 # }
 #--------------------
-#
+# TODO: description
 #--------------------
 # 1: valid build; >result< contains data.
 # 0: invalid build; >error< contains data.

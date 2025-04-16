@@ -19,7 +19,9 @@
 # .
 #--------------------
 
-function slimecore:_/impl/manifest/main
+data remove storage slimecore:out manifest
+
+execute store result score *x _slimecore run function slimecore:_/impl/evaluate/manifest/main
 
 data remove storage slimecore:in manifest
 data remove storage slimecore:_ impl.manifest
