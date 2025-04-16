@@ -2,8 +2,8 @@
 #--------------------
 # -> packs[]: PackInfo
 #--------------------
-# <- result? {order: LoadSpec<[]{pack: PackID}> pack_map: {(PackID...): PackInfo}}
-# <- error? {
+# <~ result? {order: LoadSpec<[]{pack: PackID}> pack_map: {(PackID...): PackInfo}}
+# <~ error? {
 #- duplicates[]? {pack: PackID, instances[]: PackInfo}
 #- multiple_implementations[]? {pack: PackID, sources[]: PackInfo}
 #- dependency_cycles[]? {root: PackInfo, cycle[]: PackID}
