@@ -21,7 +21,7 @@ PackRequirement := {
     pack: PackID
     version: Version
     url: string
-    order: LoadSpec<LoadOrderRequirement>
+    order: LoadSpec<RelativeOrder>
 }
 
 PackProvision := {
@@ -47,6 +47,6 @@ ManifestPackRequirement := PackRequirement << {
     order? LoadSpec<ManifestOrderRequirement = 1b> = LoadSpec<1b>
 }
 
-ManifestOrderRequirement := 'AFTER' | 'BEFORE' | 'ANY' | LoadOrderRequirement
+ManifestRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | RelativeOrder
 
-LoadOrderRequirement := -1b | 1b | 0b
+RelativeOrder := -1b | 1b | 0b

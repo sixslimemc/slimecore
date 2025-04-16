@@ -7,7 +7,7 @@
 # -> build.make_relation.a
 # -> build.make_relation.b
 # -> build.make_relation.orderset: 'load' | 'pre_load' | 'post_load'
-# -> build.make_relation.direction: LoadOrderRequirement
+# -> build.make_relation.direction: RelativeOrder
 # 'direction' is <b>'s relation to <a>
 
 $data modify storage slimecore:_ var.build.rel.a set from storage slimecore:_ var.build.maps.relations.'$(a)'
