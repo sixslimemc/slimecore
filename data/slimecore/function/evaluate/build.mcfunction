@@ -3,14 +3,7 @@
 # -> packs[]: PackInfo
 #--------------------
 # <~ value? {order: LoadSpec<[]{pack: PackID}> pack_map: {(PackID...): PackInfo}}
-# <~ error? {
-#- duplicates[]? {pack: PackID, instances[]: PackInfo}
-#- multiple_implementations[]? {pack: PackID, sources[]: PackInfo}
-#- dependency_cycles[]? {root: PackInfo, cycle[]: PackID}
-#- order_conflicts? LoadSpec<[]{a: PackID, b: PackID}>
-#- missing_dependencies[]? {dependency: PackRequirement, dependent: PackInfo, bad_version? {installed: PackInfo, version_index: 0b | 1b}}
-#- missing_implementations[]? {manifest: PackInfo}
-# }
+# <~ error? BuildEvaluationError
 #--------------------
 # TODO: description
 #--------------------

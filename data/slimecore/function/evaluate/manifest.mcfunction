@@ -11,13 +11,7 @@
 # ~> implements[]: PackID | PackProvision = []
 #--------------------
 # <~ value? PackInfo
-# <~ error? {
-#- missing_data[]? {field: string}
-#- invalid_data[]? {field: string, expected: string, got: any}
-#- duplicate_dependencies[]? PackRequirement
-#- duplicate_implements[]? PackProvision
-#- unspecified_implements[]? PackProvision
-# }
+# <~ error? ManifestEvaluationError
 #--------------------
 # TODO: description
 #--------------------
