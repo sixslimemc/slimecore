@@ -11,5 +11,5 @@ execute unless score *build.has_error_entry _slimecore matches 1 run data modify
 
 data modify storage slimecore:_ var.build.dupe_entry.instances append from storage slimecore:_ var.build.this_man
 
-execute unless score *build.has_error_entry _slimecore matches 1 run data modify storage slimecore:_ var.build.error.duplicates append from storage slimecore:_ var.build.dupe_entry
-$execute if score *build.has_error_entry _slimecore matches 1 run data modify storage slimecore:_ var.build.error.duplicates[{pack:'$(pack)'}] set from storage slimecore:_ var.build.dupe_entry
+execute unless score *build.has_error_entry _slimecore matches 1 run data modify storage slimecore:_ var.build.error.duplicate_packs append from storage slimecore:_ var.build.dupe_entry
+$execute if score *build.has_error_entry _slimecore matches 1 run data modify storage slimecore:_ var.build.error.duplicate_packs[{pack:'$(pack)'}] set from storage slimecore:_ var.build.dupe_entry

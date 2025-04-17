@@ -44,7 +44,7 @@ LoadSpec<&T> := {
 }
 
 BuildEvaluationError := {
-    duplicates[]? {
+    duplicate_packs[]? {
         pack: PackID
         instances[]: PackInfo
     }
@@ -64,12 +64,8 @@ BuildEvaluationError := {
             installed: PackInfo
             versionIndex: 0b | 1b
         }
-        missing_implementations[]? {
-            unimplemented: PackInfo
-        }
     }
-    missing_dependencies[]? {dependency: PackRequirement, dependent: PackInfo, bad_version? {installed: PackInfo, version_index: 0b | 1b}}
-    missing_implementations[]? {manifest: PackInfo}
+    missing_implementations[]? PackInfo
 }
 
 ManifestEvaluationError := {
