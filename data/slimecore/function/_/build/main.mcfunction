@@ -7,17 +7,8 @@
 # -> manifests[]: PackInfo
 
 # OUTPUTS: {build.out}
-# & Conflict := {a: PackID, b: PackID}
-# & BadVersionInfo := {installed: PackInfo, version_index: 0b | 1b (major | minor)}
-# <- result? {order: LoadSpec<[]{pack: PackID}>, pack_map: PackID => PackInfo}
-# <- error? {
-#- duplicates[]: {pack: PackID, instances[]: PackInfo}
-#- multiple_implementations[]: {pack: PackID, sources[]: PackInfo}
-#- dependency_cycles[]: { root: PackInfo, cycle[]: PackID }
-#- order_conflicts: LoadSpec<[]&Conflict>
-#- missing_dependencies[]: {dependency: PackRequirement, dependent: PackInfo, bad_version? &BadVersionInfo}
-#- missing_implementations[]: {manifest: PackInfo}
-# }
+# <- result? Build
+# <- error? BuildEvaluationError
 
 # RETURNS:
 # 1 - build success, {build.out.result} populated.

@@ -1,4 +1,14 @@
 
+Build: {
+    order: LoadSpec<[]{pack: PackID}>
+    packs[]: PackInfo
+    auxilary: {
+        pack_map: {
+            <PackID...>: PackInfo
+        }
+    }
+}
+
 PackInfo := {
     pack: PackID
     display_name: string

@@ -1,5 +1,4 @@
 {
-    packs[]: PackInfo
-    order: LoadSpec<PackID[]>
-    slimecore_version: Version
+    current_build: Build
+    version: Version
 }
