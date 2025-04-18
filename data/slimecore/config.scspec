@@ -14,7 +14,13 @@
         = {}
     }
     = {}
-    messages? {
+    chat_messages? {
+        build? {
+
+        }
+        guiding_info? {
+
+        }
         hide? {
             critical? bool
                 = false
