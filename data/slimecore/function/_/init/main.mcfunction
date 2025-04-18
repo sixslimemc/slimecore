@@ -22,6 +22,10 @@ data modify storage slimecore:_ var.init.packs append from storage slimecore:_ m
 data modify storage slimecore:_ var.init.compare set from storage slimecore:data current_build.packs
 execute store success score *init.do_rebuild _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ var.init.packs
 execute if data storage slimecore:config debug.build{disable_rebuild:true} run scoreboard players set *init.do_rebuild _slimecore 0
+
+#DEBUG:
+scoreboard players set *init.do_rebuild _slimecore 1
+
 execute if score *init.do_rebuild _slimecore matches 1 run function slimecore:_/init/rebuild
 
 # DEBUG:

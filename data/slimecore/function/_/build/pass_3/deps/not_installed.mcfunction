@@ -11,4 +11,4 @@ data modify storage slimecore:_ var.build.entry_add.dependent set from storage s
 
 data modify storage slimecore:_ var.build.error.missing_dependencies append from storage slimecore:_ var.build.entry_add
 
-return 1
+return fail
