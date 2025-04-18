@@ -21,6 +21,3 @@ scoreboard players reset *build.bad_index _slimecore
 
 scoreboard players reset *build.order_ptr _slimecore
 scoreboard players reset *build.insertion_index _slimecore
-
-# DEBUG:
-data modify storage test: out.build set from storage slimecore:_ build.out

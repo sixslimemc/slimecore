@@ -4,25 +4,23 @@ scoreboard objectives add _slimecore dummy
 
 # DEBUG:
 scoreboard players reset *installed _slimecore
-tellraw @a ":"
-tellraw @a "------------------"
-tellraw @a "===== RELOAD ====="
-tellraw @a "------------------"
-tellraw @a ":"
+tellraw @a {"text":">> RELOAD <<", "bold": true, "color": blue}
 
 # consts:
 execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main
 
-# manifests:
+# gather manifests:
 data modify storage slimecore:_ manifests set value {valid:[], invalid:[]}
 scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest
 scoreboard players reset *manifest_time _slimecore
 
+data merge storage slimecore:_ {var:{init:{packs:[]}}}
+data modify storage slimecore:_ var.init.packs append from storage slimecore:_ manifests.valid[].pack_info
+
 # rebuild if needed:
-data modify storage slimecore:_ var.init.compare set from storage slimecore:_ cache.this_build.manifests
-execute store success score *init.do_rebuild _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ manifests.valid
-execute unless data storage slimecore:_ cache.this_build run scoreboard players set *init.do_rebuild _slimecore 1
+data modify storage slimecore:_ var.init.compare set from storage slimecore:data current_build.packs
+execute store success score *init.do_rebuild _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ var.init.packs
 execute if data storage slimecore:config debug.build{disable_rebuild:true} run scoreboard players set *init.do_rebuild _slimecore 0
 execute if score *init.do_rebuild _slimecore matches 1.. run function slimecore:_/init/rebuild
 
@@ -32,3 +30,6 @@ scoreboard players reset *init.do_rebuild _slimecore
 scoreboard players reset *init.build_success _slimecore
 
 scoreboard players set *installed _slimecore 1
+
+# DEBUG:
+tellraw @a {"text":">> REACHED END <<", "bold": true, "color": green}

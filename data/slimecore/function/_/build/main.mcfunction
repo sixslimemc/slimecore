@@ -17,9 +17,6 @@
 # *build.error should be set to 1 if any data is contained in {build.error}
 # see ./end/error for error data format.
 
-# DEBUG:
-say BUILD START
-
 # init:
 data remove storage slimecore:_ build.out
 scoreboard players set *build.error _slimecore 0
