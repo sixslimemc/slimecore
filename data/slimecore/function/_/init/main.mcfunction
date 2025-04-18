@@ -22,12 +22,20 @@ data modify storage slimecore:_ var.init.packs append from storage slimecore:_ m
 data modify storage slimecore:_ var.init.compare set from storage slimecore:data current_build.packs
 execute store success score *init.do_rebuild _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ var.init.packs
 execute if data storage slimecore:config debug.build{disable_rebuild:true} run scoreboard players set *init.do_rebuild _slimecore 0
-execute if score *init.do_rebuild _slimecore matches 1.. run function slimecore:_/init/rebuild
+execute if score *init.do_rebuild _slimecore matches 1 run function slimecore:_/init/rebuild
+
+# DEBUG:
+execute unless score *init.do_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No Rebuild Needed', 'color':gray}]
+data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
+tellraw @a [': ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
+
+# call load tags:
+data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
+execute if data storage slimecore:_ var.init.load_tags[0] run function slimecore:_/init/load_tags/each
 
 # end
 data remove storage slimecore:_ var.init
 scoreboard players reset *init.do_rebuild _slimecore
-scoreboard players reset *init.build_success _slimecore
 
 scoreboard players set *installed _slimecore 1
 

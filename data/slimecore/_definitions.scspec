@@ -64,6 +64,14 @@
             empty_buffer[{max_index}+1]: []
                 # array of empty arrays large enough to be safely alphabet indexed
         }
-        load_words: ['pre_load', 'load', 'post_load']
+        load_words= ['pre_load', 'load', 'post_load', 'tick']
+            # load words; must match up with keys in LoadSpec
+        load_tags= [
+            {word: 'tick', tag: 'tick_start'},
+            {word: 'post_load', tag: 'post_load'},
+            {word: 'load', tag: 'load'},
+            {word: 'pre_load', tag: 'pre_load'}
+        ]
+            # associations between loading tags and their load words, in *reverse* order in which they are called.
     }
 }
