@@ -17,27 +17,26 @@ $data modify storage slimecore:_ var.build.rel.b set from storage slimecore:_ va
 execute store result score *build.rel.r _slimecore run data get storage slimecore:_ var.build.make_relation.direction
 $data modify storage slimecore:_ var.build.rel.this_r set from storage slimecore:_ var.build.rel.a.$(orderset)[{pack:'$(b)'}]
 execute store result score *build.rel.er _slimecore run data get storage slimecore:_ var.build.rel.this_r.direction -1
-execute store success score *build.rel.fail _slimecore run execute if data storage slimecore:_ var.build.rel.this_r unless score *build.rel.r _slimecore matches 0 unless score *build.rel.r _slimecore = *build.rel.er _slimecore
+execute store success score *build.rel.fail_a _slimecore run execute if data storage slimecore:_ var.build.rel.this_r unless score *build.rel.r _slimecore matches 0 unless score *build.rel.r _slimecore = *build.rel.er _slimecore
 
-$execute if score *build.rel.fail _slimecore matches 1.. run data modify storage slimecore:_ var.build.error.order_conflicts.$(orderset) append value {a:'$(a)', b:'$(b)'}
+$execute if score *build.rel.fail_a _slimecore matches 1.. run data modify storage slimecore:_ var.build.error.order_conflicts.$(orderset) append value {a:'$(a)', b:'$(b)'}
 
-execute store success score *build.rel.should_add _slimecore unless score *build.rel.r _slimecore matches 0 unless score *build.rel.fail _slimecore matches 1.. unless data storage slimecore:_ var.build.rel.this_r
+execute store success score *build.rel.should_add _slimecore unless score *build.rel.r _slimecore matches 0 unless score *build.rel.fail_a _slimecore matches 1.. unless data storage slimecore:_ var.build.rel.this_r
 $execute if score *build.rel.should_add _slimecore matches 1.. run data modify storage slimecore:_ var.build.rel.a.$(orderset) append value {pack:'$(b)', direction:0b}
 $execute if score *build.rel.should_add _slimecore matches 1.. store result storage slimecore:_ var.build.rel.a.$(orderset)[-1].direction byte -1 run scoreboard players get *build.rel.r _slimecore
 
 data remove storage slimecore:_ var.build.rel.this_r
 scoreboard players reset *build.rel.er _slimecore
-scoreboard players reset *build.rel.fail _slimecore
 scoreboard players reset *build.rel.should_add _slimecore
 # b -> a
 scoreboard players operation *build.rel.r _slimecore *= *-1 _slimecore
 $data modify storage slimecore:_ var.build.rel.this_r set from storage slimecore:_ var.build.rel.b.$(orderset)[{pack:'$(a)'}]
 execute store result score *build.rel.er _slimecore run data get storage slimecore:_ var.build.rel.this_r.direction -1
-execute store success score *build.rel.fail _slimecore if data storage slimecore:_ var.build.rel.this_r unless score *build.rel.r _slimecore matches 0 unless score *build.rel.r _slimecore = *build.rel.er _slimecore
+execute store success score *build.rel.fail_b _slimecore if data storage slimecore:_ var.build.rel.this_r unless score *build.rel.r _slimecore matches 0 unless score *build.rel.r _slimecore = *build.rel.er _slimecore
 
-$execute if score *build.rel.fail _slimecore matches 1.. run data modify storage slimecore:_ var.build.error.order_conflicts.$(orderset) append value {a:'$(a)', b:'$(b)'}
+$execute unless score *build.rel.fail_a _slimecore matches 1.. if score *build.rel.fail_b _slimecore matches 1.. run data modify storage slimecore:_ var.build.error.order_conflicts.$(orderset) append value {a:'$(b)', b:'$(a)'}
 
-execute store success score *build.rel.should_add _slimecore unless score *build.rel.r _slimecore matches 0 unless score *build.rel.fail _slimecore matches 1.. unless data storage slimecore:_ var.build.rel.this_r
+execute store success score *build.rel.should_add _slimecore unless score *build.rel.r _slimecore matches 0 unless score *build.rel.fail_b _slimecore matches 1.. unless data storage slimecore:_ var.build.rel.this_r
 $execute if score *build.rel.should_add _slimecore matches 1.. run data modify storage slimecore:_ var.build.rel.b.$(orderset) append value {pack:'$(a)', direction:0b}
 $execute if score *build.rel.should_add _slimecore matches 1.. store result storage slimecore:_ var.build.rel.b.$(orderset)[-1].direction byte -1 run scoreboard players get *build.rel.r _slimecore
 
@@ -49,4 +48,5 @@ $data modify storage slimecore:_ var.build.maps.relations.'$(b)' set from storag
 data remove storage slimecore:_ var.build.rel
 scoreboard players reset *build.rel.er _slimecore
 scoreboard players reset *build.rel.should_add _slimecore
-scoreboard players reset *build.rel.fail _slimecore
+scoreboard players reset *build.rel.fail_a _slimecore
+scoreboard players reset *build.rel.fail_b _slimecore
