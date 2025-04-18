@@ -24,8 +24,14 @@
     }
     # interaction with ':_/build/main'
 
-    manifests[]: PackInfo
-        # ':manifest' function adds to this at manifest-time.
+    manifests: {
+        valid[]: PackInfo
+        invalid[]: {
+            error: ManifestEvaluationError
+            manifest: Manifest
+        }
+    }
+    # ':manifest' function adds to this at manifest-time.
 
     util: {
         in: {

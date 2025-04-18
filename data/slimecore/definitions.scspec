@@ -1,6 +1,4 @@
 
-
-
 PackInfo := {
     pack: PackID
     display_name: string

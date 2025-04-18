@@ -1,8 +1,4 @@
 {
-    auto_rebuild? bool
-            = true
-            # automatically attempt to rebuild the world's SlimeCore pack composition upon reloading if changes are detected.
-
     build? {
         max_command_chain_length_override? {
             enable? bool
@@ -35,10 +31,31 @@
         } | bool
         = false
         #
-
     }
     = {}
     debug? {
+        build? {
+            disable_rebuild? bool
+                = false
+                # disable rebuilding on /reload.
+            
+            skip_validation? {
+            manifest? bool
+                = false
+                #
+
+            cycle_detection? bool
+                = false
+                #
+
+            load_order? bool
+                = false
+                #
+            } | bool
+            = false
+            #
+        }
+        
         packs? {
             ignore[]? PackID
                 = []
@@ -90,22 +107,5 @@
         = false
         #
 
-        skip_validation? {
-            manifest? bool
-                = false
-                #
-
-            cycle_detection? bool
-                = false
-                #
-
-            load_order? bool
-                = false
-                #
-
-        } | bool
-        = false
-        #
-        
     }
 }
