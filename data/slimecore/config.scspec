@@ -4,7 +4,7 @@
             enable? bool
                 = true
                 # temporarily set the 'MaxCommandChainLength' gamerule when SlimeCore builds.
-                # this is highly recommended; unsavory problems can arise if SlimeCore hits the command chain limit while building.
+                # this is generally recommended to stay true unless you have a specific reason to set this to false.
 
             value? int
                 = 999999
@@ -14,31 +14,7 @@
         = {}
     }
     = {}
-    chat_messages? {
-        build? {
 
-        }
-        guiding_info? {
-
-        }
-        hide? {
-            critical? bool
-                = false
-                #
-
-            warning? bool
-                = false
-                #
-
-            info? bool
-                = false
-                #
-
-        } | bool
-        = false
-        #
-    }
-    = {}
     debug? {
         build? {
             disable_rebuild? bool
@@ -93,21 +69,6 @@
         }
         = {}
         messages? {
-            manifest_validation? bool
-                = false
-                #
-
-            cycle_detection? bool
-                = false
-                #
-
-            load_order_validation? bool
-                = false
-                #
-
-            load_ordering? bool
-                = false
-                #
 
         } | bool
         = false

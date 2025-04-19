@@ -15,3 +15,9 @@
 #- remove all safe/unsafe uninstall marks
 
 # TODO: implement
+
+$data merge storage slimecore:_ {impl:{mark:{in:{packs:$(packs)}}}}
+
+function slimecore:_/impl/-/packs/uninstall/mark/main
+
+data remove storage slimecore:_ impl.mark

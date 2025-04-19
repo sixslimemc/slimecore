@@ -1,4 +1,12 @@
 {
     current_build: Build
     version: Version
+    uninstall: {
+        marked[]: {
+            pack: PackID
+        }
+        unsafe[]: {
+            pack: PackID
+        }
+    }
 }
