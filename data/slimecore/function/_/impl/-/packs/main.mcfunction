@@ -23,3 +23,5 @@ data modify storage slimecore:_ impl.mark.current_packs set from storage slimeco
 
 
 execute if data storage slimecore:_ impl.mark.eval[0] run function slimecore:_/impl/-/packs/uninstall/mark/main
+
+# TODO: implement correctly using evaluate/safe_uninstalls

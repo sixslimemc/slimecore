@@ -17,7 +17,7 @@ PackInfo := {
     abstract: bool
     dependencies[]: PackRequirement
     supports[]: PackRequirement
-    implements[]: PackProvision
+    implements[]: PackReference
 }
 
 PackAuthor := {
@@ -32,7 +32,7 @@ PackRequirement := {
     order: LoadSpec<RelativeOrder>
 }
 
-PackProvision := {
+PackReference := {
     pack: PackID
 }
 
@@ -86,8 +86,8 @@ ManifestEvaluationError := {
         got: any
     }
     duplicate_dependencies[]? PackRequirement
-    duplicate_implements[]? PackProvision
-    unspecified_implements[]? PackProvision
+    duplicate_implements[]? PackReference
+    unspecified_implements[]? PackReference
 }
 
 ManifestPackRequirement := PackRequirement << {

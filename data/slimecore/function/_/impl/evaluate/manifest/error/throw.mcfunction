@@ -15,9 +15,9 @@
 # 3 - duplicate deps/sups
 # {instances[]: PackRequirement}
 # 4 - duplicate implements
-# {instances[]: PackProvision}
+# {instances[]: PackReference}
 # 5 - implementations not found in deps/sups
-# {instances[]: PackProvision}
+# {instances[]: PackReference}
 
 execute store result score *x _slimecore run data get storage slimecore:_ impl.manifest.throw.error
 

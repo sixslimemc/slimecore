@@ -34,11 +34,13 @@
     # ':manifest' function adds to this at manifest-time.
 
     util: {
-        in: {
-            ...
-        }
-        out: {
-            ...
+        <function name...>: {
+            in: {
+                ...
+            }
+            out: {
+                ...
+            }
         }
     }
     # for interacting with _/util/**

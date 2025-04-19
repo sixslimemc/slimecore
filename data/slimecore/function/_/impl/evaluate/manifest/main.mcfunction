@@ -9,7 +9,7 @@
 # => abstract: bool = false
 # => dependencies[]: &ManifestPackRequirement = []
 # => supports[]: &ManifestPackRequirement = []
-# => implements[]: PackID | PackProvision = []
+# => implements[]: PackID | PackReference = []
 #--------------------
 # <- value? PackInfo
 # <- error?
