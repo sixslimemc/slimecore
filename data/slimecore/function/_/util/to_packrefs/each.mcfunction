@@ -2,7 +2,6 @@
 #--------------------
 # ./main
 #--------------------
-
 data modify storage slimecore:_ util.to_packrefs.out.result append value {}
 data modify storage slimecore:_ util.to_packrefs.out.result[-1].pack set from storage slimecore:_ util.to_packrefs.in.packs[-1]
 
