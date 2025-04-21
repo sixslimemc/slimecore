@@ -1,4 +1,4 @@
-#> six:api > array/set/intersection
+#> slimecore:util > six/array/intersection
 #--------------------
 # -> a: obj[]
 # -> b: obj[]
@@ -19,9 +19,7 @@
 # ...
 #--------------------
 
-data modify storage slimecore:_ util.intersection.out.shared_a set value []
-data modify storage slimecore:_ util.intersection.out.shared_b set value []
-data modify storage slimecore:_ util.intersection.out.shared set value []
+data merge storage slimecore:_ {util:{difference:{out:{shared:[], shared_a:[], shared_b:[]}}}}
 
 execute store success score *intersection.direct _slimecore unless data storage slimecore:_ util.intersection.in.compare.only unless data storage slimecore:_ util.intersection.in.compare.without
 

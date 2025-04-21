@@ -1,4 +1,4 @@
-#> six:_/impl/array/set/intersection/add_match
+#> slimecore:_/impl/util/six/array/intersection/add_match
 #--------------------
 # ./each_match
 #--------------------

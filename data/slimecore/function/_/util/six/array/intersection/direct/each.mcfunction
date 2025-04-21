@@ -1,4 +1,4 @@
-#> six:_/impl/array/set/intersection/direct/each
+#> slimecore:_/impl/util/six/array/intersection/direct/each
 #--------------------
 # @api
 #--------------------
