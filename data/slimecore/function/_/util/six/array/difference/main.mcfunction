@@ -20,7 +20,7 @@ execute unless score *difference.direct _slimecore matches 1 run data modify sto
 execute unless score *difference.direct _slimecore matches 1 run data modify storage slimecore:_ util.difference.out.unique_b set from storage slimecore:_ util.difference.in.b
 execute unless score *difference.direct _slimecore matches 1 if data storage slimecore:_ util.difference.in.a[0] run function slimecore:_/util/six/array/difference/each
 
-execute if score *difference.direct _slimecore matches 1 if data storage slimecore:_ util.difference.in.a[0] run function slimecore:_/util/six/array/difference/direct/each
+execute if score *difference.direct _slimecore matches 1 run function slimecore:_/util/six/array/difference/direct/do
 
 data remove storage slimecore:_ util.difference.in
 data remove storage slimecore:_ util.difference.var
