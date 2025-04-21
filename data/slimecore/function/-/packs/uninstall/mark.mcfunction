@@ -16,7 +16,7 @@
 
 # TODO: implement
 
-$data merge storage slimecore:_ {impl:{mark:{in:{packs:$(packs)}}}}
+$data merge storage slimecore:_ {impl:{mark:{input:{packs:$(packs)}}}}
 
 function slimecore:_/impl/-/packs/uninstall/mark/main
 

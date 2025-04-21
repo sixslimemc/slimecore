@@ -90,6 +90,14 @@ ManifestEvaluationError := {
     unspecified_implements[]? PackReference
 }
 
+UnsafeUninstall := {
+    pack: PackID
+    reason: {
+        dependency_of[]? PackReference
+        implements[]? PackReference
+    }
+}
+
 ManifestPackRequirement := PackRequirement << {
     order? LoadSpec<ManifestOrderRequirement = 1b> = LoadSpec<1b>
 }

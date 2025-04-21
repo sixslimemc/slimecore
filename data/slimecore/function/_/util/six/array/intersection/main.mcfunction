@@ -19,7 +19,7 @@
 # ...
 #--------------------
 
-data merge storage slimecore:_ {util:{difference:{out:{shared:[], shared_a:[], shared_b:[]}}}}
+data merge storage slimecore:_ {util:{intersection:{out:{shared:[], shared_a:[], shared_b:[]}}}}
 
 execute store success score *intersection.direct _slimecore unless data storage slimecore:_ util.intersection.in.compare.only unless data storage slimecore:_ util.intersection.in.compare.without
 

@@ -7,7 +7,7 @@
 #- dependency_of[]? PackReference
 #- implements[]? PackReference
 # }
-# <- safe[]: PackID
+# <- safe[]: PackReference
 # <- unsafe[]: {pack: PackID, reason: &UnsafeUninstallReason}
 # <- not_in_build[]: PackID
 #--------------------
