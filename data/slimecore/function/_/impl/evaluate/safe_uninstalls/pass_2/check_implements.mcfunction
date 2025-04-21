@@ -7,7 +7,6 @@ $data modify storage slimecore:_ impl.safe_uninstalls.implements set from storag
 
 data modify storage slimecore:_ util.intersection.in.a set from storage slimecore:_ impl.safe_uninstalls.implements
 data modify storage slimecore:_ util.intersection.in.b set from storage slimecore:_ impl.safe_uninstalls.current_packs
-
 data merge storage slimecore:_ {util:{intersection:{in:{compare:{only:['pack']}}}}}
 function slimecore:_/util/six/array/intersection/main
 
@@ -18,6 +17,8 @@ execute unless data storage slimecore:_ impl.safe_uninstalls.needed_impls[] run 
 
 # add unsafe entry:
 data remove storage slimecore:_ impl.safe_uninstalls.unsafe_entry
+$data modify storage slimecore:_ impl.safe_uninstalls.unsafe_entry set from storage slimecore:out safe_uninstalls.unsafe[{pack:'$(this_un)'}]
+$data remove storage slimecore:out safe_uninstalls.unsafe[{pack:'$(this_un)'}]
 data modify storage slimecore:_ impl.safe_uninstalls.unsafe_entry.pack set from storage slimecore:_ impl.safe_uninstalls.this_un
 data modify storage slimecore:_ impl.safe_uninstalls.unsafe_entry.reason.implements set from storage slimecore:_ impl.safe_uninstalls.needed_impls
 data modify storage slimecore:out safe_uninstalls.unsafe append from storage slimecore:_ impl.safe_uninstalls.unsafe_entry
