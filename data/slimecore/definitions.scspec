@@ -1,5 +1,5 @@
 
-Build: {
+Build := {
     order: LoadSpec<[]{pack: PackID}>
     packs[]: PackInfo
     auxilary: {
@@ -12,6 +12,7 @@ Build: {
 PackInfo := {
     pack: PackID
     display_name: string
+    display_desc: string
     url: string
     author: PackAuthor
     abstract: bool

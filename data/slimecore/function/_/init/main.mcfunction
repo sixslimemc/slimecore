@@ -60,6 +60,4 @@ scoreboard players reset *init.do_rebuild _slimecore
 # DEBUG:
 tellraw @a {"text":">> REACHED END <<", "bold": true, "color": dark_green}
 
-# TODO:
-#- hooks.
-#-
+# TODO/DEV:
