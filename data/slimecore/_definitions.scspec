@@ -31,6 +31,9 @@
             manifest: Manifest
         }
         uninstalling[]: PackInfo
+        # populated at manifest-time.
+        # contains manifests that are going to be uninstalled this rebuild.
+        # this will NEVER hold values if ANY elements exist in {@data -> uninstall.unsafe}
     }
     # ':manifest' function adds to this at manifest-time.
 
