@@ -15,6 +15,9 @@ scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest
 scoreboard players reset *manifest_time _slimecore
 
+# DEBUG
+execute if data storage slimecore:_ manifests.invalid[] run tellraw @a [{text:"> Invalid Manifests: ", color: red}, {storage:'slimecore:_', nbt:'manifests.invalid', color: dark_aqua}]
+
 # check if rebuild needed:
 data merge storage slimecore:_ {var:{init:{packs:[]}}}
 data modify storage slimecore:_ var.init.packs append from storage slimecore:_ manifests.valid[].pack_info
@@ -50,4 +53,4 @@ data remove storage slimecore:_ var.init
 scoreboard players reset *init.do_rebuild _slimecore
 
 # DEBUG:
-tellraw @a {"text":">> REACHED END <<", "bold": true, "color": green}
+tellraw @a {"text":">> REACHED END <<", "bold": true, "color": dark_green}

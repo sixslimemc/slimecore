@@ -4,7 +4,7 @@
 #--------------------
 
 # DEBUG:
-tellraw @a {'text':"> Rebuild Start", 'color': yellow}
+tellraw @a {'text':"- Rebuilding -", 'color': yellow}
 
 # evaluate build:
 data modify storage slimecore:in build.packs set from storage slimecore:_ var.init.packs
