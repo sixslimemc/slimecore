@@ -17,6 +17,7 @@
 # 1: manifest successfully added to build.
 # -1: invalid manifest.
 # -2: this function was called outside of manifest-time (not called via #slimecore:manifest).
+# -3: this <pack> is marked for uninstallation, it's #uninstall tag is about to be called.
 #--------------------
 
 data remove storage slimecore:out manifest

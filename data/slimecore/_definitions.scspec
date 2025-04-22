@@ -30,6 +30,7 @@
             error: ManifestEvaluationError
             manifest: Manifest
         }
+        uninstalling[]: PackInfo
     }
     # ':manifest' function adds to this at manifest-time.
 

@@ -10,7 +10,7 @@ tellraw @a {"text":">> RELOAD <<", "bold": true, "color": blue}
 execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main
 
 # gather manifests:
-data modify storage slimecore:_ manifests set value {valid:[], invalid:[]}
+data modify storage slimecore:_ manifests set value {valid:[], invalid:[], uninstalling:[]}
 scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest
 scoreboard players reset *manifest_time _slimecore
