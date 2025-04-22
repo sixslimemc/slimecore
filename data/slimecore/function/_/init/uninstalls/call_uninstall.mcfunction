@@ -4,6 +4,3 @@
 #--------------------
 
 $function #$(pack):uninstall
-
-#DEBUG
-$say Uninstall call: '$(pack)'

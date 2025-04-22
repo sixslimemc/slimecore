@@ -33,8 +33,11 @@ execute if score *init.do_rebuild _slimecore matches 1 run function slimecore:_/
 
 # DEBUG:
 execute unless score *init.do_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No Rebuild Needed', 'color':gray}]
+execute if data storage slimecore:_ manifests.uninstalling[0] run data modify storage slimecore:_ var.init.debug.uninstalls append from storage slimecore:_ manifests.uninstalling[].pack
+execute if data storage slimecore:_ manifests.uninstalling[0] run tellraw @a [{text:" ! Uninstalled: ", color: "dark_purple", bold:false}, {'storage':'slimecore:_', 'nbt':'var.init.debug.uninstalls', 'color': "light_purple", bold:false}]
+
 data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
-tellraw @a [': ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
+tellraw @a ['# ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
 
 # do uninstalls:
 execute if data storage slimecore:_ manifests.uninstalling[0] run function slimecore:_/init/uninstalls/each
