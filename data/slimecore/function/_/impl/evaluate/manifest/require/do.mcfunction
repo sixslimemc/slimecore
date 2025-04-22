@@ -5,7 +5,7 @@
 
 data remove storage slimecore:_ impl.manifest.throw
 
-data merge storage slimecore:_ {impl:{manifest:{required:['pack', 'version.major', 'version.minor', 'version.patch', 'display_name', 'display_desc', 'url', 'author.display_name']}}}
+data merge storage slimecore:_ {impl:{manifest:{required:['pack', 'version.major', 'version.minor', 'version.patch', 'display.name', 'display.summary', 'url', 'author.name']}}}
 
 execute if data storage slimecore:_ impl.manifest.required[0] run function slimecore:_/impl/evaluate/manifest/require/each
 
