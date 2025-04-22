@@ -41,11 +41,13 @@ data modify storage slimecore:data uninstall set value {safe:[], unsafe:[]}
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
 execute if data storage slimecore:_ var.init.load_tags[0] run function slimecore:_/init/load_tags/each
 
-# end
+# metadata:
+scoreboard players set *installed _slimecore 1
+data merge storage slimecore:data {version:{major:0, minor:1, patch:0}}
+
+# end:
 data remove storage slimecore:_ var.init
 scoreboard players reset *init.do_rebuild _slimecore
-
-scoreboard players set *installed _slimecore 1
 
 # DEBUG:
 tellraw @a {"text":">> REACHED END <<", "bold": true, "color": green}
