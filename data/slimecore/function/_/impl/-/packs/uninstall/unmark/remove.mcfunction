@@ -3,5 +3,5 @@
 # ./each
 #--------------------
 
-$data remove storage slimecore:data uninstall.marked[{pack:'$(this_pack)'}]
+$data remove storage slimecore:data uninstall.safe[{pack:'$(this_pack)'}]
 $data remove storage slimecore:data uninstall.unsafe[{pack:'$(this_pack)'}]

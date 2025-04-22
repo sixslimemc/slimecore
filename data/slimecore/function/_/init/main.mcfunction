@@ -34,8 +34,8 @@ data modify storage slimecore:_ var.init.debug.load_order append from storage sl
 tellraw @a [': ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
 
 # do uninstalls:
-data merge storage slimecore:data {uninstall:{marked:[], unsafe:[]}}
 execute if data storage slimecore:_ manifests.uninstalling[0] run function slimecore:_/init/uninstalls/each
+data modify storage slimecore:data uninstall set value {safe:[], unsafe:[]}
 
 # call load tags:
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags

@@ -14,7 +14,7 @@
 #- warn the user once again why some packs cannot be safetly uninstalled (if any)
 #- remove all safe/unsafe uninstall marks
 
-# TODO: implement
+# no packs can be uninstalled until ALL marks are safe and resolved.
 
 $data merge storage slimecore:_ {impl:{mark:{input:{packs:$(packs)}}}}
 

@@ -2,7 +2,7 @@
     current_build: Build
     version: Version
     uninstall: {
-        marked[]: PackReference
+        safe[]: PackReference
         unsafe[]: UnsafeUninstall
     }
 }
