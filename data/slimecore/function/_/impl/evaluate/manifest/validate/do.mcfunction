@@ -15,19 +15,19 @@ execute unless score *x _slimecore matches 1 run data modify storage slimecore:_
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.pack
 
 # version:
-data modify storage slimecore:_ impl.manifest.validate.number set from storage slimecore:_ impl.manifest.in.version.major
-execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/number with storage slimecore:_ impl.manifest.validate
-execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'version.major', expected:"integer"}
+data modify storage slimecore:_ impl.manifest.validate.nonneg_number set from storage slimecore:_ impl.manifest.in.version.major
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/nonneg_number with storage slimecore:_ impl.manifest.validate
+execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'version.major', expected:"non-negative integer"}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.version.major
 
-data modify storage slimecore:_ impl.manifest.validate.number set from storage slimecore:_ impl.manifest.in.version.minor
-execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/number with storage slimecore:_ impl.manifest.validate
-execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'version.minor', expected:"integer"}
+data modify storage slimecore:_ impl.manifest.validate.nonneg_number set from storage slimecore:_ impl.manifest.in.version.minor
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/nonneg_number with storage slimecore:_ impl.manifest.validate
+execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'version.minor', expected:"non-negative integer"}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.version.minor
 
-data modify storage slimecore:_ impl.manifest.validate.number set from storage slimecore:_ impl.manifest.in.version.patch
-execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/number with storage slimecore:_ impl.manifest.validate
-execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'version.patch', expected:"integer"}
+data modify storage slimecore:_ impl.manifest.validate.nonneg_number set from storage slimecore:_ impl.manifest.in.version.patch
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/nonneg_number with storage slimecore:_ impl.manifest.validate
+execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'version.patch', expected:"non-negative integer"}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.version.patch
 
 # abstract:

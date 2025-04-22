@@ -12,15 +12,15 @@ execute unless score *x _slimecore matches 1 run data modify storage slimecore:_
 
 # version:
 execute unless data storage slimecore:_ impl.manifest.validate.pack_requirement.version.major run data merge storage slimecore:_ {impl:{manifest:{validate:{pack_requirement:{version:{major:""}}}}}}
-data modify storage slimecore:_ impl.manifest.validate.number set from storage slimecore:_ impl.manifest.validate.pack_requirement.version.major
-execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/number with storage slimecore:_ impl.manifest.validate
-$execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).version.major', expected:'integer'}
+data modify storage slimecore:_ impl.manifest.validate.nonneg_number set from storage slimecore:_ impl.manifest.validate.pack_requirement.version.major
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/nonneg_number with storage slimecore:_ impl.manifest.validate
+$execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).version.major', expected:'non-negative integer'}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.validate.pack_requirement.version.major
 
 execute unless data storage slimecore:_ impl.manifest.validate.pack_requirement.version.minor run data merge storage slimecore:_ {impl:{manifest:{validate:{pack_requirement:{version:{minor:""}}}}}}
-data modify storage slimecore:_ impl.manifest.validate.number set from storage slimecore:_ impl.manifest.validate.pack_requirement.version.minor
-execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/number with storage slimecore:_ impl.manifest.validate
-$execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).version.minor', expected:'integer'}
+data modify storage slimecore:_ impl.manifest.validate.nonneg_number set from storage slimecore:_ impl.manifest.validate.pack_requirement.version.minor
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/nonneg_number with storage slimecore:_ impl.manifest.validate
+$execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'$(root_path).version.minor', expected:'non-negative integer'}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.validate.pack_requirement.version.minor
 
 # loads:
