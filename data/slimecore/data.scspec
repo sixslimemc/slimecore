@@ -1,6 +1,5 @@
 {
     current_build: Build
-    version: Version
     uninstall: {
         safe[]: PackReference
         unsafe[]: UnsafeUninstall
@@ -8,4 +7,8 @@
     # used primarily for '-/packs/uninstall/mark' and unmark tracking.
     # cleared every reload.
     # NO packs will be uninstalled unless ALL uninstall marks are safe.
+    slimecore: {
+        version: Version
+        url: string
+    }
 }
