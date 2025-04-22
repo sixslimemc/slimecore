@@ -22,8 +22,9 @@ data modify storage slimecore:_ const.alphabet.empty_buffer set value []
 execute store result score *i _slimecore run data get storage slimecore:_ const.alphabet.max_index
 execute if score *i _slimecore matches 0.. run function slimecore:_/def_consts/alphabet/empty_buffer
 
-# load words:
+# load:
 data modify storage slimecore:_ const.load_words set value ["pre_load", "load", "post_load", "tick"]
 data modify storage slimecore:_ const.load_tags set value [{word: 'tick', tag: 'tick_start'},{word: 'post_load', tag: 'post_load'},{word: 'load', tag: 'load'},{word: 'pre_load', tag: 'pre_load'}]
+data modify storage slimecore:_ const.default_load_order set value {pre_load:1b, load:1b, post_load:1b, tick:1b}
 
 data remove storage slimecore:_ var.const
