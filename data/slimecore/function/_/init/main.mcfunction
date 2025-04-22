@@ -15,10 +15,9 @@ scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest
 scoreboard players reset *manifest_time _slimecore
 
+# check if rebuild needed:
 data merge storage slimecore:_ {var:{init:{packs:[]}}}
 data modify storage slimecore:_ var.init.packs append from storage slimecore:_ manifests.valid[].pack_info
-
-# rebuild if needed:
 data modify storage slimecore:_ var.init.compare set from storage slimecore:data current_build.packs
 execute store success score *init.do_rebuild _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ var.init.packs
 execute if data storage slimecore:config debug.build{disable_rebuild:true} run scoreboard players set *init.do_rebuild _slimecore 0
@@ -26,12 +25,17 @@ execute if data storage slimecore:config debug.build{disable_rebuild:true} run s
 #DEBUG:
 scoreboard players set *init.do_rebuild _slimecore 1
 
+# rebuild call:
 execute if score *init.do_rebuild _slimecore matches 1 run function slimecore:_/init/rebuild
 
 # DEBUG:
 execute unless score *init.do_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No Rebuild Needed', 'color':gray}]
 data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
 tellraw @a [': ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
+
+# do uninstalls:
+data merge storage slimecore:data {uninstall:{marked:[], unsafe:[]}}
+execute if data storage slimecore:_ manifests.uninstalling[0] run function slimecore:_/init/uninstalls/each
 
 # call load tags:
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
