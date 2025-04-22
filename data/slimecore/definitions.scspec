@@ -47,11 +47,11 @@ Version := {
     patch: int
 }
 
-LoadSpec<&T> := {
-    pre_load: &T
-    load: &T
-    post_load: &T
-    tick: &T
+LoadSpec<^T> := {
+    pre_load: ^T
+    load: ^T
+    post_load: ^T
+    tick: ^T
 }
 
 BuildEvaluationError := {
