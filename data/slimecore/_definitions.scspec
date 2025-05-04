@@ -80,10 +80,10 @@
         ]
             # associations between loading tags and their load words, in *reverse* order in which they are called.
         default_load_order: {
-            pre_load: 1b
+            pre_load: 0b
             load: 1b
-            post_load: 1b
-            tick: 1b
+            post_load: 0b
+            tick: 0b
         }
     }
 }
