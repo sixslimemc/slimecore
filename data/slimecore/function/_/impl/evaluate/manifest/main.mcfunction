@@ -1,11 +1,11 @@
 #> slimecore:_/impl/evaluate/manifest/main
 #--------------------
-
 # -> pack: PackID
 # -> version: Version
 # -> display_name: string
 # -> url: string
 # -> author: PackAuthor
+# => library: bool = false
 # => abstract: bool = false
 # => dependencies[]: &ManifestPackRequirement = []
 # => supports[]: &ManifestPackRequirement = []
@@ -23,6 +23,7 @@
 # TODO: validate that no dependencies/sups/impls are the pack itself
 
 execute unless data storage slimecore:in manifest.abstract run data merge storage slimecore:in {manifest:{abstract:false}}
+execute unless data storage slimecore:in manifest.library run data merge storage slimecore:in {manifest:{library:false}}
 execute unless data storage slimecore:in manifest.dependencies run data merge storage slimecore:in {manifest:{dependencies:[]}}
 execute unless data storage slimecore:in manifest.supports run data merge storage slimecore:in {manifest:{supports:[]}}
 execute unless data storage slimecore:in manifest.implements run data merge storage slimecore:in {manifest:{implements:[]}}

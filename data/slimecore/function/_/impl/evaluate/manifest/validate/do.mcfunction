@@ -37,6 +37,12 @@ execute store success score *x _slimecore run function slimecore:_/impl/evaluate
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'abstract', expected:"boolean"}
 execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.abstract
 
+# library:
+data modify storage slimecore:_ impl.manifest.validate.bool set from storage slimecore:_ impl.manifest.in.library
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/bool
+execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances append value {field:'library', expected:"boolean"}
+execute unless score *x _slimecore matches 1 run data modify storage slimecore:_ impl.manifest.throw.data.instances[-1].got set from storage slimecore:_ impl.manifest.in.library
+
 # dependencies:
 data modify storage slimecore:_ impl.manifest.validate.array set from storage slimecore:_ impl.manifest.in.dependencies
 execute store success score *x _slimecore run function slimecore:_/impl/evaluate/manifest/validate/array
