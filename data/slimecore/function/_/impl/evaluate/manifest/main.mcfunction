@@ -25,6 +25,7 @@
 execute unless data storage slimecore:in manifest.abstract run data merge storage slimecore:in {manifest:{abstract:false}}
 execute unless data storage slimecore:in manifest.library run data merge storage slimecore:in {manifest:{library:false}}
 execute unless data storage slimecore:in manifest.dependencies run data merge storage slimecore:in {manifest:{dependencies:[]}}
+execute unless data storage slimecore:in manifest.preferred_order run data modify storage slimecore:in manifest.preferred_order set from storage slimecore:_ const.default_load_order
 execute unless data storage slimecore:in manifest.supports run data merge storage slimecore:in {manifest:{supports:[]}}
 execute unless data storage slimecore:in manifest.implements run data merge storage slimecore:in {manifest:{implements:[]}}
 

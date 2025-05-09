@@ -49,7 +49,10 @@
 
                 version: Version
                     #
-
+                
+                preferred_order? LoadSpec<RelativeOrder>
+                    #
+                
                 dependencies[]? PackRequirement
                     = []
                     #

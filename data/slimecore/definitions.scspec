@@ -18,6 +18,7 @@ PackInfo := {
     url: string
     author: PackAuthor
     abstract: bool
+    preferred_order: LoadSpec<RelativeOrder>
     dependencies[]: PackRequirement
     supports[]: PackRequirement
     implements[]: PackReference
@@ -102,7 +103,7 @@ UnsafeUninstall := {
 }
 
 ManifestPackRequirement := PackRequirement << {
-    order? LoadSpec<ManifestOrderRequirement = 1b> = LoadSpec<1b>
+    order? LoadSpec<ManifestOrderRequirement = 0b> = LoadSpec<0b>
 }
 
 ManifestRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | RelativeOrder

@@ -78,10 +78,11 @@
             {word: 'load', tag: 'load'},
             {word: 'pre_load', tag: 'pre_load'}
         ]
-            # associations between loading tags and their load words, in *reverse* order in which they are called.
+            # associations between loading tags and their load words in reverse order in which they are called.
+
         default_load_order: {
             pre_load: 0b
-            load: 1b
+            load: 0b
             post_load: 0b
             tick: 0b
         }

@@ -5,10 +5,11 @@
 # -> display_name: string
 # -> url: string
 # -> author: PackAuthor
-# ~> abstract: bool = false
-# ~> dependencies[]: ManifestPackRequirement = []
-# ~> supports[]: ManifestPackRequirement = []
-# ~> implements[]: PackID | PackReference = []
+# -> preferred_order: LoadSpec<ManifestRelativeOrder>
+# => abstract: bool = false
+# => dependencies[]: ManifestPackRequirement = []
+# => supports[]: ManifestPackRequirement = []
+# => implements[]: PackID | PackReference = []
 #--------------------
 # <~ value? PackInfo
 # <~ error? ManifestEvaluationError
