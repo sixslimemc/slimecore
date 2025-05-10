@@ -30,3 +30,5 @@ data modify storage slimecore:_ v.pack_manifest.requirements set from storage sl
 execute store result score *pack_manifest.i _slimecore if data storage slimecore:_ v.pack_manifest.requirements[]
 data merge storage slimecore:_ {v:{pack_manifest:{req_path:'supports'}}}
 execute if data storage slimecore:_ v.pack_manifest.requirements[0] run function slimecore:_/impl/evaluate/pack_manifest/requirements/each
+
+# implements inner validation:
