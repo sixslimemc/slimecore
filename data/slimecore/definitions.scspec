@@ -80,19 +80,40 @@ BuildEvaluationError := {
     missing_implementations[]? PackInfo
 }
 
-ManifestEvaluationError := {
-    missing_data[]? {
-        field: string
+Manifest := {
+    pack: PackID
+    version: Version
+    display: {
+        name: string
+        summary: string
     }
-    invalid_data[]? {
-        field: string
-        expected: string
-        got: any
-    }
-    duplicate_dependencies[]? PackRequirement
-    duplicate_implements[]? PackReference
-    unspecified_implements[]? PackReference
+    author: PackAuthor
+    abstract? bool
+    library? bool
+    dependencies[]? ManifestPackRequirement
+    supports[]? ManifestPackRequirment
+    implements[]? ManifestPackReference
 }
+
+ManifestPackReference := PackReference | PackID
+
+ManifestOrdering := {
+    pre_load? ManifestRelativeOrder
+    load? ManifestRelativeOrder
+    post_load? ManifestRelativeOrder
+    tick? ManifestRelativeOrder
+}
+
+ManifestPackRequirement := {
+    pack: PackID
+    version: Version
+    url: string
+    order? ManifestOrdering
+}
+
+ManifestRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | RelativeOrder
+
+RelativeOrder := -1b | 1b | 0b
 
 UnsafeUninstall := {
     pack: PackID
@@ -102,10 +123,19 @@ UnsafeUninstall := {
     }
 }
 
-ManifestPackRequirement := PackRequirement << {
-    order? LoadSpec<ManifestOrderRequirement = 0b> = LoadSpec<0b>
+ValidationError := {
+    missing_data[]? {
+        field: string
+    }
+    invalid_data[]? {
+        field: string
+        expected: string
+        got: any
+    }
 }
 
-ManifestRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | RelativeOrder
-
-RelativeOrder := -1b | 1b | 0b
+ManifestEvalError := ValidationError << {
+    duplicate_dependencies[]? PackRequirement
+    duplicate_implements[]? PackReference
+    unspecified_implements[]? PackReference
+}

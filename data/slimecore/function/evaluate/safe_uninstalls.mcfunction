@@ -3,12 +3,8 @@
 # -> build: Build
 # -> uninstalling[]: PackID
 #--------------------
-# & UnsafeUninstallReason := {
-#- dependency_of[]? PackReference
-#- implements[]? PackReference
-# }
 # <- safe[]: PackID
-# <- unsafe[]: {pack: PackID, reason: &UnsafeUninstallReason}
+# <- unsafe[]: UnsafeUninstall
 # <- not_in_build[]: PackID
 #--------------------
 # TODO: description
