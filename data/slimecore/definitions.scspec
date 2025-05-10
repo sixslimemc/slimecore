@@ -21,7 +21,7 @@ PackManifest := {
         url? string
     }
     abstract: bool
-    preferred_order: LoadWords<RelativeOrder>
+    expected_order: LoadWords<RelativeOrder>
     dependencies[]: PackRequirement
     supports[]: PackRequirement
     implements[]: PackReference
@@ -94,7 +94,7 @@ InputManifest := {
         name: string
         summary: string
     }
-    preferred_order? InputLoadOrdering
+    expected_order? InputLoadOrdering
     abstract? bool
     library? bool
     dependencies[]? InputPackRequirement
