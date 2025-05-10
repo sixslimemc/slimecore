@@ -11,12 +11,15 @@ Build := {
 
 PackManifest := {
     pack: $PackID
+    url: string
     display: {
         name: string
         summary: string
     }
-    url: string
-    author: PackAuthor
+    author: {
+        name: string
+        url? string
+    }
     abstract: bool
     preferred_order: LoadWords<RelativeOrder>
     dependencies[]: PackRequirement
@@ -25,11 +28,6 @@ PackManifest := {
 }
 
 LoadOrdering := LoadWords<RelativeOrder>
-
-PackAuthor := {
-    name: string
-    url? string
-}
 
 PackRequirement := {
     pack: $PackID
@@ -42,7 +40,7 @@ PackReference := {
     pack: $PackID
 }
 
-$PackID := $namespace
+$PackID := $namespace << !'slimecore' << !'minecraft'
 
 Version := {
     major: int
@@ -89,6 +87,7 @@ BuildEvaluationError := {
 
 InputManifest := {
     pack: $PackID
+    url: string
     version: Version
     author: PackAuthor
     display: {

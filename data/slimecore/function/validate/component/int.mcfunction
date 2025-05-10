@@ -14,7 +14,7 @@ data remove storage slimecore:out int
 
 execute store success score *x _slimecore run function slimecore:_/impl/validate/component/int/main with storage slimecore:in int
 
-execute if score *x _slimecore matches 0 run data merge storage slimecore:out {int:{error:{invalid_value:{expected:'integer'}}}}
+execute if score *x _slimecore matches 0 run data merge storage slimecore:out {int:{error:{invalid_value:{expected:'int'}}}}
 execute if score *x _slimecore matches 0 run data modify storage slimecore:out int.error.invalid_value.got set from storage slimecore:in int.value
 
 data remove storage slimecore:_ v.int
