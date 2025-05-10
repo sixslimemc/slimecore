@@ -12,9 +12,8 @@
 
 data remove storage slimecore:out version
 
-execute store result score *x _slimecore run function slimecore:_/impl/validate/version/main
+execute store result score *x _slimecore run function slimecore:_/impl/validate/component/version/main
 
-data remove storage slimecore:_ v.version
 data remove storage slimecore:in version
 
 return run scoreboard players get *x _slimecore
