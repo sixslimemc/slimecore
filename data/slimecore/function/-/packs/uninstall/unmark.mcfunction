@@ -1,6 +1,6 @@
 #> slimecore :-/ packs/uninstall
 #--------------------
-# $> packs[]: PackID
+# $> packs[]: $PackID
 #--------------------
 # TODO: description
 #--------------------

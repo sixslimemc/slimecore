@@ -25,4 +25,4 @@ execute if data storage slimecore:_ var.build.depstack[-1].deps[0] run function 
 
 data remove storage slimecore:_ var.build.depstack[-1]
 
-# relation: PackID => {needed_by[]: PackID, order:{load:{pack: PackID, polarity:-1|1}, pre_load...}}
+# relation: $PackID => {needed_by[]: $PackID, order:{load:{pack: $PackID, polarity:-1|1}, pre_load...}}

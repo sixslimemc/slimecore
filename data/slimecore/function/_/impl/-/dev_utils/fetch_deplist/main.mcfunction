@@ -1,6 +1,6 @@
 #> slimecore:_/impl/-/dev_utils/fetch_deplist/main
 #--------------------
-# $> packs[]: PackID
+# $> packs[]: $PackID
 #--------------------
 # TODO: description
 #--------------------

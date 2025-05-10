@@ -1,6 +1,6 @@
 #> slimecore : manifest
 #--------------------
-# -> pack: PackID
+# -> pack: $PackID
 # -> version: Version
 # -> display_name: string
 # -> url: string
@@ -8,7 +8,7 @@
 # ~> abstract: bool = false
 # ~> dependencies[]: PackManifestPackRequirement = []
 # ~> supports[]: PackManifestPackRequirement = []
-# ~> implements[]: PackID | PackReference = []
+# ~> implements[]: $PackID | PackReference = []
 #--------------------
 # .
 #--------------------

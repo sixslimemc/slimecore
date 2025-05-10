@@ -1,10 +1,10 @@
 #> slimecore:util > to_packrefs
 #--------------------
-# -> packs[]: PackID
+# -> packs[]: $PackID
 #--------------------
 # <- result[]: PackReference
 #--------------------
-# converts a []PackID to []PackReference.
+# converts a []$PackID to []PackReference.
 #--------------------
 
 data merge storage slimecore:_ {util:{to_packrefs:{out:{result:[]}}}}

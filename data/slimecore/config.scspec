@@ -39,12 +39,12 @@
         }
         
         packs? {
-            ignore[]? PackID
+            ignore[]? $PackID
                 = []
                 #
 
             mock_manifests[]? {
-                pack: PackID
+                pack: $PackID
                     #
 
                 version: Version

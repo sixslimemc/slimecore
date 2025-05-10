@@ -1,16 +1,16 @@
 
 Build := {
-    order: LoadWords<[]{pack: PackID}>
+    order: LoadWords<[]{pack: $PackID}>
     packs[]: PackManifest
     auxilary: {
         pack_map: {
-            <PackID...>: PackManifest
+            <$PackID...>: PackManifest
         }
     }
 }
 
 PackManifest := {
-    pack: PackID
+    pack: $PackID
     display: {
         name: string
         summary: string
@@ -32,17 +32,17 @@ PackAuthor := {
 }
 
 PackRequirement := {
-    pack: PackID
+    pack: $PackID
     version: Version
     url: string
     order: LoadWords<RelativeOrder>
 }
 
 PackReference := {
-    pack: PackID
+    pack: $PackID
 }
 
-PackID := $namespace
+$PackID := $namespace
 
 Version := {
     major: int
@@ -59,18 +59,18 @@ LoadWords<^T> := {
 
 BuildEvaluationError := {
     duplicate_packs[]? {
-        pack: PackID
+        pack: $PackID
         instances[]: PackManifest
     }
     multiple_implementations[]? {
-        pack: PackID
+        pack: $PackID
         sources[]: PackManifest
     }
     dependency_cycles[]? {
         root: PackManifest
-        cycle[]: PackID
+        cycle[]: $PackID
     }
-    order_conflicts? LoadWords<[]{a: PackID, b: PackID}>
+    order_conflicts? LoadWords<[]{a: $PackID, b: $PackID}>
     missing_dependencies[]? {
         dependency: PackRequirement
         dependent: PackManifest
@@ -83,7 +83,7 @@ BuildEvaluationError := {
 }
 
 InputManifest := {
-    pack: PackID
+    pack: $PackID
     version: Version
     author: PackAuthor
     display: {
@@ -98,7 +98,7 @@ InputManifest := {
     implements[]? InputPackReference
 }
 
-InputPackReference := PackReference | PackID
+InputPackReference := PackReference | $PackID
 
 InputLoadOrdering := {
     pre_load? InputRelativeOrder
@@ -108,7 +108,7 @@ InputLoadOrdering := {
 }
 
 InputPackRequirement := {
-    pack: PackID
+    pack: $PackID
     version: Version
     url: string
     order? InputLoadOrdering
@@ -119,7 +119,7 @@ InputRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | 1 | -1 | 0 | RelativeOrder
 RelativeOrder := -1b | 1b | 0b
 
 UnsafeUninstall := {
-    pack: PackID
+    pack: $PackID
     reason: {
         dependency_of[]? PackReference
         implements[]? PackReference

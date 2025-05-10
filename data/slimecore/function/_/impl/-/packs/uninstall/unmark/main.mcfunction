@@ -1,6 +1,6 @@
 #> slimecore:_/impl/-/packs/uninstall/unmark/main
 #--------------------
-# $> packs[]: PackID
+# $> packs[]: $PackID
 #--------------------
 # TODO: description
 #--------------------
