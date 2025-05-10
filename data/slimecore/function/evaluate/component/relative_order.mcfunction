@@ -1,18 +1,19 @@
 #> slimecore : evaluate/component/relative_order
 #--------------------
-# -> input: InputRelativeOrder
+# ~> input? InputRelativeOrder
 #--------------------
 # <~ value? RelativeOrder
+# <~ error? ValueValidationError
 #--------------------
 # TODO: description
 #--------------------
-# 1: success; >value< contains data.
-# 0: error, invalid <input>.
+# 1: valid <input>; >value< contains data.
+# 0: invalid <input>; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out relative_order
 
-execute store success score *x _slimecore run function slimecore:_/impl/evaluate/component/relative_order/main with storage slimecore:in relative_order
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/component/relative_order/main
 
 data remove storage slimecore:in relative_order
 

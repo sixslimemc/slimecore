@@ -29,11 +29,11 @@ data modify storage slimecore:_ var.build.maps.manifests set value {}
 # (abstract's id) => (its implementation's manifest)
 data modify storage slimecore:_ var.build.maps.impls set value {}
 
-# PackID => LoadSpec<[]{pack: PackID, direction: RelativeOrder}> ::
+# PackID => LoadWords<[]{pack: PackID, direction: RelativeOrder}> ::
 # (pack's id) => (its relations to other packs)
 data modify storage slimecore:_ var.build.maps.relations set value {}
 
-# LoadSpec<[]PackID> ::
+# LoadWords<[]PackID> ::
 data modify storage slimecore:_ var.build.final_order set value {}
 
 # pass 1:

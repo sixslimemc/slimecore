@@ -83,7 +83,7 @@
                 # array of empty arrays large enough to be safely alphabet indexed
         }
         load_words= ['pre_load', 'load', 'post_load', 'tick']
-            # load words; must match up with keys in LoadSpec
+            # load words; must match up with keys in LoadWords
         load_tags= [
             {word: 'tick', tag: 'tick_start'},
             {word: 'post_load', tag: 'post_load'},

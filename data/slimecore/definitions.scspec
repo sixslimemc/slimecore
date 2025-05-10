@@ -1,6 +1,6 @@
 
 Build := {
-    order: LoadSpec<[]{pack: PackID}>
+    order: LoadWords<[]{pack: PackID}>
     packs[]: PackManifest
     auxilary: {
         pack_map: {
@@ -18,11 +18,13 @@ PackManifest := {
     url: string
     author: PackAuthor
     abstract: bool
-    preferred_order: LoadSpec<RelativeOrder>
+    preferred_order: LoadWords<RelativeOrder>
     dependencies[]: PackRequirement
     supports[]: PackRequirement
     implements[]: PackReference
 }
+
+LoadOrdering := LoadWords<RelativeOrder>
 
 PackAuthor := {
     name: string
@@ -33,7 +35,7 @@ PackRequirement := {
     pack: PackID
     version: Version
     url: string
-    order: LoadSpec<RelativeOrder>
+    order: LoadWords<RelativeOrder>
 }
 
 PackReference := {
@@ -48,7 +50,7 @@ Version := {
     patch: int
 }
 
-LoadSpec<^T> := {
+LoadWords<^T> := {
     pre_load: ^T
     load: ^T
     post_load: ^T
@@ -68,7 +70,7 @@ BuildEvaluationError := {
         root: PackManifest
         cycle[]: PackID
     }
-    order_conflicts? LoadSpec<[]{a: PackID, b: PackID}>
+    order_conflicts? LoadWords<[]{a: PackID, b: PackID}>
     missing_dependencies[]? {
         dependency: PackRequirement
         dependent: PackManifest
@@ -88,7 +90,7 @@ InputManifest := {
         name: string
         summary: string
     }
-    preferred_order? InputOrdering
+    preferred_order? InputLoadOrdering
     abstract? bool
     library? bool
     dependencies[]? InputPackRequirement
@@ -98,7 +100,7 @@ InputManifest := {
 
 InputPackReference := PackReference | PackID
 
-InputOrdering := {
+InputLoadOrdering := {
     pre_load? InputRelativeOrder
     load? InputRelativeOrder
     post_load? InputRelativeOrder
@@ -109,7 +111,7 @@ InputPackRequirement := {
     pack: PackID
     version: Version
     url: string
-    order? InputOrdering
+    order? InputLoadOrdering
 }
 
 InputRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | 1 | -1 | 0 | RelativeOrder
@@ -124,7 +126,15 @@ UnsafeUninstall := {
     }
 }
 
-ValidationError := {
+ValueValidationError := {
+    missing_value? true
+    invalid_value? {
+        expected: string
+        got: any
+    }
+}
+
+CompoundValidationError := {
     missing_data[]? {
         field: string
     }

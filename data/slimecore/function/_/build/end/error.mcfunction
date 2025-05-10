@@ -7,7 +7,7 @@
 #- duplicates[]: {pack: PackID, instances[]: PackManifest}
 #- multiple_implementations[]: {pack: PackID, sources[]: PackManifest}
 #- dependency_cycles[]: { root: PackManifest, cycle[]: PackID }
-#- relations: LoadSpec<[]&Conflict>
+#- relations: LoadWords<[]&Conflict>
 #- missing_dependencies[]: {dependency: PackRequirement, dependent: PackManifest, bad_version? &BadVersionInfo}
 #- missing_implementations[]: {manifest: PackManifest}
 #-- where &Conflict := {a: PackID, b: PackID}
