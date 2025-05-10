@@ -15,6 +15,8 @@ data remove storage slimecore:out pack_manifest
 
 execute store result score *x _slimecore run function slimecore:_/impl/evaluate/pack_manifest/main
 
+execute if score *x _slimecore matches 0 run data remove storage slimecore:out pack_manifest.value
+
 data remove storage slimecore:_ v.pack_manifest
 data remove storage slimecore:in pack_manifest
 
