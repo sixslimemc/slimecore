@@ -33,7 +33,7 @@ PackAuthor := {
 
 PackRequirement := {
     pack: $PackID
-    version: Version
+    version: VersionRequirement
     url: string
     order: LoadWords<RelativeOrder>
 }
@@ -48,6 +48,11 @@ Version := {
     major: int
     minor: int
     patch: int
+}
+
+VersionRequirement := {
+    major: int
+    minor: int
 }
 
 LoadWords<^T> := {
@@ -109,7 +114,7 @@ InputLoadOrdering := {
 
 InputPackRequirement := {
     pack: $PackID
-    version: Version
+    version: VersionRequirement
     url: string
     order? InputLoadOrdering
 }
@@ -135,10 +140,10 @@ ValueValidationError := {
 
 CompoundValidationError := {
     missing_data[]? {
-        field: string
+        key: string
     }
     invalid_data[]? {
-        field: string
+        key: string
         expected: string
         got: any
     }

@@ -1,4 +1,4 @@
-# IMPL > slimecore : validate/pack_id
+# IMPL > slimecore : validate/component/pack_id
 # main
 
 $data get storage $(value):_ _

@@ -5,8 +5,8 @@
 #--------------------
 # <- result: obj[]
 #--------------------
-#> if <get.only>: gets <object> with ONLY the fields specified in <get.only>
-#> if <get.without>: gets <object> WITHOUT the fields specified in <get.without>
+#> if <get.only>: gets <object> with ONLY the keys specified in <get.only>
+#> if <get.without>: gets <object> WITHOUT the keys specified in <get.without>
 #--------------------
 #- if neither <get.without> nor <get.only> are specified, just returns <object>
 #--------------------
