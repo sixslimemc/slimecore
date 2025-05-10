@@ -127,7 +127,6 @@ UnsafeUninstall := {
 }
 
 ValueValidationError := {
-    missing_value? true
     invalid_value? {
         expected: string
         got: any

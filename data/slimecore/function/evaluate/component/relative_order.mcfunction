@@ -1,6 +1,6 @@
 #> slimecore : evaluate/component/relative_order
 #--------------------
-# ~> input? InputRelativeOrder
+# -> input: InputRelativeOrder
 #--------------------
 # <~ value? RelativeOrder
 # <~ error? ValueValidationError
