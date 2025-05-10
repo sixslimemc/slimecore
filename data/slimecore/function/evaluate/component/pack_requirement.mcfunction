@@ -15,6 +15,8 @@ data remove storage slimecore:out pack_requirement
 
 execute store result score *x _slimecore run function slimecore:_/impl/evaluate/component/pack_requirement/main
 
+execute if score *x _slimecore matches 0 run data remove storage slimecore:out pack_requirement.value
+
 data remove storage slimecore:_ v.pack_requirement
 data remove storage slimecore:in pack_requirement
 
