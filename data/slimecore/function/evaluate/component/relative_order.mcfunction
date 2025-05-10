@@ -8,7 +8,7 @@
 # TODO: description
 #--------------------
 # 1: <input> is a valid InputRelativeOrder; >value< contains data.
-# 0: invalid is not a valid InputRelativeOrder; >error< contains data.
+# 0: <input> is not a valid InputRelativeOrder; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out relative_order

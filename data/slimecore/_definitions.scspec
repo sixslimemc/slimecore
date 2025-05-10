@@ -27,7 +27,7 @@
     manifests: {
         valid[]: PackManifest
         invalid[]: {
-            error: PackManifestEvaluationError
+            error: ManifestEvaluationError
             manifest: PackManifest
         }
         uninstalling[]: PackManifest

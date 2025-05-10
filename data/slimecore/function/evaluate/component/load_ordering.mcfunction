@@ -8,7 +8,7 @@
 # TODO: description
 #--------------------
 # 1: <input> is a valid InputLoadOrdering; >value< contains data.
-# 0: invalid is not a valid InputLoadOrdering; >error< contains data.
+# 0: <input> is not a valid InputLoadOrdering; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out load_ordering

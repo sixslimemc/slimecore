@@ -8,7 +8,7 @@
 # TODO: description
 #--------------------
 # 1: <input> is a valid InputPackReference; >value< contains data.
-# 0: invalid is not a valid InputPackReference; >error< contains data.
+# 0: <input> is not a valid InputPackReference; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out pack_reference

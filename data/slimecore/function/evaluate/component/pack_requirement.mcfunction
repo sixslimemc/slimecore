@@ -8,7 +8,7 @@
 # TODO: description
 #--------------------
 # 1: <input> is a valid InputPackRequirement; >value< contains data.
-# 0: invalid is not a valid InputPackRequirement; >error< contains data.
+# 0: <input> is not a valid InputPackRequirement; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out pack_requirement

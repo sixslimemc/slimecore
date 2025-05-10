@@ -149,7 +149,7 @@ CompoundValidationError := {
     }
 }
 
-PackManifestEvalError := ValidationError << {
+ManifestEvalError := ValidationError << {
     duplicate_dependencies[]? PackRequirement
     duplicate_implements[]? PackReference
     unspecified_implements[]? PackReference
