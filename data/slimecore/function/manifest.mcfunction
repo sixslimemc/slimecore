@@ -6,8 +6,8 @@
 # -> url: string
 # -> author: PackAuthor
 # ~> abstract: bool = false
-# ~> dependencies[]: ManifestPackRequirement = []
-# ~> supports[]: ManifestPackRequirement = []
+# ~> dependencies[]: PackManifestPackRequirement = []
+# ~> supports[]: PackManifestPackRequirement = []
 # ~> implements[]: PackID | PackReference = []
 #--------------------
 # .

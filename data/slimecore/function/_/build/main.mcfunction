@@ -4,7 +4,7 @@
 #--------------------
 
 # INPUTS {build.in}:
-# -> manifests[]: PackInfo
+# -> manifests[]: PackManifest
 
 # OUTPUTS: {build.out}
 # <- result? Build
@@ -21,11 +21,11 @@
 data remove storage slimecore:_ build.out
 scoreboard players set *build.error _slimecore 0
 
-# PackID => PackInfo ::
+# PackID => PackManifest ::
 # (pack's id) => (its manifest)
 data modify storage slimecore:_ var.build.maps.manifests set value {}
 
-# PackID => PackInfo ::
+# PackID => PackManifest ::
 # (abstract's id) => (its implementation's manifest)
 data modify storage slimecore:_ var.build.maps.impls set value {}
 

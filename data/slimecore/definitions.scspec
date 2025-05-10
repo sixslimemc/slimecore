@@ -1,15 +1,15 @@
 
 Build := {
     order: LoadSpec<[]{pack: PackID}>
-    packs[]: PackInfo
+    packs[]: PackManifest
     auxilary: {
         pack_map: {
-            <PackID...>: PackInfo
+            <PackID...>: PackManifest
         }
     }
 }
 
-PackInfo := {
+PackManifest := {
     pack: PackID
     display: {
         name: string
@@ -58,60 +58,61 @@ LoadSpec<^T> := {
 BuildEvaluationError := {
     duplicate_packs[]? {
         pack: PackID
-        instances[]: PackInfo
+        instances[]: PackManifest
     }
     multiple_implementations[]? {
         pack: PackID
-        sources[]: PackInfo
+        sources[]: PackManifest
     }
     dependency_cycles[]? {
-        root: PackInfo
+        root: PackManifest
         cycle[]: PackID
     }
     order_conflicts? LoadSpec<[]{a: PackID, b: PackID}>
     missing_dependencies[]? {
         dependency: PackRequirement
-        dependent: PackInfo
+        dependent: PackManifest
         bad_version? {
-            installed: PackInfo
+            installed: PackManifest
             versionIndex: 0b | 1b
         }
     }
-    missing_implementations[]? PackInfo
+    missing_implementations[]? PackManifest
 }
 
-Manifest := {
+ManifestInput := {
     pack: PackID
     version: Version
+    author: PackAuthor
     display: {
         name: string
         summary: string
     }
-    author: PackAuthor
+    preferred_order? ManifestInputOrdering
     abstract? bool
     library? bool
-    dependencies[]? ManifestPackRequirement
-    supports[]? ManifestPackRequirment
-    implements[]? ManifestPackReference
+    dependencies[]? ManifestInputPackRequirement
+    supports[]? ManifestInputPackRequirment
+    implements[]? ManifestInputPackReference
 }
 
-ManifestPackReference := PackReference | PackID
+ManifestInputPackReference := PackReference | PackID
 
-ManifestOrdering := {
-    pre_load? ManifestRelativeOrder
-    load? ManifestRelativeOrder
-    post_load? ManifestRelativeOrder
-    tick? ManifestRelativeOrder
+ManifestInputOrdering := {
+    pre_load? ManifestInputRelativeOrder
+    load? ManifestInputRelativeOrder
+    post_load? ManifestInputRelativeOrder
+    tick? ManifestInputRelativeOrder
 }
 
-ManifestPackRequirement := {
+ManifestInputPackRequirement := {
     pack: PackID
     version: Version
     url: string
-    order? ManifestOrdering
+    order? ManifestInputOrdering
 }
 
-ManifestRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | RelativeOrder
+ManifestInputRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | RelativeOrder
 
 RelativeOrder := -1b | 1b | 0b
 
@@ -134,7 +135,7 @@ ValidationError := {
     }
 }
 
-ManifestEvalError := ValidationError << {
+PackManifestEvalError := ValidationError << {
     duplicate_dependencies[]? PackRequirement
     duplicate_implements[]? PackReference
     unspecified_implements[]? PackReference

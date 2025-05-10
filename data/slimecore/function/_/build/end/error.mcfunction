@@ -4,14 +4,14 @@
 #--------------------
 
 # {var.build.error} :
-#- duplicates[]: {pack: PackID, instances[]: PackInfo}
-#- multiple_implementations[]: {pack: PackID, sources[]: PackInfo}
-#- dependency_cycles[]: { root: PackInfo, cycle[]: PackID }
+#- duplicates[]: {pack: PackID, instances[]: PackManifest}
+#- multiple_implementations[]: {pack: PackID, sources[]: PackManifest}
+#- dependency_cycles[]: { root: PackManifest, cycle[]: PackID }
 #- relations: LoadSpec<[]&Conflict>
-#- missing_dependencies[]: {dependency: PackRequirement, dependent: PackInfo, bad_version? &BadVersionInfo}
-#- missing_implementations[]: {manifest: PackInfo}
+#- missing_dependencies[]: {dependency: PackRequirement, dependent: PackManifest, bad_version? &BadVersionInfo}
+#- missing_implementations[]: {manifest: PackManifest}
 #-- where &Conflict := {a: PackID, b: PackID}
-#-- where &BadVersionInfo := {installed: PackInfo, version_index: 0b | 1b (major | minor)}
+#-- where &BadVersionInfo := {installed: PackManifest, version_index: 0b | 1b (major | minor)}
 
 data modify storage slimecore:_ build.out.error set from storage slimecore:_ var.build.error
 

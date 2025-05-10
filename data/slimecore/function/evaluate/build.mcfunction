@@ -1,6 +1,6 @@
 #> slimecore : evaluate/build
 #--------------------
-# -> packs[]: PackInfo
+# -> packs[]: PackManifest
 #--------------------
 # <~ value? Build
 # <~ error? BuildEvaluationError

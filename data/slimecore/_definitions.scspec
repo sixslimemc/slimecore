@@ -2,7 +2,7 @@
 @_ {
     cache: {
         this_build: {
-            manifests[]: PackInfo
+            manifests[]: PackManifest
                 # value of {..manifests}.
                 
         }
@@ -12,7 +12,7 @@
 
     build: {
         in: {
-            manifests[]: PackInfo
+            manifests[]: PackManifest
         }
         # build inputs.
 
@@ -25,12 +25,12 @@
     # interaction with ':_/build/main'
 
     manifests: {
-        valid[]: PackInfo
+        valid[]: PackManifest
         invalid[]: {
-            error: ManifestEvaluationError
-            manifest: Manifest
+            error: PackManifestEvaluationError
+            manifest: PackManifest
         }
-        uninstalling[]: PackInfo
+        uninstalling[]: PackManifest
         # populated at manifest-time.
         # contains manifests that are going to be uninstalled this rebuild.
         # this will NEVER hold values if ANY elements exist in {@data -> uninstall.unsafe}
