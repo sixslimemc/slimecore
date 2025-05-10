@@ -1,6 +1,6 @@
-#> slimecore : evaluate/partial/manifest/relative_order
+#> slimecore : evaluate/component/relative_order
 #--------------------
-# -> input: ManifestInputRelativeOrder
+# -> input: InputRelativeOrder
 #--------------------
 # <~ value? RelativeOrder
 #--------------------
@@ -12,7 +12,7 @@
 
 data remove storage slimecore:out relative_order
 
-execute store success score *x _slimecore run function slimecore:_/impl/evaluate/partial/manifest/relative_order/main with storage slimecore:in relative_order
+execute store success score *x _slimecore run function slimecore:_/impl/evaluate/component/relative_order/main with storage slimecore:in relative_order
 
 data remove storage slimecore:in relative_order
 

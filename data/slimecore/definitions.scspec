@@ -80,7 +80,7 @@ BuildEvaluationError := {
     missing_implementations[]? PackManifest
 }
 
-ManifestInput := {
+InputManifest := {
     pack: PackID
     version: Version
     author: PackAuthor
@@ -88,31 +88,31 @@ ManifestInput := {
         name: string
         summary: string
     }
-    preferred_order? ManifestInputOrdering
+    preferred_order? InputOrdering
     abstract? bool
     library? bool
-    dependencies[]? ManifestInputPackRequirement
-    supports[]? ManifestInputPackRequirment
-    implements[]? ManifestInputPackReference
+    dependencies[]? InputPackRequirement
+    supports[]? InputPackRequirment
+    implements[]? InputPackReference
 }
 
-ManifestInputPackReference := PackReference | PackID
+InputPackReference := PackReference | PackID
 
-ManifestInputOrdering := {
-    pre_load? ManifestInputRelativeOrder
-    load? ManifestInputRelativeOrder
-    post_load? ManifestInputRelativeOrder
-    tick? ManifestInputRelativeOrder
+InputOrdering := {
+    pre_load? InputRelativeOrder
+    load? InputRelativeOrder
+    post_load? InputRelativeOrder
+    tick? InputRelativeOrder
 }
 
-ManifestInputPackRequirement := {
+InputPackRequirement := {
     pack: PackID
     version: Version
     url: string
-    order? ManifestInputOrdering
+    order? InputOrdering
 }
 
-ManifestInputRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | 1 | -1 | 0 | RelativeOrder
+InputRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | 1 | -1 | 0 | RelativeOrder
 
 RelativeOrder := -1b | 1b | 0b
 

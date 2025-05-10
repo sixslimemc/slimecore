@@ -1,6 +1,6 @@
-#> slimecore : evaluate/partial/manifest/relative_order
+#> slimecore : evaluate/component/relative_order
 #--------------------
-# -> input: ManifestInputRelativeOrder
+# -> input: InputRelativeOrder
 #--------------------
 # <~ value? RelativeOrder
 #--------------------
