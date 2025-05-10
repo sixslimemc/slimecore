@@ -1,6 +1,6 @@
 #> slimecore : validate/component/version
 #--------------------
-# -> value: any
+# -> value: Version | any
 #--------------------
 # <~ error? CompoundValidationError
 #--------------------

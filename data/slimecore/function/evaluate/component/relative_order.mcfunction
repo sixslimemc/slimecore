@@ -1,14 +1,14 @@
 #> slimecore : evaluate/component/relative_order
 #--------------------
-# -> input: InputRelativeOrder
+# -> input: InputRelativeOrder | any
 #--------------------
 # <~ value? RelativeOrder
 # <~ error? ValueValidationError
 #--------------------
 # TODO: description
 #--------------------
-# 1: valid <input>; >value< contains data.
-# 0: invalid <input>; >error< contains data.
+# 1: <input> is a valid InputRelativeOrder; >value< contains data.
+# 0: invalid is not a valid InputRelativeOrder; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out relative_order

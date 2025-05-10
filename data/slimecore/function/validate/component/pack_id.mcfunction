@@ -1,6 +1,6 @@
 #> slimecore : validate/component/pack_id
 #--------------------
-# -> value: any
+# -> value: $PackID | any
 #--------------------
 # <~ error? ValueValidationError
 #--------------------

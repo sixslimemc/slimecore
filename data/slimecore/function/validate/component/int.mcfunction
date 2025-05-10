@@ -1,6 +1,6 @@
 #> slimecore : validate/component/int
 #--------------------
-# -> value: any
+# -> value: int | any
 #--------------------
 # <~ error? ValueValidationError
 #--------------------

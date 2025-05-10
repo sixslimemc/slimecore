@@ -1,14 +1,14 @@
 #> slimecore : evaluate/component/pack_reference
 #--------------------
-# -> input: InputPackReference
+# -> input: InputPackReference | any
 #--------------------
 # <~ value: PackReference
 # <~ error: ValueValidationError
 #--------------------
 # TODO: description
 #--------------------
-# 1: valid <input>; >value< contains data.
-# 0: invalid <input>; >error< contains data.
+# 1: <input> is a valid InputPackReference; >value< contains data.
+# 0: invalid is not a valid InputPackReference; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out pack_reference

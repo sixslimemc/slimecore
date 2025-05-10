@@ -1,14 +1,14 @@
 #> slimecore : evaluate/component/load_ordering
 #--------------------
-# -> input: InputLoadOrdering
+# -> input: InputLoadOrdering | any
 #--------------------
 # <~ value: LoadOrdering
 # <~ error: CompoundValidationError
 #--------------------
 # TODO: description
 #--------------------
-# 1: valid <input>; >value< contains data.
-# 0: invalid <input>; >error< contains data.
+# 1: <input> is a valid InputLoadOrdering; >value< contains data.
+# 0: invalid is not a valid InputLoadOrdering; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out load_ordering
