@@ -28,4 +28,7 @@ data modify storage slimecore:_ const.load_tags set value [{word: 'tick', tag: '
 
 data modify storage slimecore:_ const.default_load_order set value {pre_load:0b, load:1b, post_load:0b, tick:0b}
 
+# validation
+function slimecore:_/def_consts/validation
+
 data remove storage slimecore:_ var.const
