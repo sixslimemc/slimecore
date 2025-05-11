@@ -5,11 +5,11 @@
 data modify storage slimecore:out pack_requirement.value set from storage slimecore:in pack_requirement.input
 
 # version:
-data modify storage slimecore:in version_requirement.value set from storage slimecore:in pack_requirement.input.version
-function slimecore:validate/component/version_requirement
+data modify storage slimecore:in version.value set from storage slimecore:in pack_requirement.input.version
+function slimecore:validate/component/version
 
-data modify storage slimecore:_ v.pack_requirement.missings set from storage slimecore:out version_requirement.error.missing_data
-data modify storage slimecore:_ v.pack_requirement.invalids set from storage slimecore:out version_requirement.error.invalid_data
+data modify storage slimecore:_ v.pack_requirement.missings set from storage slimecore:out version.error.missing_data
+data modify storage slimecore:_ v.pack_requirement.invalids set from storage slimecore:out version.error.invalid_data
 
 data merge storage slimecore:_ {v:{pack_requirement:{mline:{1:'data modify storage slimecore:out pack_requirement.error.missing_data append value {key:"version.', 2:true, 3:'"}'}}}}
 execute if data storage slimecore:_ v.pack_requirement.missings[0] run function slimecore:_/impl/evaluate/component/pack_requirement/each_missing

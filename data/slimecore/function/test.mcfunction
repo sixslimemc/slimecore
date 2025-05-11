@@ -14,7 +14,3 @@ tellraw @a ["version fail: ", {'storage':'slimecore:out', 'nbt':'version'}]
 data modify storage slimecore:in version.value set value {major:1, minor: 4, patch:3}
 function slimecore:validate/component/version
 tellraw @a ["version pass: ", {'storage':'slimecore:out', 'nbt':'version'}]
-
-data modify storage slimecore:in version_requirement.value set value {major:1, minor: 'bruh'}
-function slimecore:validate/component/version_requirement
-tellraw @a ["versionreq fail: ", {'storage':'slimecore:out', 'nbt':'version_requirement'}]
