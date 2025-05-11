@@ -70,8 +70,7 @@ execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimeco
 execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out version.error.invalid_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_invalid
 
 # 'expected_order' evaluation:
-data modify storage slimecore:in load_ordering.input set from storage slimecore:_ const.default_load_order
-data modify storage slimecore:in load_ordering.input merge from storage slimecore:in v.pack_manifest.input.expected_order
+data modify storage slimecore:in load_ordering.input set from storage slimecore:in v.pack_manifest.input.expected_order
 execute store result score *pack_manifest.ret _slimecore run function slimecore:evaluate/component/load_ordering
 execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.expected_order set from storage slimecore:out load_ordering.value
 execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out load_ordering.error.missing_data[0] run data modify storage slimecore:_ v.pack_manifest.missings set from storage slimecore:out load_ordering.error.missing_data
