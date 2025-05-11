@@ -1,7 +1,7 @@
 # IMPL > slimecore : evaluate/component/load_ordering
 # / main
 
-data modify storage slimecore:_ v.load_ordering.in set from storage slimecore:_ const.default_load_order
+data modify storage slimecore:_ v.load_ordering.in set from storage slimecore:_ const.load_order_fill
 data modify storage slimecore:_ v.load_ordering.in merge from storage slimecore:in load_ordering.input
 
 data modify storage slimecore:_ v.load_ordering.loads set from storage slimecore:_ const.load_words

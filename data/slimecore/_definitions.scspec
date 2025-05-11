@@ -95,9 +95,15 @@
         ]
             # associations between loading tags and their load words in reverse order in which they are called.
 
-        default_load_order: {
+        load_order_fill: {
             pre_load: 0b
             load: 0b
+            post_load: 0b
+            tick: 0b
+        }
+        default_expected_order: {
+            pre_load: 0b
+            load: 1b
             post_load: 0b
             tick: 0b
         }
