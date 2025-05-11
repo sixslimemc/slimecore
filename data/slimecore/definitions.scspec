@@ -119,7 +119,7 @@ InputPackRequirement := {
     order? InputLoadOrdering
 }
 
-InputRelativeOrder := 'AFTER' | 'BEFORE' | 'ANY' | 1 | -1 | 0 | RelativeOrder
+InputRelativeOrder := 'BEFORE' | 'AFTER' | 'ANY' | 1 | -1 | 0 | RelativeOrder
 
 RelativeOrder := -1b | 1b | 0b
 

@@ -66,8 +66,8 @@
         relative_order: {
             map: {
                 'ANY': 0b
-                'BEFORE': -1b
-                'AFTER': 1b
+                'BEFORE': 1b
+                'AFTER': -1b
                 '0': 0b
                 '-1': -1b
                 '1': 1b
