@@ -25,7 +25,10 @@
     # interaction with ':_/build/main'
 
     manifests: {
-        valid[]: PackManifest
+        valid[]: {
+            input: InputPackManifest
+            manifest: PackManifest
+        }
         invalid[]: {
             error: ManifestEvaluationError
             manifest: PackManifest

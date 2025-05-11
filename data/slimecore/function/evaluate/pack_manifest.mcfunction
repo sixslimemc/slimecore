@@ -1,14 +1,14 @@
 #> slimecore : evaluate/pack_manifest
 #--------------------
-# -> input: InputManifest | any
+# -> input: InputPackManifest | any
 #--------------------
 # <~ value? PackManifest
 # <~ error? CompoundValidationError
 #--------------------
 # TODO: description
 #--------------------
-# 1: <input> is a valid InputManifest; >value< contains data.
-# 0: <input> is not a valid InputManifest; >error< contains data.
+# 1: <input> is a valid InputPackManifest; >value< contains data.
+# 0: <input> is not a valid InputPackManifest; >error< contains data.
 #--------------------
 
 data remove storage slimecore:out pack_manifest

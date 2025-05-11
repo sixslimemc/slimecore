@@ -20,6 +20,7 @@ PackManifest := {
         name: string
         url? string
     }
+    library: bool
     abstract: bool
     expected_order: LoadWords<RelativeOrder>
     dependencies[]: PackRequirement
@@ -85,7 +86,7 @@ BuildValidationError := {
     missing_implementations[]? PackManifest
 }
 
-InputManifest := {
+InputPackManifest := {
     pack: $PackID
     url: string
     version: Version

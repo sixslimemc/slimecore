@@ -2,13 +2,14 @@
 #--------------------
 # -> pack: $PackID
 # -> version: Version
-# -> display_name: string
 # -> url: string
-# -> author: PackAuthor
-# ~> abstract: bool = false
-# ~> dependencies[]: ManifestPackRequirement = []
-# ~> supports[]: ManifestPackRequirement = []
-# ~> implements[]: $PackID | PackReference = []
+# -> display: {name: string, summary: string}
+# -> author: {name: string, url? string}
+# => library: bool = false
+# => abstract: bool = false
+# => dependencies[]: InputPackRequirement = []
+# => supports[]: InputPackRequirement = []
+# => implements[]: $PackID | PackReference = []
 #--------------------
 # .
 #--------------------
@@ -25,6 +26,6 @@ data remove storage slimecore:out manifest
 execute store result score *x _slimecore run function slimecore:_/impl/manifest/main
 
 data remove storage slimecore:in manifest
-data remove storage slimecore:_ impl.manifest
+data remove storage slimecore:_ v.manifest
 
 return run scoreboard players get *x _slimecore
