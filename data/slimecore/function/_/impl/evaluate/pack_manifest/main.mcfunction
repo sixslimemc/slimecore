@@ -110,11 +110,32 @@ data merge storage slimecore:_ {v:{pack_manifest:{dupes:[], dupes_seen:[]}}}
 execute if data storage slimecore:_ v.pack_manifest.dupe_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/each_dupe_check
 execute if data storage slimecore:_ v.pack_manifest.dupes[0] run data modify storage slimecore:out pack_manifest.error.duplicate_implements set from storage slimecore:_ v.pack_manifest.dupes
 
+# check unspecified implements:
+data modify storage slimecore:_ util.difference.in.a set from storage slimecore:out pack_manifest.value.implements
+data modify storage slimecore:_ util.difference.in.b set from storage slimecore:out pack_manifest.value.dependencies
+data modify storage slimecore:_ util.difference.in.b append from storage slimecore:out pack_manifest.value.supports[]
+data modify storage slimecore:_ util.difference.compare.only set value ['pack']
+function slimecore:_/util/six/array/difference/main
+execute if data storage slimecore:_ util.difference.out.unique_a[0] run data modify storage slimecore:out pack_manifest.error.unspecified_implements set from storage slimecore:_ util.difference.out.unique_a
+
 # 'dependencies' selfref check:
 data modify storage slimecore:_ v.pack_manifest.selfref_checks set from storage slimecore:out pack_manifest.value.dependencies
 execute store result score *pack_manifest.i _slimecore if data storage slimecore:_ v.pack_manifest.selfref_checks[]
 data merge storage slimecore:_ {v:{pack_manifest:{selfref_path:'dependencies'}}}
 execute if data storage slimecore:_ v.pack_manifest.selfref_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/selfref_checks/each
 
+# 'supports' selfref check:
+data modify storage slimecore:_ v.pack_manifest.selfref_checks set from storage slimecore:out pack_manifest.value.supports
+execute store result score *pack_manifest.i _slimecore if data storage slimecore:_ v.pack_manifest.selfref_checks[]
+data merge storage slimecore:_ {v:{pack_manifest:{selfref_path:'supports'}}}
+execute if data storage slimecore:_ v.pack_manifest.selfref_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/selfref_checks/each
+
+# 'implements' selfref check:
+data modify storage slimecore:_ v.pack_manifest.selfref_checks set from storage slimecore:out pack_manifest.value.implements
+execute store result score *pack_manifest.i _slimecore if data storage slimecore:_ v.pack_manifest.selfref_checks[]
+data merge storage slimecore:_ {v:{pack_manifest:{selfref_path:'implements'}}}
+execute if data storage slimecore:_ v.pack_manifest.selfref_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/selfref_checks/each
+
+execute if data storage slimecore:out pack_manifest.error run return 0
 
 return 1
