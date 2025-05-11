@@ -1,6 +1,6 @@
 #> slimecore:_/build/pass_2/get_deps
 #--------------------
-# ./each
+# ./eval
 #--------------------
 
 data modify storage slimecore:_ var.build.relstack[-1].deps set value []
