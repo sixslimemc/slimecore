@@ -37,64 +37,84 @@ execute if data storage slimecore:out pack_manifest.error run return 0
 
 # 'dependencies' list check:
 data modify storage slimecore:_ v.pack_manifest.list_check set from storage slimecore:in pack_manifest.input.dependencies
-execute store success score *x _slimecore run data modify storage slimecore:_ v.pack_manifest.list_check append value {}
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append value {key:'dependencies', expected:'list of InputPackRequirement'}
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].got set from storage slimecore:in pack_manifest.input.dependencies
+execute store success score *pack_manifest.ret _slimecore run data modify storage slimecore:_ v.pack_manifest.list_check append value {}
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append value {key:'dependencies', expected:'list of InputPackRequirement'}
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].got set from storage slimecore:in pack_manifest.input.dependencies
 
 # 'supports' list check:
 data modify storage slimecore:_ v.pack_manifest.list_check set from storage slimecore:in pack_manifest.input.supports
-execute store success score *x _slimecore run data modify storage slimecore:_ v.pack_manifest.list_check append value {}
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append value {key:'supports', expected:'list of InputPackRequirement'}
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].got set from storage slimecore:in pack_manifest.input.supports
+execute store success score *pack_manifest.ret _slimecore run data modify storage slimecore:_ v.pack_manifest.list_check append value {}
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append value {key:'supports', expected:'list of InputPackRequirement'}
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].got set from storage slimecore:in pack_manifest.input.supports
 
 # 'implements' list check:
 data modify storage slimecore:_ v.pack_manifest.list_check set from storage slimecore:in pack_manifest.input.implements
-execute store success score *x _slimecore run data modify storage slimecore:_ v.pack_manifest.list_check append value {}
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append value {key:'implements', expected:'list of InputPackReference'}
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].got set from storage slimecore:in pack_manifest.input.implements
+execute store success score *pack_manifest.ret _slimecore run data modify storage slimecore:_ v.pack_manifest.list_check append value {}
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append value {key:'implements', expected:'list of InputPackReference'}
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].got set from storage slimecore:in pack_manifest.input.implements
 
 # 'pack' validation:
 data modify storage slimecore:in pack_id.value set from storage slimecore:in pack_manifest.input.pack
-execute store result score *x _slimecore run function slimecore:validate/component/pack_id
-execute if score *x _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.pack set from storage slimecore:in pack_manifest.input.pack
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append from storage slimecore:out pack_id.error.invalid_value
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].key set value 'pack'
+execute store result score *pack_manifest.ret _slimecore run function slimecore:validate/component/pack_id
+execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.pack set from storage slimecore:in pack_manifest.input.pack
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append from storage slimecore:out pack_id.error.invalid_value
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].key set value 'pack'
 
 # 'version' validation:
 data modify storage slimecore:in version.value set from storage slimecore:in pack_manifest.input.version
-execute store result score *x _slimecore run function slimecore:validate/component/version
-execute if score *x _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.version set from storage slimecore:in pack_manifest.input.version
-execute if score *x _slimecore matches 0 if data storage slimecore:out version.error.missing_data[0] run data modify storage slimecore:_ v.pack_manifest.missings set from storage slimecore:out version.error.missing_data
-execute if score *x _slimecore matches 0 if data storage slimecore:out version.error.missing_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_missing
-execute if score *x _slimecore matches 0 if data storage slimecore:out version.error.invalid_data[0] run data modify storage slimecore:_ v.pack_manifest.invalids set from storage slimecore:out version.error.invalid_data
-execute if score *x _slimecore matches 0 if data storage slimecore:out version.error.invalid_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_invalid
+execute store result score *pack_manifest.ret _slimecore run function slimecore:validate/component/version
+execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.version set from storage slimecore:in pack_manifest.input.version
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out version.error.missing_data[0] run data modify storage slimecore:_ v.pack_manifest.missings set from storage slimecore:out version.error.missing_data
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out version.error.missing_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_missing
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out version.error.invalid_data[0] run data modify storage slimecore:_ v.pack_manifest.invalids set from storage slimecore:out version.error.invalid_data
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out version.error.invalid_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_invalid
 
 # 'expected_order' evaluation:
 data modify storage slimecore:in load_ordering.input set from storage slimecore:_ const.default_load_order
 data modify storage slimecore:in load_ordering.input merge from storage slimecore:in v.pack_manifest.input.expected_order
-execute store result score *x _slimecore run function slimecore:evaluate/component/load_ordering
-execute if score *x _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.expected_order set from storage slimecore:out load_ordering.value
-execute if score *x _slimecore matches 0 if data storage slimecore:out load_ordering.error.missing_data[0] run data modify storage slimecore:_ v.pack_manifest.missings set from storage slimecore:out load_ordering.error.missing_data
-execute if score *x _slimecore matches 0 if data storage slimecore:out load_ordering.error.missing_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_missing
-execute if score *x _slimecore matches 0 if data storage slimecore:out load_ordering.error.invalid_data[0] run data modify storage slimecore:_ v.pack_manifest.invalids set from storage slimecore:out load_ordering.error.invalid_data
-execute if score *x _slimecore matches 0 if data storage slimecore:out load_ordering.error.invalid_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_invalid
+execute store result score *pack_manifest.ret _slimecore run function slimecore:evaluate/component/load_ordering
+execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.expected_order set from storage slimecore:out load_ordering.value
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out load_ordering.error.missing_data[0] run data modify storage slimecore:_ v.pack_manifest.missings set from storage slimecore:out load_ordering.error.missing_data
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out load_ordering.error.missing_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_missing
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out load_ordering.error.invalid_data[0] run data modify storage slimecore:_ v.pack_manifest.invalids set from storage slimecore:out load_ordering.error.invalid_data
+execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out load_ordering.error.invalid_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_invalid
 
 # 'abstract' validation:
 execute unless data storage slimecore:in pack_manifest.input.abstract run data merge storage slimecore:in {pack_manifest:{input:{abstract:false}}}
 data modify storage slimecore:in bool.value set from storage slimecore:in pack_manifest.input.abstract
-execute store result score *x _slimecore run function slimecore:validate/component/bool
-execute if score *x _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.abstract set from storage slimecore:in pack_manifest.input.abstract
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append from storage slimecore:out bool.error.invalid_value
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].key set value 'abstract'
+execute store result score *pack_manifest.ret _slimecore run function slimecore:validate/component/bool
+execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.abstract set from storage slimecore:in pack_manifest.input.abstract
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append from storage slimecore:out bool.error.invalid_value
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].key set value 'abstract'
 
 # 'library' validation:
 execute unless data storage slimecore:in pack_manifest.input.library run data merge storage slimecore:in {pack_manifest:{input:{library:false}}}
 data modify storage slimecore:in bool.value set from storage slimecore:in pack_manifest.input.library
-execute store result score *x _slimecore run function slimecore:validate/component/bool
-execute if score *x _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.abstract set from storage slimecore:in pack_manifest.input.library
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append from storage slimecore:out bool.error.invalid_value
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].key set value 'library'
+execute store result score *pack_manifest.ret _slimecore run function slimecore:validate/component/bool
+execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.abstract set from storage slimecore:in pack_manifest.input.library
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append from storage slimecore:out bool.error.invalid_value
+execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].key set value 'library'
 
 execute if data storage slimecore:out pack_manifest.error run return 0
+
+# duplicate requirements:
+data modify storage slimecore:_ v.pack_manifest.dupe_checks set from storage slimecore:out pack_manifest.value.dependencies
+data modify storage slimecore:_ v.pack_manifest.dupe_checks append from storage slimecore:out pack_manifest.value.supports[]
+data merge storage slimecore:_ {v:{pack_manifest:{dupes:[], dupes_seen:[]}}}
+execute if data storage slimecore:_ v.pack_manifest.dupe_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/each_dupe_check
+execute if data storage slimecore:_ v.pack_manifest.dupes[0] run data modify storage slimecore:out pack_manifest.error.duplicate_requirements set from storage slimecore:_ v.pack_manifest.dupes
+
+# duplicate implements:
+data modify storage slimecore:_ v.pack_manifest.dupe_checks set from storage slimecore:out pack_manifest.value.implements
+data merge storage slimecore:_ {v:{pack_manifest:{dupes:[], dupes_seen:[]}}}
+execute if data storage slimecore:_ v.pack_manifest.dupe_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/each_dupe_check
+execute if data storage slimecore:_ v.pack_manifest.dupes[0] run data modify storage slimecore:out pack_manifest.error.duplicate_implements set from storage slimecore:_ v.pack_manifest.dupes
+
+# 'dependencies' selfref check:
+data modify storage slimecore:_ v.pack_manifest.selfref_checks set from storage slimecore:out pack_manifest.value.dependencies
+execute store result score *pack_manifest.i _slimecore if data storage slimecore:_ v.pack_manifest.selfref_checks[]
+data merge storage slimecore:_ {v:{pack_manifest:{selfref_path:'dependencies'}}}
+execute if data storage slimecore:_ v.pack_manifest.selfref_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/selfref_checks/each
+
 
 return 1
