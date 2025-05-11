@@ -60,7 +60,7 @@ LoadWords<^T> := {
     tick: ^T
 }
 
-BuildEvaluationError := {
+BuildValidationError := {
     duplicate_packs[]? {
         pack: $PackID
         instances[]: PackManifest

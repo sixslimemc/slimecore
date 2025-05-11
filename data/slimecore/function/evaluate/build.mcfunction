@@ -3,7 +3,7 @@
 # -> packs[]: PackManifest
 #--------------------
 # <~ value? Build
-# <~ error? BuildEvaluationError
+# <~ error? BuildValidationError
 #--------------------
 # TODO: description
 #--------------------

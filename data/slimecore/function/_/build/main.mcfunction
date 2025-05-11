@@ -8,7 +8,7 @@
 
 # OUTPUTS: {build.out}
 # <- result? Build
-# <- error? BuildEvaluationError
+# <- error? BuildValidationError
 
 # RETURNS:
 # 1 - build success, {build.out.result} populated.
