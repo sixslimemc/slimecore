@@ -79,6 +79,7 @@ execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimeco
 execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out load_ordering.error.invalid_data[0] run data modify storage slimecore:_ v.pack_manifest.invalids set from storage slimecore:out load_ordering.error.invalid_data
 execute if score *pack_manifest.ret _slimecore matches 0 if data storage slimecore:out load_ordering.error.invalid_data[0] run function slimecore:_/impl/evaluate/pack_manifest/each_invalid
 
+
 # 'abstract' validation:
 execute unless data storage slimecore:in pack_manifest.input.abstract run data merge storage slimecore:in {pack_manifest:{input:{abstract:false}}}
 data modify storage slimecore:in bool.value set from storage slimecore:in pack_manifest.input.abstract
@@ -91,7 +92,7 @@ execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage
 execute unless data storage slimecore:in pack_manifest.input.library run data merge storage slimecore:in {pack_manifest:{input:{library:false}}}
 data modify storage slimecore:in bool.value set from storage slimecore:in pack_manifest.input.library
 execute store result score *pack_manifest.ret _slimecore run function slimecore:validate/component/bool
-execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.abstract set from storage slimecore:in pack_manifest.input.library
+execute if score *pack_manifest.ret _slimecore matches 1 run data modify storage slimecore:out pack_manifest.value.library set from storage slimecore:in pack_manifest.input.library
 execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data append from storage slimecore:out bool.error.invalid_value
 execute if score *pack_manifest.ret _slimecore matches 0 run data modify storage slimecore:out pack_manifest.error.invalid_data[-1].key set value 'library'
 

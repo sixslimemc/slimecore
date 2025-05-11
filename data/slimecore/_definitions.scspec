@@ -30,8 +30,8 @@
             manifest: PackManifest
         }
         invalid[]: {
-            error: ManifestEvaluationError
-            manifest: PackManifest
+            input: InputPackManifest
+            error: ManifestValidationError
         }
         uninstalling[]: PackManifest
         # populated at manifest-time.
