@@ -5,7 +5,7 @@
 #--------------------
 
 data remove storage slimecore:_ v.load_ordering.order
-$data modify storage slimecore:_ v.load_ordering.order set from storage slimecore:in load_ordering.input.'$(this_load)'
+$data modify storage slimecore:_ v.load_ordering.order set from storage slimecore:_ v.load_ordering.in.'$(this_load)'
 execute unless data storage slimecore:_ v.load_ordering.order run return -1
 
 data modify storage slimecore:in relative_order.input set from storage slimecore:_ v.load_ordering.order

@@ -1,7 +1,7 @@
 # IMPL > slimecore : evaluate/pack_manifest
 # requirements/each_missing
 #--------------------
-# ./error
+# ./main
 #--------------------
 
 data merge storage slimecore:_ {v:{pack_manifest:{mline:{1:'data modify storage slimecore:out pack_manifest.error.missing_data append value {key:"', 2:true, 3:'.', 4:true, 5:'"}'}}}}

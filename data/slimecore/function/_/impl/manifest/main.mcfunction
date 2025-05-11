@@ -5,6 +5,7 @@
 
 # throw if not manifest time:
 execute unless score *manifest_time _slimecore matches 1 run return -2
+say hi
 
 # evaluate:
 data modify storage slimecore:in pack_manifest.input set from storage slimecore:in manifest

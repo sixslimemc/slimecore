@@ -3,5 +3,4 @@
 # ./main
 #--------------------
 
-$data modify storage slimecore:out relative_order.value set from storage slimecore:_ validation.relative_order.map.'$(input)'
-return 1
+$return run data modify storage slimecore:out relative_order.value set from storage slimecore:_ validation.relative_order.map.'$(input)'
