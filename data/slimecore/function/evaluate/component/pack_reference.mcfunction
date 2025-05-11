@@ -15,7 +15,7 @@ data remove storage slimecore:out pack_reference
 
 execute store result score *x _slimecore run function slimecore:_/impl/evaluate/component/pack_reference/main
 
-execute if score *x _slimecore matches 0 run data merge storage slimecore:out {pack_reference:{error:{invalid_value:{expected:"valid datapack namespace | {pack: <valid datapack namespace>}"}}}}
+execute if score *x _slimecore matches 0 run data merge storage slimecore:out {pack_reference:{error:{invalid_value:{expected:'valid $namespace (excluding "minecraft" and "slimecore") or PackReference'}}}}
 execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack_reference.error.invalid_value.got set from storage slimecore:in pack_reference.input
 
 data remove storage slimecore:_ v.pack_reference
