@@ -13,7 +13,12 @@
 
 data remove storage slimecore:out load_ordering
 
+# DEBUG:
+tellraw @a ["in: ", {'storage':'slimecore:in', 'nbt':'load_ordering.input'}]
 execute store result score *x _slimecore run function slimecore:_/impl/evaluate/component/load_ordering/main
+
+# DEBUG:
+tellraw @a ["out: ", {'storage':'slimecore:out', 'nbt':'load_ordering'}]
 
 data remove storage slimecore:_ v.load_ordering
 data remove storage slimecore:in load_ordering
