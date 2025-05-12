@@ -14,3 +14,7 @@ tellraw @a ["version fail: ", {'storage':'slimecore:out', 'nbt':'version'}]
 data modify storage slimecore:in version.value set value {major:1, minor: 4, patch:3}
 function slimecore:validate/component/version
 tellraw @a ["version pass: ", {'storage':'slimecore:out', 'nbt':'version'}]
+
+data modify storage slimecore:in pack_reference.input set value 'test-o'
+function slimecore:evaluate/component/pack_reference
+tellraw @a ["packref pass: ", {'storage':'slimecore:out', 'nbt':'pack_reference'}]

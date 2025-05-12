@@ -20,7 +20,7 @@ execute if data storage slimecore:_ v.pack_manifest.requirements[0] run function
 
 # 'implements' evaluation:
 execute unless data storage slimecore:in pack_manifest.input.implements run data merge storage slimecore:in {pack_manifest:{input:{implements:[]}}}
-data modify storage slimecore:_ v.pack_manifest.references set from storage slimecore:in pack_manifest.input.supports
+data modify storage slimecore:_ v.pack_manifest.references set from storage slimecore:in pack_manifest.input.implements
 execute store result score *pack_manifest.i _slimecore if data storage slimecore:_ v.pack_manifest.references[]
 data merge storage slimecore:_ {v:{pack_manifest:{ref_path:'implements'}}}
 execute if data storage slimecore:_ v.pack_manifest.references[0] run function slimecore:_/impl/evaluate/pack_manifest/references/each
@@ -101,13 +101,13 @@ execute if data storage slimecore:out pack_manifest.error run return 0
 # duplicate requirements:
 data modify storage slimecore:_ v.pack_manifest.dupe_checks set from storage slimecore:out pack_manifest.value.dependencies
 data modify storage slimecore:_ v.pack_manifest.dupe_checks append from storage slimecore:out pack_manifest.value.supports[]
-data merge storage slimecore:_ {v:{pack_manifest:{dupes:[], dupes_seen:[]}}}
+data merge storage slimecore:_ {v:{pack_manifest:{dupes:[], dupe_seen:[]}}}
 execute if data storage slimecore:_ v.pack_manifest.dupe_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/each_dupe_check
 execute if data storage slimecore:_ v.pack_manifest.dupes[0] run data modify storage slimecore:out pack_manifest.error.duplicate_requirements set from storage slimecore:_ v.pack_manifest.dupes
 
 # duplicate implements:
 data modify storage slimecore:_ v.pack_manifest.dupe_checks set from storage slimecore:out pack_manifest.value.implements
-data merge storage slimecore:_ {v:{pack_manifest:{dupes:[], dupes_seen:[]}}}
+data merge storage slimecore:_ {v:{pack_manifest:{dupes:[], dupe_seen:[]}}}
 execute if data storage slimecore:_ v.pack_manifest.dupe_checks[0] run function slimecore:_/impl/evaluate/pack_manifest/each_dupe_check
 execute if data storage slimecore:_ v.pack_manifest.dupes[0] run data modify storage slimecore:out pack_manifest.error.duplicate_implements set from storage slimecore:_ v.pack_manifest.dupes
 
@@ -115,7 +115,7 @@ execute if data storage slimecore:_ v.pack_manifest.dupes[0] run data modify sto
 data modify storage slimecore:_ util.difference.in.a set from storage slimecore:out pack_manifest.value.implements
 data modify storage slimecore:_ util.difference.in.b set from storage slimecore:out pack_manifest.value.dependencies
 data modify storage slimecore:_ util.difference.in.b append from storage slimecore:out pack_manifest.value.supports[]
-data modify storage slimecore:_ util.difference.compare.only set value ['pack']
+data modify storage slimecore:_ util.difference.in.compare.only set value ['pack']
 function slimecore:_/util/six/array/difference/main
 execute if data storage slimecore:_ util.difference.out.unique_a[0] run data modify storage slimecore:out pack_manifest.error.unspecified_implements set from storage slimecore:_ util.difference.out.unique_a
 
