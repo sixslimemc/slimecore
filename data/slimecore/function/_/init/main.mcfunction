@@ -51,7 +51,7 @@ execute if data storage slimecore:_ var.init.load_tags[0] run function slimecore
 scoreboard players set *installed _slimecore 1
 data remove storage slimecore:data slimecore
 data modify storage slimecore:data slimecore.version set value {major:0, minor:1, patch:0}
-data modify storage slimecore:data slimecore.url set value "TODO"
+data modify storage slimecore:data slimecore.url.this set value "TODO"
 
 # end:
 data remove storage slimecore:_ var.init

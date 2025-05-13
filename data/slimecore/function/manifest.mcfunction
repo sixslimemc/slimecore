@@ -2,7 +2,7 @@
 #--------------------
 # -> pack: $PackID
 # -> version: Version
-# -> url: string
+# -> url: {this: string, latest? string}
 # -> display: {name: string, summary: string}
 # -> author: {name: string, url? string}
 # => library: bool = false

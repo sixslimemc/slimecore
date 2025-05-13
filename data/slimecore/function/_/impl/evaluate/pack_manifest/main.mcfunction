@@ -27,7 +27,7 @@ execute if data storage slimecore:_ v.pack_manifest.references[0] run function s
 
 # direct missings:
 execute unless data storage slimecore:in pack_manifest.input.pack run data modify storage slimecore:out pack_manifest.error.missing_data append value {key:'pack'}
-execute unless data storage slimecore:in pack_manifest.input.url run data modify storage slimecore:out pack_manifest.error.missing_data append value {key:'url'}
+execute unless data storage slimecore:in pack_manifest.input.url.this run data modify storage slimecore:out pack_manifest.error.missing_data append value {key:'url.this'}
 execute unless data storage slimecore:in pack_manifest.input.version run data modify storage slimecore:out pack_manifest.error.missing_data append value {key:'version'}
 execute unless data storage slimecore:in pack_manifest.input.display.name run data modify storage slimecore:out pack_manifest.error.missing_data append value {key:'display.name'}
 execute unless data storage slimecore:in pack_manifest.input.display.summary run data modify storage slimecore:out pack_manifest.error.missing_data append value {key:'display.summary'}
