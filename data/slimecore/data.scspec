@@ -1,9 +1,6 @@
 {
     current_build: Build
-    uninstall: {
-        safe[]: PackReference
-        unsafe[]: UnsafeUninstall
-    }
+    uninstall_marked: PackReference
     # used primarily for '-/packs/uninstall/mark' and unmark tracking.
     # cleared every reload.
     # NO packs will be uninstalled unless ALL uninstall marks are safe.

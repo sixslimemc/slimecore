@@ -4,7 +4,7 @@
 #--------------------
 
 # DEBUG:
-tellraw @a {'text':"- Rebuilding -", 'color': yellow}
+tellraw @a {'text':"> Rebuilding...", 'color': yellow}
 
 # evaluate build:
 data modify storage slimecore:in build.packs set from storage slimecore:_ var.init.packs
@@ -20,7 +20,7 @@ execute if score *x _slimecore matches 0 run return 0
 data modify storage slimecore:data current_build set from storage slimecore:out build.value
 
 # DEBUG:
-tellraw @a [{'text': "> Build Success", 'color': green}]
+tellraw @a [{'text': "> Build success.", 'color': green}]
 
 
 return 1

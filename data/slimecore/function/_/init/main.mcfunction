@@ -10,13 +10,13 @@ tellraw @a {"text":">> RELOAD <<", "bold": true, "color": blue}
 execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main
 
 # gather manifests:
-data modify storage slimecore:_ manifests set value {valid:[], invalid:[], uninstalling:[]}
+data modify storage slimecore:_ manifests set value {valid:[], invalid:[]}
 scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest
 scoreboard players reset *manifest_time _slimecore
 
 # DEBUG
-execute if data storage slimecore:_ manifests.invalid[0] run tellraw @a [{text:"> Invalid Manifests: ", color: red}, {storage:'slimecore:_', nbt:'manifests.invalid', color: dark_aqua}]
+execute if data storage slimecore:_ manifests.invalid[0] run tellraw @a [{text:"> Invalid manifests: ", color: red}, {storage:'slimecore:_', nbt:'manifests.invalid', color: dark_aqua}]
 
 # check if rebuild needed:
 data merge storage slimecore:_ {var:{init:{packs:[]}}}
@@ -26,22 +26,22 @@ execute store success score *init.do_rebuild _slimecore run data modify storage 
 execute if data storage slimecore:config debug.build{disable_rebuild:true} run scoreboard players set *init.do_rebuild _slimecore 0
 
 #DEBUG:
-scoreboard players set *init.do_rebuild _slimecore 1
+#scoreboard players set *init.do_rebuild _slimecore 1
+
+# DEBUG:
+execute if score *init.do_rebuild _slimecore matches 1 run tellraw @a [{'text':'> Changes detected, initiating rebuild.', 'color':yellow}]
 
 # rebuild call:
 execute if score *init.do_rebuild _slimecore matches 1 run function slimecore:_/init/rebuild
 
 # DEBUG:
-execute unless score *init.do_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No Rebuild Needed', 'color':gray}]
-execute if data storage slimecore:_ manifests.uninstalling[0] run data modify storage slimecore:_ var.init.debug.uninstalls append from storage slimecore:_ manifests.uninstalling[].pack
-execute if data storage slimecore:_ manifests.uninstalling[0] run tellraw @a [{text:" ! Uninstalled: ", color: "dark_purple", bold:false}, {'storage':'slimecore:_', 'nbt':'var.init.debug.uninstalls', 'color': "light_purple", bold:false}]
+execute unless score *init.do_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No changes detected, keeping previous build.', 'color':gray}]
+
+# uninstall:
+execute if data storage slimecore:data uninstall_marked[0] run function slimecore:_/init/uninstall/do
 
 data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
 tellraw @a ['# ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
-
-# do uninstalls:
-execute if data storage slimecore:_ manifests.uninstalling[0] run function slimecore:_/init/uninstalls/each
-data modify storage slimecore:data uninstall set value {safe:[], unsafe:[]}
 
 # call load tags:
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
@@ -56,6 +56,7 @@ data modify storage slimecore:data slimecore.url.this set value "TODO"
 # end:
 data remove storage slimecore:_ var.init
 scoreboard players reset *init.do_rebuild _slimecore
+data merge storage slimecore:data {uninstall_marked:[]}
 
 # DEBUG:
 tellraw @a {"text":">> REACHED END <<", "bold": true, "color": dark_green}
