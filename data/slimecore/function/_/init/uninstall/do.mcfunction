@@ -22,11 +22,14 @@ execute unless data storage slimecore:out safe_uninstalls.safe[0] run return 0
 data modify storage slimecore:_ var.init.uninstalling set from storage slimecore:out safe_uninstalls.safe
 data modify storage slimecore:_ var.init.packs set from storage slimecore:data current_build.packs
 
+# DEBUG:
 data modify storage slimecore:_ var.init.debug.safe_uninstalls append from storage slimecore:_ var.init.uninstalling[].pack
-tellraw @a [{text:"> Successfully Uninstalled: ", color:dark_green}, {'storage':'slimecore:_', 'nbt':'var.init.debug.safe_uninstalls', color:light_purple}]
 
 # each uninstall:
 execute if data storage slimecore:_ var.init.uninstalling[0] run function slimecore:_/init/uninstall/uninstalling/each with storage slimecore:_ var.init.uninstalling[0]
+
+# DEBUG:
+tellraw @a [{text:"> Successfully Uninstalled: ", color:dark_green}, {'storage':'slimecore:_', 'nbt':'var.init.debug.safe_uninstalls', color:light_purple}]
 
 # rebuild:
 function slimecore:_/init/rebuild
