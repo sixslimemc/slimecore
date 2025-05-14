@@ -17,7 +17,7 @@
 
 data merge storage slimecore:out {safe_uninstalls:{safe:[], unsafe:[], not_in_build:[]}}
 
-data merge storage slimecore:_ {impl:{safe_uninstalls:{valid_uninstalls:[]}}}
+data merge storage slimecore:_ {v:{safe_uninstalls:{valid_uninstalls:[]}}}
 data modify storage slimecore:_ v.safe_uninstalls.current_packs set from storage slimecore:in safe_uninstalls.build.packs
 
 # pass 1:

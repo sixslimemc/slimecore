@@ -5,7 +5,7 @@
 # TODO: description
 #--------------------
 
-data merge storage slimecore:_ {impl:{fetch_requirements:{list:[]}}}
+data merge storage slimecore:_ {v:{fetch_requirements:{list:[]}}}
 
 tellraw @s {text:"------[ fetch_requirements ]------", color: blue}
 execute if data storage slimecore:_ v.fetch_requirements.input.packs[0] run function slimecore:_/impl/-/authoring/fetch_requirements/each
