@@ -1,7 +1,7 @@
 #> slimecore:_/impl/evaluate/safe_uninstalls/main
 #--------------------
 # -> build: Build
-# -> uninstalls[]: $PackID
+# -> uninstalls[]: PackReference
 #--------------------
 # & UnsafeUninstallReason := {
 #- dependency_of[]? PackReference
@@ -9,7 +9,7 @@
 # }
 # <- safe[]: PackReference
 # <- unsafe[]: {pack: $PackID, reason: &UnsafeUninstallReason}
-# <- not_in_build[]: $PackID
+# <- not_in_build[]: PackReference
 #--------------------
 # 1: all <uninstalling> are safe to uninstall or are not in <build>.
 # 0: there exist packs in <uninstalling> that are unsafe to uninstall given <build>.

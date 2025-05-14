@@ -1,11 +1,11 @@
 #> slimecore : evaluate/safe_uninstalls
 #--------------------
 # -> build: Build
-# -> uninstalling[]: $PackID
+# -> uninstalling[]: PackReference
 #--------------------
-# <- safe[]: $PackID
+# <- safe[]: PackReference
 # <- unsafe[]: UnsafeUninstall
-# <- not_in_build[]: $PackID
+# <- not_in_build[]: PackReference
 #--------------------
 # TODO: description
 #--------------------
