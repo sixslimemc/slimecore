@@ -3,6 +3,8 @@
 # ./main
 #--------------------
 
+scoreboard players set *init.did_rebuild _slimecore 1
+
 # DEBUG:
 tellraw @a {'text':"> Rebuilding", 'color': yellow}
 
@@ -22,5 +24,4 @@ data modify storage slimecore:data current_build set from storage slimecore:out 
 # DEBUG:
 tellraw @a [{'text': "> Build Success", 'color': green}]
 
-scoreboard players set *init.did_rebuild _slimecore 1
 return 1

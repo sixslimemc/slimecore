@@ -14,7 +14,7 @@ execute store result score *x _slimecore run function slimecore:evaluate/safe_un
 
 execute if data storage slimecore:out safe_uninstalls.not_in_build[0] run tellraw @a [{text:"- Not in Build: ", color:dark_gray}, {'storage':'slimecore:out', 'nbt':'safe_uninstalls.not_in_build', color:dark_gray}]
 
-execute if data storage slimecore:out safe_uninstalls.unsafe[0] run tellraw @a [{text:"> Unsafe Uninstalls Detected: ", color:red}, {'storage':'slimecore:out', 'nbt':'safe_uninstalls.unsafe', color:dark_aqua}]
+execute if data storage slimecore:out safe_uninstalls.unsafe[0] run tellraw @a [{text:"> Uninstall Failed: ", color:red}, {'storage':'slimecore:out', 'nbt':'safe_uninstalls.unsafe', color:dark_aqua}]
 
 execute if score *x _slimecore matches 0 run return 0
 execute unless data storage slimecore:out safe_uninstalls.safe[0] run return 0

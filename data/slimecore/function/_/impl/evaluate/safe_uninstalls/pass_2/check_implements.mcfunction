@@ -19,7 +19,7 @@ execute unless data storage slimecore:_ v.safe_uninstalls.needed_impls[] run ret
 data remove storage slimecore:_ v.safe_uninstalls.unsafe_entry
 $data modify storage slimecore:_ v.safe_uninstalls.unsafe_entry set from storage slimecore:out safe_uninstalls.unsafe[{pack:'$(pack)'}]
 $data remove storage slimecore:out safe_uninstalls.unsafe[{pack:'$(pack)'}]
-data modify storage slimecore:_ v.safe_uninstalls.unsafe_entry.pack set from storage slimecore:_ v.safe_uninstalls.valid_uninstalls[0]
+data modify storage slimecore:_ v.safe_uninstalls.unsafe_entry.pack set from storage slimecore:_ v.safe_uninstalls.valid_uninstalls[0].pack
 data modify storage slimecore:_ v.safe_uninstalls.unsafe_entry.reason.implements set from storage slimecore:_ v.safe_uninstalls.needed_impls
 data modify storage slimecore:out safe_uninstalls.unsafe append from storage slimecore:_ v.safe_uninstalls.unsafe_entry
 
