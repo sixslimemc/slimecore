@@ -5,7 +5,7 @@
 # TODO: description
 #--------------------
 
-$data merge storage slimecore:_ {v:{fetch_requirements:{input:{packs:$(packs)}}}}
+$data merge storage slimecore:_ {v:{fetch_requirements:{in:{packs:$(packs)}}}}
 
 function slimecore:_/impl/-/authoring/fetch_requirements/main
 
