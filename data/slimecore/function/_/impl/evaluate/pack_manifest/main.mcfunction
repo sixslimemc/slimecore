@@ -35,6 +35,11 @@ execute unless data storage slimecore:in pack_manifest.input.author.name run dat
 
 execute if data storage slimecore:out pack_manifest.error run return 0
 
+# direct sets:
+data modify storage slimecore:out pack_manifest.value.url set from storage slimecore:in pack_manifest.input.url
+data modify storage slimecore:out pack_manifest.value.author set from storage slimecore:in pack_manifest.input.author
+data modify storage slimecore:out pack_manifest.value.display set from storage slimecore:in pack_manifest.input.display
+
 # 'dependencies' list check:
 data modify storage slimecore:_ v.pack_manifest.list_check set from storage slimecore:in pack_manifest.input.dependencies
 execute store success score *pack_manifest.ret _slimecore run data modify storage slimecore:_ v.pack_manifest.list_check append value {}
