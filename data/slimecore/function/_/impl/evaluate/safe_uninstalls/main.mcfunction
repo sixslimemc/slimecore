@@ -29,3 +29,7 @@ execute if data storage slimecore:_ v.safe_uninstalls.uninstalls[0] run function
 # pass 2:
 #- detect unsafe uninstalls
 execute if data storage slimecore:_ v.safe_uninstalls.valid_uninstalls[0] run function slimecore:_/impl/evaluate/safe_uninstalls/pass_2/each
+
+execute if data storage slimecore:out safe_uninstalls.unsafe[0] run return 0
+
+return 1
