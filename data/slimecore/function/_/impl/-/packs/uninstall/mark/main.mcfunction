@@ -9,7 +9,7 @@ data merge storage slimecore:in {safe_uninstalls:{uninstalls:[]}}
 data modify storage slimecore:in safe_uninstalls.build set from storage slimecore:data current_build
 data modify storage slimecore:in safe_uninstalls.uninstalls append from storage slimecore:data uninstall.safe[].pack
 data modify storage slimecore:in safe_uninstalls.uninstalls append from storage slimecore:data uninstall.unsafe[].pack
-data modify storage slimecore:in safe_uninstalls.uninstalls append from storage slimecore:_ impl.mark.input.packs[]
+data modify storage slimecore:in safe_uninstalls.uninstalls append from storage slimecore:_ v.mark.input.packs[]
 function slimecore:evaluate/safe_uninstalls
 
 data modify storage slimecore:data uninstall.safe set from storage slimecore:out safe_uninstalls.safe

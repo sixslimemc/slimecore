@@ -17,7 +17,7 @@ data remove storage slimecore:out safe_uninstalls
 
 execute store result score *x _slimecore run function slimecore:_/impl/evaluate/safe_uninstalls/main
 
-data remove storage slimecore:_ impl.safe_uninstalls
+data remove storage slimecore:_ v.safe_uninstalls
 data remove storage slimecore:in safe_uninstalls
 
 return run scoreboard players get *x _slimecore

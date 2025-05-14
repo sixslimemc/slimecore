@@ -18,14 +18,14 @@
 data merge storage slimecore:out {safe_uninstalls:{safe:[], unsafe:[], not_in_build:[]}}
 
 data merge storage slimecore:_ {impl:{safe_uninstalls:{valid_uninstalls:[]}}}
-data modify storage slimecore:_ impl.safe_uninstalls.current_packs set from storage slimecore:in safe_uninstalls.build.packs
+data modify storage slimecore:_ v.safe_uninstalls.current_packs set from storage slimecore:in safe_uninstalls.build.packs
 
 # pass 1:
 #- remove each uninstall from {..current_packs}
 #- populate {..valid_uninstalls}
-data modify storage slimecore:_ impl.safe_uninstalls.uninstalls set from storage slimecore:in safe_uninstalls.uninstalls
-execute if data storage slimecore:_ impl.safe_uninstalls.uninstalls[0] run function slimecore:_/impl/evaluate/safe_uninstalls/pass_1/each
+data modify storage slimecore:_ v.safe_uninstalls.uninstalls set from storage slimecore:in safe_uninstalls.uninstalls
+execute if data storage slimecore:_ v.safe_uninstalls.uninstalls[0] run function slimecore:_/impl/evaluate/safe_uninstalls/pass_1/each
 
 # pass 2:
 #- detect unsafe uninstalls
-execute if data storage slimecore:_ impl.safe_uninstalls.valid_uninstalls[0] run function slimecore:_/impl/evaluate/safe_uninstalls/pass_2/each
+execute if data storage slimecore:_ v.safe_uninstalls.valid_uninstalls[0] run function slimecore:_/impl/evaluate/safe_uninstalls/pass_2/each

@@ -11,4 +11,4 @@ $data merge storage slimecore:_ {impl:{unmark:{input:{packs:$(packs)}}}}
 
 function slimecore:_/impl/-/packs/uninstall/unmark/main
 
-data remove storage slimecore:_ impl.unmark
+data remove storage slimecore:_ v.unmark

@@ -9,4 +9,4 @@ $data merge storage slimecore:_ {impl:{fetch_requirements:{input:{packs:$(packs)
 
 function slimecore:_/impl/-/authoring/fetch_requirements/main
 
-data remove storage slimecore:_ impl.fetch_requirements
+data remove storage slimecore:_ v.fetch_requirements
