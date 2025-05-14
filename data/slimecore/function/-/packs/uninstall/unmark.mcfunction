@@ -7,7 +7,7 @@
 
 # unmarks <packs> for uninstallation.
 
-$data merge storage slimecore:_ {v:{unmark:{input:{packs:$(packs)}}}}
+$data merge storage slimecore:_ {v:{unmark:{in:{packs:$(packs)}}}}
 
 function slimecore:_/impl/-/packs/uninstall/unmark/main
 

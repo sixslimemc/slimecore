@@ -16,7 +16,7 @@
 
 # no packs can be uninstalled until ALL marks are safe and resolved.
 
-$data merge storage slimecore:_ {v:{mark:{input:{packs:$(packs)}}}}
+$data merge storage slimecore:_ {v:{mark:{in:{packs:$(packs)}}}}
 
 function slimecore:_/impl/-/packs/uninstall/mark/main
 

@@ -5,7 +5,7 @@
 # TODO: description
 #--------------------
 
-execute if data storage slimecore:_ v.unmark.input.packs[0] run function slimecore:_/impl/-/packs/uninstall/unmark/each
+execute if data storage slimecore:_ v.unmark.in.packs[0] run function slimecore:_/impl/-/packs/uninstall/unmark/each
 
 # re-evaluate uninstalls:
 function slimecore:-/packs/uninstall/mark {packs:[]}

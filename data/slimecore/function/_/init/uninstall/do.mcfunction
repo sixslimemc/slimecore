@@ -5,7 +5,7 @@
 
 # DEBUG:
 data modify storage slimecore:_ var.init.debug.uninstall_marked append from storage slimecore:data uninstall_marked[].pack
-tellraw @a [{text:"> Uninstalling: ", color:dark_purple}, {'storage':'slimecore:_', 'nbt':'var.init.debug.uninstall_marked', color:light_purple}]
+tellraw @a [{text:"> Uninstalling Packs", color:dark_purple}]
 
 # evaluate:
 data modify storage slimecore:in safe_uninstalls.build set from storage slimecore:data current_build

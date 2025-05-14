@@ -1,7 +1,7 @@
 #> slimecore : evaluate/safe_uninstalls
 #--------------------
 # -> build: Build
-# -> uninstalling[]: PackReference
+# -> uninstalls[]: PackReference
 #--------------------
 # <- safe[]: PackReference
 # <- unsafe[]: UnsafeUninstall
@@ -9,8 +9,8 @@
 #--------------------
 # TODO: description
 #--------------------
-# 1: all <uninstalling> are safe to uninstall or are not in <build>.
-# 0: there exist packs in <uninstalling> that are unsafe to uninstall given <build>.
+# 1: all <uninstalls> are safe to uninstall or are not in <build>.
+# 0: there exist packs in <uninstalls> that are unsafe to uninstall given <build>.
 #--------------------
 
 data remove storage slimecore:out safe_uninstalls
