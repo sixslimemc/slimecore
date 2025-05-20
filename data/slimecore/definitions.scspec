@@ -33,15 +33,14 @@ PackManifest := {
 
 LoadOrdering := LoadWords<RelativeOrder>
 
-PackRequirement := {
+PackReference := {
     pack: $PackID
+}
+
+PackRequirement := PackReference << {
     version: Version
     url: string
     order: LoadWords<RelativeOrder>
-}
-
-PackReference := {
-    pack: $PackID
 }
 
 $PackID := $namespace << !'slimecore' << !'minecraft'
@@ -115,8 +114,7 @@ InputLoadOrdering := {
     tick? InputRelativeOrder
 }
 
-InputPackRequirement := {
-    pack: $PackID
+InputPackRequirement := PackReference << {
     version: Version
     url: string
     order? InputLoadOrdering
