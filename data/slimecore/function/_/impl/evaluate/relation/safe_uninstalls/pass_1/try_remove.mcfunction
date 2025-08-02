@@ -1,4 +1,4 @@
-#> slimecore:_/impl/evaluate/safe_uninstalls/pass_1/try_remove
+#> slimecore:_/impl/evaluate/relation/safe_uninstalls/pass_1/try_remove
 #--------------------
 # ./each
 #--------------------

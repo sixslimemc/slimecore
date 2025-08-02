@@ -1,4 +1,4 @@
-#> slimecore:_/impl/evaluate/safe_uninstalls/main
+#> slimecore:_/impl/evaluate/relation/safe_uninstalls/main
 #--------------------
 # -> build: Build
 # -> uninstalls[]: PackReference
@@ -24,11 +24,11 @@ data modify storage slimecore:_ v.safe_uninstalls.current_packs set from storage
 #- remove each uninstall from {..current_packs}
 #- populate {..valid_uninstalls}
 data modify storage slimecore:_ v.safe_uninstalls.uninstalls set from storage slimecore:in safe_uninstalls.uninstalls
-execute if data storage slimecore:_ v.safe_uninstalls.uninstalls[0] run function slimecore:_/impl/evaluate/safe_uninstalls/pass_1/each
+execute if data storage slimecore:_ v.safe_uninstalls.uninstalls[0] run function slimecore:_/impl/evaluate/relation/safe_uninstalls/pass_1/each
 
 # pass 2:
 #- detect unsafe uninstalls
-execute if data storage slimecore:_ v.safe_uninstalls.valid_uninstalls[0] run function slimecore:_/impl/evaluate/safe_uninstalls/pass_2/each
+execute if data storage slimecore:_ v.safe_uninstalls.valid_uninstalls[0] run function slimecore:_/impl/evaluate/relation/safe_uninstalls/pass_2/each
 
 execute if data storage slimecore:out safe_uninstalls.unsafe[0] run return 0
 

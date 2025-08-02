@@ -11,7 +11,7 @@ execute if data storage slimecore:_ v.mark.in.packs[0] run function slimecore:_/
 
 data modify storage slimecore:in safe_uninstalls.uninstalls set from storage slimecore:data uninstall_marked
 data modify storage slimecore:in safe_uninstalls.build set from storage slimecore:data current_build
-function slimecore:evaluate/safe_uninstalls
+function slimecore:evaluate/relation/safe_uninstalls
 
 # DEBUG:
 execute if data storage slimecore:out safe_uninstalls.not_in_build[0] run tellraw @a [{text:"Not in build: ", color: dark_gray}, {'storage':'slimecore:out', 'nbt':'safe_uninstalls.not_in_build', color: gray}]

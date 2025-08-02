@@ -1,4 +1,4 @@
-#> slimecore:_/impl/evaluate/safe_uninstalls/pass_2/check_dependencies
+#> slimecore:_/impl/evaluate/relation/safe_uninstalls/pass_2/check_dependencies
 #--------------------
 # ./each
 #--------------------

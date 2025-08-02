@@ -10,7 +10,7 @@ tellraw @a [{text:"> Uninstalling Packs", color:dark_purple}]
 # evaluate:
 data modify storage slimecore:in safe_uninstalls.build set from storage slimecore:data current_build
 data modify storage slimecore:in safe_uninstalls.uninstalls set from storage slimecore:data uninstall_marked
-execute store result score *x _slimecore run function slimecore:evaluate/safe_uninstalls
+execute store result score *x _slimecore run function slimecore:evaluate/relation/safe_uninstalls
 
 execute if data storage slimecore:out safe_uninstalls.not_in_build[0] run tellraw @a [{text:"- Not in Build: ", color:dark_gray}, {'storage':'slimecore:out', 'nbt':'safe_uninstalls.not_in_build', color:dark_gray}]
 
