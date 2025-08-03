@@ -7,8 +7,8 @@
 #--------------------
 # TODO: description
 #--------------------
-# 1: <build> contains the pack referenced by <for>; successfully retrieved installed supports.
-# 0: <build> does not contain the pack referenced by <for>.
+# 1: <build> contains <for>; successfully retrieved installed supports.
+# 0: <build> does not contain <for>.
 #--------------------
 
 data remove storage slimecore:out pack_supporting
