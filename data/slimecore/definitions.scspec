@@ -38,7 +38,7 @@ PackReference := {
 }
 
 PackRequirement := PackReference << {
-    version: Version
+    version: VersionRequirement
     url: string
     order: LoadWords<RelativeOrder>
 }
