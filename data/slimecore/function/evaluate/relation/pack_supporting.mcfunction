@@ -13,7 +13,7 @@
 
 data remove storage slimecore:out pack_supporting
 
-execute store result score *x _slimecore run function slimecore:_/impl/evaluate/relation/safe_uninstalls/main
+execute store result score *x _slimecore run function slimecore:_/impl/evaluate/relation/pack_supporting/main
 
 data remove storage slimecore:_ v.pack_supporting
 data remove storage slimecore:in pack_supporting

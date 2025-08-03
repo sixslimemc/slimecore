@@ -6,7 +6,7 @@
 
 # get support from build:
 data modify storage slimecore:_ x.pack set from storage slimecore:_ v.pack_supporting.this_support.pack
-function slimecore:_/impl/evaluate/relation/pack_supporting/get_pack
+function slimecore:_/impl/evaluate/relation/pack_supporting/get_pack with storage slimecore:_ x
 
 # check if exists:
 execute unless data storage slimecore:_ v.pack_supporting.get_result run return 0
