@@ -6,6 +6,9 @@
     # NO packs will be uninstalled unless ALL uninstall marks are safe.
     slimecore: {
         version: Version
-        url: string
+        url: {
+            this: string
+            latest: string
+        }
     }
 }
