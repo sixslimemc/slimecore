@@ -1,5 +1,9 @@
 {
     this: {
         supporting[]: PackReference
+        # list of installed supports for this pack.
+
     }
+    # passed to all load tags
+    
 }
