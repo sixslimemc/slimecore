@@ -20,7 +20,7 @@ execute store result score *init.max_chain.original _slimecore run gamerule maxC
 
 # max command chain override:
 execute store result storage slimecore:_ x.value int 1 run scoreboard players get *init.max_chain.override _slimecore
-execute if score *init.max_chain.overriden _slimecore matches 1 run function slimecore:_/init/set_max_command_chain with storage slimecore:_ x
+execute if score *init.max_chain.overridden _slimecore matches 1 run function slimecore:_/init/set_max_command_chain with storage slimecore:_ x
 
 # gather manifests:
 data modify storage slimecore:_ manifests set value {valid:[], invalid:[]}

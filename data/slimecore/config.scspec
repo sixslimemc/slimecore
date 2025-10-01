@@ -1,9 +1,10 @@
 {
     build: {
         max_command_chain_length_override? int
-        = 999999
+        = 2147483647
         # temporarily set the 'MaxCommandChainLength' gamerule to this when SlimeCore builds.
-        # this is generally recommended to stay true unless you have a specific reason to set this to false.
+        # this is generally recommended to be set and be set to a very high number unless there is a specific reason not to be.
+        # if this is not set (or set too low), the build process could hit the limit and stop mid-progress which may break things.
     }
 
     debug? {
