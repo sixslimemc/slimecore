@@ -18,7 +18,8 @@
 # see ./end/error for error data format.
 
 # init:
-data remove storage slimecore:_ build.out
+data remove storage slimecore:_ var.build
+data remove storage slimecore:_ build
 scoreboard players set *build.error _slimecore 0
 
 # $PackID => PackManifest ::
