@@ -12,6 +12,15 @@ tellraw @a {"text":">> RELOAD <<", "bold": true, "color": blue}
 
 # consts:
 execute unless score *installed _slimecore matches 1 run function slimecore:_/def_consts/main
+execute unless score *installed _slimecore matches 1 run function slimecore:_/default_config
+
+execute store success score *init.max_chain.overridden _slimecore if data storage slimecore:config build.max_command_chain_length_override
+execute store result score *init.max_chain.override _slimecore run data get storage slimecore:config build.max_command_chain_length_override
+execute store result score *init.max_chain.original _slimecore run gamerule maxCommandChainLength
+
+# max command chain override:
+execute store result storage slimecore:_ x.value int 1 run scoreboard players get *init.max_chain.override _slimecore
+execute if score *init.max_chain.overriden _slimecore matches 1 run function slimecore:_/init/set_max_command_chain with storage slimecore:_ x
 
 # gather manifests:
 data modify storage slimecore:_ manifests set value {valid:[], invalid:[]}
@@ -65,9 +74,18 @@ data modify storage slimecore:data slimecore.url.latest set value "TODO"
 data remove storage slimecore:_ var.init
 scoreboard players reset *init.do_rebuild _slimecore
 scoreboard players reset *init.did_rebuild _slimecore
+scoreboard players reset *init.max_chain.override
 data merge storage slimecore:data {uninstall_marked:[]}
 
 # DEBUG:
 tellraw @a {"text":">> REACHED END <<", "bold": true, "color": dark_green}
 
 # TODO/DEV:
+
+# ~ must be last
+# max command chain override undo:
+execute store result storage slimecore:_ x.value int 1 run scoreboard players get *init.max_chain.original _slimecore
+scoreboard players operation *x _slimecore = *init.max_chain.overridden _slimecore
+scoreboard players reset *init.max_chain.original
+scoreboard players reset *init.max_chain.overridden
+execute if score *x _slimecore matches 1 run function slimecore:_/init/set_max_command_chain with storage slimecore:_ x

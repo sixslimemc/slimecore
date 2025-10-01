@@ -24,4 +24,6 @@ data modify storage slimecore:data current_build set from storage slimecore:out 
 # DEBUG:
 tellraw @a [{'text': "> Build Success", 'color': green}]
 
+
+
 return 1

@@ -1,19 +1,10 @@
 {
-    build? {
-        max_command_chain_length_override? {
-            enable? bool
-                = true
-                # temporarily set the 'MaxCommandChainLength' gamerule when SlimeCore builds.
-                # this is generally recommended to stay true unless you have a specific reason to set this to false.
-
-            value? int
-                = 999999
-                # the value to temporarily set 'MaxCommandChainLength' to if <enable> is true.
-
-        }
-        = {}
+    build: {
+        max_command_chain_length_override? int
+        = 999999
+        # temporarily set the 'MaxCommandChainLength' gamerule to this when SlimeCore builds.
+        # this is generally recommended to stay true unless you have a specific reason to set this to false.
     }
-    = {}
 
     debug? {
         build? {
