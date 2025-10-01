@@ -24,7 +24,7 @@ scoreboard players reset *manifest_time _slimecore
 execute if data storage slimecore:_ manifests.invalid[0] run tellraw @a [{text:"> Invalid Manifests: ", color: red}, {storage:'slimecore:_', nbt:'manifests.invalid', color: dark_aqua}]
 
 # check if rebuild needed:
-data merge storage slimecore:_ {var:{init:{packs:[]}}}
+data modify storage slimecore:_ var.init.packs set value []
 data modify storage slimecore:_ var.init.packs append from storage slimecore:_ manifests.valid[].manifest
 data modify storage slimecore:_ var.init.compare set from storage slimecore:data current_build.packs
 execute store success score *init.do_rebuild _slimecore run data modify storage slimecore:_ var.init.compare set from storage slimecore:_ var.init.packs
@@ -64,9 +64,8 @@ data modify storage slimecore:data slimecore.url.latest set value "TODO"
 
 # end:
 data remove storage slimecore:_ var.init
-scoreboard players reset *init.do_rebuild _slimecore
-scoreboard players reset *init.did_rebuild _slimecore
-scoreboard players reset *init.max_chain.override
+scoreboard players reset *init.did_rebuild
+scoreboard players reset *init.do_rebuild
 data merge storage slimecore:data {uninstall_marked:[]}
 
 # DEBUG:
