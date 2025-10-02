@@ -42,10 +42,6 @@ execute if data storage slimecore:data uninstall_marked[0] run function slimecor
 # DEBUG:
 execute unless score *init.did_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No Rebuild Needed', 'color':gray}]
 
-# DEBUG:
-data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
-tellraw @a ['# ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
-
 # create {..load_data}
 data remove storage slimecore:_ var.init.load_data
 data modify storage slimecore:_ var.init.pack_iter set from storage slimecore:data current_build.packs
@@ -57,6 +53,10 @@ tellraw @a {"text":"> Setup Load Data", "bold": true, "color": dark_gray}
 # call load tags:
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
 execute if data storage slimecore:_ var.init.load_tags[0] run function slimecore:_/init/load_tags/each
+
+# DEBUG:
+data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
+tellraw @a ['# ', {'storage':'slimecore:_', 'nbt':'var.init.debug.load_order', 'color':aqua}]
 
 # metadata:
 scoreboard players set *installed _slimecore 1
