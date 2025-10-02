@@ -51,6 +51,9 @@ data remove storage slimecore:_ var.init.load_data
 data modify storage slimecore:_ var.init.pack_iter set from storage slimecore:data current_build.packs
 execute if data storage slimecore:_ var.init.pack_iter[0] run function slimecore:_/init/load_data/each
 
+# DEBUG:
+tellraw @a {"text":"> Setup Load Data", "bold": true, "color": dark_gray}
+
 # call load tags:
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
 execute if data storage slimecore:_ var.init.load_tags[0] run function slimecore:_/init/load_tags/each

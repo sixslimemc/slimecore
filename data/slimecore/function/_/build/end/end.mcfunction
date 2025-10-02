@@ -5,6 +5,7 @@
 #--------------------
 
 data remove storage slimecore:_ var.build
+data remove storage slimecore:_ build.in
 scoreboard players reset *build.has_error_entry _slimecore
 scoreboard players reset *build.error _slimecore
 

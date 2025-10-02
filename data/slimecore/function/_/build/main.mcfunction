@@ -18,7 +18,6 @@
 # see ./end/error for error data format.
 
 # init:
-data remove storage slimecore:_ var.build
 data remove storage slimecore:_ build.out
 scoreboard players set *build.error _slimecore 0
 
