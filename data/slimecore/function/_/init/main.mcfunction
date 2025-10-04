@@ -40,7 +40,7 @@ execute if score *init.do_rebuild _slimecore matches 1 run function slimecore:_/
 execute if data storage slimecore:data uninstall_marked[0] run function slimecore:_/init/uninstall/do
 
 # DEBUG:
-execute unless score *init.did_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No rebuild needed', 'color':gray}]
+execute unless score *init.did_rebuild _slimecore matches 1 run tellraw @a [{'text':'> No Rebuild Needed', 'color':gray}]
 
 # create {..load_data}
 data remove storage slimecore:_ var.init.load_data
@@ -48,14 +48,14 @@ data modify storage slimecore:_ var.init.pack_iter set from storage slimecore:da
 execute if data storage slimecore:_ var.init.pack_iter[0] run function slimecore:_/init/load_data/each
 
 # DEBUG:
-tellraw @a {"text":"~ Finished load data population", "bold": false, "color": dark_gray}
+tellraw @a {"text":"> Finished Load Data", "bold": false, "color": dark_gray}
 
 # call load tags:
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
 execute if data storage slimecore:_ var.init.load_tags[0] run function slimecore:_/init/load_tags/each
 
 # DEBUG:
-tellraw @a {"text":"> Finished load calls", "bold": false, "color": dark_gray}
+tellraw @a {"text":"> Finished Load Calls", "bold": false, "color": dark_gray}
 
 # DEBUG:
 data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
