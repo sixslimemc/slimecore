@@ -48,11 +48,14 @@ data modify storage slimecore:_ var.init.pack_iter set from storage slimecore:da
 execute if data storage slimecore:_ var.init.pack_iter[0] run function slimecore:_/init/load_data/each
 
 # DEBUG:
-tellraw @a {"text":"> Setup Load Data", "bold": true, "color": dark_gray}
+tellraw @a {"text":"~ Finished Load Data", "bold": false, "color": dark_gray}
 
 # call load tags:
 data modify storage slimecore:_ var.init.load_tags set from storage slimecore:_ const.load_tags
 execute if data storage slimecore:_ var.init.load_tags[0] run function slimecore:_/init/load_tags/each
+
+# DEBUG:
+tellraw @a {"text":"~ Finished Load Calls", "bold": false, "color": dark_gray}
 
 # DEBUG:
 data modify storage slimecore:_ var.init.debug.load_order append from storage slimecore:data current_build.order.load[].pack
