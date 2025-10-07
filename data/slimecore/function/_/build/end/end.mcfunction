@@ -22,3 +22,4 @@ scoreboard players reset *build.bad_index _slimecore
 
 scoreboard players reset *build.order_ptr _slimecore
 scoreboard players reset *build.insertion_index _slimecore
+scoreboard players reset *build.seen_impl _slimecore
