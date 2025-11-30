@@ -1,20 +1,21 @@
 type PackId = #[matches_regex="^(?!minecraft$)(?!slimecore$)[a-z0-9-]{1,64}$"] string
 type PackUrl = string
+type ExternalLink = string
 type IdFormat = #[matches_regex="^[a-z0-9-]{1,64}$"] string
-type AuthorId = IdFormat
+type AuthorId = #[matches_regex="^(?!sixslime$)[a-z0-9-]{1,64}$"] string
 type AbstractInterfaceId = IdFormat
 type EntrypointId = IdFormat
 type PreloadEntrypointId = IdFormat
 type DatapackFilename = string
 
-type ExternalEntrypointReference<T> = struct {
+type DependencyEntrypointReference<T> = struct {
     ...PackReference,
     id: T
 }
 type EntrypointDeclaration<T> = struct {
     id: T,
-    before?: [ExternalEntrypointReference<T>],
-    after?: [ExternalEntrypointReference<T>],
+    before?: [DependencyEntrypointReference<T>],
+    after?: [DependencyEntrypointReference<T>],
 }
 
 struct PackReference {
@@ -37,13 +38,14 @@ struct PackInfo {
     author: AuthorId,
     version: Version,
     url: PackUrl,
-    display: struct {
+    display: struct PackDisplayInfo {
         name: string,
+        author_name: string,
         summary: string,
         links: struct {
-            author?: string,
-            versions?: string,
-            info?: string,
+            author?: ExternalLink,
+            versions?: ExternalLink,
+            info?: ExternalLink,
         }
     },
     entrypoints: [EntrypointDeclaration<EntrypointId>],

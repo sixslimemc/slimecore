@@ -1,0 +1,44 @@
+use ::slimecore::mcdoc::def::BuildInfo
+use ::slimecore::mcdoc::def::Version
+use ::slimecore::mcdoc::def::PackUrl
+use ::slimecore::mcdoc::def::AuthorId
+use ::slimecore::mcdoc::def::ExternalLink
+use ::slimecore::mcdoc::def::PackId
+use ::slimecore::mcdoc::def::PackInfo
+use ::slimecore::mcdoc::def::PackDisplayInfo
+use ::slimecore::mcdoc::def::EntrypointDeclaration
+use ::slimecore::mcdoc::def::EntrypointId
+use ::slimecore::mcdoc::def::PreloadEntrypointId
+use ::slimecore::mcdoc::def::AbstractInterfaceId
+use ::slimecore::mcdoc::def::PackReference
+use ::slimecore::mcdoc::def::Dependency
+
+dispatch minecraft:storage[slimecore:data] to struct Data {
+    build: BuildInfo,
+    slimecore: (PackInfo | #[canonical] struct SlimecoreInfo {
+        pack_id: "slimecore",
+        author: "sixslime",
+        version: (Version | #[canonical] struct {
+            major: 1,
+            minor: 0,
+            patch: 0,
+        }),
+        url: "TODO",
+        display: (PackDisplayInfo | #[canonical] struct {
+            name: "SlimeCore",
+            author_name: "SixSlime",
+            summary: "The SlimeCore framework.",
+            links: struct {
+                author: "TODO",
+                versions: "TODO",
+                info: "TODO",
+            }
+        }),
+        entrypoints: [any] @ 0,
+        preload_entrypoints: [any] @ 0,
+        is_library: false,
+        abstract_declarations: [any] @ 0,
+        abstract_implementations: [any] @ 0,
+        dependencies: [any] @ 0,
+    })
+}
