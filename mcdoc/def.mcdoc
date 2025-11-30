@@ -5,10 +5,11 @@ type AuthorId = IdFormat
 type AbstractInterfaceId = IdFormat
 type EntrypointId = IdFormat
 type PreloadEntrypointId = IdFormat
+type DatapackFilename = string
 
 type ExternalEntrypointReference<T> = struct {
     ...PackReference,
-    entrypoint: T
+    id: T
 }
 type EntrypointDeclaration<T> = struct {
     id: T,
@@ -17,7 +18,7 @@ type EntrypointDeclaration<T> = struct {
 }
 
 struct PackReference {
-    pack_id: PackId,
+    pack_ref: PackId,
 }
 
 struct Version {
@@ -47,11 +48,11 @@ struct PackInfo {
     },
     entrypoints: [EntrypointDeclaration<EntrypointId>],
     preload_entrypoints: [EntrypointDeclaration<PreloadEntrypointId>],
-    library: boolean,
+    is_library: boolean,
     abstract_declarations: [AbstractInterfaceId],
     abstract_implementations: [struct {
         ...PackReference,
-        declaration: AbstractInterfaceId,
+        id: AbstractInterfaceId,
     }],
     dependencies: [Dependency]
 }
@@ -65,4 +66,33 @@ struct Dependency {
         version: Version
     },
     optional: boolean,
+}
+
+struct BuiltPackInfo {
+    ...PackInfo,
+    datapack_file: DatapackFilename
+}
+struct BuildInfo {
+    packs: [BuiltPackInfo],
+    order: struct {
+        entrypoints: [struct {
+            ...PackReference,
+            id: EntrypointId,
+            index: int,
+        }],
+        preload_entrypoints: [struct {
+            ...PackReference,
+            id: PreloadEntrypointId,
+            index: int,
+        }],
+        load: [struct {
+            ...PackReference,
+            index: int
+        }]
+    },
+    aux: struct {
+        packmap: struct {
+            [PackId]: BuiltPackInfo
+        }
+    }
 }
