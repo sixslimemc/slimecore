@@ -6,7 +6,7 @@ type AuthorId = #[matches_regex="^(?!sixslime$)[a-z0-9-]{1,64}$"] string
 type AbstractInterfaceId = IdFormat
 type EntrypointId = IdFormat
 type PreloadEntrypointId = IdFormat
-type DatapackFilename = string
+type DatapackPath = string
 
 type DependencyEntrypointReference<T> = struct {
     ...PackReference,
@@ -72,7 +72,7 @@ struct Dependency {
 
 struct BuiltPackInfo {
     ...PackInfo,
-    datapack_file: DatapackFilename,
+    datapack_path?: DatapackPath,
     load_index: int,
 }
 struct BuildInfo {

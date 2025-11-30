@@ -1,0 +1,24 @@
+use ::slimecore::mcdoc::def::DatapackPath
+use ::slimecore::mcdoc::def::PackId
+dispatch minecraft:storage[slimecore:config] to struct Config {
+    /// Mapping of pack ids to non-standard datapack paths.
+    /// SlimeCore assumes datapack filenames are identical to their SlimeCore pack id.
+    /// Datapacks that do not follow this convention must be included here.
+    /// Ex: {'mypackid': 'file/My Datapack Filename'}
+    /// Default: {}
+    datapack_path_override: struct {
+        [PackId]: DatapackPath
+    },
+    /// Gamerules that are overridden temporarily during build-time.
+    /// These should generally not be changed unless there is a specific reason too.
+    build_time_gamerules: struct {
+        /// 'max_command_forks' gamerule value during build-time.
+        /// Can cause build process to fail if set too low.
+        /// Default: 2147483647
+        max_command_forks: int,
+        /// 'max_command_sequence_length' gamerule value during build-time.
+        /// Can cause build process to fail if set too low.
+        /// Default: 2147483647
+        max_command_sequence_length: int,
+    }
+}
