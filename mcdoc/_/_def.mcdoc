@@ -1,0 +1,4 @@
+
+dispatch minecraft:storage[slimecore:_] to struct {
+    [any]: any
+}

@@ -33,7 +33,7 @@ struct VersionRequirement {
     minor: int,
 }
 
-struct PackInfo {
+struct PackManifest {
     pack_id: PackId,
     author: AuthorId,
     version: Version,
@@ -71,7 +71,7 @@ struct Dependency {
 }
 
 struct BuiltPackInfo {
-    ...PackInfo,
+    ...PackManifest,
     datapack_path?: DatapackPath,
     load_index: int,
 }

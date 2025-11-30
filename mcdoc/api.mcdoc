@@ -1,7 +1,15 @@
 
-dispatch minecraft:storage[slimecore:in] to struct In {}
-dispatch minecraft:storage[slimecore:out] to struct Out {}
+dispatch minecraft:storage[slimecore:in] to struct In {
+    [any]: any
+}
+dispatch minecraft:storage[slimecore:out] to struct Out {
+    [any]: any
+}
 
 dispatch minecraft:storage[slimecore:api] to struct Api {
+
+}
+
+dispatch minecraft:storage[slimecore:hook] to struct Hook {
 
 }
