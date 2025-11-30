@@ -1,0 +1,66 @@
+type PackId = #[matches_regex="^(?!minecraft$)(?!slimecore$)[a-z0-9-]{1,64}$"] string
+type PackUrl = string
+type AuthorId = string
+type AbstractInterfaceId = string
+type EntrypointId = string
+type PreloadEntrypointId = EntrypointId
+
+struct PartialPackReference {
+    pack_id: PackId
+}
+
+struct PackReference {
+    ...PartialPackReference,
+    author: AuthorId,
+}
+
+struct Version {
+    major: int,
+    minor: int,
+    patch: int,
+}
+
+struct VersionRequirement {
+    major: int,
+    minor: int,
+}
+
+enum(byte) OrderSpecifier {
+    Before = 1b,
+    After = -1b,
+    Unset = 0b,
+}
+
+struct PackInfo {
+    ...PackReference,
+    version: Version,
+    url: PackUrl,
+    display: struct {
+        Id: string,
+        summary: string,
+        links: struct {
+            author?: string,
+            versions?: string,
+            info?: string,
+        }
+    },
+    entrypoints: [EntrypointId],
+    preload_entrypoints: [PreloadEntrypointId],
+    library: boolean,
+    abstract_definitions: [AbstractInterfaceId],
+    dependencies: [Dependency]
+}
+
+struct Dependency {
+    pack: PackReference,
+    version: VersionRequirement,
+    download: struct {
+        url: PackUrl,
+        version: Version
+    },
+    optional: boolean,
+    abstract_implementations: [AbstractInterfaceId],
+    ordering: struct {
+        entrypoints
+    }
+}
