@@ -1,17 +1,23 @@
 type PackId = #[matches_regex="^(?!minecraft$)(?!slimecore$)[a-z0-9-]{1,64}$"] string
 type PackUrl = string
-type AuthorId = string
-type AbstractInterfaceId = string
-type EntrypointId = string
-type PreloadEntrypointId = EntrypointId
+type IdFormat = #[matches_regex="^[a-z0-9-]{1,64}$"] string
+type AuthorId = IdFormat
+type AbstractInterfaceId = IdFormat
+type EntrypointId = IdFormat
+type PreloadEntrypointId = IdFormat
 
-struct PartialPackReference {
-    pack_id: PackId
+type ExternalEntrypointReference<T> = struct {
+    ...PackReference,
+    entrypoint: T
+}
+type EntrypointDeclaration<T> = struct {
+    id: T,
+    before?: [ExternalEntrypointReference<T>],
+    after?: [ExternalEntrypointReference<T>],
 }
 
 struct PackReference {
-    ...PartialPackReference,
-    author: AuthorId,
+    pack_id: PackId,
 }
 
 struct Version {
@@ -25,18 +31,13 @@ struct VersionRequirement {
     minor: int,
 }
 
-enum(byte) OrderSpecifier {
-    Before = 1b,
-    After = -1b,
-    Unset = 0b,
-}
-
 struct PackInfo {
-    ...PackReference,
+    pack_id: PackId,
+    author: AuthorId,
     version: Version,
     url: PackUrl,
     display: struct {
-        Id: string,
+        name: string,
         summary: string,
         links: struct {
             author?: string,
@@ -44,23 +45,24 @@ struct PackInfo {
             info?: string,
         }
     },
-    entrypoints: [EntrypointId],
-    preload_entrypoints: [PreloadEntrypointId],
+    entrypoints: [EntrypointDeclaration<EntrypointId>],
+    preload_entrypoints: [EntrypointDeclaration<PreloadEntrypointId>],
     library: boolean,
-    abstract_definitions: [AbstractInterfaceId],
+    abstract_declarations: [AbstractInterfaceId],
+    abstract_implementations: [struct {
+        ...PackReference,
+        declaration: AbstractInterfaceId,
+    }],
     dependencies: [Dependency]
 }
 
 struct Dependency {
-    pack: PackReference,
+    pack_id: PackId,
+    author: AuthorId,
     version: VersionRequirement,
     download: struct {
         url: PackUrl,
         version: Version
     },
     optional: boolean,
-    abstract_implementations: [AbstractInterfaceId],
-    ordering: struct {
-        entrypoints
-    }
 }
