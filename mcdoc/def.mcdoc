@@ -72,26 +72,21 @@ struct Dependency {
 
 struct BuiltPackInfo {
     ...PackInfo,
-    datapack_file: DatapackFilename
+    datapack_file: DatapackFilename,
+    load_index: int,
 }
 struct BuildInfo {
     packs: [BuiltPackInfo],
-    order: struct {
-        entrypoints: [struct {
-            ...PackReference,
-            id: EntrypointId,
-            index: int,
-        }],
-        preload_entrypoints: [struct {
-            ...PackReference,
-            id: PreloadEntrypointId,
-            index: int,
-        }],
-        load: [struct {
-            ...PackReference,
-            index: int
-        }]
-    },
+    entrypoints: [struct {
+        ...PackReference,
+        id: EntrypointId,
+        index: int,
+    }],
+    preload_entrypoints: [struct {
+        ...PackReference,
+        id: PreloadEntrypointId,
+        index: int,
+    }],
     aux: struct {
         packmap: struct {
             [PackId]: BuiltPackInfo
