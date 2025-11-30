@@ -1,0 +1,39 @@
+{
+    "env": {
+        "dataSource": "GitHub",
+        "dependencies": [
+            "@vanilla-mcdoc"
+        ],
+        "feature": {
+            "codeActions": true,
+            "colors": true,
+            "completions": true,
+            "documentHighlighting": true,
+            "documentLinks": true,
+            "foldingRanges": true,
+            "hover": true,
+            "formatting": true,
+            "inlayHint": {
+                "enabledNodes": [
+                    "mcfunction:command_child/unknown"
+                ]
+            },
+            "semanticColoring": true,
+            "selectionRanges": true,
+            "signatures": true
+        },
+        "gameVersion": "Auto",
+        "language": "Default",
+        "permissionLevel": 2,
+        "plugins": [],
+        "mcmetaSummaryOverrides": {},
+        "useFilePolling": false
+    },
+    "lint": {
+        "nameOfNbtKey": ["information", "^[a-z]+(_[a-z]+)*$"],
+        "nameOfObjective": "^_?[a-z]+([.]([a-z]+(_[a-z]+)*)?$",
+        "nameOfScoreHolder": ["information", "^[*][a-z._]+)*$"],
+        "nameOfTag": "^_?[a-z]+([.]([a-z]+(_[a-z]+)*)?$",
+        "nameOfTeam": "^_?[a-z]+([.]([a-z]+(_[a-z]+)*)$"
+    }
+}
