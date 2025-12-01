@@ -70,26 +70,33 @@ struct Dependency {
     optional: boolean,
 }
 
-struct BuiltPackInfo {
-    ...PackManifest,
-    datapack_path?: DatapackPath,
-    load_index: int,
-}
 struct BuildInfo {
-    packs: [BuiltPackInfo],
-    entrypoints: [struct {
-        ...PackReference,
-        id: EntrypointId,
-        index: int,
-    }],
-    preload_entrypoints: [struct {
-        ...PackReference,
-        id: PreloadEntrypointId,
-        index: int,
-    }],
+    packs: [PackManifest],
+    order: struct {
+        load: [struct {
+            ...PackReference,
+            index: int
+        }],
+        entrypoints: [struct {
+            ...PackReference,
+            id: EntrypointId,
+            index: int,
+        }],
+        preload_entrypoints: [struct {
+            ...PackReference,
+            id: PreloadEntrypointId,
+            index: int,
+        }]
+    },
     aux: struct {
         packmap: struct {
-            [PackId]: BuiltPackInfo
+            [PackId]: PackManifest
         }
+    }
+}
+
+struct WorldSpecificInfo {
+    pathmap: struct {
+        [PackId]: DatapackPath
     }
 }

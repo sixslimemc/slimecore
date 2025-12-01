@@ -4,7 +4,7 @@ use ::slimecore::mcdoc::def::PackUrl
 use ::slimecore::mcdoc::def::AuthorId
 use ::slimecore::mcdoc::def::ExternalLink
 use ::slimecore::mcdoc::def::PackId
-use ::slimecore::mcdoc::def::PackInfo
+use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::PackDisplayInfo
 use ::slimecore::mcdoc::def::EntrypointDeclaration
 use ::slimecore::mcdoc::def::EntrypointId
@@ -12,10 +12,12 @@ use ::slimecore::mcdoc::def::PreloadEntrypointId
 use ::slimecore::mcdoc::def::AbstractInterfaceId
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::Dependency
+use ::slimecore::mcdoc::def::WorldSpecificInfo
 
 dispatch minecraft:storage[slimecore:data] to struct Data {
     build: BuildInfo,
-    slimecore: (PackInfo | #[canonical] struct SlimecoreInfo {
+    world: WorldSpecificInfo,
+    slimecore: (PackManifest | #[canonical] struct SlimecoreInfo {
         pack_id: "slimecore",
         author: "sixslime",
         version: (Version | #[canonical] struct {

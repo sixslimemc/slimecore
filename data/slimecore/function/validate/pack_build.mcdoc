@@ -1,0 +1,21 @@
+use ::slimecore::mcdoc::def::PackReference
+use ::slimecore::mcdoc::def::EntrypointId
+use ::slimecore::mcdoc::def::PreloadEntrypointId
+use ::slimecore::mcdoc::def::BuildInfo
+
+inject struct ::slimecore::mcdoc::api::In {
+    packs: struct In {
+        manifests: [PackManifest]
+    }
+}
+type Out = (struct Success {
+    result: BuildInfo
+}
+| struct Error {
+    error: struct {
+
+    }
+})
+inject struct ::slimecore::mcdoc::api::Out {
+    pack_build: Out
+}
