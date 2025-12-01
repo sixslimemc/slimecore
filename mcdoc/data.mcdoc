@@ -23,7 +23,7 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
             major: 1,
             minor: 0,
             patch: 0,
-        }),
+        },
         url: "TODO",
         display: struct {
             name: "SlimeCore",
