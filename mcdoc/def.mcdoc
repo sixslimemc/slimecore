@@ -7,6 +7,7 @@ type AbstractInterfaceId = IdFormat
 type EntrypointId = IdFormat
 type PreloadEntrypointId = IdFormat
 type DatapackPath = string
+type EvalResult<T, E> = (struct {success: T} | struct {error: E})
 
 type DependencyEntrypointReference<T> = struct {
     ...PackReference,
