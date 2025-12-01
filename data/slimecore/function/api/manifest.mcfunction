@@ -1,2 +1,21 @@
+#> slimecore : api/manifest
+#--------------------
+# -> pack: PackManifest
+#--------------------
+# ...
+#--------------------
+# TODO: description
+#--------------------
+# 1: success.
+# 0: <pack> is not a valid PackManifest.
+# -1: this function was called outside of manifest-time.
+#--------------------
 
-data modify storage slimecore:data build set from storage slimecore:_ o.oeue
+data remove storage slimecore:out manifest
+
+execute store result score *x _slimecore run function slimecore:_/impl/api/manifest/main
+
+data remove storage slimecore:_ v.manifest
+data remove storage slimecore:in manifest
+
+return run scoreboard players get *x _slimecore

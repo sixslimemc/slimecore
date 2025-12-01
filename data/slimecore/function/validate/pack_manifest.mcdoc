@@ -1,14 +1,19 @@
+
 inject struct ::slimecore::mcdoc::api::In {
     pack_manifest: struct In {
         value: (any | PackManifest)
     }
 }
-inject struct ::slimecore::mcdoc::api::Out {
-    pack_manifest: struct Out {
-        result: (
-            true
-            | struct {
-                error: "TODO"
-            })
+type Out = (struct {
+    result: struct {
+
     }
+}
+| struct {
+    error: struct {
+
+    }
+})
+inject struct ::slimecore::mcdoc::api::Out {
+    pack_manifest: Out
 }
