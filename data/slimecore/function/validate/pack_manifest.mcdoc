@@ -4,13 +4,11 @@ inject struct ::slimecore::mcdoc::api::In {
         value: (any | PackManifest)
     }
 }
-type Out = (struct {
-    result: struct {
-
-    }
+type Out = (struct ResultSuccess {
+    result: true
 }
 | struct {
-    error: struct {
+    error: struct ResultError {
 
     }
 })
