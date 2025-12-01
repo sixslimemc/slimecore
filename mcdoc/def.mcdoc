@@ -52,7 +52,7 @@ struct PackManifest {
     preload_entrypoints: [EntrypointDeclaration<PreloadEntrypointId>],
     is_library: boolean,
     abstract_declarations: [AbstractInterfaceId],
-    abstract_implementations: [struct {
+    abstract_implementations: [struct AbstractInterfaceReference {
         ...PackReference,
         id: AbstractInterfaceId,
     }],
