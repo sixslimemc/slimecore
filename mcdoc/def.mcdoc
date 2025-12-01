@@ -23,14 +23,14 @@ struct PackReference {
 }
 
 struct Version {
-    major: int,
-    minor: int,
-    patch: int,
+    major: int @ 0..,
+    minor: int @ 0..,
+    patch: int @ 0..,
 }
 
 struct VersionRequirement {
-    major: int,
-    minor: int,
+    major: int @ 0..,
+    minor: int @ 0..,
 }
 
 struct PackManifest {
@@ -76,17 +76,17 @@ struct BuildInfo {
         // kind a just a formality, 'packs' should be in load order anyway
         load: [struct {
             ...PackReference,
-            index: int
+            index: int @ 0..
         }],
         entrypoints: [struct {
             ...PackReference,
             id: EntrypointId,
-            index: int,
+            index: int @ 0..,
         }],
         preload_entrypoints: [struct {
             ...PackReference,
             id: PreloadEntrypointId,
-            index: int,
+            index: int @ 0..,
         }]
     },
     aux: struct {
