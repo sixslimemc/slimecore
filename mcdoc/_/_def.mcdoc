@@ -2,3 +2,9 @@
 dispatch minecraft:storage[slimecore:_] to struct {
     [any]: any
 }
+dispatch minecraft:storage[slimecore:_/in] to struct {
+    [any]: any
+}
+dispatch minecraft:storage[slimecore:_/out] to struct {
+    [any]: any
+}

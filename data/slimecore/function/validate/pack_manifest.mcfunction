@@ -1,6 +1,6 @@
 #> slimecore : validate/pack_manifest
 #--------------------
-# -> manifest: PackManifest
+# -> pack: PackManifest
 #--------------------
 # <- result: (
 # {
