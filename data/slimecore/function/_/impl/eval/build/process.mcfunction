@@ -8,7 +8,7 @@ scoreboard players set *build.error _slimecore 0
 data modify storage slimecore:_ v.build.maps.packs set value {}
 
 # $PackID => PackManifest ::
-# (abstract's id) => (its implementation's manifest)
+# (abstract's source) => (abstract's id) => (its implementation's manifest)
 data modify storage slimecore:_ v.build.maps.impls set value {}
 
 # $PackID => LoadWords<[]{pack: $PackID, direction: RelativeOrder}> ::
