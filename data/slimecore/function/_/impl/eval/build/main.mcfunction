@@ -1,5 +1,4 @@
 # IMPL > slimecore:eval/build
 # main
 
-# TODO: validate every pack
-
+scoreboard players set *build.error _slimecore 0
