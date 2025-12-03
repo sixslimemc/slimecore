@@ -1,5 +1,5 @@
 # IMPL > slimecore:eval/build
-# pass_1/impls/duplicate
+# pass_1/impls/multiple
 
 scoreboard players set *build.error _slimecore 1
 
@@ -9,7 +9,7 @@ execute unless data storage slimecore:out build.result.error.multiple_implementa
 data remove storage slimecore:_ v.build.err_entry
 $data modify storage slimecore:_ v.build.err_entry set from storage slimecore:out build.result.error.multiple_implementations[{of:{pack_ref:'$(pack_ref)', id:'$(id)'}}]
 # new entry:
-execute unless data storage slimecore:_ v.build.err_entry run return run function slimecore:_/impl/eval/build/pass_1/impls/duplicate.1
+execute unless data storage slimecore:_ v.build.err_entry run function slimecore:_/impl/eval/build/pass_1/impls/multiple.1
 
 # update existing:
 data modify storage slimecore:_ v.build.from_entry set value {}

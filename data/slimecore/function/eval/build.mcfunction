@@ -2,7 +2,12 @@
 #--------------------
 # -> packs: [PackManifest]
 #--------------------
-# <- result: EvalResult<Build, TODO>
+# <- result: EvalResult<Build, {
+#   invalid_packs: [{pack: PackManifest, error: eval::pack::Error}],
+#   duplicate_pack_ids: [{pack_id: PackId, packs: [PackManifest]}]
+#   multiple_implementations?: [{of: AbstractInterfaceReference, from: [PackReference]}],
+#   TODO
+# }>
 #--------------------
 # TODO: description
 #--------------------
