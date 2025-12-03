@@ -5,7 +5,7 @@ data modify storage slimecore:_ v.build.this_pack set from storage slimecore:_ v
 
 # {..map.packs}
 # and duplicate detection
-function slimecore:_/impl/eval/build/pass_1/try_map with storage slimecore:_ v.build.this_pack
+function slimecore:_/impl/eval/build/pass_1/try_add with storage slimecore:_ v.build.this_pack
 
 # {..map.impls}
 data modify storage slimecore:_ v.build.impls set from storage slimecore:_ v.build.this_pack.abstract_implementations

@@ -1,5 +1,5 @@
 # IMPL > slimecore:eval/build
-# pass_1/try_map
+# pass_1/try_add
 
 data remove storage slimecore:_ v.build.seen_pack
 $data modify storage slimecore:_ v.build.seen_pack set from storage slimecore:_ v.build.maps.packs.'$(pack_id)'
