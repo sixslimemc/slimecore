@@ -10,14 +10,14 @@ type DatapackPath = string
 type EvalResult<T, E> = (struct {success: T} | struct {error: E})
 type PositiveInt = int @ 0..
 
-type DependencyEntrypointReference<T> = struct {
+type EntrypointReference<T> = struct {
     ...PackReference,
     id: T
 }
 type EntrypointDeclaration<T> = struct {
     id: T,
-    before?: [DependencyEntrypointReference<T>],
-    after?: [DependencyEntrypointReference<T>],
+    before?: [EntrypointReference<T>],
+    after?: [EntrypointReference<T>],
 }
 
 struct PackReference {

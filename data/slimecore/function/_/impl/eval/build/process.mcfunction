@@ -11,9 +11,9 @@ data modify storage slimecore:_ v.build.maps.packs set value {}
 # (abstract's source) => (abstract's id) => (its implementation's manifest)
 data modify storage slimecore:_ v.build.maps.impls set value {}
 
-# $PackID => LoadWords<[]{pack: $PackID, direction: RelativeOrder}> ::
-# (pack's id) => (its relations to other packs)
-data modify storage slimecore:_ v.build.maps.relations set value {}
+# (source pack id) => (entrypoint id) => [EntrypointReference<EntrypointId>] (entrypoints that this entrypoint comes before)
+data modify storage slimecore:_ v.build.maps.entrypoint_befores set value {}
+data modify storage slimecore:_ v.build.maps.preload_befores set value {}
 
 # pass 1:
 #- duplicate packs
@@ -36,4 +36,11 @@ execute if score *build.error _slimecore matches 1 run return 0
 data modify storage slimecore:_ v.build.eval_seen set value {}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_3/each
+execute if score *build.error _slimecore matches 1 run return 0
+
+# pass 4:
+#- populate {..maps.entrypoint_befores}
+#- populate {..maps.preload_befores}
+data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
+execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return 0
