@@ -1,8 +1,7 @@
 # IMPL > slimecore:eval/pack
 # main
 
-# TODO: impl
+# TODO
 
-# assumes success
 data modify storage slimecore:_/out pack.result.success set from storage slimecore:_/in pack.pack
 return 1

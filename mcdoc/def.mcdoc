@@ -41,7 +41,7 @@ struct VersionRequirement {
 
 struct PackManifest {
     pack_id: PackId,
-    author: AuthorId,
+    author_id: AuthorId,
     version: Version,
     url: PackUrl,
     display: struct PackDisplayInfo {
@@ -64,7 +64,7 @@ struct PackManifest {
 
 struct Dependency {
     pack_id: PackId,
-    author: AuthorId,
+    author_id: AuthorId,
     version: VersionRequirement,
     download: struct {
         url: PackUrl,
