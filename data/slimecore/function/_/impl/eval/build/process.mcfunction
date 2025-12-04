@@ -15,7 +15,6 @@ data modify storage slimecore:_ v.build.maps.impls set value {}
 # (pack's id) => (its relations to other packs)
 data modify storage slimecore:_ v.build.maps.relations set value {}
 
-
 # pass 1:
 #- duplicate packs
 #- multiple implementations
