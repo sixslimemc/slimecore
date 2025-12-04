@@ -3,7 +3,7 @@ type PackUrl = string
 type ExternalLink = string
 type IdFormat = #[matches_regex="^[a-z0-9-]{1,64}$"] string
 type AuthorId = #[matches_regex="^(?!sixslime$)[a-z0-9-]{1,64}$"] string
-type AbstractInterfaceId = IdFormat
+type AbstractId = IdFormat
 type EntrypointId = IdFormat
 type PreloadEntrypointId = IdFormat
 type DatapackPath = string
@@ -24,9 +24,9 @@ struct PackReference {
     pack_ref: PackId,
 }
 
-struct AbstractInterfaceReference {
+struct AbstractReference {
     ...PackReference,
-    id: AbstractInterfaceId,
+    id: AbstractId,
 }
 struct Version {
     major: PositiveInt,
@@ -57,8 +57,8 @@ struct PackManifest {
     entrypoints: [EntrypointDeclaration<EntrypointId>],
     preload_entrypoints: [EntrypointDeclaration<PreloadEntrypointId>],
     is_library: boolean,
-    abstract_declarations: [AbstractInterfaceId],
-    abstract_implementations: [AbstractInterfaceReference],
+    abstract_declarations: [AbstractId],
+    abstract_implementations: [AbstractReference],
     dependencies: [Dependency]
 }
 

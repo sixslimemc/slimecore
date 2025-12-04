@@ -3,7 +3,7 @@
 
 scoreboard players set *build.error _slimecore 1
 
-execute unless data storage slimecore:out build.result.error.missing_dependencies[0] run data modify storage slimecore:out build.result.error.missing_dependencies set value []
+execute unless data storage slimecore:out build.result.error.unfulfilled_dependencies[0] run data modify storage slimecore:out build.result.error.unfulfilled_dependencies set value []
 
 # *build.dep_error
 # 1 - missing pack id
@@ -19,4 +19,4 @@ execute if score *build.dep_error _slimecore matches 2 run data modify storage s
 execute if score *build.dep_error _slimecore matches 2 run data modify storage slimecore:_ x.entry.reason.author_mismatch.got set from storage slimecore:_ v.build.dep_pack.author_id
 execute if score *build.dep_error _slimecore matches 3 run data modify storage slimecore:_ x.entry.reason.incompatible_version set from storage slimecore:_ v.build.version_error
 
-data modify storage slimecore:out build.result.error.missing_dependencies append from storage slimecore:_ x.entry
+data modify storage slimecore:out build.result.error.unfulfilled_dependencies append from storage slimecore:_ x.entry

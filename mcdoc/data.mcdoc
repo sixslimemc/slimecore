@@ -8,7 +8,7 @@ use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::EntrypointDeclaration
 use ::slimecore::mcdoc::def::EntrypointId
 use ::slimecore::mcdoc::def::PreloadEntrypointId
-use ::slimecore::mcdoc::def::AbstractInterfaceId
+use ::slimecore::mcdoc::def::AbstractId
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::Dependency
 use ::slimecore::mcdoc::def::WorldSpecificInfo
