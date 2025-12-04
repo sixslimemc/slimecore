@@ -3,9 +3,10 @@
 # -> packs: [PackManifest]
 #--------------------
 # <- result: EvalResult<Build, {
-#   invalid_packs: [{pack: PackManifest, error: eval::pack::Error}],
-#   duplicate_pack_ids: [{pack_id: PackId, packs: [PackManifest]}]
+#   invalid_packs?: [{pack: PackManifest, error: eval::pack::Error}],
+#   duplicate_pack_ids?: [{pack_id: PackId, packs: [PackManifest]}],
 #   multiple_implementations?: [{of: AbstractInterfaceReference, from: [PackReference]}],
+#   dependency_cycles?: [[PackReference]]
 #   TODO
 # }>
 #--------------------
