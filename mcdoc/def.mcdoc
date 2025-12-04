@@ -8,6 +8,7 @@ type EntrypointId = IdFormat
 type PreloadEntrypointId = IdFormat
 type DatapackPath = string
 type EvalResult<T, E> = (struct {success: T} | struct {error: E})
+type PositiveInt = int @ 0..
 
 type DependencyEntrypointReference<T> = struct {
     ...PackReference,
@@ -28,14 +29,14 @@ struct AbstractInterfaceReference {
     id: AbstractInterfaceId,
 }
 struct Version {
-    major: int @ 0..,
-    minor: int @ 0..,
-    patch: int @ 0..,
+    major: PositiveInt,
+    minor: PositiveInt,
+    patch: PositiveInt,
 }
 
 struct VersionRequirement {
-    major: int @ 0..,
-    minor: int @ 0..,
+    major: PositiveInt,
+    minor: PositiveInt,
 }
 
 struct PackManifest {

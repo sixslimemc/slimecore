@@ -1,9 +1,9 @@
 #> slimecore : eval/build
 #--------------------
-# -> packs: [PackManifest]
+# -> packs: [(PackManifest | any)]
 #--------------------
 # <- result: EvalResult<Build, {
-#   invalid_packs?: [{pack: PackManifest, error: eval::pack::Error}],
+#   invalid_packs?: [{pack: (PackManifest | any), error: eval::pack::Error}],
 #   duplicate_pack_ids?: [{pack_id: PackId, packs: [PackManifest]}],
 #   multiple_implementations?: [{of: AbstractInterfaceReference, from: [PackReference]}],
 #   dependency_cycles?: [[PackReference]]

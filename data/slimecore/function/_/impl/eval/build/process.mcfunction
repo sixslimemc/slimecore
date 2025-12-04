@@ -15,8 +15,6 @@ data modify storage slimecore:_ v.build.maps.impls set value {}
 # (pack's id) => (its relations to other packs)
 data modify storage slimecore:_ v.build.maps.relations set value {}
 
-# LoadWords<[]$PackID> ::
-data modify storage slimecore:_ v.build.final_order set value {}
 
 # pass 1:
 #- duplicate packs
@@ -28,6 +26,13 @@ execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/im
 execute if score *build.error _slimecore matches 1 run return 0
 
 # pass 2:
+#- dependencies fulfilled
+#- interfaces implemented
+data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
+execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_2/each
+execute if score *build.error _slimecore matches 1 run return 0
+
+# pass 3:
 #- dependency cycles
 data modify storage slimecore:_ v.build.eval_seen set value {}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs

@@ -1,6 +1,6 @@
 #> slimecore : eval/pack
 #--------------------
-# -> pack: PackManifest
+# -> pack: (PackManifest | any)
 #--------------------
 # <- result: EvalResult<PackManifest, TODO>
 #--------------------
