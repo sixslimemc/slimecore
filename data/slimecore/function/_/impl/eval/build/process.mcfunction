@@ -29,6 +29,7 @@ execute if score *build.error _slimecore matches 1 run return 0
 
 # pass 2:
 #- dependency cycles
+data modify storage slimecore:_ v.build.eval_seen set value {}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return 0
