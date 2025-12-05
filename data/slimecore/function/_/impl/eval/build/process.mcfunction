@@ -11,7 +11,7 @@ data modify storage slimecore:_ v.build.maps.packs set value {}
 # (abstract's source) => (abstract's id) => (its implementation's manifest)
 data modify storage slimecore:_ v.build.maps.impls set value {}
 
-# (source pack id) => (entrypoint id) => [EntrypointReference<EntrypointId>] (entrypoints that this entrypoint comes before)
+# (source pack id) => (entrypoint id) => {<pack ids...>:{<ids...>:true}} (for every entrypoint that this entrypoint comes before)
 data modify storage slimecore:_ v.build.maps.entrypoint_befores set value {}
 data modify storage slimecore:_ v.build.maps.preload_befores set value {}
 
