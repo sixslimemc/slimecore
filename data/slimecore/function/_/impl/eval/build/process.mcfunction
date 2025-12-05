@@ -18,11 +18,17 @@ data modify storage slimecore:_ v.build.maps.impls set value {}
 data modify storage slimecore:_ v.build.maps.entrypoint_befores set value {}
 data modify storage slimecore:_ v.build.maps.preload_befores set value {}
 
+# (source pack id) => (entrypoint id) => [EntrypointReference<T>] (packs that should be added to 'before', found through 'after' relations)
+data modify storage slimecore:_ v.build.maps.entrypoint_after_cache set value {}
+data modify storage slimecore:_ v.build.maps.preload_after_cache set value {}
+
 # pass 1:
 #- duplicate packs
 #- multiple implementations
 #- populate {..maps.manifests}
 #- populate {..maps.impls}
+#- populate {..maps.entrypoint_after_cache}
+#- populate {..maps.preload_after_cache}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_1/each
 execute if score *build.error _slimecore matches 1 run return 0

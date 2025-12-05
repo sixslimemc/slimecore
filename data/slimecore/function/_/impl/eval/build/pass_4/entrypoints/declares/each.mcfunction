@@ -9,6 +9,7 @@ data modify storage slimecore:_ x.compare_id set from storage slimecore:_ v.buil
 
 # stop when self is reached
 execute store success score *x _slimecore run data modify storage slimecore:_ x.compare_id set from storage slimecore:_ v.build.evalin[-1].id
+execute if score *x _slimecore matches 0 run data modify storage slimecore:_ v.build.eval[-1].befores append from storage slimecore:_ v.build.eval[-1].declares[-1].before[]
 execute if score *x _slimecore matches 0 run return 0
 
 data modify storage slimecore:_ v.build.eval[-1].befores append value {}
