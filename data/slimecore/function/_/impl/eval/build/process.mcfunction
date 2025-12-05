@@ -1,5 +1,8 @@
 # IMPL > slimecore:eval/build
 # process
+#--------------------
+# ./main
+#--------------------
 
 scoreboard players set *build.error _slimecore 0
 
