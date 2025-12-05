@@ -6,6 +6,15 @@
 
 data modify storage slimecore:_ v.build.this_entrypoint set from storage slimecore:_ v.build.entrypoints[-1]
 
+# populate initial order map:
+data modify storage slimecore:_ x set value {1:"data modify storage slimecore:_ v.build.maps.'", 2:true, 3:"'.'", 4:true, 5:";", 6:true, 7:"' set from storage slimecore:_ x.entry"}
+data modify storage slimecore:_ x.2 set from storage slimecore:_ v.build.map_initial_order
+data modify storage slimecore:_ x.4 set from storage slimecore:_ v.build.this_pack.pack_id
+data modify storage slimecore:_ x.6 set from storage slimecore:_ v.build.this_entrypoint.id
+data modify storage slimecore:_ x.entry.pack_ref set from storage slimecore:_ v.build.this_pack.pack_id
+data modify storage slimecore:_ x.entry.id set from storage slimecore:_ v.build.this_entrypoint.id
+function slimecore:_/util/mline/7 with storage slimecore:_ x
+
 execute unless data storage slimecore:_ v.build.this_entrypoint.before[0] run data modify storage slimecore:_ v.build.this_entrypoint.before set value []
 execute unless data storage slimecore:_ v.build.this_entrypoint.after[0] run data modify storage slimecore:_ v.build.this_entrypoint.after set value []
 

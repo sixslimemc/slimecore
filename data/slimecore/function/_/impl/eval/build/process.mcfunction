@@ -22,9 +22,13 @@ data modify storage slimecore:_ v.build.maps.preload_befores set value {}
 data modify storage slimecore:_ v.build.maps.entrypoint_after_cache set value {}
 data modify storage slimecore:_ v.build.maps.preload_after_cache set value {}
 
+# "<source pack id>;<entrypoint id>" => EntrypointReference<T>
+data modify storage slimecore:_ v.build.maps.entrypoint_initial_order set value {}
+data modify storage slimecore:_ v.build.maps.preload_initial_order set value {}
+
 # pass 1:
-#- duplicate packs
-#- multiple implementations
+#- check duplicate packs
+#- check multiple implementations
 #- populate {..maps.manifests}
 #- populate {..maps.impls}
 #- populate {..maps.entrypoint_after_cache}
@@ -34,14 +38,14 @@ execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/im
 execute if score *build.error _slimecore matches 1 run return 0
 
 # pass 2:
-#- dependencies fulfilled
-#- interfaces implemented
+#- check dependencies fulfilled
+#- check interfaces implemented
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return 0
 
 # pass 3:
-#- dependency cycles
+#- check dependency cycles
 data modify storage slimecore:_ v.build.eval_seen set value {}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_3/each
@@ -50,6 +54,8 @@ execute if score *build.error _slimecore matches 1 run return 0
 # pass 4:
 #- populate {..maps.entrypoint_befores}
 #- populate {..maps.preload_befores}
+#- populate {..maps.entrypoint_initial_order}
+#- populate {..maps.preload_initial_order}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return 0
