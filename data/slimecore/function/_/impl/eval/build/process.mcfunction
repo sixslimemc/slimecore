@@ -59,24 +59,23 @@ execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/im
 execute if score *build.error _slimecore matches 1 run return 0
 
 # get initial entrypoint orders (based off built-in string key ordering):
-# out : EntrypointReference<T>
-data modify storage slimecore:_ v.build.initial_order set value {in:{}, out:[]}
-data modify storage slimecore:_ v.build.initial_order.in set from storage slimecore:_ v.build.maps.entrypoint_initial_order
-function slimecore:_/impl/eval/build/initial_order/do
-data modify storage slimecore:_ v.build.store.initial_entrypoint_order set from storage slimecore:_ v.build.initial_order.out
+# ~ note that this will be the reverse of actual initial order.
+data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.entrypoint_initial_order
+function slimecore:_/util/kvpairs/main
+data modify storage slimecore:_ v.build.initial_orders.noraml set value []
+data modify storage slimecore:_ v.build.initial_orders.normal append from storage slimecore:_/out kvpairs.result[].value
 
-data modify storage slimecore:_ v.build.initial_order set value {in:{}, out:[]}
-data modify storage slimecore:_ v.build.initial_order.in set from storage slimecore:_ v.build.maps.preload_initial_order
-function slimecore:_/impl/eval/build/initial_order/do
-data modify storage slimecore:_ v.build.store.initial_preload_order set from storage slimecore:_ v.build.initial_order.out
+data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.preload_initial_order
+function slimecore:_/util/kvpairs/main
+data modify storage slimecore:_ v.build.initial_orders.preload set value []
+data modify storage slimecore:_ v.build.initial_orders.preload append from storage slimecore:_/out kvpairs.result[].value
 
 # evaluate actual entrypoint orders:
 #- check entrypoint order cycles
 #- check preload entrypoint order cycles
 # out : EntrypointReference<T>
-data modify storage slimecore:_ v.build.eval_order set value {in:{initial:[], befores:{}, error_key:""}, out:[]}
-data modify storage slimecore:_ v.build.eval_order.in.initial set from storage slimecore:_ v.build.store.initial_entrypoint_order
-data modify storage slimecore:_ v.build.eval_order.in.befores set from storage slimecore:_ v.build.maps.entrypoint_befores
-data modify storage slimecore:_ v.build.eval_order.in.error_key set value "entrypoint_order_cycles"
-function slimecore:_/impl/eval/build/initial_order/do
-data modify storage slimecore:_ v.build.store.initial_preload_order set from storage slimecore:_ v.build.initial_order.out
+data modify storage slimecore:_ v.build.entrypoint_order set value {in:{initial:[], befores:{}, error_key:""}, out:[]}
+data modify storage slimecore:_ v.build.entrypoint_order.in.initial set from storage slimecore:_ v.build.initial_orders.normal
+data modify storage slimecore:_ v.build.entrypoint_order.in.befores set from storage slimecore:_ v.build.maps.entrypoint_befores
+data modify storage slimecore:_ v.build.entrypoint_order.in.error_key set value "entrypoint_order_conflicts"
+function slimecore:_/impl/eval/build/entrypoint_order/do
