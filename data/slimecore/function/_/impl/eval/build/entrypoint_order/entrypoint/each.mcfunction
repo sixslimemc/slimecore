@@ -14,6 +14,7 @@ execute if data storage slimecore:_ v.build.order[0] run function slimecore:_/im
 
 # insert into out order:
 data modify storage slimecore:_ x.mline set value {1:"data modify storage slimecore:_ v.build.entrypoint_order.out insert ", 2:true, 3:" from storage slimecore:_ v.build.this_entrypoint"}
+execute store result storage slimecore:_ x.mline.2 int 1 run scoreboard players get *build.insert_index _slimecore
 function slimecore:_/util/mline/3 with storage slimecore:_ x.mline
 
 # check/handle conflicts:
