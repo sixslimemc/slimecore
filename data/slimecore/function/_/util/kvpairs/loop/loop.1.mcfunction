@@ -11,6 +11,7 @@ execute unless data storage slimecore:_ u.kvpairs{char:":"} run return run score
 # get {..entry.key} and {..entry.value}
 $data modify storage slimecore:_ u.kvpairs.entry.key set string storage slimecore:_ u.kvpairs.string $(start) $(end)
 data modify storage slimecore:_ x set value {1:"data modify storage slimecore:_ u.kvpairs.entry.value set from storage slimecore:_/in kvpairs.map.", 2:true}
+data modify storage slimecore:_ x.2 set from storage slimecore:_ u.kvpairs.entry.key
 function slimecore:_/util/mline/2 with storage slimecore:_ x
 
 data modify storage slimecore:_/out kvpairs.result append from storage slimecore:_ u.kvpairs.entry
