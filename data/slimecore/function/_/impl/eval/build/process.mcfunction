@@ -16,6 +16,9 @@ data modify storage slimecore:_ v.build.maps.impls set value {}
 data modify storage slimecore:_ v.build.maps.entrypoint_befores set value {}
 data modify storage slimecore:_ v.build.maps.preload_befores set value {}
 
+# (pack id) => {<pack ids...>: true}
+data modify storage slimecore:_ v.build.maps.load_afters set value {}
+
 # (source pack id) => (entrypoint id) => [EntrypointReference<T>] (packs that should be added to 'before', found through 'after' relations)
 data modify storage slimecore:_ v.build.maps.entrypoint_after_cache set value {}
 data modify storage slimecore:_ v.build.maps.preload_after_cache set value {}
@@ -44,6 +47,7 @@ execute if score *build.error _slimecore matches 1 run return 0
 
 # pass 3:
 #- check dependency cycles
+#- populate {..maps.load_afters}
 data modify storage slimecore:_ v.build.eval_seen set value {}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:_/in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_3/each
@@ -79,12 +83,25 @@ data modify storage slimecore:_ v.build.entrypoint_order.in.initial set from sto
 data modify storage slimecore:_ v.build.entrypoint_order.in.befores set from storage slimecore:_ v.build.maps.entrypoint_befores
 data modify storage slimecore:_ v.build.entrypoint_order.in.error_key set value "entrypoint_order_conflicts"
 function slimecore:_/impl/eval/build/entrypoint_order/do
+data modify storage slimecore:_ v.build.final_order.entrypoints set from storage slimecore:_ v.build.entrypoint_order.out
 
 data modify storage slimecore:_ v.build.entrypoint_order set value {in:{initial:[], befores:{}, error_key:""}, out:[]}
 data modify storage slimecore:_ v.build.entrypoint_order.in.initial set from storage slimecore:_ v.build.initial_orders.preload
 data modify storage slimecore:_ v.build.entrypoint_order.in.befores set from storage slimecore:_ v.build.maps.preload_befores
 data modify storage slimecore:_ v.build.entrypoint_order.in.error_key set value "preload_entrypoint_order_conflicts"
 function slimecore:_/impl/eval/build/entrypoint_order/do
+data modify storage slimecore:_ v.build.final_order.preloads set from storage slimecore:_ v.build.entrypoint_order.out
 
+# final error check:
 execute if score *build.error _slimecore matches 1 run return 0
 
+# : success if reached
+
+data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.packs
+function slimecore:_/util/kvpairs/main
+data modify storage slimecore:_ v.build.loads set value []
+data modify storage slimecore:_ v.build.loads append from storage slimecore:_/out kvpairs.result[].value
+
+scoreboard players set *build.order_count _slimecore 1
+data modify storage slimecore:_ v.build.final_order.load set value []
+execute if data storage slimecore:_ v.build.loads[0] run function slimecore:_/impl/eval/build/pass_load/each
