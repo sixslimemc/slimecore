@@ -1,0 +1,20 @@
+use ::slimecore::mcdoc::def::Version
+use ::slimecore::mcdoc::def::VersionRequirement
+
+
+inject struct ::slimecore::mcdoc::api::In {
+    version_req: struct In {
+        version: Version,
+        requirement: VersionRequirement,
+    }
+}
+
+inject struct ::slimecore::mcdoc::api::Out {
+    version_req: struct Out {
+        result: EvalResult<true, Error>
+    }
+}
+
+struct Error {
+    // TODO
+}

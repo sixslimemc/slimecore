@@ -93,8 +93,13 @@ struct BuildInfo {
         }]
     },
     aux: struct {
-        packmap: struct {
+        pack_map: struct {
             [PackId]: PackManifest
+        },
+        impl_map: struct {
+            [PackId]: struct {
+                [AbstractId]: PackManifest
+            }
         }
     }
 }

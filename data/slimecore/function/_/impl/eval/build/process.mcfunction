@@ -74,7 +74,7 @@ function slimecore:_/util/kvpairs/main
 data modify storage slimecore:_ v.build.initial_orders.preload set value []
 data modify storage slimecore:_ v.build.initial_orders.preload append from storage slimecore:_/out kvpairs.result[].value
 
-# evaluate actual entrypoint orders:
+# evaluate final entrypoint orders:
 #- check entrypoint order conflicts
 #- check preload entrypoint order conflicts
 # out : EntrypointReference<T>
@@ -97,11 +97,18 @@ execute if score *build.error _slimecore matches 1 run return 0
 
 # : success if reached
 
+# initial load order:
 data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.packs
 function slimecore:_/util/kvpairs/main
 data modify storage slimecore:_ v.build.loads set value []
 data modify storage slimecore:_ v.build.loads append from storage slimecore:_/out kvpairs.result[].value
 
-scoreboard players set *build.order_count _slimecore 1
-data modify storage slimecore:_ v.build.final_order.load set value []
+# evaluate final load order:
+scoreboard players set *build.order_count _slimecore 0
+data modify storage slimecore:_ v.build.final_order.loads set value []
 execute if data storage slimecore:_ v.build.loads[0] run function slimecore:_/impl/eval/build/pass_load/each
+
+# finalize data:
+function slimecore:_/impl/eval/build/finalize/do
+
+return 1

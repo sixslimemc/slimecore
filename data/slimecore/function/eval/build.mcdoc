@@ -1,0 +1,60 @@
+use ::slimecore::mcdoc::def::BuildInfo
+use ::slimecore::mcdoc::def::EvalResult
+use ::slimecore::mcdoc::def::PackManifest
+use ::slimecore::mcdoc::def::PackId
+use ::slimecore::mcdoc::def::AbstractReference
+use ::slimecore::mcdoc::def::PackReference
+use ::slimecore::mcdoc::def::Dependency
+use ::slimecore::mcdoc::def::AuthorId
+use ::slimecore::mcdoc::def::EntrypointReference
+use ::slimecore::mcdoc::def::EntrypointId
+use ::slimecore::mcdoc::def::PreloadEntrypointId
+
+inject struct ::slimecore::mcdoc::api::In {
+    build: struct In {
+        packs: [(PackManifest | any)]
+    }
+}
+
+inject struct ::slimecore::mcdoc::api::Out {
+    build: struct Out {
+        result: EvalResult<BuildInfo, Error>
+    }
+}
+
+type EntrypointOrderConflictInfo<T> = struct {
+    conflicting_group: [EntrypointReference<T>],
+}
+
+struct Error {
+    invalid_packs?: [struct InvalidPackInfo {
+        pack: (PackManifest | any),
+        error: super::pack::Error,
+    }],
+    duplicate_pack_ids?: [struct DuplicatePackIdInfo {
+        pack_id: PackId,
+        packs: [PackManifest],
+    }],
+    multiple_implementations?: [struct MultipleImplementationInfo {
+        of: AbstractReference,
+        sources: [PackReference],
+    }],
+    unfulfilled_dependencies?: [struct UnfulfilledDependencyInfo {
+        from: PackId,
+        dependency: Dependency,
+        reason: struct {
+            not_present?: PackId,
+            incompatible_version?: super::version_req::Error,
+            author_mismatch?: struct {
+                expected: AuthorId,
+                got: AuthorId,
+            },
+        },
+    }],
+    unimplemented_abstracts?: [AbstractReference],
+    dependency_cycles?: [struct DependencyCycleInfo {
+        cycle: [PackReference],
+    }],
+    entrypoint_order_conflicts?: [EntrypointOrderConflictInfo<EntrypointId>],
+    preload_entrypoint_order_conflicts?: [EntrypointOrderConflictInfo<PreloadEntrypointId>],
+}
