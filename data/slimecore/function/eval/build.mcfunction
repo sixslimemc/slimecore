@@ -14,6 +14,8 @@
 #       }}]
 #   unimplemented_abstracts?: [{from: PackId, id: AbstractId}]
 #   dependency_cycles?: [[PackReference]]
+#   entrypoint_order_conflicts?: [{involving:[EntrypointReference<EntrypointId>]]
+#   preload_entrypoint_order_conflicts?: [{involving:[EntrypointReference<PreloadEntrypointId>]]
 #   TODO
 # }>
 #--------------------

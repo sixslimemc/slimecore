@@ -2,7 +2,7 @@ type PackId = #[matches_regex="^(?!minecraft$)(?!slimecore$)[a-z0-9-]{1,64}$"] s
 type PackUrl = string
 type ExternalLink = string
 type IdFormat = #[matches_regex="^[a-z0-9-]{1,64}$"] string
-type AuthorId = #[matches_regex="^(?!sixslime$)[a-z0-9-]{1,64}$"] string
+type AuthorId = IdFormat
 type AbstractId = IdFormat
 type EntrypointId = IdFormat
 type PreloadEntrypointId = IdFormat
