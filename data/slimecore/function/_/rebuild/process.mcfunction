@@ -7,6 +7,9 @@
 data modify storage slimecore:_ data.packs set value []
 scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest
+# DEBUG
+function slimecore:_/test_manifests
+
 scoreboard players set *manifest_time _slimecore 0
 
 # DEBUG:
