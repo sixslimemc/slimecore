@@ -16,6 +16,7 @@ tellraw @a ["THIS: ", {'storage':'slimecore:_', 'nbt':'v.build.this_dep'}]
 
 data modify storage slimecore:_ v.build.evalstack append value {iter:[]}
 data modify storage slimecore:_ v.build.depstack append from storage slimecore:_ v.build.this_dep
+tellraw @a ["STACKO: ", {'storage':'slimecore:_', 'nbt':'v.build.depstack'}]
 
 $data modify storage slimecore:_ v.build.evalstack[-1].iter set from storage slimecore:_ v.build.maps.packs.'$(pack_ref)'.dependencies
 execute if data storage slimecore:_ v.build.evalstack[-1].iter[0] run function slimecore:_/impl/eval/build/pass_3/deps/each
