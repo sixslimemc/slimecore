@@ -38,7 +38,7 @@ data modify storage slimecore:_ v.build.packs set from storage slimecore:in buil
 data modify storage slimecore:_ x.debug set value []
 data modify storage slimecore:_ x.debug append from storage slimecore:_ v.build.packs[].pack_id
 # DEBUG:
-tellraw @a ["packs: ", {'storage':'slimecore:_', 'nbt':'v.build.packs'}]
+tellraw @a ["packs: ", {'storage':'slimecore:_', 'nbt':'x.debug'}]
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_1/each
 execute if score *build.error _slimecore matches 1 run return 0
 
