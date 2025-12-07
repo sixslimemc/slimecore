@@ -4,23 +4,15 @@
 # -/rebuild
 #--------------------
 
+# reset incase build interrupted:
 data remove storage slimecore:_ var.rebuild
 
-# set gamerules:
+# set gamerule overrides and store {..gamerules}
 function slimecore:_/rebuild/set_gamerules with storage slimecore:config build_time_gamerules
 
-# gather manifests:
-data modify storage slimecore:_ data.packs set value []
-scoreboard players set *manifest_time _slimecore 1
-function #slimecore:manifest
-scoreboard players set *manifest_time _slimecore 0
+function slimecore:_/rebuild/process
 
-# evaluate build:
-data modify storage slimecore:in build.packs set from storage slimecore:_ data.packs
-execute store result score *x _slimecore run function slimecore:eval/build
+# restore gamerules:
+function slimecore:_/rebuild/set_gamerules with storage slimecore:_ var.rebuild.gamerules
 
-# DEBUG / TODO: proper hook
-execute if score *x _slimecore matches 0 run tellraw @a {text:"[ BUILD ERROR ]", color: dark_red}
-execute if score *x _slimecore matches 0 run tellraw @a {storage:"slimecore:out", nbt:"build.result.error", color: red}
-execute if score *x _slimecore matches 0 run return 0
-
+data remove storage slimecore:_ var.rebuild
