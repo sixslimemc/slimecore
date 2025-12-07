@@ -1,6 +1,7 @@
 # IMPL > slimecore:eval/build
 # pass_4/entrypoints/befores/each.1
 
+say hi
 $data modify storage slimecore:_ v.build.evalout.'$(target_pack_id)'.'$(target_id)' set value true
 data modify storage slimecore:_ v.build.evalout merge from storage slimecore:_ v.build.eval[-1].merging
 $data modify storage slimecore:_ v.build.maps.'$(map_key)'.'$(source_pack_id)'.'$(source_id)' set from storage slimecore:_ v.build.evalout
