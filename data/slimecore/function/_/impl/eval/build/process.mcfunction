@@ -66,7 +66,7 @@ execute if score *build.error _slimecore matches 1 run return 0
 # ~ note that this will be the reverse of actual initial order.
 data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.entrypoint_initial_order
 function slimecore:_/util/kvpairs/main
-data modify storage slimecore:_ v.build.initial_orders.noraml set value []
+data modify storage slimecore:_ v.build.initial_orders.normal set value []
 data modify storage slimecore:_ v.build.initial_orders.normal append from storage slimecore:_/out kvpairs.result[].value
 
 data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.preload_initial_order
