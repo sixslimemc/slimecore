@@ -53,7 +53,7 @@ data modify storage slimecore:in manifest.pack.entrypoints append value {id:"b2"
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"b3"}
 data modify storage slimecore:in manifest.pack.preload_entrypoints set value []
 data modify storage slimecore:in manifest.pack.abstract_declarations set value ["b-1"]
-data modify storage slimecore:in manifest.pack.abstract_implementations set value []
+data modify storage slimecore:in manifest.pack.abstract_implementations set value [{pack_ref:"a", id:"a-1"}]
 
 data modify storage slimecore:in manifest.pack.dependencies set value []
 data modify storage slimecore:in manifest.pack.dependencies append value {pack_id:"a", author_id:"sixslime"}
