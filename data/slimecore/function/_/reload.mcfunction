@@ -1,6 +1,9 @@
 #> slimecore:_/reload
 # MINECRAFT : LOAD
 
+# if building, ignore reload and continue building:
+execute if score *building _slimecore matches 1.. run return run function slimecore:_/build/continue
+
 # setup:
 scoreboard objectives add _slimecore dummy
 
@@ -11,8 +14,8 @@ scoreboard players reset *init _slimecore
 execute unless score *init _slimecore matches 1 run function slimecore:_/init
 scoreboard players set *init _slimecore 1
 
-# gather manifests:
-data modify storage slimecore:_ data.packs set value []
-scoreboard players set *manifest_time _slimecore 1
-function #slimecore:manifest
-scoreboard players set *manifest_time _slimecore 0
+# if manual rebuild is forced, load and return:
+execute if data storage slimecore:config {force_manual_rebuild:true} run return run function slimecore:_/load/main
+
+# rebuild:
+function slimecore:_/build/main
