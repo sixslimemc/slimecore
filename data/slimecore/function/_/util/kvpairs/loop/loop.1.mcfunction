@@ -20,6 +20,8 @@ data modify storage slimecore:_/out kvpairs.result append from storage slimecore
 
 # move 'end' forward the length of the value:
 data modify entity @s text set value {storage:"slimecore:_", nbt:"u.kvpairs.entry.value"}
+# DEBUG:
+tellraw @a ["TEXT VALUE: ", {'entity':'@s', 'nbt':'text'}]
 execute store result score *x _slimecore run data get entity @s text
 scoreboard players operation *kvpairs.end _slimecore += *x _slimecore
 
