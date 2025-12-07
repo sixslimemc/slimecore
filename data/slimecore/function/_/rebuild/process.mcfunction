@@ -23,9 +23,6 @@ execute if score *x _slimecore matches 0 run return 0
 
 # DEBUG
 tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
-tellraw @a {storage:"slimecore:out", nbt:"build.result.success", color: green}
+tellraw @a {storage:"slimecore:out", nbt:"build.result.success.order", color: green}
 
 data modify storage slimecore:data build set from storage slimecore:out build.result.success
-
-# TODO
-#- entrypoint ordering dont work
