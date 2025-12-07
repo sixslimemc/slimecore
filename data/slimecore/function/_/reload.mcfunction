@@ -2,7 +2,7 @@
 # MINECRAFT : LOAD
 
 # if building, ignore reload and continue building:
-execute if score *building _slimecore matches 1.. run return run function slimecore:_/build/continue
+execute if score *building _slimecore matches 1.. run return run function slimecore:_/rebuild/continue
 
 # setup:
 scoreboard objectives add _slimecore dummy
@@ -18,4 +18,4 @@ scoreboard players set *init _slimecore 1
 execute if data storage slimecore:config {force_manual_rebuild:true} run return run function slimecore:_/load/main
 
 # rebuild:
-function slimecore:_/build/main
+function slimecore:_/rebuild/main
