@@ -87,7 +87,7 @@ data modify storage slimecore:_ v.build.entrypoint_order.in.error_key set value 
 function slimecore:_/impl/eval/build/entrypoint_order/do
 data modify storage slimecore:_ v.build.final_order.entrypoints set from storage slimecore:_ v.build.entrypoint_order.out
 
-tellraw @a ["FINAL: ", {'storage':'slimecore:_', 'nbt':'v.build.final_orders'}]
+tellraw @a ["FINAL: ", {'storage':'slimecore:_', 'nbt':'v.build.final_order'}]
 
 
 data modify storage slimecore:_ v.build.entrypoint_order set value {in:{initial:[], befores:{}, error_key:""}, out:[]}
