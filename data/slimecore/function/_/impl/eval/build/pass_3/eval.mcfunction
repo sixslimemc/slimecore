@@ -8,6 +8,10 @@ $data modify storage slimecore:_ v.build.this_dep set value {pack_ref:'$(pack_re
 
 $execute if data storage slimecore:_ v.build.depstack[{pack_ref:'$(pack_ref)'}] run return run function slimecore:_/impl/eval/build/pass_3/cycle_found
 
+# DEBUG:
+tellraw @a ["STACK: ", {'storage':'slimecore:_', 'nbt':'v.build.depstack'}]
+tellraw @a ["THIS: ", {'storage':'slimecore:_', 'nbt':'v.build.this_dep'}]
+
 # must continue through full function from here onward
 
 data modify storage slimecore:_ v.build.evalstack append value {iter:[]}
