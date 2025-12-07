@@ -21,5 +21,7 @@ execute if score *x _slimecore matches 0 run tellraw @a {storage:"slimecore:out"
 execute if score *x _slimecore matches 0 run return 0
 
 # DEBUG
-execute if score *x _slimecore matches 1 run tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
-execute if score *x _slimecore matches 1 run tellraw @a {storage:"slimecore:out", nbt:"build.result.success", color: green}
+tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
+tellraw @a {storage:"slimecore:out", nbt:"build.result.success", color: green}
+
+data modify storage slimecore:data build set from storage slimecore:out build.result.success
