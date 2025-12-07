@@ -37,7 +37,7 @@ data modify storage slimecore:_ v.build.maps.preload_initial_order set value {}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:in build.packs
 data modify storage slimecore:_ x.debug set value []
 data modify storage slimecore:_ x.debug append from storage slimecore:_ v.build.packs[].pack_id
-execute store result storage slimecore:_ x.debug int 1 run data get storage slimecore:_ v.build.packs[]
+execute store result storage slimecore:_ x.debug int 1 if data storage slimecore:_ v.build.packs[]
 # DEBUG:
 tellraw @a ["packs: ", {'storage':'slimecore:_', 'nbt':'x.debug'}]
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_1/each
