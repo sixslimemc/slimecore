@@ -16,10 +16,6 @@ execute if data storage slimecore:_ v.build.eval[-1].declares[0] run function sl
 # populate 'after' relationship {..befores}
 $data modify storage slimecore:_ v.build.eval[-1].befores append from storage slimecore:_ v.build.maps.'$(map_aftercache)'.'$(pack_ref)'.'$(id)'[]
 
-# DEBUG:
-tellraw @a ["E: ", {'storage':'slimecore:_', 'nbt':'v.build.evalin[-1]'}]
-tellraw @a ["BEFORE: ", {'storage':'slimecore:_', 'nbt':'v.build.eval[-1].befores'}]
-
 $data modify storage slimecore:_ v.build.maps.'$(map_key)'.'$(pack_ref)'.'$(id)' set value {}
 execute if data storage slimecore:_ v.build.eval[-1].befores[0] run function slimecore:_/impl/eval/build/pass_4/entrypoints/befores/each
 
