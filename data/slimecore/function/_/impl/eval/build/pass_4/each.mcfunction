@@ -25,4 +25,4 @@ data modify storage slimecore:_ v.build.entrypoints set from storage slimecore:_
 execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecore:_/impl/eval/build/pass_4/entrypoints/each
 
 data remove storage slimecore:_ v.build.packs[-1]
-execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_3/each
+execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_4/each
