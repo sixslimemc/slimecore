@@ -25,3 +25,6 @@ tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
 tellraw @a {storage:"slimecore:out", nbt:"build.result.success", color: green}
 
 data modify storage slimecore:data build set from storage slimecore:out build.result.success
+
+# TODO
+#- entrypoint ordering dont work
