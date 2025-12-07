@@ -5,7 +5,6 @@
 #--------------------
 # right-to-left iteration of declares
 
-say hi
 data modify storage slimecore:_ v.build.eval[-1].this_declare set from storage slimecore:_ v.build.eval[-1].declares[-1]
 
 data modify storage slimecore:_ x.compare_id set from storage slimecore:_ v.build.eval[-1].this_declare.id
