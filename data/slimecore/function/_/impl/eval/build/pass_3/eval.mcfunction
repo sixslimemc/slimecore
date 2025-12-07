@@ -1,17 +1,12 @@
 # IMPL > slimecore:eval/build
 # pass_3/eval
 
-# DEBUG:
-tellraw @a ["STACK: ", {'storage':'slimecore:_', 'nbt':'v.build.depstack'}]
-
 $execute if data storage slimecore:_ v.build.depstack[{pack_ref:'$(pack_ref)'}] run return run function slimecore:_/impl/eval/build/pass_3/cycle_found
 
 $execute store success score *x _slimecore run data modify storage slimecore:_ v.build.eval_seen.'$(pack_ref)' set value true
 execute if score *x _slimecore matches 0 run return 0
 
 $data modify storage slimecore:_ v.build.this_dep set value {pack_ref:'$(pack_ref)'}
-
-tellraw @a ["THIS: ", {'storage':'slimecore:_', 'nbt':'v.build.this_dep'}]
 
 # must continue through full function from here onward
 
