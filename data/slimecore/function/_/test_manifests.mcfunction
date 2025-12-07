@@ -26,7 +26,7 @@ function slimecore:api/manifest
 
 data modify storage slimecore:in manifest.pack set value {}
 
-data modify storage slimecore:in manifest.pack.pack_id set value "a"
+data modify storage slimecore:in manifest.pack.pack_id set value "b"
 data modify storage slimecore:in manifest.pack.author_id set value "sixslime"
 data modify storage slimecore:in manifest.pack.version set value {major:0, minor:1, patch:0}
 data modify storage slimecore:in manifest.pack.url set value "TODO"
