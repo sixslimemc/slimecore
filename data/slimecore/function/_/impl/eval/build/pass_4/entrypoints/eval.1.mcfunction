@@ -4,7 +4,6 @@
 $data modify storage slimecore:_ v.build.eval[-1].out set from storage slimecore:_ v.build.maps.'$(map_key)'.'$(pack_ref)'.'$(id)'
 execute if data storage slimecore:_ v.build.eval[-1].out run return 0
 data modify storage slimecore:_ v.build.eval[-1].out set value {}
-$say eval $(pack_ref) $(id)
 
 # contains {pack_ref:PackId, id: EntrypointId | PreloadEntrypointId}
 data modify storage slimecore:_ v.build.eval[-1].befores set value []
