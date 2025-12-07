@@ -14,8 +14,8 @@ data modify storage slimecore:in manifest.pack.display.links.author set value "h
 data modify storage slimecore:in manifest.pack.display.links.info set value "https://github.com/sixslimemc/six"
 data modify storage slimecore:in manifest.pack.entrypoints set value []
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a1"}
-data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a2"}
-data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a3", before:[{pack_ref:"six", id:"tick"}]}
+data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a2", before:[{pack_ref:"six", id:"tick"}]}
+data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a3"}
 data modify storage slimecore:in manifest.pack.preload_entrypoints set value []
 data modify storage slimecore:in manifest.pack.abstract_declarations set value []
 data modify storage slimecore:in manifest.pack.abstract_implementations set value []
