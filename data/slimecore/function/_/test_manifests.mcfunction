@@ -102,6 +102,7 @@ data modify storage slimecore:in manifest.pack.preload_entrypoints set value []
 data modify storage slimecore:in manifest.pack.abstract_declarations set value []
 
 data modify storage slimecore:in manifest.pack.abstract_implementations set value []
+data modify storage slimecore:in manifest.pack.abstract_implementations append value {pack_ref:"a", id:"a-1"}
 data modify storage slimecore:in manifest.pack.abstract_implementations append value {pack_ref:"a", id:"a-2"}
 data modify storage slimecore:in manifest.pack.abstract_implementations append value {pack_ref:"b", id:"b-1"}
 
