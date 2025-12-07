@@ -6,6 +6,8 @@
 
 data modify storage slimecore:_ v.build.this_entrypoint set from storage slimecore:_ v.build.entrypoints[-1]
 
+# DEBUG:
+tellraw @a ["ENTRYPOINT: ", {'storage':'slimecore:_', 'nbt':'v.build.this_entrypoint'}]
 # populate initial order map:
 data modify storage slimecore:_ x.mline set value {1:"data modify storage slimecore:_ v.build.maps.'", 2:true, 3:"'.'", 4:true, 5:";", 6:true, 7:"' set from storage slimecore:_ x.mline.entry"}
 data modify storage slimecore:_ x.mline.2 set from storage slimecore:_ v.build.map_initial_order
