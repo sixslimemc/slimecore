@@ -1,5 +1,9 @@
+use ::slimecore::mcdoc::def::PackManifest
 
 dispatch minecraft:storage[slimecore:_] to struct {
+    data: struct {
+        packs: [(#[canonical] PackManifest | any)]
+    },
     [any]: any
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {

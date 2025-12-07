@@ -2,6 +2,6 @@ use ::slimecore::mcdoc::def::PackManifest
 
 inject struct ::slimecore::mcdoc::api::In {
     manifest: struct In {
-        pack: PackManifest
+        pack: (#[canonical] PackManifest | any)
     }
 }

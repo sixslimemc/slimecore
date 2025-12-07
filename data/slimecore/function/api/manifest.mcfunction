@@ -1,14 +1,13 @@
 #> slimecore : api/manifest
 #--------------------
-# -> pack: PackManifest
+# -> pack: (PackManifest | any)
 #--------------------
 # ...
 #--------------------
 # TODO: description
 #--------------------
 # 1: success.
-# 0: <pack> is not a valid PackManifest.
-# -1: this function was called outside of manifest-time.
+# 0: this function was called outside of manifest-time.
 #--------------------
 
 data remove storage slimecore:out manifest

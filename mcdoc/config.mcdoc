@@ -20,5 +20,9 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
         /// Can cause build process to fail if set too low.
         /// Default: 2147483647
         max_command_sequence_length: int @ 1..,
-    }
+    },
+    /// Only rebuild when running 'slimecore:-/rebuild', not on /reload.
+    /// Default: false
+    force_manual_rebuild: boolean
+
 }
