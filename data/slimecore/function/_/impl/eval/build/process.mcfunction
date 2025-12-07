@@ -59,11 +59,9 @@ execute if score *build.error _slimecore matches 1 run return 0
 #- populate {..maps.entrypoint_initial_order}
 #- populate {..maps.preload_initial_order}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:in build.packs
-execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_2/each
+execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_4/each
 execute if score *build.error _slimecore matches 1 run return 0
 
-# DEBUG:
-tellraw @a ["E: ", {'storage':'slimecore:_', 'nbt':'v.build.maps.entrypoint_initial_order'}]
 # get initial entrypoint orders (based off built-in string key ordering):
 # ~ note that this will be the reverse of actual initial order.
 data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.entrypoint_initial_order
