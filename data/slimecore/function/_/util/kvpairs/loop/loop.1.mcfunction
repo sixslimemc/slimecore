@@ -3,6 +3,8 @@
 
 $data modify storage slimecore:_ u.kvpairs.char set string storage slimecore:_ u.kvpairs.string $(end) $(i)
 
+# DEBUG:
+tellraw @a ["CHAR: ", {'storage':'slimecore:_', 'nbt':'u.kvpairs.char'}]
 # return if not ':'
 execute unless data storage slimecore:_ u.kvpairs{char:":"} run return run scoreboard players add *kvpairs.end _slimecore 1
 

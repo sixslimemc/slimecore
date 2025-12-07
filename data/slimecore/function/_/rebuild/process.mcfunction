@@ -12,8 +12,6 @@ function slimecore:_/test_manifests
 
 scoreboard players set *manifest_time _slimecore 0
 
-# DEBUG:
-tellraw @a ["", {'storage':'slimecore:_', 'nbt':'data.packs'}]
 # evaluate build:
 data modify storage slimecore:in build.packs set from storage slimecore:_ data.packs
 execute store result score *x _slimecore run function slimecore:eval/build
