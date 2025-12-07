@@ -9,7 +9,7 @@
 # -> pack_ref
 
 # OUT {..evalout} => {..maps.<pack_ref>.<id>} entry
-
+say hi
 data remove storage slimecore:_ v.build.evalout
 data modify storage slimecore:_ v.build.eval append value {}
 
