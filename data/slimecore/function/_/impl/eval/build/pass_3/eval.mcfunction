@@ -11,9 +11,6 @@ execute if score *x _slimecore matches 0 run return 0
 
 $data modify storage slimecore:_ v.build.this_dep set value {pack_ref:'$(pack_ref)'}
 
-
-
-
 tellraw @a ["THIS: ", {'storage':'slimecore:_', 'nbt':'v.build.this_dep'}]
 
 # must continue through full function from here onward

@@ -1,6 +1,7 @@
 # IMPL > slimecore:eval/build
 # pass_3/deps/each
 
+say hi
 function slimecore:_/impl/eval/build/pass_3/eval with storage slimecore:_ v.build.evalstack[-1].iter[-1]
 
 data modify storage slimecore:_ x.parent_id set from storage slimecore:_ v.build.depstack[-1].pack_ref
