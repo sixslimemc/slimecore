@@ -13,4 +13,4 @@ function slimecore:_/util/mline/3 with storage slimecore:_ x.mline
 
 scoreboard players add *build.index _slimecore 1
 data remove storage slimecore:_ v.build.entrypoints[0]
-execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecore:_/impl/eval/build/finalize/load_order/each
+execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecore:_/impl/eval/build/finalize/entrypoint_order/each
