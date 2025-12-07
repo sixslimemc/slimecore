@@ -73,3 +73,5 @@ data modify storage slimecore:in manifest.pack.dependencies[-1].download.version
 data modify storage slimecore:in manifest.pack.is_library set value false
 
 function slimecore:api/manifest
+
+# TODO / LEFTOFF: dependency cycles are not detected!
