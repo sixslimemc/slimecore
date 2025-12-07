@@ -16,8 +16,13 @@ data modify storage slimecore:in manifest.pack.entrypoints set value []
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a1"}
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a2"}
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"a3"}
+
 data modify storage slimecore:in manifest.pack.preload_entrypoints set value []
-data modify storage slimecore:in manifest.pack.abstract_declarations set value ["a-1", "a-2"]
+
+data modify storage slimecore:in manifest.pack.abstract_declarations set value []
+data modify storage slimecore:in manifest.pack.abstract_declarations append value "a-1"
+data modify storage slimecore:in manifest.pack.abstract_declarations append value "a-2"
+
 data modify storage slimecore:in manifest.pack.abstract_implementations set value []
 
 data modify storage slimecore:in manifest.pack.dependencies set value []
@@ -47,13 +52,19 @@ data modify storage slimecore:in manifest.pack.display.author_name set value "Si
 
 data modify storage slimecore:in manifest.pack.display.links.author set value "https://github.com/sixslimemc"
 data modify storage slimecore:in manifest.pack.display.links.info set value "https://github.com/sixslimemc/six"
+
 data modify storage slimecore:in manifest.pack.entrypoints set value []
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"b1", after:[{pack_ref:"a", id:"a1"}]}
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"b2", after:[{pack_ref:"a", id:"a2"}, {pack_ref:"a", id:"a3"}]}
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"b3"}
+
 data modify storage slimecore:in manifest.pack.preload_entrypoints set value []
-data modify storage slimecore:in manifest.pack.abstract_declarations set value ["b-1"]
-data modify storage slimecore:in manifest.pack.abstract_implementations set value [{pack_ref:"a", id:"a-1"}]
+
+data modify storage slimecore:in manifest.pack.abstract_declarations set value []
+data modify storage slimecore:in manifest.pack.abstract_declarations append value "b-1"
+
+data modify storage slimecore:in manifest.pack.abstract_implementations set value []
+data modify storage slimecore:in manifest.pack.abstract_implementations append value {pack_ref:"a", id:"a-1"}
 
 data modify storage slimecore:in manifest.pack.dependencies set value []
 data modify storage slimecore:in manifest.pack.dependencies append value {pack_id:"a", author_id:"sixslime"}
@@ -85,9 +96,14 @@ data modify storage slimecore:in manifest.pack.entrypoints set value []
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"c1"}
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"c2"}
 data modify storage slimecore:in manifest.pack.entrypoints append value {id:"c3"}
+
 data modify storage slimecore:in manifest.pack.preload_entrypoints set value []
+
 data modify storage slimecore:in manifest.pack.abstract_declarations set value []
+
 data modify storage slimecore:in manifest.pack.abstract_implementations set value []
+data modify storage slimecore:in manifest.pack.abstract_implementations append value {pack_ref:"a", id:"a-2"}
+data modify storage slimecore:in manifest.pack.abstract_implementations append value {pack_ref:"b", id:"b-1"}
 
 data modify storage slimecore:in manifest.pack.dependencies set value []
 data modify storage slimecore:in manifest.pack.dependencies append value {pack_id:"a", author_id:"sixslime"}
