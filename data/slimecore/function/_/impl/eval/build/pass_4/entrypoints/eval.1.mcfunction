@@ -18,6 +18,8 @@ $data modify storage slimecore:_ v.build.eval[-1].befores append from storage sl
 # DEBUG:
 tellraw @a ["E: ", {'storage':'slimecore:_', 'nbt':'v.build.evalin[-1]'}]
 tellraw @a ["BEFORE: ", {'storage':'slimecore:_', 'nbt':'v.build.eval[-1].befores'}]
+
+$data modify storage slimecore:_ v.build.maps.'$(map_key)'.'$(pack_ref)'.'$(id)' set value {}
 execute if data storage slimecore:_ v.build.eval[-1].befores[0] run function slimecore:_/impl/eval/build/pass_4/entrypoints/befores/each
 
 return 1
