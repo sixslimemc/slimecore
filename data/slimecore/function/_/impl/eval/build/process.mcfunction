@@ -75,8 +75,6 @@ function slimecore:_/util/kvpairs/main
 data modify storage slimecore:_ v.build.initial_orders.preload set value []
 data modify storage slimecore:_ v.build.initial_orders.preload append from storage slimecore:_/out kvpairs.result[].value
 
-# DEBUG:
-tellraw @a ["INITIAL: ", {'storage':'slimecore:_', 'nbt':'v.build.initial_orders'}]
 # evaluate final entrypoint orders:
 #- check entrypoint order conflicts
 #- check preload entrypoint order conflicts
@@ -87,9 +85,6 @@ data modify storage slimecore:_ v.build.entrypoint_order.in.befores set from sto
 data modify storage slimecore:_ v.build.entrypoint_order.in.error_key set value "entrypoint_order_conflicts"
 function slimecore:_/impl/eval/build/entrypoint_order/do
 data modify storage slimecore:_ v.build.final_order.entrypoints set from storage slimecore:_ v.build.entrypoint_order.out
-
-tellraw @a ["FINAL: ", {'storage':'slimecore:_', 'nbt':'v.build.final_order'}]
-
 
 data modify storage slimecore:_ v.build.entrypoint_order set value {in:{initial:[], befores:{}, error_key:""}, out:[]}
 data modify storage slimecore:_ v.build.entrypoint_order.in.initial set from storage slimecore:_ v.build.initial_orders.preload
