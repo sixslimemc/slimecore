@@ -46,7 +46,7 @@ data modify storage slimecore:in manifest.pack.abstract_declarations set value [
 data modify storage slimecore:in manifest.pack.abstract_implementations set value []
 
 data modify storage slimecore:in manifest.pack.dependencies set value []
-data modify storage slimecore:in manifest.pack.dependencies append value {pack_id:"a", author_id:"sixslime"}
+data modify storage slimecore:in manifest.pack.dependencies append value {pack_id:"six", author_id:"sixslime"}
 data modify storage slimecore:in manifest.pack.dependencies[-1].optional set value false
 data modify storage slimecore:in manifest.pack.dependencies[-1].version set value {major:0, minor:1}
 data modify storage slimecore:in manifest.pack.dependencies[-1].download.url set value "TODO"
