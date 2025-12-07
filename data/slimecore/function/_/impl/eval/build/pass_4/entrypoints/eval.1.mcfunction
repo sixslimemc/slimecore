@@ -3,6 +3,7 @@
 
 $data modify storage slimecore:_ v.build.evalout set from storage slimecore:_ v.build.maps.'$(map_key)'.'$(pack_ref)'.'$(id)'
 execute if data storage slimecore:_ v.build.evalout run return 0
+data modify storage slimecore:_ v.build.evalout set value {}
 $say eval $(pack_ref) $(id)
 
 # contains {pack_ref:PackId, id: EntrypointId | PreloadEntrypointId}
