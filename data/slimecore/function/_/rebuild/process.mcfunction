@@ -16,13 +16,16 @@ scoreboard players set *manifest_time _slimecore 0
 data modify storage slimecore:in build.packs set from storage slimecore:_ data.packs
 execute store result score *x _slimecore run function slimecore:eval/build
 
-# DEBUG / TODO: proper hook
+# DEBUG / HOOK
 execute if score *x _slimecore matches 0 run tellraw @a {text:"[ BUILD ERROR ]", color: dark_red}
 execute if score *x _slimecore matches 0 run tellraw @a {storage:"slimecore:out", nbt:"build.result.error", color: red}
 execute if score *x _slimecore matches 0 run return 0
 
-# DEBUG
+# DEBUG / HOOK
 tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
 tellraw @a {storage:"slimecore:out", nbt:"build.result.success.order", color: green}
 
-data modify storage slimecore:data build set from storage slimecore:out build.result.success
+data modify storage slimecore:_ var.rebuild.build set from storage slimecore:out build.result.success
+
+# unload old build datapacks:
+data modify storage slimecore:_ var.rebuild.old_links set from storage slimecore:data world.datapack_links

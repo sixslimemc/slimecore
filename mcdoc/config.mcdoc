@@ -23,6 +23,6 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
     },
     /// Only rebuild when running 'slimecore:-/rebuild', not on /reload.
     /// Default: false
-    force_manual_rebuild: boolean
+    explicit_rebuild_only: boolean
 
 }
