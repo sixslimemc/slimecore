@@ -1,0 +1,23 @@
+use ::slimecore::mcdoc::def::BuildInfo
+use ::slimecore::mcdoc::def::PackReference
+
+
+inject struct ::slimecore::mcdoc::api::In {
+    safe_disables: struct In {
+        build: BuildInfo,
+        disables: [PackReference],
+    }
+}
+
+inject struct ::slimecore::mcdoc::api::Out {
+    safe_disables: struct Out {
+        safe: [PackReference],
+        unsafe: [UnsafeDisableInfo],
+        not_present: [PackReference],
+    }
+}
+
+struct UnsafeDisableInfo {
+    ...PackReference
+    // TODO
+}

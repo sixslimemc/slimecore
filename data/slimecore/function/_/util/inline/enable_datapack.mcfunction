@@ -2,4 +2,4 @@
 # macro args:
 #- $path: DatapackPath
 
-$datapack enable "$(path)" last
+$return run datapack enable "$(path)" last

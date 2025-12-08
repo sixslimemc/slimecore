@@ -2,4 +2,4 @@
 # macro args:
 #- $path: DatapackPath
 
-$datapack disable "$(path)"
+$return run datapack disable "$(path)"
