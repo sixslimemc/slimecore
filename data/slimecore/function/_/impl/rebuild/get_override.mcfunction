@@ -1,7 +1,8 @@
 # IMPL > slimecore:rebuild
 # get_override
 #--------------------
-# 
+# ./old_packs/each
+# ./new_packs/each
 #--------------------
 
 # macro args:

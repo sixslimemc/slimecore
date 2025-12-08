@@ -50,11 +50,16 @@ tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
 tellraw @a {storage:"slimecore:out", nbt:"build.result.success.order", color: green}
 
 data modify storage slimecore:_ v.rebuild.old_data set from storage slimecore:data
-data modify storage slimecore:_ v.rebuild.new.build set from storage slimecore:out build.result.success
+data modify storage slimecore:_ v.rebuild.new_data.build set from storage slimecore:out build.result.success
+data modify storage slimecore:_ v.rebuild.new_data.world set value {datapack_links:[], aux:{datapack_link_map:{}}}
 
 # unload old build datapacks:
-data modify storage slimecore:_ v.rebuild.old_links set from storage slimecore:_ v.rebuild.old_data.world.datapack_links
-execute if data storage slimecore:_ v.rebuild.old_links[0] run function slimecore:_/impl/rebuild/old_links/each
+data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.old_data.build.packs
+execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/old_packs/each
 
-data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.new.build.packs
+# populate {..new_data.world.datapack_links}
+#- check missing datapack paths
+data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.new_data.build.packs
 execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/new_packs/each
+execute if score *rebuild.error _slimecore matches 1 run return 0
+
