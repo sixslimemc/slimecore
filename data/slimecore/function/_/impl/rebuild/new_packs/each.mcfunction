@@ -36,8 +36,8 @@ execute if score *rebuild.is_override _slimecore matches 0 if score *rebuild.fou
 # missing error:
 execute unless score *rebuild.found_path _slimecore matches 1 run function slimecore:_/impl/rebuild/new_packs/missing_path
 
-# add to {..new_data.world.datapack_links}
-execute if score *rebuild.found_path _slimecore matches 1 run function slimecore:_/impl/rebuild/new_packs/add_link
+# add to {..new_data.world.datapack_links} and {....aux.datapack_link_map}
+execute if score *rebuild.found_path _slimecore matches 1 run function slimecore:_/impl/rebuild/new_packs/add_link with storage slimecore:_ v.rebuild.this_pack
 
 data remove storage slimecore:_ v.rebuild.packs[0]
 execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/new_packs/each

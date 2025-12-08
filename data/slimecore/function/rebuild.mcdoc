@@ -3,6 +3,7 @@ use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::DatapackPath
+use ::slimecore::mcdoc::def::DatapackLink
 
 inject struct ::slimecore::mcdoc::api::In {
     rebuild: struct In {
@@ -14,7 +15,7 @@ inject struct ::slimecore::mcdoc::api::In {
 
 inject struct ::slimecore::mcdoc::api::Out {
     pack: struct Out {
-        result: EvalResult<true, Error>
+        result: EvalResult<Success, Error>
     }
 }
 
@@ -27,5 +28,5 @@ struct Error {
 }
 
 struct Success {
-    remove_datapacks: [DatapackPath]
+    uninstalled: [DatapackLink]
 }
