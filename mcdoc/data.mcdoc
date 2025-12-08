@@ -37,7 +37,8 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
         },
         entrypoints: [any] @ 0,
         preload_entrypoints: [any] @ 0,
-        is_library: false,
+        // just 'false' doesn't work here? probably spyglass bug.
+        is_library: (false | boolean),
         abstract_declarations: [any] @ 0,
         abstract_implementations: [any] @ 0,
         dependencies: [any] @ 0,

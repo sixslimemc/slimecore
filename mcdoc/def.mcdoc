@@ -110,6 +110,7 @@ struct BuildInfo {
 
 struct WorldSpecificInfo {
     datapack_links: [DatapackLink],
+    disabled_packs: [PackReference],
     aux: struct {
         datapack_link_map: struct {
             [PackId]: DatapackPath
