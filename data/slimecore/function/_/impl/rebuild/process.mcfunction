@@ -1,4 +1,5 @@
-#> slimecore:_/rebuild/process
+# IMPL > slimecore:rebuild
+# process
 #--------------------
 # ./main
 #--------------------
@@ -25,7 +26,7 @@ execute if score *x _slimecore matches 0 run return 0
 tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
 tellraw @a {storage:"slimecore:out", nbt:"build.result.success.order", color: green}
 
-data modify storage slimecore:_ var.rebuild.build set from storage slimecore:out build.result.success
+data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out build.result.success
 
 # unload old build datapacks:
-data modify storage slimecore:_ var.rebuild.old_links set from storage slimecore:data world.datapack_links
+data modify storage slimecore:_ v.rebuild.old_links set from storage slimecore:data world.datapack_links

@@ -24,4 +24,4 @@ scoreboard players set *init _slimecore 1
 execute if data storage slimecore:config {explicit_rebuild_only:true} run return run function slimecore:_/load/main
 
 # rebuild:
-function slimecore:_/rebuild/main
+function slimecore:rebuild
