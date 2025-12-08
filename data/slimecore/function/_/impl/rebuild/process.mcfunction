@@ -4,6 +4,10 @@
 # ./main
 #--------------------
 
+# out init:
+data modify storage slimecore:out rebuild.result set value {error:{}, success:{remove_datapacks:[]}}
+scoreboard players set *rebuild.error _slimecore 0
+
 # gather manifests:
 data modify storage slimecore:_ data.packs set value []
 scoreboard players set *manifest_time _slimecore 1
@@ -32,19 +36,25 @@ execute if data storage slimecore:_ v.rebuild.disables[0] run function slimecore
 # evaluate build:
 data modify storage slimecore:in build.packs set from storage slimecore:_ data.packs
 execute store result score *x _slimecore run function slimecore:eval/build
+execute unless score *x _slimecore matches 1 run scoreboard players set *rebuild.error _slimecore 1
 
 # DEBUG
-execute if score *x _slimecore matches 0 run tellraw @a {text:"[ BUILD ERROR ]", color: dark_red}
-execute if score *x _slimecore matches 0 run tellraw @a {storage:"slimecore:out", nbt:"build.result.error", color: red}
+execute if score *rebuild.error _slimecore matches 0 run tellraw @a {text:"[ BUILD ERROR ]", color: dark_red}
+execute if score *rebuild.error _slimecore matches 0 run tellraw @a {storage:"slimecore:out", nbt:"build.result.error", color: red}
 
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out rebuild.result.error.build_error set from storage slimecore:out build.result.error
-execute if score *x _slimecore matches 0 run return 0
+execute if score *rebuild.error _slimecore matches 0 run data modify storage slimecore:out rebuild.result.error.build_error set from storage slimecore:out build.result.error
+execute if score *rebuild.error _slimecore matches 1 run return 0
 
 # DEBUG
 tellraw @a {text:"[ BUILD SUCCESS ]", color: green}
 tellraw @a {storage:"slimecore:out", nbt:"build.result.success.order", color: green}
 
-data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out build.result.success
+data modify storage slimecore:_ v.rebuild.old_data set from storage slimecore:data
+data modify storage slimecore:_ v.rebuild.new.build set from storage slimecore:out build.result.success
 
 # unload old build datapacks:
-data modify storage slimecore:_ v.rebuild.old_links set from storage slimecore:data world.datapack_links
+data modify storage slimecore:_ v.rebuild.old_links set from storage slimecore:_ v.rebuild.old_data.world.datapack_links
+execute if data storage slimecore:_ v.rebuild.old_links[0] run function slimecore:_/impl/rebuild/old_links/each
+
+data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.new.build.packs
+execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/new_packs/each

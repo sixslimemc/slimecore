@@ -20,9 +20,12 @@ inject struct ::slimecore::mcdoc::api::Out {
 
 struct Error {
     build_error?: super::eval::build::Error,
-    unsafe_disables?: [super::eval::safe_disables::UnsafeDisableInfo],
     missing_datapack_paths?: [struct MissingDatapackPathInfo {
         ...PackReference,
         path_override?: DatapackPath
     }]
+}
+
+struct Success {
+    remove_datapacks: [DatapackPath]
 }

@@ -11,7 +11,9 @@ data modify storage slimecore:config build_time_gamerules set value {max_command
 function slimecore:_/impl/rebuild/set_gamerules with storage slimecore:config build_time_gamerules
 
 execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/process
-execute if score *rebuild.success _slimecore matches 1 run data modify storage slimecore:out rebuild.result set value {success:true}
+
+# remove success if error
+execute unless score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.success
 
 # restore gamerules:
 function slimecore:_/impl/rebuild/set_gamerules with storage slimecore:_ v.rebuild.gamerules
