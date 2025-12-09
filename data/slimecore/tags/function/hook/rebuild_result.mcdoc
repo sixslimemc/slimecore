@@ -1,0 +1,23 @@
+use ::slimecore::mcdoc::def::PackReference
+use ::slimecore::mcdoc::def::DatapackLink
+use ::slimecore::mcdoc::def::DatapackPath
+
+inject struct ::slimecore::mcdoc::api::Hook {
+    rebuild_result: struct Data {
+        result: EvalResult<Success, Error>
+    }
+}
+
+struct Error {
+    build_error?: ::slimecore::data::slimecore::function::eval::build::Error,
+    missing_datapack_paths?: [struct MissingDatapackPathInfo {
+        ...PackReference,
+        path_override?: DatapackPath
+    }]
+}
+
+struct Success {
+    uninstalled: [DatapackLink],
+    disabled: [DatapackLink],
+    enabled: [DatapackLink],
+}

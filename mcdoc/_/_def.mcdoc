@@ -1,4 +1,5 @@
 use ::slimecore::mcdoc::def::PackManifest
+use ::slimecore::mcdoc::def::DatapackLink
 
 struct VariableRegister {
     [string]: any
@@ -13,7 +14,11 @@ dispatch minecraft:storage[slimecore:_] to struct {
     /// in-scope temp
     x: VariableRegister,
     data: struct {
-        manifest_packs: [PackManifest]
+        manifest_packs: [PackManifest],
+        rebuild: struct {
+            disable: [DatapackLink],
+            uninstall: [DatapackLink],
+        },
     }
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {

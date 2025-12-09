@@ -1,3 +1,4 @@
+use ::slimecore::mcdoc::def::EvalResult
 
 dispatch minecraft:storage[slimecore:in] to struct In {
     [any]: any
@@ -11,5 +12,5 @@ dispatch minecraft:storage[slimecore:api] to struct Api {
 }
 
 dispatch minecraft:storage[slimecore:hook] to struct Hook {
-
+    [any]: any
 }

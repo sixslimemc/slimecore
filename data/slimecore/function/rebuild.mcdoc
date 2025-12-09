@@ -14,21 +14,5 @@ inject struct ::slimecore::mcdoc::api::In {
 }
 
 inject struct ::slimecore::mcdoc::api::Out {
-    pack: struct Out {
-        result: EvalResult<Success, Error>
-    }
-}
 
-struct Error {
-    build_error?: super::eval::build::Error,
-    missing_datapack_paths?: [struct MissingDatapackPathInfo {
-        ...PackReference,
-        path_override?: DatapackPath
-    }]
-}
-
-struct Success {
-    uninstalled: [DatapackLink],
-    disabled: [DatapackLink],
-    enabled: [DatapackLink],
 }

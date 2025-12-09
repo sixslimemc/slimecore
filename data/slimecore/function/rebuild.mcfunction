@@ -4,19 +4,10 @@
 # -> enable?: [PackReference]
 # -> uninstall?: [PackReference]
 #--------------------
-# <- result: EvalResult<{
-#   uninstalled: [DatapackLink]
-#   disabled: [DatapackLink],
-#   enabled: [DatapackLink],
-# }, {
-#   build_error?: eval::build::Error
-#   missing_datapack_paths?: [{
-#       ...PackReference
-#       path_override?: DatapackPath
-#   }]
-# }
+# ...
 #--------------------
 # TODO: description
+# - calls hook 'rebuild_result' when done.
 #--------------------
 # 1: success
 # 0: error
