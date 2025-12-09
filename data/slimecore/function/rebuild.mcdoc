@@ -7,9 +7,9 @@ use ::slimecore::mcdoc::def::DatapackLink
 
 inject struct ::slimecore::mcdoc::api::In {
     rebuild: struct In {
-        disables?: [PackReference],
-        enables?: [PackReference],
-        uninstalls?: [PackReference],
+        disable?: [PackReference],
+        enable?: [PackReference],
+        uninstall?: [PackReference],
     }
 }
 
@@ -28,5 +28,7 @@ struct Error {
 }
 
 struct Success {
-    uninstalled: [DatapackLink]
+    uninstalled: [DatapackLink],
+    disabled: [DatapackLink],
+    enabled: [DatapackLink],
 }

@@ -4,7 +4,11 @@
 # -> enable?: [PackReference]
 # -> uninstall?: [PackReference]
 #--------------------
-# <- result: EvalResult<{uninstalled: [DatapackLink]}, {
+# <- result: EvalResult<{
+#   uninstalled: [DatapackLink]
+#   disabled: [DatapackLink],
+#   enabled: [DatapackLink],
+# }, {
 #   build_error?: eval::build::Error
 #   missing_datapack_paths?: [{
 #       ...PackReference

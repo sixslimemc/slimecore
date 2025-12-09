@@ -1,10 +1,20 @@
 use ::slimecore::mcdoc::def::PackManifest
 
+struct VariableRegister {
+    [string]: any
+}
 dispatch minecraft:storage[slimecore:_] to struct {
+    /// top level
+    t: VariableRegister,
+    /// impl
+    v: VariableRegister,
+    /// util
+    u: VariableRegister,
+    /// in-scope temp
+    x: VariableRegister,
     data: struct {
-        packs: [(#[canonical] PackManifest | any)]
-    },
-    [any]: any
+        manifest_packs: [PackManifest]
+    }
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {
     [any]: any
