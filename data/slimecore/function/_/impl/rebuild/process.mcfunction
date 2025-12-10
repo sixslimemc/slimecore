@@ -58,6 +58,9 @@ data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out b
 data modify storage slimecore:_ v.rebuild.load_order set from storage slimecore:data build.order.load
 execute if data storage slimecore:_ v.rebuild.load_order[0] run function slimecore:_/impl/rebuild/closing_pass/each
 
+# disable remaining (not in previous build) packs:
+execute if data storage slimecore:_ v.rebuild.disabling[0] run function slimecore:_/impl/rebuild/remaining_disables/each
+
 # uninstall remaining (not in previous build) packs:
 execute if data storage slimecore:_ v.rebuild.uninstalling[0] run function slimecore:_/impl/rebuild/remaining_uninstalls/each
 
