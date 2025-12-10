@@ -9,6 +9,7 @@ inject struct ::slimecore::mcdoc::api::In {
     rebuild: struct In {
         disable?: [PackReference],
         uninstall?: [PackReference],
+        force_clean?: boolean,
     }
 }
 
