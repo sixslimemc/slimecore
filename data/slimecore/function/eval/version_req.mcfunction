@@ -15,7 +15,7 @@
 # 0: error
 #--------------------
 
-data remove storage slimecore:out version_req
+data modify storage slimecore:out version_req set value {}
 
 execute store result score *x _slimecore run function slimecore:_/impl/eval/version_req/main
 

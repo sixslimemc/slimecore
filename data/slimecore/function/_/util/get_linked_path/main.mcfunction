@@ -11,7 +11,7 @@
 # 0: path not found
 #--------------------
 
-data remove storage slimecore:_/out get_linked_path
+data modify storage slimecore:_/out get_linked_path set value {}
 
 execute summon text_display store result score *x _slimecore run function slimecore:_/util/get_linked_path/do with storage slimecore:_/in get_linked_path.pack
 

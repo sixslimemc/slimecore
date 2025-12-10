@@ -18,6 +18,12 @@ inject struct ::slimecore::mcdoc::api::Out {
     }
 }
 
+type Result = EvalResult<Success, Error>
+
+struct Success {
+    uninstall_paths: [DatapackPath]
+}
+
 struct Error {
     build_error?: ::slimecore::data::slimecore::function::eval::build::Error,
     missing_datapack_paths?: [struct MissingDatapackPathInfo {
@@ -26,8 +32,4 @@ struct Error {
     }]
 }
 
-struct Success {
-    uninstall_paths: [DatapackPath]
-}
 
-type Result = EvalResult<Success, Error>
