@@ -18,6 +18,7 @@ dispatch minecraft:storage[slimecore:_] to struct {
         rebuild: struct {
             disable: [DatapackLink],
             uninstall: [DatapackLink],
+            result: ::slimecore::data::slimecore::tags::function::hook::rebuild_result::Result,
         },
     }
 }

@@ -1,10 +1,11 @@
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::DatapackLink
+use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::DatapackPath
 
 inject struct ::slimecore::mcdoc::api::Hook {
     rebuild_result: struct Data {
-        result: EvalResult<Success, Error>
+        result: Result
     }
 }
 
@@ -21,3 +22,5 @@ struct Success {
     disabled: [DatapackLink],
     enabled: [DatapackLink],
 }
+
+type Result = EvalResult<Success, Error>
