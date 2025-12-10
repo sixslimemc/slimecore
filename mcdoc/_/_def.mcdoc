@@ -15,11 +15,6 @@ dispatch minecraft:storage[slimecore:_] to struct {
     x: VariableRegister,
     data: struct {
         manifest_packs: [PackManifest],
-        rebuild: struct {
-            disable: [DatapackLink],
-            uninstall: [DatapackLink],
-            result: ::slimecore::data::slimecore::tags::function::hook::rebuild_result::Result,
-        },
     }
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {

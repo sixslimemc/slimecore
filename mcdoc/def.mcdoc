@@ -20,9 +20,10 @@ type EntrypointDeclaration<T> = struct {
     after?: [EntrypointReference<T>],
 }
 
-struct DatapackLink {
-    ...PackReference,
-    datapack_path: DatapackPath,
+struct PartialPackInfo {
+    pack_id: PackId,
+    author_id: AuthorId,
+    version: Version,
 }
 struct PackReference {
     pack_ref: PackId,
@@ -109,8 +110,7 @@ struct BuildInfo {
 }
 
 struct WorldSpecificInfo {
-    datapack_links: [DatapackLink],
-    disabled_packs: [PackReference],
+    disabled_packs: [PartialPackInfo],
     aux: struct {
         datapack_link_map: struct {
             [PackId]: DatapackPath

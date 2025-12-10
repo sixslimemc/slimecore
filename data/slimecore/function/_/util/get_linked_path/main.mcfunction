@@ -1,6 +1,6 @@
 #> slimecore :_/util/ get_linked_path
 #--------------------
-# -> pack: PackManifest
+# -> pack: PartialPackInfo
 #--------------------
 # <- result?: DatapackPath
 #--------------------

@@ -3,16 +3,30 @@ use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::DatapackPath
-use ::slimecore::mcdoc::def::DatapackLink
 
 inject struct ::slimecore::mcdoc::api::In {
     rebuild: struct In {
         disable?: [PackReference],
-        enable?: [PackReference],
         uninstall?: [PackReference],
     }
 }
 
 inject struct ::slimecore::mcdoc::api::Out {
-
+    rebuild: struct Out {
+        result: Result
+    }
 }
+
+struct Error {
+    build_error?: ::slimecore::data::slimecore::function::eval::build::Error,
+    missing_datapack_paths?: [struct MissingDatapackPathInfo {
+        ...PackReference,
+        path_override?: DatapackPath
+    }]
+}
+
+struct Success {
+    uninstall_paths: [DatapackPath]
+}
+
+type Result = EvalResult<Success, Error>
