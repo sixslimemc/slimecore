@@ -8,6 +8,8 @@ data modify storage slimecore:out rebuild.result set value {success:{uninstall_p
 
 
 data modify storage slimecore:_ v.rebuild.new_disabled set value []
+data modify storage slimecore:_ v.rebuild.new_links set value []
+data modify storage slimecore:_ v.rebuild.new_link_map set value {}
 
 # {pack_ref:PackId, path:DatpackPath, call_tag:boolean}
 data modify storage slimecore:_ v.rebuild.disabling set value []
@@ -54,15 +56,22 @@ execute unless score *x _slimecore matches 1.. run function slimecore:_/impl/reb
 execute if score *rebuild.error _slimecore matches 1 run return 0
 data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out build.result.success
 
+#- populate {..new_links}
+data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.build.packs
+execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/packs/each
+
+execute if score *rebuild.error _slimecore matches 1 run return 0
+
 # disable and uninstall packs in reverse load order:
 data modify storage slimecore:_ v.rebuild.load_order set from storage slimecore:data build.order.load
 execute if data storage slimecore:_ v.rebuild.load_order[0] run function slimecore:_/impl/rebuild/closing_pass/each
 
-# disable remaining (not in previous build) packs:
+# disable remaining packs (not in previous build):
 execute if data storage slimecore:_ v.rebuild.disabling[0] run function slimecore:_/impl/rebuild/remaining_disables/each
 
-# uninstall remaining (not in previous build) packs:
+# uninstall remaining packs (not in previous build):
 execute if data storage slimecore:_ v.rebuild.uninstalling[0] run function slimecore:_/impl/rebuild/remaining_uninstalls/each
+
 
 
 return 1

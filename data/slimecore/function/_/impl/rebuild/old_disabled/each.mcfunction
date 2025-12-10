@@ -13,4 +13,4 @@ data modify storage slimecore:_ v.rebuild.linked_out set from storage slimecore:
 execute if score *x _slimecore matches 0 run function slimecore:_/impl/rebuild/old_disabled/missing
 
 data remove storage slimecore:_ v.rebuild.old_disabled[-1]
-execute if data storage slimecore:_ v.rebuild.old_disabled[0] run function slimecore:_/impl/rebuild/in_disabled/each
+execute if data storage slimecore:_ v.rebuild.old_disabled[0] run function slimecore:_/impl/rebuild/old_disabled/each
