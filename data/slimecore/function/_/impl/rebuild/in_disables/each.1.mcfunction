@@ -7,6 +7,8 @@ $execute if data storage slimecore:_ v.rebuild.disabling[{pack_ref:'$(pack_ref)'
 execute unless data storage slimecore:_ v.rebuild.disable_pack run return 0
 execute if data storage slimecore:_ v.rebuild.disable_pack[0] run return 0
 
+$data remove storage slimecore:_ v.rebuild.build_packs[{pack_ref:'$(pack_ref)'}]
+
 data remove storage slimecore:_ v.rebuild.partial_pack
 data modify storage slimecore:_ v.rebuild.partial_pack.pack_id set from storage slimecore:_ v.rebuild.disable_pack.pack_id
 data modify storage slimecore:_ v.rebuild.partial_pack.author_id set from storage slimecore:_ v.rebuild.disable_pack.author_id

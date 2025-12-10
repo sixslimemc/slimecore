@@ -1,6 +1,7 @@
 # IMPL > slimecore:rebuild
 # in_uninstalls/each.1
 
+# garunteed to be a PartialPackInfo
 data remove storage slimecore:_ v.rebuild.uninstall_pack
 $data modify storage slimecore:_ v.rebuild.uninstall_pack set from storage slimecore:_ data.manifest_packs[{pack_id:'$(pack_ref)'}]
 $execute if data storage slimecore:_ v.rebuild.uninstalling[{pack_ref:'$(pack_ref)'}] run return 0
@@ -8,6 +9,7 @@ execute unless data storage slimecore:_ v.rebuild.uninstall_pack run return 0
 execute if data storage slimecore:_ v.rebuild.uninstall_pack[0] run return 0
 
 $data remove storage slimecore:in rebuild.disable[{pack_ref:'$(pack_ref)'}]
+$data remove storage slimecore:_ v.rebuild.build_packs[{pack_ref:'$(pack_ref)'}]
 
 data remove storage slimecore:_ v.rebuild.partial_pack
 data modify storage slimecore:_ v.rebuild.partial_pack.pack_id set from storage slimecore:_ v.rebuild.uninstall_pack.pack_id
