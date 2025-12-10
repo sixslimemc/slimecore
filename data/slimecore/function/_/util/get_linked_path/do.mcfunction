@@ -6,8 +6,9 @@
 kill @s
 
 # check override:
-$data modify storage slimecore:_ v.get_linked_path.path set from storage slimecore:config datapack_path_override_map."$(pack_id)"
-execute if data storage slimecore:_ v.get_linked_path.path run return run function slimecore:_/util/get_linked_path/check with storage slimecore:_ v.get_linked_path
+$data modify storage slimecore:_/out get_linked_path.path_override set from storage slimecore:config datapack_path_override_map."$(pack_id)"
+data modify storage slimecore:_ x.path set from storage slimecore:_/out get_linked_path.path_override
+execute if data storage slimecore:_/out get_linked_path.path_override run return run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 
 # gen version string:
 data modify entity @s text set value ["v", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.major"}, ".", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.minor"}, ".", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.patch"}]

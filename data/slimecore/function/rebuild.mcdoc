@@ -3,6 +3,7 @@ use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::DatapackPath
+use ::slimecore::mcdoc::def::PartialPackInfo
 
 inject struct ::slimecore::mcdoc::api::In {
     rebuild: struct In {
@@ -20,7 +21,7 @@ inject struct ::slimecore::mcdoc::api::Out {
 struct Error {
     build_error?: ::slimecore::data::slimecore::function::eval::build::Error,
     missing_datapack_paths?: [struct MissingDatapackPathInfo {
-        ...PackReference,
+        for: PartialPackInfo,
         path_override?: DatapackPath
     }]
 }

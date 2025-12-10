@@ -2,7 +2,8 @@
 #--------------------
 # -> pack: PartialPackInfo
 #--------------------
-# <- result?: DatapackPath
+# <- path?: DatapackPath
+# <- path_override?: DatapackPath
 #--------------------
 # TODO: description
 #--------------------

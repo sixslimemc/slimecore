@@ -15,6 +15,10 @@ dispatch minecraft:storage[slimecore:_] to struct {
     x: VariableRegister,
     data: struct {
         manifest_packs: [PackManifest],
+        gamerule_cache?: struct {
+            max_command_sequence_length: int,
+            max_command_forks: int,
+        }
     }
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {

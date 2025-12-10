@@ -2,17 +2,22 @@
 # main
 
 data remove storage slimecore:_ v.rebuild
+scoreboard players set *ignore_reload _slimecore 1
+# restore gamerules in 1 tick
+schedule function slimecore:_/util/set_gamerules/main 1t
 
-# DEBUG
-data modify storage slimecore:config build_time_gamerules set value {max_command_forks:19999, max_command_sequence_length:19999}
 
 # set gamerules:
-function slimecore:_/impl/rebuild/set_gamerules with storage slimecore:config build_time_gamerules
+# DEBUG
+data modify storage slimecore:config build_time_gamerules set value {max_command_forks:19999, max_command_sequence_length:19999}
+data modify storage slimecore:_ data.gamerule_cache set from storage slimecore:config build_time_gamerules
+function slimecore:_/util/set_gamerules/main
 
 execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/process
 
-# restore gamerules:
-function slimecore:_/impl/rebuild/set_gamerules with storage slimecore:_ v.rebuild.gamerules
+execute unless score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.success
+
+return run scoreboard players get *rebuild.success _slimecore
 
 
 
