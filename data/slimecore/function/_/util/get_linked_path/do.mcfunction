@@ -4,7 +4,7 @@
 # ./main
 #--------------------
 kill @s
-
+say hi
 # check override:
 $data modify storage slimecore:_/out get_linked_path.path_override set from storage slimecore:config datapack_path_override_map."$(pack_id)"
 data modify storage slimecore:_ x.path set from storage slimecore:_/out get_linked_path.path_override
@@ -16,7 +16,10 @@ data modify storage slimecore:_ v.get_linked_path.version_str set from entity @s
 
 # try authored versioned:
 data modify entity @s text set value ["file/", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.author_id"}, ".", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.pack_id"}, " ", {storage:"slimecore:_", nbt:"v.get_linked_path.version_str"}]
+
 data modify storage slimecore:_ x.path set from entity @s text
+# DEBUG:
+tellraw @a ["path: ", {'storage':'slimecore:_', 'nbt':'x.path'}]
 execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 execute if score *x _slimecore matches 1 run return 1
 
