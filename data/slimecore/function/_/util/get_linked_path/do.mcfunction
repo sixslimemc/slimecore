@@ -4,25 +4,16 @@
 # ./main
 #--------------------
 kill @s
+
 say hi
 # check override:
 $data modify storage slimecore:_/out get_linked_path.path_override set from storage slimecore:config datapack_path_override_map."$(pack_id)"
 data modify storage slimecore:_ x.path set from storage slimecore:_/out get_linked_path.path_override
 execute if data storage slimecore:_/out get_linked_path.path_override run return run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 
-# gen version string:
-data modify entity @s text set value [{text:"v"}, {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.major"}, {text:"."}, {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.minor"}, {text:"."}, {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.patch"}]
-data modify storage slimecore:_ v.get_linked_path.version_str set from entity @s text 
 
 # try authored versioned:
-data modify entity @s text set value [{text:"file/"}, {storage:"slimecore:_/in", nbt:"get_linked_path.pack.author_id"}, {text:"."}, {storage:"slimecore:_/in", nbt:"get_linked_path.pack.pack_id"}, {text:" "}, {storage:"slimecore:_", nbt:"v.get_linked_path.version_str"}]
-data modify storage slimecore:_ x.path set from entity @s text
-data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path", interpret:true}
-data modify storage slimecore:_ x.path set from entity @s text
-data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path", interpret:true}
-data modify storage slimecore:_ x.path set from entity @s text
-data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path", interpret:true}
-data modify storage slimecore:_ x.path set from entity @s text
+$data modify storage slimecore:_ x.path set value "$(author_id).$(pack_id) v$(major).$(minor).$(patch)"
 # DEBUG:
 tellraw @a ["path: ", {'storage':'slimecore:_', 'nbt':'x.path'}]
 execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
