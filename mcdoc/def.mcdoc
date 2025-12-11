@@ -83,9 +83,9 @@ struct Dependency {
 }
 
 struct BuildInfo {
+    // packs are in load order.
     packs: [PackManifest],
     order: struct {
-        // kind a just a formality, 'packs' should be in load order anyway
         load: [struct {
             ...PackReference,
             index: int @ 0..
