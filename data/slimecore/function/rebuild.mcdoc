@@ -28,7 +28,7 @@ struct Success {
 struct Error {
     build_error?: ::slimecore::data::slimecore::function::eval::build::Error,
     missing_datapack_paths?: [struct MissingDatapackPathInfo {
-        for: PartialPackInfo,
+        pack: PartialPackInfo,
         path_override?: DatapackPath
     }]
 }

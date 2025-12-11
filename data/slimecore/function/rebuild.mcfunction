@@ -9,7 +9,7 @@
 # }, {
 #   build_error?: eval::build::Error,
 #   missing_datapack_paths?: [{
-#       for: PartialPackInfo,
+#       pack: PartialPackInfo,
 #       path_override?: DatapackPath,
 #   }]
 # }
