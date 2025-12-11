@@ -12,6 +12,7 @@ execute if data storage slimecore:_/out get_linked_path.path_override run return
 
 # gen version string:
 data modify entity @s text set value ["v", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.major"}, ".", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.minor"}, ".", {storage:"slimecore:_/in", nbt:"get_linked_path.pack.version.patch"}]
+data modify entity @s text set value {entity:"@s", nbt:"text", interpret:true}
 data modify storage slimecore:_ v.get_linked_path.version_str set from entity @s text 
 
 # try authored versioned:
