@@ -3,7 +3,6 @@
 #--------------------
 # ./main
 #--------------------
-kill @s
 
 # check override:
 $data modify storage slimecore:_/out get_linked_path.path_override set from storage slimecore:config datapack_path_overrides."$(pack_id)"
