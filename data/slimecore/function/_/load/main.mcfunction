@@ -18,7 +18,7 @@ execute if data storage slimecore:_ v.load.entrypoints[0] run function slimecore
 tellraw @a {text:"> loads", color:"dark_aqua"}
 # entrypoints:
 data modify storage slimecore:_ v.load.loads set from storage slimecore:data build.order.load
-execute if data storage slimecore:_ v.load.loads[0] run function slimecore:_/load/entrypoints/each
+execute if data storage slimecore:_ v.load.loads[0] run function slimecore:_/load/loads/each
 
 
 # DEBUG
