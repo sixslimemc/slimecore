@@ -1,4 +1,6 @@
 
+return 0
+
 data modify storage slimecore:in manifest.pack set value {}
 
 data modify storage slimecore:in manifest.pack.pack_id set value "a"
