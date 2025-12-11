@@ -27,4 +27,5 @@ execute if score *rebuild.success _slimecore matches 1 run tellraw @a {text:">> 
 execute unless score *rebuild.success _slimecore matches 1 run tellraw @a {text:">> REBUILD ERROR", color:"dark_red"}
 execute unless score *rebuild.success _slimecore matches 1 run tellraw @a {storage:"slimecore:out", nbt:"rebuild.result.error", color:"red"}
 
+reload
 return run scoreboard players get *rebuild.success _slimecore

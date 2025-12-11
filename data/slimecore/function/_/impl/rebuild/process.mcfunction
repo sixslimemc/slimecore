@@ -75,7 +75,4 @@ data modify storage slimecore:data world.disabled_packs set from storage slimeco
 data modify storage slimecore:data world.datapack_links set from storage slimecore:_ v.rebuild.new_links
 data modify storage slimecore:data world.aux.datapack_link_map set from storage slimecore:_ v.rebuild.new_link_map
 
-# will automatically load on reload.
-reload
-
 return 1
