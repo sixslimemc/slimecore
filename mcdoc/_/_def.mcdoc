@@ -24,7 +24,8 @@ dispatch minecraft:storage[slimecore:_] to struct {
             manifests: [PackManifest],
             datapack_path_overrides: struct {
                 [PackId]: [DatapackPath]
-            }
+            },
+            last_success: byte
         }
     }
 }
