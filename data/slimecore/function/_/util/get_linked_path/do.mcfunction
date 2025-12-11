@@ -19,6 +19,10 @@ data modify entity @s text set value [{text:"file/"}, {storage:"slimecore:_/in",
 data modify storage slimecore:_ x.path set from entity @s text
 data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path", interpret:true}
 data modify storage slimecore:_ x.path set from entity @s text
+data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path", interpret:true}
+data modify storage slimecore:_ x.path set from entity @s text
+data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path", interpret:true}
+data modify storage slimecore:_ x.path set from entity @s text
 # DEBUG:
 tellraw @a ["path: ", {'storage':'slimecore:_', 'nbt':'x.path'}]
 execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
