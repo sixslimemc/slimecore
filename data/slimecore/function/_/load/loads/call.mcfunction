@@ -4,5 +4,5 @@
 #--------------------
 
 # DEBUG
-$tellraw @a {text:"- call: '#$(pack_ref):load'", color:"aqua"}
+$tellraw @a {text:"$(pack_ref)", color:"aqua"}
 $function #$(pack_ref):load
