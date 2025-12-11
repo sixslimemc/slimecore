@@ -6,7 +6,7 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
     /// Datapacks that do not follow this convention must be included here.
     /// Ex: {'mypackid': 'file/My Datapack Filename'}
     /// Default: {}
-    datapack_path_override_map: struct {
+    datapack_path_overrides: struct {
         [PackId]: DatapackPath
     },
     /// Gamerules that are overridden temporarily during build-time.
