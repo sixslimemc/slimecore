@@ -1,5 +1,6 @@
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::DatapackLink
+use ::slimecore::mcdoc::def::DatapackPath
 
 struct VariableRegister {
     [string]: any
@@ -18,6 +19,12 @@ dispatch minecraft:storage[slimecore:_] to struct {
         gamerule_cache?: struct {
             max_command_sequence_length: int,
             max_command_forks: int,
+        },
+        rebuild_check: struct {
+            manifests: [PackManifest],
+            datapack_path_overrides: struct {
+                [PackId]: [DatapackPath]
+            }
         }
     }
 }

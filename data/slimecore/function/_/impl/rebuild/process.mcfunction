@@ -26,12 +26,8 @@ execute if data storage slimecore:_ v.rebuild.old_disabled[0] run function slime
 
 execute if score *rebuild.error _slimecore matches 1 run return 0
 
-# --- GET MANIFESTS ---
-data modify storage slimecore:_ data.manifest_packs set value []
-scoreboard players set *manifest_time _slimecore 1
-function #slimecore:manifest
-scoreboard players reset *manifest_time _slimecore
-# ---
+# get manifests:
+function slimecore:_/get_manifests
 
 data modify storage slimecore:_ v.rebuild.build_packs set from storage slimecore:_ data.manifest_packs
 
