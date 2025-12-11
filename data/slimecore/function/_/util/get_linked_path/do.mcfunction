@@ -5,12 +5,10 @@
 #--------------------
 kill @s
 
-say hi
 # check override:
 $data modify storage slimecore:_/out get_linked_path.path_override set from storage slimecore:config datapack_path_override_map."$(pack_id)"
 data modify storage slimecore:_ x.path set from storage slimecore:_/out get_linked_path.path_override
 execute if data storage slimecore:_/out get_linked_path.path_override run return run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
-
 
 # try authored versioned:
 $data modify storage slimecore:_ x.path set value "file/$(author_id).$(pack_id) v$(major).$(minor).$(patch)"
