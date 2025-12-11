@@ -17,7 +17,7 @@ data modify storage slimecore:_ v.get_linked_path.version_str set from entity @s
 # try authored versioned:
 data modify entity @s text set value [{text:"file/"}, {storage:"slimecore:_/in", nbt:"get_linked_path.pack.author_id"}, {text:"."}, {storage:"slimecore:_/in", nbt:"get_linked_path.pack.pack_id"}, {text:" "}, {storage:"slimecore:_", nbt:"v.get_linked_path.version_str"}]
 data modify storage slimecore:_ x.path set from entity @s text
-data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path"}
+data modify entity @s text set value {storage:"slimecore:_", nbt:"x.path", interpret:true}
 data modify storage slimecore:_ x.path set from entity @s text
 # DEBUG:
 tellraw @a ["path: ", {'storage':'slimecore:_', 'nbt':'x.path'}]
