@@ -19,7 +19,7 @@ data modify storage slimecore:_ v.rebuild.linked_out set from storage slimecore:
 
 execute unless score *x _slimecore matches 1 run return run function slimecore:_/impl/rebuild/in_disables/missing
 
-data modify storage slimecore:_ v.rebuilding.new_disabled append from storage slimecore:_ v.rebuild.partial_pack
+data modify storage slimecore:_ v.rebuild.new_disabled append from storage slimecore:_ v.rebuild.partial_pack
 
 data modify storage slimecore:_ x.entry set value {pack_ref:"", path:"", call_tag:true}
 data modify storage slimecore:_ x.entry.pack_ref set from storage slimecore:_ v.rebuild.this_disable.pack_ref
