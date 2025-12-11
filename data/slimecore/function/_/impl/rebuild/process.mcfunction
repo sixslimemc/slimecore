@@ -29,10 +29,6 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 data modify storage slimecore:_ data.manifest_packs set value []
 scoreboard players set *manifest_time _slimecore 1
 function #slimecore:manifest
-
-# DEBUG
-function slimecore:_/test_manifests
-
 scoreboard players reset *manifest_time _slimecore
 # ---
 
