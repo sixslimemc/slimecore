@@ -22,10 +22,10 @@ execute if data storage slimecore:config {explicit_rebuild_only:true} run return
 # check if needs rebuild:
 function slimecore:_/get_manifests
 execute store success score *reload.needs_rebuild _slimecore run data modify storage slimecore:_ data.rebuild_check.manifests set from storage slimecore:_ data.manifest_packs
-execute unless score *reload.needs_rebuild _slimecore matches 1 store result score *reload.needs_rebuild _slimecore run data modify storage slimecore:_ data.rebuild_check.datapack_path_overrides set from storage slimecore:config datapack_path_overrides
-
-#DEBUG 
-execute unless score *reload.needs_rebuild _slimecore matches 1 run tellraw @a {text:">>> No rebuild needed", color:dark_gray}
+execute unless score *reload.needs_rebuild _slimecore matches 1 store success score *reload.needs_rebuild _slimecore run data modify storage slimecore:_ data.rebuild_check.datapack_path_overrides set from storage slimecore:config datapack_path_overrides
 
 # rebuild:
-execute if score *reload.needs_rebuild _slimecore matches 1 run function slimecore:rebuild
+execute if score *reload.needs_rebuild _slimecore matches 1 run return run function slimecore:rebuild
+
+tellraw @a {text:">>> No rebuild needed", color:dark_gray}
+function slimecore:_/load/main
