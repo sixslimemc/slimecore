@@ -18,9 +18,13 @@ inject struct ::slimecore::mcdoc::api::In {
 
 inject struct ::slimecore::mcdoc::api::Out {
     build: struct Out {
-        result: EvalResult<BuildInfo, Error>
+        result: Result
     }
 }
+
+type Result = EvalResult<Success, Error>
+
+type Success = BuildInfo
 
 type EntrypointOrderConflictInfo<T> = struct {
     conflicting_group: [EntrypointReference<T>],

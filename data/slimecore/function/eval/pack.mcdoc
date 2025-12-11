@@ -10,10 +10,24 @@ inject struct ::slimecore::mcdoc::api::In {
 
 inject struct ::slimecore::mcdoc::api::Out {
     pack: struct Out {
-        result: EvalResult<PackManifest, Error>
+        result: Result
     }
 }
 
+type Result = EvalResult<Success, Error>
+
+type Success = PackManifest
+
+struct KeyInfo {
+    name: string,
+    index?: int
+}
+
 struct Error {
-    // TODO
+    missing_keys?: [struct MissingKeyInfo {key: KeyInfo}],
+    invalid_values?: [struct InvalidTypeInfo {
+        key: KeyInfo,
+        value: any,
+        reason: string,
+    }],
 }

@@ -1,5 +1,6 @@
 use ::slimecore::mcdoc::def::Version
 use ::slimecore::mcdoc::def::VersionRequirement
+use ::slimecore::mcdoc::def::EvalResult
 
 
 inject struct ::slimecore::mcdoc::api::In {
@@ -11,9 +12,13 @@ inject struct ::slimecore::mcdoc::api::In {
 
 inject struct ::slimecore::mcdoc::api::Out {
     version_req: struct Out {
-        result: EvalResult<true, Error>
+        result: Result
     }
 }
+
+type Result = EvalResult<Success, Error>
+
+type Success = true
 
 struct Error {
     // TODO
