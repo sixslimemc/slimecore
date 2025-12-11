@@ -4,5 +4,5 @@
 #--------------------
 
 # DEBUG
-$tellraw @a {text:" - #$(pack_ref):$(id)", color:"gray"}
+$tellraw @a {text:" # $(pack_ref):$(id)", color:"gray"}
 $function #$(pack_ref):$(tag_key)/$(id)
