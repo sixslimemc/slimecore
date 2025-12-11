@@ -3,6 +3,9 @@
 # ./reload
 #--------------------
 
+# DEBUG
+return 0
+
 data modify storage slimecore:config datapack_path_overrides set value {}
 
 data remove storage slimecore:config build_time_gamerules
