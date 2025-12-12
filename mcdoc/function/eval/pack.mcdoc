@@ -1,10 +1,11 @@
 use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
+use ::slimecore::mcdoc::def::PackReference
 
 
 struct In {
-    pack: (PackManifest | any)
+    pack: PackManifest
 }
 
 struct Out {
@@ -13,18 +14,18 @@ struct Out {
 
 type Result = EvalResult<Success, Error>
 
-type Success = PackManifest
+type Success = true
 
-struct KeyInfo {
-    name: string,
-    index?: int
-}
+type StructKey = string
 
 struct Error {
-    missing_keys?: [struct MissingKeyInfo {key: KeyInfo}],
-    invalid_values?: [struct InvalidTypeInfo {
-        key: KeyInfo,
-        value: any,
-        reason: string,
+    invalid_pack_references?: [struct InvalidPackReferenceInfo {
+        reference: PackReference,
+        in: StructKey,
+        index: int @ 0..,
+    }],
+    duplicate_ids?: [struct DuplicateIdInfo {
+        id: string,
+        in: StructKey,
     }],
 }

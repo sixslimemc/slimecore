@@ -33,6 +33,10 @@ struct PackReference {
     pack_ref: PackId,
 }
 
+struct AbstractDeclaration {
+    id: AbstractId
+}
+
 struct AbstractReference {
     ...PackReference,
     id: AbstractId,
@@ -66,7 +70,7 @@ struct PackManifest {
     entrypoints: [EntrypointDeclaration<EntrypointId>],
     preload_entrypoints: [EntrypointDeclaration<PreloadEntrypointId>],
     is_library: boolean,
-    abstract_declarations: [AbstractId],
+    abstract_declarations: [AbstractDeclaration],
     abstract_implementations: [AbstractReference],
     dependencies: [Dependency]
 }

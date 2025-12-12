@@ -2,7 +2,7 @@
 #--------------------
 # -> pack: (PackManifest | any)
 #--------------------
-# <- result: EvalResult<PackManifest, TODO>
+# <- result: EvalResult<true, TODO>
 #--------------------
 # TODO: description
 #--------------------
@@ -15,5 +15,7 @@ execute store result score *x _slimecore run function slimecore:_/impl/eval/pack
 
 data remove storage slimecore:_ v.pack
 data remove storage slimecore:in pack
+scoreboard players reset *pack.error _slimecore
+scoreboard players reset *pack.index _slimecore
 
 return run scoreboard players get *x _slimecore

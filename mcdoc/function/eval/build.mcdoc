@@ -27,7 +27,7 @@ type EntrypointOrderConflictInfo<T> = struct {
 
 struct Error {
     invalid_packs?: [struct InvalidPackInfo {
-        pack: (PackManifest | any),
+        pack: PackManifest,
         error: super::pack::Error,
     }],
     duplicate_pack_ids?: [struct DuplicatePackIdInfo {
