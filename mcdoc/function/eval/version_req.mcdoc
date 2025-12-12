@@ -1,6 +1,7 @@
 use ::slimecore::mcdoc::def::Version
 use ::slimecore::mcdoc::def::VersionRequirement
 use ::slimecore::mcdoc::def::EvalResult
+use ::slimecore::mcdoc::def::PositiveInt
 
 
 struct In {
@@ -17,5 +18,7 @@ type Result = EvalResult<Success, Error>
 type Success = true
 
 struct Error {
-    // TODO
+    major_not_equal_to?: PositiveInt,
+    minor_less_than?: PositiveInt,
+    dev_minor_not_equal_to?: PositiveInt,
 }
