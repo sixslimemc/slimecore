@@ -1,7 +1,0 @@
-use ::slimecore::mcdoc::def::PackManifest
-
-inject struct ::slimecore::mcdoc::api::In {
-    manifest: struct In {
-        pack: (#[canonical] PackManifest | any)
-    }
-}

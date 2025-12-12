@@ -1,0 +1,16 @@
+
+dispatch minecraft:storage[slimecore:in] to struct In {
+    rebuild: super::function::rebuild::In,
+    build: super::function::eval::build::In,
+    pack: super::function::eval::pack::In,
+    version_req: super::function::eval::version_req::In,
+    manifest: super::function::api::manifest::In,
+}
+
+dispatch minecraft:storage[slimecore:out] to struct Out {
+    rebuild: super::function::rebuild::Out,
+    build: super::function::eval::build::Out,
+    pack: super::function::eval::pack::Out,
+    version_req: super::function::eval::version_req::Out,
+    manifest: super::function::api::manifest::Out,
+}

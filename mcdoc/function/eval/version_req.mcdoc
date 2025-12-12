@@ -1,0 +1,21 @@
+use ::slimecore::mcdoc::def::Version
+use ::slimecore::mcdoc::def::VersionRequirement
+use ::slimecore::mcdoc::def::EvalResult
+
+
+struct In {
+    version: Version,
+    requirement: VersionRequirement,
+}
+
+struct Out {
+    result: Result
+}
+
+type Result = EvalResult<Success, Error>
+
+type Success = true
+
+struct Error {
+    // TODO
+}

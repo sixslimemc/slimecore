@@ -5,18 +5,14 @@ use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::DatapackPath
 use ::slimecore::mcdoc::def::PartialPackInfo
 
-inject struct ::slimecore::mcdoc::api::In {
-    rebuild: struct In {
-        disable?: [PackReference],
-        uninstall?: [PackReference],
-        force_clean?: boolean,
-    }
+struct Out {
+    result: Result
 }
 
-inject struct ::slimecore::mcdoc::api::Out {
-    rebuild: struct Out {
-        result: Result
-    }
+struct In {
+    disable?: [PackReference],
+    uninstall?: [PackReference],
+    force_clean?: boolean,
 }
 
 type Result = EvalResult<Success, Error>

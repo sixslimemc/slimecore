@@ -2,16 +2,13 @@ use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
 
-inject struct ::slimecore::mcdoc::api::In {
-    pack: struct In {
-        pack: (PackManifest | any)
-    }
+
+struct In {
+    pack: (PackManifest | any)
 }
 
-inject struct ::slimecore::mcdoc::api::Out {
-    pack: struct Out {
-        result: Result
-    }
+struct Out {
+    result: Result
 }
 
 type Result = EvalResult<Success, Error>

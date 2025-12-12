@@ -4,7 +4,7 @@
 # ./main
 #--------------------
 
-data modify storage slimecore:out rebuild.result set value {success:{uninstall_paths:[]}, error:{}}
+data modify storage slimecore:out rebuild.result set value {success:{uninstall_paths:[]}}
 
 # wipe old data if force clean:
 execute if data storage slimecore:in rebuild{force_clean:true} run function slimecore:_/util/wipe_data/main

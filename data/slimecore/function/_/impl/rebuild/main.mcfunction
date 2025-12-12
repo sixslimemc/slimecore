@@ -17,8 +17,9 @@ tellraw @a {text:">> REBUILDING", color:"blue"}
 # process:
 execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/process
 
-# remove success if error:
+# remove success if error & vice versa:
 execute unless score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.success
+execute if score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.error
 
 # DEBUG
 execute if score *rebuild.success _slimecore matches 1 run tellraw @a {text:">> REBUILD SUCCESS", color:"green"}

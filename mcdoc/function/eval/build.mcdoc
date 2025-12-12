@@ -10,18 +10,13 @@ use ::slimecore::mcdoc::def::EntrypointReference
 use ::slimecore::mcdoc::def::EntrypointId
 use ::slimecore::mcdoc::def::PreloadEntrypointId
 
-inject struct ::slimecore::mcdoc::api::In {
-    build: struct In {
-        packs: [(PackManifest | any)]
-    }
+struct In {
+    packs: [(PackManifest | any)]
 }
 
-inject struct ::slimecore::mcdoc::api::Out {
-    build: struct Out {
-        result: Result
-    }
+struct Out {
+    result: Result
 }
-
 type Result = EvalResult<Success, Error>
 
 type Success = BuildInfo

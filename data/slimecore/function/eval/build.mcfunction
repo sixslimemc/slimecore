@@ -24,7 +24,7 @@
 # 0: error
 #--------------------
 
-data modify storage slimecore:out build set value {}
+data remove storage slimecore:out build
 
 execute store result score *x _slimecore run function slimecore:_/impl/eval/build/main
 

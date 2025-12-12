@@ -9,7 +9,7 @@
 # 1: 
 #--------------------
 
-data modify storage slimecore:out pack set value {}
+data remove storage slimecore:out pack
 
 execute store result score *x _slimecore run function slimecore:_/impl/eval/pack/main
 
