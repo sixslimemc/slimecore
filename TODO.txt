@@ -1,0 +1,6 @@
+
+# "virtual"/"reference" entrypoints
+- allow datapacks to define entrypoints that are just handles to other entrypoints (i.e. entrypoints of dependencies)
+- ex: {id:'foo', represents:{pack_ref:'bar', id:'baz'}}
+    - entrypoint orderings that use 'foo' would actually just be referencing bar:baz internally.
+- these entrypoints do not call entrypoint tags, they are simply a handle for other packs to use in ordering.
