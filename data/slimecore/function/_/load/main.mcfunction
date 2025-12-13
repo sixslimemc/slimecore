@@ -28,6 +28,10 @@ data modify storage slimecore:_ v.load.tag_key set value "entrypoint"
 data modify storage slimecore:_ v.load.entrypoints set from storage slimecore:data build.order.entrypoints
 execute if data storage slimecore:_ v.load.entrypoints[0] run function slimecore:_/load/entrypoints/each
 
+# set rebuild check packs:
+function slimecore:_/get_manifests
+data modify storage slimecore:_ data.rebuild_check.manifests set from storage slimecore:_ data.manifest_packs
+
 # DEBUG
 tellraw @a {text:">> RELOAD FINISH", color:"dark_green"}
 

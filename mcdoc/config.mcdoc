@@ -2,8 +2,7 @@ use ::slimecore::mcdoc::def::DatapackPath
 use ::slimecore::mcdoc::def::PackId
 dispatch minecraft:storage[slimecore:config] to struct Config {
     /// Mapping of pack ids to non-standard datapack paths.
-    /// SlimeCore assumes datapack filenames are identical to their SlimeCore pack id.
-    /// Datapacks that do not follow this convention must be included here.
+    /// Datapacks that have non-standard paths MUST be included here (see TODO for standard paths).
     /// Ex: {'mypackid': 'file/My Datapack Filename'}
     /// Default: {}
     datapack_path_overrides: struct {
@@ -21,7 +20,7 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
         /// Default: 2147483647
         max_command_sequence_length: int @ 1..,
     },
-    /// Only rebuild when running 'slimecore:-/rebuild', not on /reload.
+    /// Only rebuild when running 'slimecore:rebuild', not on /reload.
     /// Default: false
     explicit_rebuild_only: boolean
 
