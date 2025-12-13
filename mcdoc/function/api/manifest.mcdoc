@@ -1,7 +1,7 @@
 use ::slimecore::mcdoc::def::PackManifest
 
 struct In {
-    pack: (#[canonical] PackManifest | any)
+    pack: PackManifest
 }
 
 struct Out {}
