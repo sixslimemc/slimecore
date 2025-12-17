@@ -1,3 +1,2 @@
 dispatch minecraft:storage[slimecore:hook] to struct Hook {
-    [any]: any
 }

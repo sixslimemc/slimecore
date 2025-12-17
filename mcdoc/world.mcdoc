@@ -1,0 +1,3 @@
+
+dispatch mcdoc:custom_data["_"] to boolean
+dispatch mcdoc:custom_data["-"] to boolean

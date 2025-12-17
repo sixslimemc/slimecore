@@ -1,5 +1,0 @@
-use ::slimecore::mcdoc::def::EvalResult
-
-dispatch minecraft:storage[slimecore:api] to struct Api {
-
-}
