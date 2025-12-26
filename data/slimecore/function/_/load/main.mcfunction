@@ -4,8 +4,8 @@
 #--------------------
 
 
-# DEBUG
-tellraw @a {text:">> RELOADING", color:"dark_blue"}
+# HOOK: log/load/start
+function #slimecore:hook/log/load/start
 
 # DEBUG
 tellraw @a {text:"> preload entrypoints", color:"dark_aqua"}
@@ -32,7 +32,7 @@ execute if data storage slimecore:_ v.load.entrypoints[0] run function slimecore
 function slimecore:_/get_manifests
 data modify storage slimecore:_ data.rebuild_check.manifests set from storage slimecore:_ data.manifest_packs
 
-# DEBUG
-tellraw @a {text:">> RELOAD FINISH", color:"dark_green"}
+# HOOK: log/load/start
+function #slimecore:hook/log/load/end
 
 data remove storage slimecore:_ v.load
