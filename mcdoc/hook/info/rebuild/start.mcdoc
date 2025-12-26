@@ -1,4 +1,5 @@
+use ::slimecore::mcdoc::def::PackManifest
 
 struct Hook {
-    
+
 }

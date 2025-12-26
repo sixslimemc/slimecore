@@ -1,4 +1,4 @@
 
 struct Hook {
-    
+    result: ::slimecore::mcdoc::function::rebuild::Result
 }

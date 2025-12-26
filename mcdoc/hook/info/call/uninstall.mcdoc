@@ -1,0 +1,5 @@
+use ::slimecore::mcdoc::def::PackId
+
+struct Hook {
+    pack_ref: PackId    
+}

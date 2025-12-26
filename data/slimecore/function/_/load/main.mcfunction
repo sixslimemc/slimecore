@@ -4,8 +4,8 @@
 #--------------------
 
 
-# HOOK: log/load/start
-function #slimecore:hook/log/load/start
+# HOOK: info/load/start
+function #slimecore:hook/info/load/start
 
 # DEBUG
 tellraw @a {text:"> preload entrypoints", color:"dark_aqua"}
@@ -32,7 +32,7 @@ execute if data storage slimecore:_ v.load.entrypoints[0] run function slimecore
 function slimecore:_/get_manifests
 data modify storage slimecore:_ data.rebuild_check.manifests set from storage slimecore:_ data.manifest_packs
 
-# HOOK: log/load/start
-function #slimecore:hook/log/load/end
+# HOOK: info/load/end
+function #slimecore:hook/info/load/end
 
 data remove storage slimecore:_ v.load
