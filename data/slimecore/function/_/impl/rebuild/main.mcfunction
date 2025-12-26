@@ -11,8 +11,8 @@ schedule function slimecore:_/util/set_gamerules/main 1t
 data remove storage slimecore:_ v.rebuild
 scoreboard players set *just_rebuilt _slimecore 1
 
-# DEBUG
-tellraw @a {text:">> REBUILDING", color:"blue"}
+# HOOK: info/rebuild/start
+function #slimecore:hook/info/rebuild/start
 
 # process:
 execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/process
@@ -21,12 +21,9 @@ execute store result score *rebuild.success _slimecore run function slimecore:_/
 execute unless score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.success
 execute if score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.error
 
-# DEBUG
-execute if score *rebuild.success _slimecore matches 1 run tellraw @a {text:">> REBUILD SUCCESS", color:"green"}
-
-# DEBUG
-execute unless score *rebuild.success _slimecore matches 1 run tellraw @a {text:">> REBUILD ERROR", color:"dark_red"}
-execute unless score *rebuild.success _slimecore matches 1 run tellraw @a {storage:"slimecore:out", nbt:"rebuild.result.error", color:"red"}
+# HOOK: info/rebuild/end
+data modify storage slimecore:hook end.result set from storage slimecore:out rebuild.result
+function #slimecore:hook/info/rebuild/end
 
 reload
 return run scoreboard players get *rebuild.success _slimecore

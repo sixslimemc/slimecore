@@ -2,5 +2,5 @@ use ::slimecore::mcdoc::def::EntrypointReference
 use ::slimecore::mcdoc::def::PreloadEntrypointId
 
 struct Hook {
-    entrypoint: EntrypointReference<PreloadEntrypointId>
+    preload_entrypoint: EntrypointReference<PreloadEntrypointId>
 }

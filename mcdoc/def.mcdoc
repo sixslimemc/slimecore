@@ -10,6 +10,11 @@ type DatapackPath = string
 type EvalResult<T, E> = (struct {success: T} | struct {error: E})
 type PositiveInt = int @ 0..
 
+type Indexed<T> = struct {
+    index: int @ 0..,
+    ...T
+}
+
 type EntrypointReference<T> = struct {
     ...PackReference,
     id: T
@@ -90,20 +95,9 @@ struct BuildInfo {
     // packs are in load order.
     packs: [PackManifest],
     order: struct {
-        load: [struct {
-            ...PackReference,
-            index: int @ 0..
-        }],
-        entrypoints: [struct {
-            ...PackReference,
-            id: EntrypointId,
-            index: int @ 0..,
-        }],
-        preload_entrypoints: [struct {
-            ...PackReference,
-            id: PreloadEntrypointId,
-            index: int @ 0..,
-        }]
+        load: [Indexed<PackReference>],
+        entrypoints: [Indexed<EntrypointReference<EntrypointId>>],
+        preload_entrypoints: [Indexed<EntrypointReference<PreloadEntrypointId>>]
     },
     aux: struct {
         pack_map: struct {

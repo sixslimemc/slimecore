@@ -1,9 +1,12 @@
 dispatch minecraft:storage[slimecore:hook] to struct Hook {
     start: (super::hook::info::rebuild::start::Hook | super::hook::info::load::start::Hook),
     end: (super::hook::info::rebuild::end::Hook | super::hook::info::load::end::Hook),
-    load: super::hook::info::load::call::load::Hook,
-    disable: super::hook::info::rebuild::call::disable::Hook,
-    uninstall: super::hook::info::rebuild::call::uninstall::Hook,
-    entrypoint: super::hook::info::load::call::entrypoint::Hook,
-    preload_entrypoint: super::hook::info::load::call::preload_entrypoint::Hook,
+    load: super::hook::info::call::load::Hook,
+    entrypoint: super::hook::info::call::entrypoint::Hook,
+    preload_entrypoint: super::hook::info::call::preload_entrypoint::Hook,
+    uninstall: super::hook::info::call::uninstall::Hook,
+    disable: super::hook::info::call::disable::Hook,
+    entrypoints: super::hook::info::load::entrypoints::Hook,
+    loads: super::hook::info::load::loads::Hook,
+    preload_entrypoints: super::hook::info::load::preload_entrypoints::Hook,
 }
