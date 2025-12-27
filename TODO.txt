@@ -4,3 +4,4 @@
 - ex: {id:'foo', represents:{pack_ref:'bar', id:'baz'}}
     - entrypoint orderings that use 'foo' would actually just be referencing bar:baz internally.
 - these entrypoints do not call entrypoint tags, they are simply a handle for other packs to use in ordering.
+- this would have pretty error-type & auxilary data ramifications.
