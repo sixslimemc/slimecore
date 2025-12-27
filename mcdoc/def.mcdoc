@@ -17,92 +17,168 @@ type Indexed<T> = struct {
 
 type EntrypointReference<T> = struct {
     ...PackReference,
+    /// Referenced entrypoint's ID.
     id: T
 }
 type EntrypointDeclaration<T> = struct {
+    /// Entrypoint ID.
+    /// `<id>` part of `#<pack id>/entrypoint/<id>`.
     id: T,
+    /// This entrypoint will be called before these entrypoints.
     before?: [EntrypointReference<T>],
+    /// This entrypoint will be called after these entrypoints.
     after?: [EntrypointReference<T>],
 }
 
 struct DatapackLink {
     ...PackReference,
+    /// Referenced pack's datapack path.
     path: DatapackPath
 }
 struct PartialPackInfo {
+    /// Pack ID.
     pack_id: PackId,
+    /// Author ID.
     author_id: AuthorId,
+    /// Pack version.
     version: Version,
 }
 struct PackReference {
+    /// Referencing the pack with this ID.
     pack_ref: PackId,
 }
 
 struct AbstractDeclaration {
+    /// Abstract interface ID.
     id: AbstractId
 }
 
 struct AbstractReference {
     ...PackReference,
+    /// Referencing abstract interface ID.
     id: AbstractId,
 }
 struct Version {
+    /// Major version.
+    /// See [semantic versioning](https://semver.org/).
     major: PositiveInt,
+    /// See [semantic versioning](https://semver.org/).
     minor: PositiveInt,
+    /// See [semantic versioning](https://semver.org/).
+    /// (Must only be a positive number.)
     patch: PositiveInt,
 }
 
 struct VersionRequirement {
+    /// Installed major version must exactly match this.
+    /// (See [semantic versioning](https://semver.org/).)
     major: PositiveInt,
+    /// Installed minor version must be greater than or equal to this.
+    /// If major version is 0, installed minor version must exactly match this.
+    /// (See [semantic versioning](https://semver.org/).)
     minor: PositiveInt,
 }
 
 struct PackManifest {
+    /// Pack ID.
     pack_id: PackId,
+    /// Author ID.
     author_id: AuthorId,
+    /// Pack version.
+    /// (Follows [semantic versioning](https://semver.org/).)
     version: Version,
+    /// Download URL for this exact version of this pack.
     url: PackUrl,
+    /// Human-facing/display details; not used in processing.
     display: struct PackDisplayInfo {
+        /// Display name.
         name: string,
+        /// Author display name.
         author_name: string,
+        /// Brief 1-2 sentence-length description.
         summary: string,
+        /// Optional, useful external links for users.
         links: struct {
+            /// Browser URL to the author's website or representing profile.
             author?: ExternalLink,
+            /// Browser URL to browse other versions (or find the latest version) of this pack.
             versions?: ExternalLink,
+            /// Browser URL to information/wiki/documentation of this pack.
             info?: ExternalLink,
         }
     },
+    /// Declaration of entrypoints.
+    /// An entrypoint is a function tag in the `entrypoint` directory (`#<pack id>:entrypoint/<entrypoint id>`).
+    /// Entrypoints are called after all packs are loaded in the order that they appear in this array.
+    ///
+    /// Generally, packs define a single entrypoint (e.g. 'tick') to start a ticking `/schedule` loop.
+    /// If your pack does multiple, conceptually distinct things in it's tick loop, it may be beneficial to split work up into multiple entrypoints because it may give other developers/users more control when utilizing your pack.
     entrypoints: [EntrypointDeclaration<EntrypointId>],
+    /// Declaration of preload entrypoints.
+    /// A preload entrypoint is a function tag in the `preload_entrypoint` directory (`#<pack id>:preload_entrypoint/<entrypoint id>`).
+    /// Preload entrypoints are like normal entrypoints, but called *before* any packs are loaded (including this one).
+    ///
+    /// Generally, packs do not have preload entrypoints unless they are doing technical/meta pack management.
     preload_entrypoints: [EntrypointDeclaration<PreloadEntrypointId>],
+    /// Indicates whether this pack is a library or not.
+    /// A library does not noticeably affect the game alone and is meant to be a dependency of other packs.
     is_library: boolean,
+    /// Declaration of abstract interfaces.
+    /// An abstract interface, in the most general sense, represents a conceptual contract that another pack in the user's world must fulfill (implement).
+    /// This contract is to be defined and documented by the declaring pack's author.
+    /// Every abstract interface must be implemented exactly once by other packs; multiple packs implementing the same abstract interface will result in a build error.
+    ///
+    /// If a pack has one or more abstract functions, it must declare at least one abstract interface.
     abstract_declarations: [AbstractDeclaration],
+    /// Abstract interfaces that this pack implements.
     abstract_implementations: [AbstractReference],
+    /// Other packs that this pack references or requires (dependencies).
+    /// ALL (SlimeCore compliant) packs that are referenced in *any way* by this pack must be included here.
     dependencies: [Dependency]
 }
 
 struct Dependency {
+    /// Dependency's pack ID.
     pack_id: PackId,
+    /// Dependency's author ID.
     author_id: AuthorId,
+    /// The requirement for the installed dependency version.
+    /// (See sub-fields.)
     version: VersionRequirement,
+    /// Dependency's download information.
     download: struct {
+        /// Download URL.
         url: PackUrl,
+        /// The exact pack version of this download.
         version: Version
     },
+    /// Indicates whether or not this dependency is optional.
+    /// If true, this pack must be able to function without this dependency.
+    ///
+    /// Generally, an optional dependency indicates that the pack provides additional support or interaction with another pack, but does not require it.
     optional: boolean,
 }
 
 struct BuildInfo {
-    // packs are in load order.
+    // All pack manifests in this build (in load order).
     packs: [PackManifest],
+    /// Loading order information.
     order: struct {
+        /// 'load' tag call order; matches actual datapack load order.
         load: [Indexed<PackReference>],
+        /// Entrypoint call order.
         entrypoints: [Indexed<EntrypointReference<EntrypointId>>],
+        /// Preload entrypoint call order.
         preload_entrypoints: [Indexed<EntrypointReference<PreloadEntrypointId>>]
     },
+    /// Auxilary structured data.
+    /// Does not provide any new information, but provides useful re-representations of data for performant retrieval.
     aux: struct {
+        /// Mapping of pack ID's to their respective manifests.
         pack_map: struct {
             [PackId]: PackManifest
         },
+        /// Mapping of abstract interfaces (in the form `<pack id>.<abstract id>`) to it's implementing pack's manifest.
         impl_map: struct {
             [PackId]: struct {
                 [AbstractId]: PackManifest
@@ -112,9 +188,14 @@ struct BuildInfo {
 }
 
 struct WorldSpecificInfo {
+    /// Packs that are currently disabled in this world, but can be re-enabled.
     disabled_packs: [PartialPackInfo],
+    /// Entries containing a pack's ID and it's datapack path.
     datapack_links: [DatapackLink],
+    /// Auxilary structured data.
+    /// Does not provide any new information, but provides useful re-representations of data for performant retrieval.
     aux: struct {
+        /// Mapping of pack IDs to their respective datapack's path.
         datapack_link_map: struct {
             [PackId]: DatapackPath
         }

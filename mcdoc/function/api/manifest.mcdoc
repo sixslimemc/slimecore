@@ -1,6 +1,10 @@
+// Registers a pack's manifest.
+// Intended for exclusive use within `#slimecore:manifest`.
+
 use ::slimecore::mcdoc::def::PackManifest
 
 struct In {
+    /// Manifest info.
     pack: PackManifest
 }
 

@@ -6,25 +6,45 @@ use ::slimecore::mcdoc::def::DatapackPath
 use ::slimecore::mcdoc::def::PartialPackInfo
 
 struct Out {
+    /// Rebuild result.
     result: Result
 }
 
 struct In {
+    /// Packs to be disabled.
+    /// This *overwrites* the currently disabled packs, it does not add to it (i.e. currently disabled packs that are not included will be re-enabled).
+    ///
+    /// If left unspecified, will use currently disabled packs (`slimecore:data world.disabled_packs`).
     disable?: [PackReference],
+    /// Packs to be uninstalled.
+    /// Uninstalled packs will have their 'uninstall' tags called, disabled, and will be untracked by SlimeCore.
+    /// After SlimeCore uninstallation, datapacks should be promptly removed from the world.
     uninstall?: [PackReference],
+    /// If true, SlimeCore will wipe the current build before rebuilding.
+    /// This may be useful if there are issues with datapack paths or disable/enabling.
+    ///
+    /// IMPORTANT: Rebuilding is not atomic if this is true; if rebuild fails, SlimeCore may be left in an invalid state (`slimecore:data build` empty with enabled/running datapacks). However, a successful rebuild should fix this issue.
     force_clean?: boolean,
 }
 
 type Result = EvalResult<Success, Error>
 
 struct Success {
+    /// Datapack paths of uninstalled datapacks; these should be removed from the world.
     uninstall_paths: [DatapackPath]
 }
 
 struct Error {
+    /// If present, an error occured when evaluating the build.
+    /// Contains the error that `slimecore:eval/build` returned.
     build_error?: super::eval::build::Error,
+    /// If present, one or more pack manifests declared a pack ID that did not have a matching or standard datapack path.
+    /// Contains information about each problematic pack.
     missing_datapack_paths?: [struct MissingDatapackPathInfo {
+        /// The problematic pack's partial pack information.
         pack: PartialPackInfo,
+        /// If present, `slimecore:config datapack_path_overrides` contained a datapack path (this value) for the this pack's ID.
+        /// Expected this exact datapack path to exist; standard datapack paths are not checked when there is an override.
         path_override?: DatapackPath
     }]
 }

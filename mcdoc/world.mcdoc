@@ -1,3 +1,5 @@
 
+/// If present and true, this item is private.
 dispatch mcdoc:custom_data["_"] to boolean
+/// If present and true, this item is owned.
 dispatch mcdoc:custom_data["-"] to boolean

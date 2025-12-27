@@ -1,3 +1,5 @@
+// Evaluates a set of packs, resolving to a build.
+
 use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
@@ -11,10 +13,12 @@ use ::slimecore::mcdoc::def::EntrypointId
 use ::slimecore::mcdoc::def::PreloadEntrypointId
 
 struct In {
+    /// Packs to include in the build.
     packs: [(PackManifest | any)]
 }
 
 struct Out {
+    /// Evaluation result.
     result: Result
 }
 type Result = EvalResult<Success, Error>
@@ -22,38 +26,62 @@ type Result = EvalResult<Success, Error>
 type Success = BuildInfo
 
 type EntrypointOrderConflictInfo<T> = struct {
+    /// Entrypoints that are involved in the ordering conflict.
     conflicting_group: [EntrypointReference<T>],
 }
 
 struct Error {
+    /// If present, one or more packs were invalid (returned an error when evaluated with `slimecore:eval/pack`.)
     invalid_packs?: [struct InvalidPackInfo {
+        /// The invalid pack.
         pack: PackManifest,
+        /// The error returned from `slimecore:eval/pack`.
         error: super::pack::Error,
     }],
+    /// If present, there were instances of packs sharing the same pack ID.
     duplicate_pack_ids?: [struct DuplicatePackIdInfo {
+        /// The shared/duplicate pack ID.
         pack_id: PackId,
+        /// The packs that shared this pack ID.
         packs: [PackManifest],
     }],
+    /// If present, there were instances of one abstract interface being implemented by multiple packs.
     multiple_implementations?: [struct MultipleImplementationInfo {
+        /// The abstract interface with multiple implementations.
         of: AbstractReference,
+        /// References to the packs that implemented the interface.
         sources: [PackReference],
     }],
+    /// If present, there were instances were a pack's dependencies were not properly fulfilled.
     unfulfilled_dependencies?: [struct UnfulfilledDependencyInfo {
+        /// The pack ID that specified the dependency.
         from: PackId,
+        /// The dependency.
         dependency: Dependency,
+        /// The reason the dependency was not fulfilled.
         reason: struct {
+            /// If specified, there was no pack that matched the dependency's pack ID.
             not_present?: PackId,
+            /// If specified, the dependency pack was present, but it's version did not meet the requirement.
             incompatible_version?: super::version_req::Error,
+            /// If specified, a pack with the dependency's pack ID was present, but the author ID did not match.
             author_mismatch?: struct {
+                /// The author ID specified by the dependency.
                 expected: AuthorId,
+                /// The author ID of the mismatched pack.
                 got: AuthorId,
             },
         },
     }],
+    /// If present, there were instances of packs that declared abstract interfaces, but did not have them implemented by any other pack.
     unimplemented_abstracts?: [AbstractReference],
+    /// If present, there exists at least one dependency cycle in <packs>.
     dependency_cycles?: [struct DependencyCycleInfo {
+        /// The dependency cycle (arbitrary starting position).
         cycle: [PackReference],
     }],
+    /// If present, there were instances were entrypoint ordering specifications were impossible to fulfill.
     entrypoint_order_conflicts?: [EntrypointOrderConflictInfo<EntrypointId>],
+    /// If present, there were instances were preload entrypoint ordering specifications were impossible to fulfill.
     preload_entrypoint_order_conflicts?: [EntrypointOrderConflictInfo<PreloadEntrypointId>],
 }

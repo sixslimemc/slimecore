@@ -1,3 +1,5 @@
+// Evaluates a version against a version requirement.
+
 use ::slimecore::mcdoc::def::Version
 use ::slimecore::mcdoc::def::VersionRequirement
 use ::slimecore::mcdoc::def::EvalResult
@@ -5,11 +7,14 @@ use ::slimecore::mcdoc::def::PositiveInt
 
 
 struct In {
+    /// Version to compare.
     version: Version,
+    /// Version requirement to fulfill.
     requirement: VersionRequirement,
 }
 
 struct Out {
+    /// Evaluation result.
     result: Result
 }
 
@@ -18,7 +23,10 @@ type Result = EvalResult<Success, Error>
 type Success = true
 
 struct Error {
+    /// <version>.major is not equal to <requirement>.major.
     major_not_equal_to?: PositiveInt,
+    /// <version>.minor is not equal to or greater than <requirement>.minor.
     minor_less_than?: PositiveInt,
+    /// <version>.major is 0 and <version>.minor is not equal to <requirement>.minor.
     dev_minor_not_equal_to?: PositiveInt,
 }

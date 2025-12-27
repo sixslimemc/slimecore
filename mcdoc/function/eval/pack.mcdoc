@@ -1,3 +1,5 @@
+// Evaluates (validates) a pack manifest.
+
 use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
@@ -5,10 +7,12 @@ use ::slimecore::mcdoc::def::PackReference
 
 
 struct In {
+    /// Pack manifest to evaluate.
     pack: PackManifest
 }
 
 struct Out {
+    /// Evaluation result.
     result: Result
 }
 
@@ -19,13 +23,21 @@ type Success = true
 type StructKey = string
 
 struct Error {
+    /// If present, <pack> contains one or more references to packs that are not included in it's dependencies.
     invalid_pack_references?: [struct InvalidPackReferenceInfo {
+        /// The invalid reference.
         reference: PackReference,
+        /// The key within <pack> which holds the invalid reference.
         in: StructKey,
-        index: int @ 0..,
+        /// If present, the invalid reference was within an array.
+        /// The array index of the invalid reference.
+        index?: int @ 0..,
     }],
+    /// If present, <pack> contained one or more instances where an array was supposed to be unique by an id/key, but duplicate ids were found within.
     duplicate_ids?: [struct DuplicateIdInfo {
-        id: string,
+        /// The key of the unique id (i.e. the key that the array was supposed to be unique by).
+        id: StructKey,
+        /// The key within <pack> which holds the array with the duplicate ids.
         in: StructKey,
     }],
 }

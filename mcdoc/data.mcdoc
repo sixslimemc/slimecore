@@ -1,21 +1,24 @@
-use ::slimecore::mcdoc::def::BuildInfo
-use ::slimecore::mcdoc::def::Version
-use ::slimecore::mcdoc::def::PackUrl
-use ::slimecore::mcdoc::def::AuthorId
-use ::slimecore::mcdoc::def::ExternalLink
-use ::slimecore::mcdoc::def::PackId
-use ::slimecore::mcdoc::def::PackManifest
-use ::slimecore::mcdoc::def::EntrypointDeclaration
-use ::slimecore::mcdoc::def::EntrypointId
-use ::slimecore::mcdoc::def::PreloadEntrypointId
-use ::slimecore::mcdoc::def::AbstractId
-use ::slimecore::mcdoc::def::PackReference
-use ::slimecore::mcdoc::def::Dependency
-use ::slimecore::mcdoc::def::WorldSpecificInfo
+use super::def::BuildInfo
+use super::def::Version
+use super::def::PackUrl
+use super::def::AuthorId
+use super::def::ExternalLink
+use super::def::PackId
+use super::def::PackManifest
+use super::def::EntrypointDeclaration
+use super::def::EntrypointId
+use super::def::PreloadEntrypointId
+use super::def::AbstractId
+use super::def::PackReference
+use super::def::Dependency
+use super::def::WorldSpecificInfo
 
 dispatch minecraft:storage[slimecore:data] to struct Data {
+    /// The current build of this world.
     build: BuildInfo,
+    /// World-specific information.
     world: WorldSpecificInfo,
+    /// Supplemental pack manifest for slimecore itself.
     slimecore: (PackManifest | #[canonical] struct SlimecoreInfo {
         pack_id: "slimecore",
         author_id: "sixslime",
