@@ -5,7 +5,7 @@
 # <- path?: DatapackPath
 # <- path_override?: DatapackPath
 #--------------------
-# TODO: description
+# .
 #--------------------
 # 1: path found
 # 0: path not found

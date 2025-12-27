@@ -1,13 +1,4 @@
 #> slimecore : eval/pack
-#--------------------
-# -> pack: (PackManifest | any)
-#--------------------
-# <- result: EvalResult<true, TODO>
-#--------------------
-# TODO: description
-#--------------------
-# 1: 
-#--------------------
 
 data remove storage slimecore:out pack
 

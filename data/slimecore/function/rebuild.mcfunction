@@ -1,25 +1,4 @@
 #> slimecore : rebuild
-#--------------------
-# -> disable?: [PackReference]
-# -> uninstall?: [PackReference]
-# -> force_clean?: boolean
-#--------------------
-# -> result: EvalResult<{
-#   uninstall_paths: [DatapackPath]
-# }, {
-#   build_error?: eval::build::Error,
-#   missing_datapack_paths?: [{
-#       pack: PartialPackInfo,
-#       path_override?: DatapackPath,
-#   }]
-# }
-#--------------------
-# TODO: description
-# - if disable is not set, uses {data -> world.disabled_packs}
-#--------------------
-# 1: success
-# 0: error
-#--------------------
 
 data remove storage slimecore:out rebuild
 

@@ -1,19 +1,4 @@
 #> slimecore : eval/version_req
-#--------------------
-# -> version: Version
-# -> requirement: VersionRequirement
-#--------------------
-# <- result: EvalResult<true, {
-#   major_not_equal_to: PositiveInt,
-#   minor_less_than: PositiveInt,
-#   dev_minor_not_equal_to: PositiveInt,
-# }
-#--------------------
-# TODO: description
-#--------------------
-# 1: success
-# 0: error
-#--------------------
 
 data remove storage slimecore:out version_req
 
