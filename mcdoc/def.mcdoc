@@ -118,7 +118,7 @@ struct PackManifest {
     /// A preload entrypoint is a function tag in the `preload_entrypoint` directory (`#<pack id>:preload_entrypoint/<entrypoint id>`).
     /// Preload entrypoints are like normal entrypoints, but called *before* any packs are loaded (including this one).
     ///
-    /// Generally, packs do not have preload entrypoints unless they are doing technical/meta pack management.
+    /// Generally, preload entrypoints should be reserved for technical/meta management and should not trigger a schedule loop.
     preload_entrypoints: [EntrypointDeclaration<PreloadEntrypointId>],
     /// Indicates whether this pack is a library or not.
     /// A library does not noticeably affect the game alone and is meant to be a dependency of other packs.
