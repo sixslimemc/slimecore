@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "The SlimeCore framework datapack.",
+    "description": "The SlimeCore datapack loader and manager.",
     "min_format": 94,
     "max_format": 94
   }

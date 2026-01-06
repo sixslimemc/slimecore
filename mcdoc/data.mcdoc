@@ -31,7 +31,7 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
         display: struct {
             name: "SlimeCore",
             author_name: "SixSlime",
-            summary: "The SlimeCore framework.",
+            summary: "The SlimeCore datapack loader and manager.",
             links: struct {
                 author: "https://github.com/sixslimemc",
                 versions: "TODO",
