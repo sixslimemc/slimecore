@@ -23,18 +23,18 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
         pack_id: "slimecore",
         author_id: "sixslime",
         version: struct {
-            major: 1,
-            minor: 0,
+            major: 0,
+            minor: 1,
             patch: 0,
         },
-        url: "TODO",
+        url: "https://github.com/sixslimemc/slimecore/releases/download/0.1.0/sixslime.slimecore%200.1.0.zip",
         display: struct {
             name: "SlimeCore",
             author_name: "SixSlime",
             summary: "The SlimeCore datapack loader and manager.",
             links: struct {
                 author: "https://github.com/sixslimemc",
-                versions: "TODO",
+                versions: "https://github.com/sixslimemc/slimecore",
                 info: "https://github.com/sixslimemc/slimecore",
             }
         },
