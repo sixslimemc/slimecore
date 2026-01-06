@@ -11,4 +11,4 @@ From [The SC Proposition](https://sixslimemc.github.io/sc-proposition/):
 
 SlimeCore solves these issues and attempts to relieve both developers and users of datapacks of technical responsibility. Developers specify information in their pack's manifest, users run `/reload`, and SlimeCore does the rest.
 
-SlimeCore is part of [The SC Proposition](https://sixslimemc.github.io/sc-proposition/) and is primarily documented therein.
+SlimeCore is part of [The SC Proposition](https://sixslimemc.github.io/sc-proposition/) and information on it's usage is found therein.
