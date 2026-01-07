@@ -1,3 +1,4 @@
+// Called just before preload entrypoints are called.
 
 struct Hook {
 

@@ -1,3 +1,4 @@
+// Called just before entrypoints are called.
 
 struct Hook {
 

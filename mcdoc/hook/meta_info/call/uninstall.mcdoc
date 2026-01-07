@@ -1,3 +1,5 @@
+// Called just before <pack_ref>'s uninstall tag is called.
+
 use ::slimecore::mcdoc::def::PackId
 
 struct Hook {

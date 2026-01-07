@@ -1,3 +1,4 @@
+// Called just before load tags are called.
 
 struct Hook {
 

@@ -1,3 +1,5 @@
+// Called just before an <entrypoint> is called.
+
 use ::slimecore::mcdoc::def::EntrypointReference
 use ::slimecore::mcdoc::def::EntrypointId
 

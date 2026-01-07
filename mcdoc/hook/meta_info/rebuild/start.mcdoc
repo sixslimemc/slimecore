@@ -1,3 +1,5 @@
+// Called when a rebuild starts, before any action.
+
 use ::slimecore::mcdoc::def::PackManifest
 
 struct Hook {

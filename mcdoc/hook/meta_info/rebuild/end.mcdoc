@@ -1,3 +1,4 @@
+// Called when a rebuild finishes/ends; always 1 tick after a rebuild is initiated.
 
 struct Hook {
     result: ::slimecore::mcdoc::function::rebuild::Result
