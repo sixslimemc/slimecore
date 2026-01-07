@@ -4,7 +4,7 @@
 # _/reload
 #--------------------
 
-tellraw @a[tag=_slimecore.uninstaller] [{text: "Uninstalling SlimeCore Datapack...", color: "gold"}]
+tellraw @a[tag=_slimecore.uninstaller] [{text: "Removing SlimeCore data...", color: "gold"}]
 
 scoreboard objectives remove _slimecore
 
