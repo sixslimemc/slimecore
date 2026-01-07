@@ -4,7 +4,7 @@
 # _/reload
 #--------------------
 
-tellraw @s [{text: "Uninstalling SlimeCore Datapack...", color: "gold"}]
+tellraw @a[tag=_slimecore.uninstaller] [{text: "Uninstalling SlimeCore Datapack...", color: "gold"}]
 
 scoreboard objectives remove _slimecore
 
@@ -22,8 +22,10 @@ data remove storage slimecore:_ u
 data remove storage slimecore:_ t
 data remove storage slimecore:_ data
 
-tellraw @s [{text: "SlimeCore successfully uninstalled.", color: "dark_green", bold:true}]
-tellraw @s [{text: "All datapacks that rely on SlimeCore (should) have been properly disabled.", color: "dark_green"}]
-tellraw @s [{text: "Please remove the SlimeCore datapack from this world's 'datapack' folder before the next reload.", color: "yellow"}]
+tellraw @a[tag=_slimecore.uninstaller] [{text: "SlimeCore successfully uninstalled.", color: "dark_green", bold:true}]
+tellraw @a[tag=_slimecore.uninstaller] [{text: "All datapacks that rely on SlimeCore (should) have been properly disabled.", color: "dark_green"}]
+tellraw @a[tag=_slimecore.uninstaller] [{text: "Please remove the SlimeCore datapack from this world's 'datapack' folder before the next reload.", color: "yellow"}]
+
+tag @s remove _slimecore.uninstaller
 
 return 1
