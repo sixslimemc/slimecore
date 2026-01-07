@@ -25,3 +25,5 @@ data remove storage slimecore:_ data
 tellraw @s [{text: "SlimeCore successfully uninstalled.", color: "dark_green", bold:true}]
 tellraw @s [{text: "All datapacks that rely on SlimeCore (should) have been properly disabled.", color: "dark_green"}]
 tellraw @s [{text: "Please remove the SlimeCore datapack from this world's 'datapack' folder before the next reload.", color: "yellow"}]
+
+return 1

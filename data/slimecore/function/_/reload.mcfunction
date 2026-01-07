@@ -2,7 +2,7 @@
 # MINECRAFT : LOAD
 
 # if uninstalling, ignore reload and continue uninstalling
-execute if score *uninstalling _slimecore matches 1.. run return run function slimecore:_/impl/-/uninstall_slimecore/continue
+execute if score *uninstall _slimecore matches 1.. run return run function slimecore:_/impl/-/uninstall_slimecore/continue
 
 # if rebuilding, ignore reload and continue building:
 execute if score *just_rebuilt _slimecore matches 1.. run function slimecore:_/load/main
