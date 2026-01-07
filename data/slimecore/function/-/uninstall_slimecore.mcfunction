@@ -5,6 +5,6 @@ $say $(confirm)
 $data modify storage slimecore:_ x.confirm set value $(confirm)b
 execute unless data storage slimecore:_ x{confirm:true} run return fail
 
-function slimecore:_/get_manifests
+function slimecore:_/impl/-/uninstall_slimecore/main
 
 return 1
