@@ -1,4 +1,5 @@
-// Evaluates a set of packs, resolving to a build.
+// Evaluates a build given a set of pack manifests.
+// This just evaluates build data, it does *not* actually initiate a rebuild; the build is not applied to the world, nor are datapack paths validated.
 
 use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult

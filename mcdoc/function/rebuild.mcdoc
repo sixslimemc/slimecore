@@ -1,3 +1,5 @@
+// Initiates an explicit rebuild. Can specify packs to <uninstall> and/or <disable>.
+
 use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
