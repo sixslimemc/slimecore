@@ -2,7 +2,7 @@
 
 **ID:** `sixslime.slimecore`
 
-> The SlimeCore datapack loader and manager.
+> The SlimeCore datapack loader.
 
 ## Description
 
