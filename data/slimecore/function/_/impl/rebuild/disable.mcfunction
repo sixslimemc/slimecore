@@ -6,7 +6,7 @@
 #--------------------
 
 # HOOK: meta_info/call/disable
-$data modify storage slimecore:hook disable set value {pack_ref:"$(pack_ref)"}
+$data modify storage slimecore:hook disable set value {pack_id:"$(pack_ref)"}
 function #slimecore:hook/meta_info/call/disable
 
 $data modify storage slimecore:_ x.call set value bool($(call_tag))

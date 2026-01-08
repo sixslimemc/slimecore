@@ -3,5 +3,5 @@
 use ::slimecore::mcdoc::def::PackId
 
 struct Hook {
-    pack_ref: PackId    
+    pack_id: PackId    
 }
