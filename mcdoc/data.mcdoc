@@ -27,7 +27,7 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
             minor: 1,
             patch: 0,
         },
-        url: "https://github.com/sixslimemc/slimecore/releases/download/0.1.0/sixslime.slimecore%200.1.0.zip",
+        url: "https://github.com/sixslimemc/slimecore/releases/download/v0.1.0/sixslime.slimecore%200.1.0.zip",
         display: struct {
             name: "SlimeCore",
             author_name: "SixSlime",
