@@ -51,10 +51,6 @@ execute unless score *x _slimecore matches 1.. run function slimecore:_/impl/reb
 execute if score *rebuild.error _slimecore matches 1 run return 0
 data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out build.result.success
 
-say hi
-# DEBUG:
-tellraw @a ["PACKS", {'storage':'slimecore:_', 'nbt':'v.rebuild.build.packs'}]
-
 #- populate {..new_links} and {..new_link_map}
 data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.build.packs
 execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/packs/each

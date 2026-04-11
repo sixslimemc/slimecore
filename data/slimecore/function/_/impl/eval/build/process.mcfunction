@@ -38,6 +38,9 @@ data modify storage slimecore:_ v.build.packs set from storage slimecore:in buil
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_1/each
 execute if score *build.error _slimecore matches 1 run return 0
 
+# DEBUG:
+tellraw @a ["PACKS: ", {'storage':'slimecore:in', 'nbt':'build.packs'}]
+
 # pass 2:
 #- check dependencies fulfilled
 #- check interfaces implemented
