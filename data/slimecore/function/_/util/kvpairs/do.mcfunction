@@ -5,7 +5,7 @@
 #--------------------
 kill @s
 
-data modify entity @s text set value {storage:"slimecore:_/in", nbt:"kvpairs.map"}
+data modify entity @s text set value {plain:true, storage:"slimecore:_/in", nbt:"kvpairs.map"}
 data modify storage slimecore:_ u.kvpairs.string set from entity @s text
 
 scoreboard players set *kvpairs.start _slimecore 1
