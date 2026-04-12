@@ -1,15 +1,20 @@
-# UTIL > kvpairs
+# UTIL > slimecore : kvpairs
 # do
 #--------------------
-# ./main AS [text_display]
+# ./main
 #--------------------
+
 kill @s
 
-data modify entity @s text set value {plain:true, storage:"slimecore:_/in", nbt:"kvpairs.map"}
-data modify storage slimecore:_ u.kvpairs.string set from entity @s text
+data modify storage slimecore:_/out kvpairs.result set value []
 
-scoreboard players set *kvpairs.start _slimecore 1
-scoreboard players set *kvpairs.end _slimecore 1
-execute store result score *kvpairs.length _slimecore run data get storage slimecore:_ u.kvpairs.string
+data modify entity @s text set value {plain:true, storage:"slimecore:_/in", nbt:"kvpairs.struc"}
+data modify storage slimecore:_ u.kvpairs.buffer set from entity @s text.extra
 
-execute if score *kvpairs.end _slimecore < *kvpairs.length _slimecore run function slimecore:_/util/kvpairs/loop/loop
+execute store result score *kvpairs.token_count _slimecore if data storage slimecore:_ u.kvpairs.buffer[]
+scoreboard players set *kvpairs.key_index _slimecore 2
+
+execute store result storage slimecore:_ u.kvpairs.key_index int 1 run scoreboard players get *kvpairs.key_index _slimecore
+execute if score *kvpairs.key_index _slimecore < *kvpairs.token_count _slimecore run function slimecore:_/util/kvpairs/next_key with storage slimecore:_ u.kvpairs
+
+return 1

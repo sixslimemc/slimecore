@@ -1,10 +1,10 @@
-#> slimecore :_/util/ kvpairs
+#> slimecore :_/util/kvpairs
 #--------------------
-# -> map: {[string]: [any]}
+# -> struc: {[string]: [any]}
 #--------------------
-# <- result: [{key: string, value: any}]
+# <- result: [{key: string, value: any, key_quote_type:("'" | '"')}]
 #--------------------
-# assumes simple keys (can be indexed without quotes)
+# ripped from SixLib
 #--------------------
 # 1.
 #--------------------
@@ -12,12 +12,10 @@
 data remove storage slimecore:_/out kvpairs
 data modify storage slimecore:_/out kvpairs.result set value []
 
-# {..string}
 execute summon text_display run function slimecore:_/util/kvpairs/do
 
-scoreboard players reset *kvpairs.length
-scoreboard players reset *kvpairs.end
-scoreboard players reset *kvpairs.start
+scoreboard players reset *kvpairs.token_count _slimecore
+scoreboard players reset *kvpairs.key_index _slimecore
 data remove storage slimecore:_ u.kvpairs
 data remove storage slimecore:_/in kvpairs
 

@@ -64,13 +64,13 @@ execute if score *build.error _slimecore matches 1 run return 0
 
 # get initial entrypoint orders (based off built-in string key ordering):
 # ~ note that this will be the reverse of actual initial order.
-data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.entrypoint_initial_order
+data modify storage slimecore:_/in kvpairs.struc set from storage slimecore:_ v.build.maps.entrypoint_initial_order
 function slimecore:_/util/kvpairs/main
 
 data modify storage slimecore:_ v.build.initial_orders.normal set value []
 data modify storage slimecore:_ v.build.initial_orders.normal append from storage slimecore:_/out kvpairs.result[].value
 
-data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.preload_initial_order
+data modify storage slimecore:_/in kvpairs.struc set from storage slimecore:_ v.build.maps.preload_initial_order
 function slimecore:_/util/kvpairs/main
 data modify storage slimecore:_ v.build.initial_orders.preload set value []
 data modify storage slimecore:_ v.build.initial_orders.preload append from storage slimecore:_/out kvpairs.result[].value
@@ -99,7 +99,7 @@ execute if score *build.error _slimecore matches 1 run return 0
 # : success if reached
 
 # initial load order:
-data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.maps.packs
+data modify storage slimecore:_/in kvpairs.struc set from storage slimecore:_ v.build.maps.packs
 function slimecore:_/util/kvpairs/main
 data modify storage slimecore:_ v.build.loads set value []
 data modify storage slimecore:_ v.build.loads append from storage slimecore:_/out kvpairs.result[].value
