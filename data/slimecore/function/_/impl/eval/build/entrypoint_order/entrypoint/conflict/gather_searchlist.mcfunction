@@ -8,7 +8,7 @@
 
 data modify storage slimecore:_ v.build.list_entry set value {pack_ref:"", id:""}
 data modify storage slimecore:_ v.build.list_entry.pack_ref set from storage slimecore:_ v.build.partial_list[-1].key
-data modify storage slimecore:_/in kvpairs.map set from storage slimecore:_ v.build.partial_list[-1].value
+data modify storage slimecore:_/in kvpairs.struc set from storage slimecore:_ v.build.partial_list[-1].value
 function slimecore:_/util/kvpairs/main
 
 data modify storage slimecore:_ v.build.second_list set from storage slimecore:_/out kvpairs.result
