@@ -58,12 +58,15 @@ struct AbstractReference {
     /// Referencing abstract interface ID.
     id: AbstractId,
 }
+
 struct Version {
     /// Major version.
     /// See [semantic versioning](https://semver.org/).
     major: PositiveInt,
+    /// Minor version.
     /// See [semantic versioning](https://semver.org/).
     minor: PositiveInt,
+    /// Patch version.
     /// See [semantic versioning](https://semver.org/).
     /// (Must only be a positive number.)
     patch: PositiveInt,
