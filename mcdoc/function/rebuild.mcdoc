@@ -9,7 +9,7 @@ use ::slimecore::mcdoc::def::PartialPackInfo
 
 struct Out {
     /// Rebuild result.
-    result: Result
+    result: Result,
 }
 
 struct In {
@@ -48,7 +48,9 @@ struct Error {
         /// If present, `slimecore:config datapack_path_overrides` contained a datapack path (this value) for the this pack's ID.
         /// Expected this exact datapack path to exist; standard datapack paths are not checked when there is an override.
         path_override?: DatapackPath
-    }]
+    }],
+    /// All processed manifests in no particular order.
+    manifests: [(PackManifest | any)]
 }
 
 
