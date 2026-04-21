@@ -28,7 +28,6 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 
 # get manifests:
 function slimecore:_/get_manifests
-data modify storage slimecore:out rebuild.result.error.manifests set from storage slimecore:_ data.manifest_packs
 data modify storage slimecore:_ v.rebuild.build_packs set from storage slimecore:_ data.manifest_packs
 
 #- populate {..uninstalling}

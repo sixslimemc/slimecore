@@ -49,8 +49,6 @@ struct Error {
         /// Expected this exact datapack path to exist; standard datapack paths are not checked when there is an override.
         path_override?: DatapackPath
     }],
-    /// All processed manifests in no particular order.
-    manifests: [(PackManifest | any)]
 }
 
 
