@@ -1,0 +1,21 @@
+// Gets the last evaluated manifest data/output for a given pack ID.
+
+use super::super::super::def::PackId
+use super::super::super::def::AuthorId
+use super::super::super::def::PackManifest
+
+struct In {
+    pack_id: PackId,
+    author_id: AuthorId,
+}
+
+struct Out {
+    manifest: (PackManifest | any),
+    /// Will only be present if the manifest contains an error.
+    error?: super::super::eval::pack::Error,
+}
+
+enum(int) Return {
+    Success = 1,
+    InvalidId = 0,
+}

@@ -1,7 +1,8 @@
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::DatapackLink
 use ::slimecore::mcdoc::def::DatapackPath
-
+use super::super::def::PackId
+use super::super::def::AuthorId
 struct VariableRegister {
     [string]: any
 }
@@ -28,7 +29,8 @@ dispatch minecraft:storage[slimecore:_] to struct {
             last_success: byte
         },
         cached_manifest_map: struct {
-            [PackId]: struct {
+            /// key in form '<AuthorId>.<PackId>'
+            [string]: struct {
                 manifest: (PackManifest | any),
                 error?: super::super::function::eval::pack::Error,
             }
