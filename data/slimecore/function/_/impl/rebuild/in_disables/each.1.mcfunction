@@ -1,6 +1,7 @@
 # IMPL > slimecore:rebuild
 # in_disables/each.1
 
+$say $(pack_ref)
 data remove storage slimecore:_ v.rebuild.disable_pack
 $data modify storage slimecore:_ v.rebuild.disable_pack set from storage slimecore:_ data.manifest_packs[{pack_id:'$(pack_ref)'}]
 $execute if data storage slimecore:_ v.rebuild.disabling[{pack_ref:'$(pack_ref)'}] run return 0
