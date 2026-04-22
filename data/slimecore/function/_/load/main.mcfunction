@@ -3,8 +3,8 @@
 # _/reload
 #--------------------
 
-# don't load if on safe mode:
-execute if score *safe_mode _slimecore matches 1.. run return 0
+# check safe mode:
+execute if score *safe_mode _slimecore matches 1.. run return run function slimecore:_/load/safe_mode/do
 
 # HOOK: meta_info/load/start
 function #slimecore:hook/meta_info/load/start

@@ -10,6 +10,7 @@ execute unless data storage slimecore:in rebuild.disable run data modify storage
 execute store result score *x _slimecore run function slimecore:_/impl/rebuild/main
 
 data remove storage slimecore:in rebuild
+data remove storage slimecore:_ v.rebuild
 scoreboard players reset *rebuild.error
 scoreboard players reset *rebuild.success
 scoreboard players reset *rebuild.found_path
