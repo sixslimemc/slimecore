@@ -22,7 +22,7 @@ data modify storage slimecore:_ v.rebuild.uninstalling set value []
 #- re-enable all packs (for proper manifest gathering and disable/load calling)
 #- populate {in -> disable} with current world disables if unset
 data modify storage slimecore:_ v.rebuild.old_disabled set value []
-data modify storage slimecore:_ v.rebuild.old_disabled append from storage slimecore:data world.installed[{disabled:true}].info
+data modify storage slimecore:_ v.rebuild.old_disabled append from storage slimecore:data world.installed[{disabled:true}].manifest
 execute if data storage slimecore:_ v.rebuild.old_disabled[0] run function slimecore:_/impl/rebuild/old_disabled/each
 
 execute if score *rebuild.error _slimecore matches 1 run return 0
