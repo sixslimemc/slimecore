@@ -10,6 +10,9 @@ type DatapackPath = string
 type EvalResult<T, E> = (struct {success: T} | struct {error: E})
 type PositiveInt = int @ 0..
 
+type Mapping<K, T> = struct {
+    [K]: T
+}
 type Indexed<T> = struct {
     index: int @ 0..,
     ...T
@@ -43,6 +46,12 @@ struct PartialPackInfo {
     /// Pack version.
     version: Version,
 }
+
+struct InstalledPackInfo {
+    manifest: PackManifest,
+    disabled: boolean,
+}
+
 struct PackReference {
     /// Referencing the pack with this ID.
     pack_ref: PackId,
@@ -177,30 +186,19 @@ struct BuildInfo {
     /// Auxilary structured data.
     /// Does not provide any new information, but provides useful re-representations of data for performant retrieval.
     aux: struct {
-        /// Mapping of pack ID's to their respective manifests.
-        pack_map: struct {
-            [PackId]: PackManifest
-        },
+        /// Mapping of pack IDs to their respective manifests.
+        pack_map: Mapping<PackId, PackManifest>,
         /// Mapping of abstract interfaces (in the form `<pack id>.<abstract id>`) to it's implementing pack's manifest.
-        impl_map: struct {
-            [PackId]: struct {
-                [AbstractId]: PackManifest
-            }
-        }
+        impl_map: Mapping<PackId, Mapping<AbstractId, PackManifest>>,
     }
 }
 
 struct WorldSpecificInfo {
-    /// Packs that are currently disabled in this world, but can be re-enabled.
-    disabled_packs: [PartialPackInfo],
-    /// Entries containing a pack's ID and it's datapack path.
-    datapack_links: [DatapackLink],
-    /// Auxilary structured data.
-    /// Does not provide any new information, but provides useful re-representations of data for performant retrieval.
+    /// List containing partial information about each installed pack.
+    /// List is in arbitrary order.
+    installed: [InstalledPackInfo],
     aux: struct {
-        /// Mapping of pack IDs to their respective datapack's path.
-        datapack_link_map: struct {
-            [PackId]: DatapackPath
-        }
+        /// Mapping of pack IDs to their installed pack info entry.
+        installed_map: Mapping<PackId, InstalledPackInfo>,
     }
 }

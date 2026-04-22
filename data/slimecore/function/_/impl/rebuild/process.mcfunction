@@ -21,7 +21,8 @@ data modify storage slimecore:_ v.rebuild.uninstalling set value []
 
 #- re-enable all packs (for proper manifest gathering and disable/load calling)
 #- populate {in -> disable} with current world disables if unset
-data modify storage slimecore:_ v.rebuild.old_disabled set from storage slimecore:data world.disabled_packs
+data modify storage slimecore:_ v.rebuild.old_disabled set value []
+data modify storage slimecore:_ v.rebuild.old_disabled append from storage slimecore:data world.installed[{disabled:true}].info
 execute if data storage slimecore:_ v.rebuild.old_disabled[0] run function slimecore:_/impl/rebuild/old_disabled/each
 
 execute if score *rebuild.error _slimecore matches 1 run return 0
@@ -69,9 +70,11 @@ execute if data storage slimecore:_ v.rebuild.disabling[0] run function slimecor
 execute if data storage slimecore:_ v.rebuild.uninstalling[0] run function slimecore:_/impl/rebuild/remaining_uninstalls/each
 
 # set data:
-data modify storage slimecore:data build set from storage slimecore:_ v.rebuild.build
-data modify storage slimecore:data world.disabled_packs set from storage slimecore:_ v.rebuild.new_disabled
-data modify storage slimecore:data world.datapack_links set from storage slimecore:_ v.rebuild.new_links
-data modify storage slimecore:data world.aux.datapack_link_map set from storage slimecore:_ v.rebuild.new_link_map
+function slimecore:_/impl/rebuild/set_data/do
+
+# [DEPRECATED]
+# data modify storage slimecore:data world.disabled_packs set from storage slimecore:_ v.rebuild.new_disabled
+# data modify storage slimecore:data world.datapack_links set from storage slimecore:_ v.rebuild.new_links
+# data modify storage slimecore:data world.aux.datapack_link_map set from storage slimecore:_ v.rebuild.new_link_map
 
 return 1
