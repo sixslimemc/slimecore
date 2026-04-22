@@ -9,4 +9,5 @@ dispatch minecraft:storage[slimecore:hook] to struct Hook {
     entrypoints: super::hook::meta_info::load::entrypoints::Hook,
     loads: super::hook::meta_info::load::loads::Hook,
     preload_entrypoints: super::hook::meta_info::load::preload_entrypoints::Hook,
+    safe_mode: super::hook::meta_info::call::safe_mode::Hook,
 }
