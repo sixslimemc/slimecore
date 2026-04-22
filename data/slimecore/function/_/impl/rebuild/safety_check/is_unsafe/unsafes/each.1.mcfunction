@@ -17,5 +17,5 @@ data modify storage slimecore:_ v.rebuild.unsafe_calls[-1].pack_ref set from sto
 # add dependents to iterator {..unsafes}
 data modify storage slimecore:_ v.rebuild.dependents set value []
 $data modify storage slimecore:_ v.rebuild.dependents append from storage slimecore:data build.packs[{dependencies:[{pack_id:"$(pack_id)"}]}]
-execute if data storage slimecore:_ v.rebuild.build_manifest.dependents[0] run function slimecore:_/impl/rebuild/safety_check/is_unsafe/unsafes/dependents/each
+execute if data storage slimecore:_ v.rebuild.dependents[0] run function slimecore:_/impl/rebuild/safety_check/is_unsafe/unsafes/dependents/each
 
