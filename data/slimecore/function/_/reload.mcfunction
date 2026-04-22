@@ -17,7 +17,6 @@ data modify storage slimecore:data slimecore set value {pack_id:"slimecore", aut
 
 # init:
 execute unless score *init _slimecore matches 1 run function slimecore:_/init
-scoreboard players set *init _slimecore 1
 
 # if automatic rebuild disabled, load and return:
 execute if data storage slimecore:config {explicit_rebuild_only:true} run return run function slimecore:_/load/main

@@ -2,6 +2,11 @@
 #--------------------
 # ./reload
 #--------------------
+scoreboard players set *init _slimecore 1
+
+scoreboard players reset *uninstall _slimecore
+scoreboard players reset *just_rebuilt _slimecore
+scoreboard players reset *safe_mode _slimecore
 
 data modify storage slimecore:config datapack_path_overrides set value {}
 

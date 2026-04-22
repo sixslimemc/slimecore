@@ -27,14 +27,7 @@ dispatch minecraft:storage[slimecore:_] to struct {
                 [PackId]: [DatapackPath]
             },
             last_success: byte
-        },
-        cached_manifest_map: struct {
-            /// key in form '<AuthorId>.<PackId>'
-            [string]: struct {
-                manifest: (PackManifest | any),
-                error?: super::super::function::eval::pack::Error,
-            }
-        },
+        }
     }
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {
