@@ -3,6 +3,8 @@
 # ../main
 #--------------------
 
+tellraw @a {text:"SAFE MODE STARTED"}
+
 # HOOK: meta_info/safe_mode/start
 function #slimecore:hook/meta_info/safe_mode/start
 
