@@ -1,7 +1,7 @@
 #> slimecore:_/load/safe_mode/loads/each.1
 
 # dont call if not in {..unsafe_calls}:
-$execute store success score *x _slimecore run data remove storage slimecore:_ v.rebuild.unsafe_calls[{pack_ref:"$(pack_ref)"}]
+$execute store success score *x _slimecore run data remove storage slimecore:_ t.safe_mode.unsafe_calls[{pack_ref:"$(pack_ref)"}]
 execute if score *x _slimecore matches 0 run return 0
 
 tellraw @a {text:"calling #$(pack_ref):safe_mode"}
