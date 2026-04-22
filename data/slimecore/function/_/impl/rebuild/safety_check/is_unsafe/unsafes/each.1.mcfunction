@@ -14,6 +14,8 @@ execute unless data storage slimecore:_ v.rebuild.build_manifest run return 0
 data modify storage slimecore:_ v.rebuild.unsafe_calls append value {pack_ref:""}
 data modify storage slimecore:_ v.rebuild.unsafe_calls[-1].pack_ref set from storage slimecore:_ v.rebuild.this_unsafe.pack_id
 
-# add dependencies to iterator {..unsafes}
-execute if data storage slimecore:_ v.rebuild.build_manifest.dependencies[0] run function slimecore:_/impl/rebuild/safety_check/is_unsafe/unsafes/dependencies/each
+# add dependents to iterator {..unsafes}
+data modify storage slimecore:_ v.rebuild.dependents set value []
+$data modify storage slimecore:_ v.rebuild.dependents append from storage slimecore:data build.packs[{dependencies:[{pack_id:"$(pack_id)"}]}]
+execute if data storage slimecore:_ v.rebuild.build_manifest.dependents[0] run function slimecore:_/impl/rebuild/safety_check/is_unsafe/unsafes/dependents/each
 
