@@ -7,6 +7,8 @@
 data modify storage slimecore:_ v.rebuild.new_installed set value []
 data modify storage slimecore:_ v.rebuild.new_installed_map set value {}
 
+# DEBUG:
+tellraw @a ["disabled: ", {'storage':'slimecore:_', 'nbt':'v.rebuild.new_disabled'}]
 # set {..new_installed} and {..new_installed_map}
 data modify storage slimecore:_ v.rebuild.install_entries set from storage slimecore:_ v.rebuild.new_disabled
 data modify storage slimecore:_ v.rebuild.install_entries[]._disabled set value true
