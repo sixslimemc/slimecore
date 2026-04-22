@@ -1,4 +1,4 @@
-// Called when a load ends/finishes.
+// Called when a load finishes.
 
 struct Hook {
     

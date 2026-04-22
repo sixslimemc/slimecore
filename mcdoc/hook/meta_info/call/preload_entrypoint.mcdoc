@@ -1,4 +1,4 @@
-// Called just before a <preload_entrypoint> is called.
+// Called just before a <preload_entrypoint> ('#<preload_entrypoint.pack_ref>:preload_entrypoint/<preload_entrypoint.id>' tag) is called.
 
 use ::slimecore::mcdoc::def::EntrypointReference
 use ::slimecore::mcdoc::def::PreloadEntrypointId

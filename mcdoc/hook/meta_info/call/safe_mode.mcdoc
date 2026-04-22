@@ -1,4 +1,4 @@
-// Called just before '#<pack_id>:load' load tag is called.
+// Called just before '#<pack_id>:safe_mode' tag is called.
 
 use ::slimecore::mcdoc::def::PackId
 

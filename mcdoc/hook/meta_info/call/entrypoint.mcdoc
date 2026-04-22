@@ -1,4 +1,4 @@
-// Called just before an <entrypoint> is called.
+// Called just before an <entrypoint> ('#<entrypoint.pack_ref>:entrypoint/<entrypoint.id>' tag) is called.
 
 use ::slimecore::mcdoc::def::EntrypointReference
 use ::slimecore::mcdoc::def::EntrypointId

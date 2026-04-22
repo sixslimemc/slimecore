@@ -1,0 +1,5 @@
+// Called when a safe-mode load starts, before any action.
+
+struct Hook {
+    
+}
