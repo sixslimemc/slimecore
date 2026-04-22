@@ -2,9 +2,9 @@
 #--------------------
 # ../main
 #--------------------
-# forward order
+# forward order.
 
-function slimecore:_/load/loads/call with storage slimecore:_ v.load.loads[0]
+function slimecore:_/load/loads/call with storage slimecore:_ t.load.loads[0]
 
-data remove storage slimecore:_ v.load.loads[0]
-execute if data storage slimecore:_ v.load.loads[0] run function slimecore:_/load/loads/each
+data remove storage slimecore:_ t.load.loads[0]
+execute if data storage slimecore:_ t.load.loads[0] run function slimecore:_/load/loads/each
