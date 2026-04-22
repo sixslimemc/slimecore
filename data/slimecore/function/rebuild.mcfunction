@@ -12,6 +12,7 @@ execute store result score *x _slimecore run function slimecore:_/impl/rebuild/m
 data remove storage slimecore:in rebuild
 data remove storage slimecore:_ v.rebuild
 scoreboard players reset *rebuild.error
+scoreboard players reset *rebuild.unsafe
 scoreboard players reset *rebuild.success
 scoreboard players reset *rebuild.found_path
 scoreboard players reset *rebuild.inherit_disables

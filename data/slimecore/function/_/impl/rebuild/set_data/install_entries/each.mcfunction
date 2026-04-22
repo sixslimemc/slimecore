@@ -6,11 +6,11 @@
 
 data modify storage slimecore:_ v.rebuild.this_manifest set from storage slimecore:_ v.rebuild.install_entries[-1]
 
-data modify storage slimecore:_ v.rebuild.this_install set value {manifest:{}, disabled:false}
+data modify storage slimecore:_ v.rebuild.this_install set value {pack:{}, disabled:false}
 execute if data storage slimecore:_ v.rebuild.this_manifest{_disabled:true} run data modify storage slimecore:_ v.rebuild.this_install.disabled set value true
 
 data remove storage slimecore:_ v.rebuild.this_manifest._disabled
-data modify storage slimecore:_ v.rebuild.this_install.manifest set from storage slimecore:_ v.rebuild.this_manifest
+data modify storage slimecore:_ v.rebuild.this_install.pack set from storage slimecore:_ v.rebuild.this_manifest
 
 data modify storage slimecore:_ v.rebuild.new_installed append from storage slimecore:_ v.rebuild.this_install
 

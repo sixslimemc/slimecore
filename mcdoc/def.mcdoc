@@ -48,7 +48,7 @@ struct PartialPackInfo {
 }
 
 struct InstalledPackInfo {
-    manifest: PackManifest,
+    pack: PackManifest,
     disabled: boolean,
 }
 
@@ -200,5 +200,9 @@ struct WorldSpecificInfo {
     aux: struct {
         /// Mapping of pack IDs to their installed pack info entry.
         installed_map: Mapping<PackId, InstalledPackInfo>,
+    },
+    safe_mode: struct {
+        enabled: boolean,
+        calls: [PackReference],
     }
 }

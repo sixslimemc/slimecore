@@ -27,7 +27,7 @@ dispatch minecraft:storage[slimecore:_] to struct {
                 [PackId]: [DatapackPath]
             },
             last_success: byte
-        }
+        },
     }
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {
