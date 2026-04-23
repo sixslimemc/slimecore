@@ -5,7 +5,6 @@ dispatch minecraft:storage[slimecore:in] to struct In {
     pack: super::function::eval::pack::In,
     version_req: super::function::eval::version_req::In,
     manifest: super::function::api::manifest::In,
-    get_manifest: super::function::util::get_manifest::In,
 }
 
 dispatch minecraft:storage[slimecore:out] to struct Out {
@@ -14,5 +13,4 @@ dispatch minecraft:storage[slimecore:out] to struct Out {
     pack: super::function::eval::pack::Out,
     version_req: super::function::eval::version_req::Out,
     manifest: super::function::api::manifest::Out,
-    get_manifest: super::function::util::get_manifest::Out,
 }
