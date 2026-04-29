@@ -191,14 +191,14 @@ struct BuildInfo {
         /// Mapping of abstract interfaces (in the form `<pack id>.<abstract id>`) to it's implementing pack's manifest.
         // DEV: consider pointing to PackReference instead of PackManifest
         // DEV: consider changing name to 'abstract_map'
-        impl_map: Mapping<PackId, Mapping<AbstractId, PackManifest>>,
+        impl_map: Mapping<PackId, Mapping<AbstractId, PackManifest>>
 
         // DEV / TODO: consider adding
         // abstracts: [struct AbstractInfo {
         //     abstract: AbstractReference,
         //     implementation: PackReference,
         // }],
-        /// X -> packs that depend on X.
+        // X -> packs that depend on X.
         // dependent_map: Mapping<PackId, [PackReference]>
     }
 }
