@@ -4,6 +4,10 @@
 data remove storage slimecore:_ v.rebuild.disable_entry
 $data modify storage slimecore:_ v.rebuild.disable_entry set from storage slimecore:_ v.rebuild.disabling[{pack_ref:"$(pack_ref)"}]
 $data remove storage slimecore:_ v.rebuild.disabling[{pack_ref:"$(pack_ref)"}]
+
+# DEBUG:
+tellraw @a ["DISABLE: ", {'storage':'slimecore:_', 'nbt':'v.rebuild.disable_entry'}]
+
 execute if data storage slimecore:_ v.rebuild.disable_entry run return run function slimecore:_/impl/rebuild/disable with storage slimecore:_ v.rebuild.disable_entry
 
 data remove storage slimecore:_ v.rebuild.uninstall_entry
