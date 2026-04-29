@@ -11,7 +11,8 @@ execute store result score *rebuild.found_path _slimecore run function slimecore
 data modify storage slimecore:_ v.rebuild.linked_out set from storage slimecore:_/out get_linked_path
 
 # technically not needed but good to be explicit:
-execute if score *rebuild.found_path _slimecore matches 1 run function slimecore:_/impl/rebuild/old_disabled/enable with storage slimecore:_ v.rebuild.linked_out
+# DEV: wait this causes a bug probably
+# execute if score *rebuild.found_path _slimecore matches 1 run function slimecore:_/impl/rebuild/old_disabled/enable with storage slimecore:_ v.rebuild.linked_out
 
 execute unless score *rebuild.found_path _slimecore matches 1 run function slimecore:_/impl/rebuild/old_disabled/missing
 
