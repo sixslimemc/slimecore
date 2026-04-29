@@ -6,9 +6,6 @@
 
 data modify storage slimecore:out rebuild.result set value {success:{uninstall_paths:[]}}
 
-# wipe old data if force clean:
-execute if data storage slimecore:in rebuild{force_clean:true} run function slimecore:_/util/wipe_data/main
-
 data modify storage slimecore:_ v.rebuild.new_disabled set value []
 data modify storage slimecore:_ v.rebuild.new_links set value []
 data modify storage slimecore:_ v.rebuild.new_link_map set value {}

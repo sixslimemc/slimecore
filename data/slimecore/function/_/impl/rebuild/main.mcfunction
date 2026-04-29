@@ -17,6 +17,9 @@ scoreboard players set *just_rebuilt _slimecore 1
 # HOOK: meta_info/rebuild/start
 function #slimecore:hook/meta_info/rebuild/start
 
+# wipe old data if force clean:
+execute if data storage slimecore:in rebuild{force_clean:true} run function slimecore:_/util/wipe_data/main
+
 # check safety:
 execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/safety_check/do
 
