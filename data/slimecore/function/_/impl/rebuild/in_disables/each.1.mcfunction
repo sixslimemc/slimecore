@@ -5,8 +5,6 @@ data remove storage slimecore:_ v.rebuild.disable_pack
 $data modify storage slimecore:_ v.rebuild.disable_pack set from storage slimecore:_ data.manifest_packs[{pack_id:'$(pack_ref)'}]
 $execute if data storage slimecore:_ v.rebuild.disabling[{pack_ref:'$(pack_ref)'}] run return 0
 execute unless data storage slimecore:_ v.rebuild.disable_pack run return 0
-# DEBUG:
-execute if data storage slimecore:_ v.rebuild.disable_pack[0] run tellraw @a ["", {'storage':'slimecore:_', 'nbt':'v.rebuild.disable_pack'}]
 execute if data storage slimecore:_ v.rebuild.disable_pack[0] run return 0
 
 $data remove storage slimecore:_ v.rebuild.build_packs[{pack_id:'$(pack_ref)'}]
