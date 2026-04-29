@@ -44,6 +44,9 @@ execute if data storage slimecore:in rebuild.uninstall[0] run function slimecore
 #- remove from {..build_packs}
 execute if data storage slimecore:in rebuild.disable[0] run function slimecore:_/impl/rebuild/in_disables/each
 
+# DEBUG:
+tellraw @a ["DISABLING 1", {'storage':'slimecore:_', 'nbt':'v.rebuild.disabling'}]
+
 execute if score *rebuild.error _slimecore matches 1 run return 0
 
 # eval build into {..build}:
@@ -65,6 +68,9 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 # disable and uninstall packs in reverse load order:
 data modify storage slimecore:_ v.rebuild.load_order set from storage slimecore:data build.order.load
 execute if data storage slimecore:_ v.rebuild.load_order[0] run function slimecore:_/impl/rebuild/closing_pass/each
+
+# DEBUG:
+tellraw @a ["DISABLING 2", {'storage':'slimecore:_', 'nbt':'v.rebuild.disabling'}]
 
 # disable remaining packs (not in previous build):
 execute if data storage slimecore:_ v.rebuild.disabling[0] run function slimecore:_/impl/rebuild/remaining_disables/each
