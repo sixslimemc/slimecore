@@ -13,5 +13,3 @@ execute if data storage slimecore:_ v.rebuild{call_disable:true} run function #s
 
 $execute if data storage slimecore:_ v.rebuild{call_disable:true} run function #$(pack_ref):disable
 $datapack disable "$(path)"
-
-$say datapack disable "$(path)"
