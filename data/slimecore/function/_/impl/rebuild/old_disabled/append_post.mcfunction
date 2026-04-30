@@ -4,5 +4,5 @@
 # ./each
 #--------------------
 
-data modify storage scdev:_ v.rebuild.post_disables append value {path:""}
-data modify storage scdev:_ v.rebuild.post_disables[-1].path set from storage scdev:_ v.rebuild.linked_out.path
+data modify storage slimecore:_ v.rebuild.post_disables append value {path:""}
+data modify storage slimecore:_ v.rebuild.post_disables[-1].path set from storage slimecore:_ v.rebuild.linked_out.path
