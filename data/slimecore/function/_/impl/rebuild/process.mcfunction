@@ -16,6 +16,10 @@ data modify storage slimecore:_ v.rebuild.disabling set value []
 # {pack_ref:PackId, path:DatpackPath}
 data modify storage slimecore:_ v.rebuild.uninstalling set value []
 
+# TODO DEV LEFTOFF:
+# ensure that datapacks are re-disabled even if build fails.
+# currently they are not.
+
 #- re-enable all packs (for proper manifest gathering and disable/load calling)
 #- populate {in -> disable} with current world disables if unset
 data modify storage slimecore:_ v.rebuild.old_disabled set value []
