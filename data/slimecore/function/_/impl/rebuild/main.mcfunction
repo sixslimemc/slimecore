@@ -24,7 +24,13 @@ execute if data storage slimecore:in rebuild{force_clean:true} run function slim
 execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/safety_check/do
 
 # process:
+# - populate {..post_disables}
+data modify storage scdev:_ v.rebuild.post_disables set value []
 execute if score *rebuild.success _slimecore matches 1 store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/process
+
+# disable {..post_disables}:
+# (logically should only run if rebuild fails)
+execute if data storage scdev:_ v.rebuild.post_disables[0] run function slimecore:_/impl/rebuild/post_disables/each
 
 # remove success if error & vice versa:
 execute unless score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.success

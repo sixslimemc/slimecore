@@ -60,6 +60,10 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 
 #~ SUCCESS REACHED
 
+# remove {..post_disables}:
+# (because disables are handled below)
+data remove storage scdev:_ v.rebuild.post_disables
+
 # disable and uninstall packs in reverse load order:
 data modify storage slimecore:_ v.rebuild.load_order set from storage slimecore:data build.order.load
 execute if data storage slimecore:_ v.rebuild.load_order[0] run function slimecore:_/impl/rebuild/closing_pass/each
