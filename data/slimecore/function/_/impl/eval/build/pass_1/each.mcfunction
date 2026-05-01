@@ -3,6 +3,12 @@
 
 data modify storage slimecore:_ v.build.this_pack set from storage slimecore:_ v.build.packs[-1]
 
+# validate pack:
+data modify storage slimecore:in pack.pack set from storage slimecore:_ v.build.this_pack
+function slimecore:eval/pack
+data modify storage slimecore:_ v.build.pack_eval set from storage slimecore:out pack.result
+execute if data storage slimecore:_ v.build.pack_eval.error run function slimecore:_/impl/eval/build/pass_1/invalid_pack
+
 # {..map.packs}
 # and duplicate detection
 function slimecore:_/impl/eval/build/pass_1/try_add with storage slimecore:_ v.build.this_pack

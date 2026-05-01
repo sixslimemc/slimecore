@@ -30,6 +30,7 @@ data modify storage slimecore:_ v.build.maps.preload_initial_order set value {}
 # pass 1:
 #- check duplicate packs
 #- check multiple implementations
+#- validate manifests
 #- populate {..maps.manifests}
 #- populate {..maps.impls}
 #- populate {..maps.entrypoint_after_cache}
