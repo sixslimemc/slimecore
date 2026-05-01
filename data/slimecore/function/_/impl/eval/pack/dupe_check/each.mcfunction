@@ -16,4 +16,4 @@ function slimecore:_/impl/eval/pack/dupe_check/each.1 with storage slimecore:_ x
 
 # removed in each.1
 # data remove storage slimecore:_ v.pack.dupe_checks[-1]
-execute if data storage slimecore:_ v.pack.dupe_checks[0] run function slimecore:_/impl/eval/pack/ref_check/each
+execute if data storage slimecore:_ v.pack.dupe_checks[0] run function slimecore:_/impl/eval/pack/dupe_check/each
