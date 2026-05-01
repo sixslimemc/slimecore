@@ -46,5 +46,9 @@ execute if data storage slimecore:_ v.pack.entrypoints[0] run function slimecore
 
 execute if score *pack.error _slimecore matches 1 run return 0
 
+execute summon text_display run function slimecore:_/impl/eval/pack/url_check/do
+
+execute if score *pack.error _slimecore matches 1 run return 0
+
 data modify storage slimecore:out pack.result.success set value true
 return 1

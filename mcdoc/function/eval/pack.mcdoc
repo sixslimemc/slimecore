@@ -40,4 +40,9 @@ struct Error {
         /// The key within <pack> which holds the array with the duplicate ids.
         in: StructKey,
     }],
+    /// If present, <pack> contained one or more invalid URLs where valid URLs were expected.
+    invalid_urls?: [struct InvalidUrlInfo {
+        /// The key within <pack> that contains an invalid URL.
+        in: StructKey,
+    }]
 }
