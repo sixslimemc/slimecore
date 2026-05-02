@@ -60,7 +60,7 @@ struct Error {
         /// The dependency.
         dependency: Dependency,
         /// The reason the dependency was not fulfilled.
-        reason: struct {
+        reason: struct UnfulfilledDependencyReason {
             /// If specified, there was no pack that matched the dependency's pack ID.
             not_present?: PackId,
             /// If specified, the dependency pack was present, but it's version did not meet the requirement.

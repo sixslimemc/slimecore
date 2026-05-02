@@ -1,5 +1,6 @@
 # IMPL > slimecore:eval/pack
 # main
+kill @s
 
 scoreboard players set *pack.error _slimecore 0
 
@@ -46,7 +47,13 @@ execute if data storage slimecore:_ v.pack.entrypoints[0] run function slimecore
 
 execute if score *pack.error _slimecore matches 1 run return 0
 
-execute summon text_display run function slimecore:_/impl/eval/pack/url_check/do
+data modify storage slimecore:_ v.pack.url_paths set value ['url', 'display.links.author', 'display.links.versions', 'display.links.info']
+execute if data storage slimecore:_ v.pack.url_paths[0] run function slimecore:_/impl/eval/pack/url_check/each
+
+data modify storage slimecore:_ v.pack.dependencies set from storage slimecore:in pack.pack.dependencies
+execute store result score *pack.index _slimecore if data storage slimecore:_ v.pack.dependencies[]
+scoreboard players set *pack.last_err_index _slimecore -1
+execute if data storage slimecore:_ v.pack.dependencies[0] run function slimecore:_/impl/eval/pack/dependencies/each
 
 execute if score *pack.error _slimecore matches 1 run return 0
 

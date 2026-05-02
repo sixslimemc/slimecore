@@ -4,6 +4,7 @@ use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::PackReference
+use ::slimecore::mcdoc::def::Dependency
 
 
 struct In {
@@ -44,5 +45,17 @@ struct Error {
     invalid_urls?: [struct InvalidUrlInfo {
         /// The key within <pack> that contains an invalid URL.
         in: StructKey,
+    }],
+    /// If present, <pack.dependencies> had one or more invalid entries.
+    invalid_dependencies?: [struct InvalidDependencyInfo {
+        /// The index of the invalid dependency in <pack.dependencies>.
+        index: int @ 0..,
+        /// The reason this dependency is invalid.
+        reason: struct InvalidDependencyReason {
+            /// If present, the 'download.url' key was not a valid URL.
+            invalid_download_url?: true,
+            /// If present, the 'download.version' did not fulfill the version requirement specified by 'version'.
+            invalid_download_version?: super::version_req::Error,
+        }
     }]
 }

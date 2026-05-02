@@ -1,7 +1,7 @@
 # IMPL > slimecore:eval/pack
 # url_check/each
 #--------------------
-# ./do
+# ../main
 #--------------------
 
 data modify storage slimecore:_ v.pack.this_path set from storage slimecore:_ v.pack.url_paths[-1]
