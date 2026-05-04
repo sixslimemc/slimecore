@@ -1,10 +1,7 @@
 #> slimecore :-/ uninstall_slimecore
 
-# ensure $confirm = true.
-$say $(confirm)
-$data modify storage slimecore:_ x.confirm set value bool($(confirm))
-execute unless data storage slimecore:_ x{confirm:true} run return fail
+$data modify storage slimecore:_ v.uninstall.args set value $(args)
 
 function slimecore:_/impl/-/uninstall_slimecore/main
 
-return 1
+data remove storage slimecore:_ v.uninstall

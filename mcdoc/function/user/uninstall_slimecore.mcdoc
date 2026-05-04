@@ -1,0 +1,7 @@
+
+struct In {
+    args: struct Args {
+        /// If true, no safety prompt will be shown and uninstallation will immediately begin.
+        force?: boolean,
+    }
+}
