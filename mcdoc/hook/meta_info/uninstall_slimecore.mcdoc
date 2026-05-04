@@ -1,0 +1,5 @@
+/// Called when the uninstallation of SlimeCore is initiated.
+
+struct Hook {
+
+}

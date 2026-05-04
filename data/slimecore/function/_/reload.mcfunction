@@ -1,9 +1,6 @@
 #> slimecore:_/reload
 # MINECRAFT : LOAD
 
-# if uninstalling, ignore reload and continue uninstalling
-execute if score *uninstall _slimecore matches 1.. run return run function slimecore:_/impl/-/uninstall_slimecore/continue
-
 # if rebuilding, ignore reload and continue building:
 execute if score *just_rebuilt _slimecore matches 1.. run function slimecore:_/load/main
 execute if score *just_rebuilt _slimecore matches 1.. run return run scoreboard players reset *just_rebuilt _slimecore
