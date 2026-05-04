@@ -121,7 +121,7 @@ struct PackManifest {
     },
     /// Declaration of entrypoints.
     /// An entrypoint is a function tag in the `entrypoint` directory (`#<pack id>:entrypoint/<entrypoint id>`).
-    /// Entrypoints are called after all packs are loaded in the order that they appear in this array.
+    /// Entrypoints are called after all packs are loaded in the order that they appear in this list.
     ///
     /// Generally, packs define a single entrypoint (e.g. 'tick') to start a ticking `/schedule` loop.
     /// If your pack does multiple, conceptually distinct things in it's tick loop, it may be beneficial to split work up into multiple entrypoints because it may give other developers/users more control when utilizing your pack.
