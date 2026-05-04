@@ -35,7 +35,7 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
             links: struct {
                 author: "https://github.com/sixslimemc",
                 versions: "https://github.com/sixslimemc/slimecore/releases",
-                info: "https://github.com/sixslimemc/slimecore",
+                info: "https://github.com/sixslimemc/slimecore_docs",
             }
         },
         entrypoints: [any] @ 0,
