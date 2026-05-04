@@ -1,5 +1,5 @@
 # IMPL > slimecore:-/uninstall_slimecore
-# trigger
+# confirm
 #--------------------
 # ./main
 # [chat] ./main
