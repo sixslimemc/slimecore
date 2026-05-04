@@ -6,7 +6,7 @@ execute if data storage slimecore:_ v.uninstall.args{force:true} run return run 
 
 data modify storage slimecore:_ v.uninstall.msg set value []
 data modify storage slimecore:_ v.uninstall.msg append value {text:"\n", color:light_purple, bold:true, extra:[{text:"IMPORTANT:"}]}
-data modify storage slimecore:_ v.uninstall.msg append value {text:"\n", color:light_purple, bold:false, extra:[{text:"Uninstalling SlimeCore will disable all SlimeCore-loaded datapacks. All SlimeCore-loaded datapacks will not be functional until SlimeCore is re-installed, and will then need to be manually re-enabled via '/datapack enable'. It is NOT garunteed that all SlimeCore-loaded datapacks will function properly after a SlimeCore uninstallation/re-installation."}]}
+data modify storage slimecore:_ v.uninstall.msg append value {text:"\n", color:light_purple, bold:false, extra:[{text:"Uninstalling SlimeCore will disable all SlimeCore-loaded datapacks. All SlimeCore-loaded datapacks will not be functional until SlimeCore is re-installed, and will then need to be manually re-enabled via '/datapack enable' to properly function again."}]}
 data modify storage slimecore:_ v.uninstall.msg append value {text:"\n", color:gold, bold:true, extra:[{text:"[Click to confirm uninstallation]", hover_event:{action:"show_text", value:{text:"Uninstall SlimeCore", bold:true, color:gold}}, click_event:{action:"run_command", command:"function slimecore:_/impl/-/uninstall_slimecore/confirm"}}]}
 data modify storage slimecore:_ v.uninstall.msg append value {text:"\n", color:gray, italic:true, bold:false, extra:[{text:"To bypass this confirmation, run this command with:\n"}, {text:" {args:{force:true}}.", italic:false, color:dark_aqua}]}
 
