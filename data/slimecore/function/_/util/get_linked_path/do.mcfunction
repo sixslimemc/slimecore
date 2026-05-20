@@ -9,22 +9,17 @@ $data modify storage slimecore:_/out get_linked_path.path_override set from stor
 data modify storage slimecore:_ x.path set from storage slimecore:_/out get_linked_path.path_override
 execute if data storage slimecore:_/out get_linked_path.path_override run return run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 
-# try authored versioned:
+# try fully qualified:
 $data modify storage slimecore:_ x.path set value "file/$(author_id).$(pack_id).$(major).$(minor).$(patch)"
 execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 execute if score *x _slimecore matches 1 run return 1
 
-# try authored unversioned:
-$data modify storage slimecore:_ x.path set value "file/$(author_id).$(pack_id)"
+# try fully qualified zip:
+$data modify storage slimecore:_ x.path set value "file/$(author_id).$(pack_id).$(major).$(minor).$(patch).zip"
 execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 execute if score *x _slimecore matches 1 run return 1
 
-# try unauthored versioned:
-$data modify storage slimecore:_ x.path set value "file/$(pack_id).$(major).$(minor).$(patch)"
-execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
-execute if score *x _slimecore matches 1 run return 1
-
-# try unauthored unversioned:
+# try dev path:
 $data modify storage slimecore:_ x.path set value "file/$(pack_id)"
 execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 execute if score *x _slimecore matches 1 run return 1

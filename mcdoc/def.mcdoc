@@ -216,3 +216,6 @@ struct WorldSpecificInfo {
         calls: [PackReference],
     }
 }
+
+// DEV / TODO:
+// make sure that standard datapack paths support .zip files

@@ -24,4 +24,6 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
     /// Default: false
     explicit_rebuild_only: boolean
 
+    // DEV / TODO:
+    // have an option to cache datapack paths so rebuilding doesnt take literally forever.
 }
