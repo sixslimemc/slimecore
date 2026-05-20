@@ -5,7 +5,7 @@
 #--------------------
 
 data remove storage slimecore:out build
-data modify storage slimecore:out build.result.success set value {packs:[], order:{load:[], entrypoints:[], preload_entrypoints:[]}, aux:{pack_map:{}, abstract_map:{}}}
+data modify storage slimecore:out build.result.success set value {packs:[], order:{load:[], entrypoints:[], preload_entrypoints:[]}, aux:{abstracts:[], dependent_map:{}, pack_map:{}, abstract_map:{}}}
 
 # set load order:
 scoreboard players set *build.index _slimecore 0
