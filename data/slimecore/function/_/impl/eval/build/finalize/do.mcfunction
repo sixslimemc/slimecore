@@ -26,3 +26,5 @@ execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecor
 # aux maps
 data modify storage slimecore:out build.result.success.aux.pack_map set from storage slimecore:_ v.build.maps.packs
 data modify storage slimecore:out build.result.success.aux.abstract_map set from storage slimecore:_ v.build.maps.impls
+data modify storage slimecore:out build.result.success.aux.dependent_map set from storage slimecore:_ v.build.maps.dependents
+data modify storage slimecore:out build.result.success.aux.abstracts set from storage slimecore:_ v.build.lists.abstracts

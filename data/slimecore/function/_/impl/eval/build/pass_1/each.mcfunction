@@ -27,6 +27,8 @@ data modify storage slimecore:_ v.build.map_key set value "preload_after_cache"
 data modify storage slimecore:_ v.build.entrypoints set from storage slimecore:_ v.build.this_pack.preload_entrypoints
 execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecore:_/impl/eval/build/pass_1/entrypoints/each
 
+# {..maps.dependents}
+function slimecore:_/impl/eval/build/pass_1/populate_dependents with storage slimecore:_ v.build.this_pack
 
 data remove storage slimecore:_ v.build.packs[-1]
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_1/each
