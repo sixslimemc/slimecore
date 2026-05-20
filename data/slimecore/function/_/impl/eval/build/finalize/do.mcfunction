@@ -5,7 +5,7 @@
 #--------------------
 
 data remove storage slimecore:out build
-data modify storage slimecore:out build.result.success set value {packs:[], order:{load:[], entrypoints:[], preload_entrypoints:[]}, aux:{pack_map:{}, impl_map:{}}}
+data modify storage slimecore:out build.result.success set value {packs:[], order:{load:[], entrypoints:[], preload_entrypoints:[]}, aux:{pack_map:{}, abstract_map:{}}}
 
 # set load order:
 scoreboard players set *build.index _slimecore 0
@@ -25,4 +25,4 @@ execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecor
 
 # aux maps
 data modify storage slimecore:out build.result.success.aux.pack_map set from storage slimecore:_ v.build.maps.packs
-data modify storage slimecore:out build.result.success.aux.impl_map set from storage slimecore:_ v.build.maps.impls
+data modify storage slimecore:out build.result.success.aux.abstract_map set from storage slimecore:_ v.build.maps.impls
