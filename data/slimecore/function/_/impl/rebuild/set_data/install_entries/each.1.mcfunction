@@ -10,7 +10,7 @@ execute if data storage slimecore:_ v.rebuild.this_manifest{_disabled:true} run 
 data remove storage slimecore:_ v.rebuild.this_manifest._disabled
 
 data modify storage slimecore:_ v.rebuild.this_install.pack set from storage slimecore:_ v.rebuild.this_manifest
-$data modify storage slimecore:_ v.rebuild.this_install.path set from storage slimecore:_ v.rebuild.path_map.'$(pack_id)'
+$data modify storage slimecore:_ v.rebuild.this_install.datapack_path set from storage slimecore:_ v.rebuild.path_map.'$(pack_id)'
 
 data modify storage slimecore:_ v.rebuild.new_installed append from storage slimecore:_ v.rebuild.this_install
 
