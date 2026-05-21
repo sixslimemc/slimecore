@@ -33,11 +33,6 @@ type EntrypointDeclaration<T> = struct {
     after?: [EntrypointReference<T>],
 }
 
-struct DatapackLink {
-    ...PackReference,
-    /// Referenced pack's datapack path.
-    path: DatapackPath
-}
 struct PartialPackInfo {
     /// Pack ID.
     pack_id: PackId,
@@ -50,6 +45,7 @@ struct PartialPackInfo {
 struct InstalledPackInfo {
     pack: PackManifest,
     disabled: boolean,
+    path: DatapackPath,
 }
 
 struct PackReference {
@@ -204,12 +200,13 @@ struct WorldSpecificInfo {
     /// List containing partial information about each installed pack.
     /// List is in arbitrary order.
     installed: [InstalledPackInfo],
+    safe_mode: struct {
+        enabled: boolean,
+        calls: [PackReference],
+    },
     aux: struct WorldSpecificAux {
         /// Mapping of pack IDs to their installed pack info entry.
         installed_map: Mapping<PackId, InstalledPackInfo>,
     },
-    safe_mode: struct {
-        enabled: boolean,
-        calls: [PackReference],
-    }
+    
 }

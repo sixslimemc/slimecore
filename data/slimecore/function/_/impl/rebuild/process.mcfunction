@@ -8,7 +8,7 @@ data modify storage slimecore:out rebuild.result set value {success:{uninstall_p
 
 data modify storage slimecore:_ v.rebuild.new_disabled set value []
 data modify storage slimecore:_ v.rebuild.new_links set value []
-data modify storage slimecore:_ v.rebuild.new_link_map set value {}
+data modify storage slimecore:_ v.rebuild.path_map set value {}
 
 # {pack_ref:PackId, path:DatpackPath, call_tag:boolean}
 data modify storage slimecore:_ v.rebuild.disabling set value []
@@ -48,7 +48,7 @@ execute unless score *x _slimecore matches 1.. run function slimecore:_/impl/reb
 execute if score *rebuild.error _slimecore matches 1 run return 0
 data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out build.result.success
 
-#- populate {..new_links} and {..new_link_map}
+#- populate {..new_links} and {..path_map}
 data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.build.packs
 execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/packs/each
 
@@ -76,6 +76,6 @@ function slimecore:_/impl/rebuild/set_data/do
 # [DEPRECATED]
 # data modify storage slimecore:data world.disabled_packs set from storage slimecore:_ v.rebuild.new_disabled
 # data modify storage slimecore:data world.datapack_links set from storage slimecore:_ v.rebuild.new_links
-# data modify storage slimecore:data world.aux.datapack_link_map set from storage slimecore:_ v.rebuild.new_link_map
+# data modify storage slimecore:data world.aux.datapack_link_map set from storage slimecore:_ v.rebuild.path_map
 
 return 1
