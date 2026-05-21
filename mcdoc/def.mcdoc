@@ -45,7 +45,7 @@ struct PartialPackInfo {
 struct InstalledPackInfo {
     pack: PackManifest,
     disabled: boolean,
-    datapack_path: DatapackPath,
+    path: DatapackPath,
 }
 
 struct PackReference {
