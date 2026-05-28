@@ -4,5 +4,4 @@
 # ./each
 #--------------------
 
-# BUGHUNT
 $datapack enable "$(path)"
