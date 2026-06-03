@@ -171,7 +171,7 @@ struct BuildInfo {
     // All pack manifests in this build (in load order).
     packs: [PackManifest],
     /// Loading order information.
-    order: struct {
+    order: struct BuildOrderInfo {
         /// 'load' tag call order; matches actual datapack load order.
         load: [Indexed<PackReference>],
         /// Entrypoint call order.
@@ -196,12 +196,25 @@ struct BuildInfo {
     }
 }
 
+type SafeModeReason = (
+    struct {
+        duplicate_pack_ids: [PackReference],
+    } | 
+    struct {
+        misloaded_datapacks_missing_path: [PackReference],
+    }
+)
+
 struct WorldSpecificInfo {
     /// List containing partial information about each installed pack.
     /// List is in arbitrary order.
     installed: [InstalledPackInfo],
-    safe_mode: struct {
-        enabled: boolean,
+    // TODO / LEFTOFF:
+    // implement
+    // make loop in ./packs trigger a safe-mode activation (because load order may be incorrect)
+    // if this happens, enabled/disabled packs should still be setwise correct, but just order may not be.
+    safe_mode?: struct SafeModeInfo {
+        reason: SafeModeReason,
         calls: [PackReference],
     },
     aux: struct WorldSpecificAux {
