@@ -1,5 +1,4 @@
 use ::slimecore::mcdoc::def::PackManifest
-use ::slimecore::mcdoc::def::DatapackLink
 use ::slimecore::mcdoc::def::DatapackPath
 use super::super::def::PackId
 use super::super::def::AuthorId
