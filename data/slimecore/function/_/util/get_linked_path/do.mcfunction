@@ -24,4 +24,9 @@ $data modify storage slimecore:_ x.path set value "file/$(pack_id)"
 execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
 execute if score *x _slimecore matches 1 run return 1
 
+# try dev path zip:
+$data modify storage slimecore:_ x.path set value "file/$(pack_id).zip"
+execute store result score *x _slimecore run function slimecore:_/util/get_linked_path/check with storage slimecore:_ x
+execute if score *x _slimecore matches 1 run return 1
+
 return 0
