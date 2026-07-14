@@ -142,7 +142,10 @@ struct PackManifest {
     abstract_implementations: [AbstractReference],
     /// Other packs that this pack references or requires (dependencies).
     /// ALL (SlimeCore compliant) packs that are referenced in *any way* by this pack must be included here.
-    dependencies: [Dependency]
+    dependencies: [Dependency],
+
+    /// NEW
+    slimecore_version: VersionRequirement,
 }
 
 struct Dependency {
@@ -209,4 +212,8 @@ struct WorldSpecificInfo {
         installed_map: Mapping<PackId, InstalledPackInfo>,
     },
     
+}
+
+struct DatapackPathOverrideMap {
+    [PackId]: DatapackPath
 }

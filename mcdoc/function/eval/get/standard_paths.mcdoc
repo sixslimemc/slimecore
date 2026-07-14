@@ -1,0 +1,15 @@
+// NEW
+
+use super::super::super::super::def::PartialPackInfo
+use super::super::super::super::def::DatapackPath
+
+struct In {
+    pack_info: PartialPackInfo
+}
+
+struct Out {
+    // in reverse order of precedence
+    result: [DatapackPath]
+}
+
+type Return = 1

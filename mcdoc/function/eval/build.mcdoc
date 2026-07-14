@@ -12,10 +12,12 @@ use ::slimecore::mcdoc::def::AuthorId
 use ::slimecore::mcdoc::def::EntrypointReference
 use ::slimecore::mcdoc::def::EntrypointId
 use ::slimecore::mcdoc::def::PreloadEntrypointId
+use ::slimecore::mcdoc::def::DatapackPathOverrideMap
+use ::slimecore::mcdoc::def::DatapackPath
 
 struct In {
     /// Packs to include in the build.
-    packs: [(PackManifest | any)]
+    packs: [(PackManifest | any)],
 }
 
 struct Out {
