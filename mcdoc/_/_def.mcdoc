@@ -1,5 +1,6 @@
-use ::slimecore::mcdoc::def::PackManifest
-use ::slimecore::mcdoc::def::DatapackPath
+use super::super::def::PackManifest
+use super::super::def::DatapackPath
+use super::super::config::EvalAnchor
 use super::super::def::PackId
 use super::super::def::AuthorId
 struct VariableRegister {
@@ -27,7 +28,8 @@ dispatch minecraft:storage[slimecore:_] to struct {
             },
             last_success: byte
         },
-    }
+        eval_anchor: EvalAnchor,
+    },
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {
     [any]: any

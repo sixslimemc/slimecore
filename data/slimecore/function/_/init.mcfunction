@@ -16,5 +16,7 @@ data modify storage slimecore:config build_time_gamerules.max_command_sequence_l
 
 data modify storage slimecore:config explicit_rebuild_only set value false
 
+data modify storage slimecore:config eval_anchor set value {block:"minecraft:bedrock", dimension:"minecraft:overworld", x:0, y:-64, z:0}
+
 # empty build data:
 function slimecore:_/util/wipe_data/main

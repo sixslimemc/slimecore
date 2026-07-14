@@ -9,7 +9,7 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
     datapack_path_overrides: DatapackPathOverrideMap,
     /// Gamerules that are overridden temporarily during build-time.
     /// These should generally not be changed unless there is a specific reason too.
-    build_time_gamerules: struct {
+    build_time_gamerules: struct BuildTimeGamerules {
         /// 'max_command_forks' gamerule value during build-time.
         /// Can cause build process to fail if set too low.
         /// Default: 2147483647
@@ -25,7 +25,7 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
 
     // NEW
     // will be forceloaded, must not be un-forceloaded.
-    eval_anchor: struct {
+    eval_anchor: struct EvalAnchor {
         dimension: #[id(registry="dimension")] string,
         block: #[id(registry="block")] string,
         x: int,
