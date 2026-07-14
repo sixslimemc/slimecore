@@ -1,6 +1,6 @@
-use ::slimecore::mcdoc::def::DatapackPath
-use ::slimecore::mcdoc::def::PackId
-use ::slimecore::mcdoc::def::DatapackPathOverrideMap
+use super::def::DatapackPath
+use super::def::PackId
+use super::def::DatapackPathOverrideMap
 dispatch minecraft:storage[slimecore:config] to struct Config {
     /// Mapping of pack IDs to non-standard datapack paths.
     /// Datapacks that have non-standard paths MUST be included here (see TODO for standard paths).

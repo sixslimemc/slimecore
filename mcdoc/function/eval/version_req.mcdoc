@@ -1,9 +1,9 @@
 // Evaluates a version against a version requirement.
 
-use ::slimecore::mcdoc::def::Version
-use ::slimecore::mcdoc::def::VersionRequirement
-use ::slimecore::mcdoc::def::EvalResult
-use ::slimecore::mcdoc::def::PositiveInt
+use super::super::super::def::Version
+use super::super::super::def::VersionRequirement
+use super::super::super::def::EvalResult
+use super::super::super::def::PositiveInt
 
 
 struct In {

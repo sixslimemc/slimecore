@@ -1,19 +1,19 @@
 // Evaluates a build given a set of pack manifests.
 // This just evaluates build data, it does *not* actually initiate a rebuild; the build is not applied to the world, nor are datapack paths validated.
 
-use ::slimecore::mcdoc::def::BuildInfo
-use ::slimecore::mcdoc::def::EvalResult
-use ::slimecore::mcdoc::def::PackManifest
-use ::slimecore::mcdoc::def::PackId
-use ::slimecore::mcdoc::def::AbstractReference
-use ::slimecore::mcdoc::def::PackReference
-use ::slimecore::mcdoc::def::Dependency
-use ::slimecore::mcdoc::def::AuthorId
-use ::slimecore::mcdoc::def::EntrypointReference
-use ::slimecore::mcdoc::def::EntrypointId
-use ::slimecore::mcdoc::def::PreloadEntrypointId
-use ::slimecore::mcdoc::def::DatapackPathOverrideMap
-use ::slimecore::mcdoc::def::DatapackPath
+use super::super::super::def::BuildInfo
+use super::super::super::def::EvalResult
+use super::super::super::def::PackManifest
+use super::super::super::def::PackId
+use super::super::super::def::AbstractReference
+use super::super::super::def::PackReference
+use super::super::super::def::Dependency
+use super::super::super::def::AuthorId
+use super::super::super::def::EntrypointReference
+use super::super::super::def::EntrypointId
+use super::super::super::def::PreloadEntrypointId
+use super::super::super::def::DatapackPathOverrideMap
+use super::super::super::def::DatapackPath
 
 struct In {
     /// Packs to include in the build.
