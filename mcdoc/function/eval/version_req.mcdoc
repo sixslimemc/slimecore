@@ -30,3 +30,9 @@ struct Error {
     /// <version>.major is 0 and <version>.minor is not equal to <requirement>.minor.
     dev_minor_not_equal_to?: PositiveInt,
 }
+
+// NEW
+enum(int) Return {
+    Success = 1,
+    Error = 0,
+}

@@ -59,3 +59,9 @@ struct Error {
         }
     }]
 }
+
+// NEW
+enum(int) Return {
+    Success = 1,
+    Error = 0,
+}

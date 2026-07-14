@@ -88,3 +88,9 @@ struct Error {
     /// If present, there were instances were preload entrypoint ordering specifications were impossible to fulfill.
     preload_entrypoint_order_conflicts?: [EntrypointOrderConflictInfo<PreloadEntrypointId>],
 }
+
+// NEW
+enum(int) Return {
+    Success = 1,
+    Error = 0,
+}

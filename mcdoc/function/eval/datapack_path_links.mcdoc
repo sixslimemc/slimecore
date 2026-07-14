@@ -1,0 +1,43 @@
+// NEW
+
+use super::super::super::def::PackManifest
+use super::super::super::def::DatapackPath
+use super::super::super::def::EvalResult
+use super::super::super::def::DatapackPathOverrideMap
+
+struct In {
+    packs: [PackManifest],
+    available_datapack_paths: [DatapackPath],
+    datapack_path_overrides: DatapackPathOverrideMap,
+}
+
+struct Out {
+    result: Result,
+}
+
+type Result = EvalResult<Success, Error>
+
+struct Success {
+    links: [DatapackPathLink],
+    unlinked_datapack_paths: [DatapackPath],
+}
+
+struct Error {
+    packs_missing_path?: [PackManifest],
+    packs_share_paths?: [struct PacksSharePathInfo {
+        datapack_path: DatapackPath,
+        packs: [PackManifest],
+    }]
+}
+
+struct DatapackPathLink {
+    pack: PackManifest,
+    datapack_path: DatapackPath,
+    datapack_path_overriden: boolean,
+}
+
+// NEW
+enum(int) Return {
+    Success = 1,
+    Error = 0,
+}

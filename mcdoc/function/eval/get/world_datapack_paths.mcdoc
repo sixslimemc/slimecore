@@ -1,0 +1,14 @@
+// NEW
+
+use super::super::super::super::def::DatapackPath
+
+struct In {
+    include_extraneous?: boolean,
+}
+
+struct Out {
+    enabled: [DatapackPath],
+    disabled: [DatapackPath],
+}
+
+type Return = 1

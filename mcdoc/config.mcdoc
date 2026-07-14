@@ -22,4 +22,14 @@ dispatch minecraft:storage[slimecore:config] to struct Config {
     /// Only rebuild when running 'slimecore:rebuild', not on /reload.
     /// Default: false
     explicit_rebuild_only: boolean,
+
+    // NEW
+    // will be forceloaded, must not be un-forceloaded.
+    eval_anchor: struct {
+        dimension: #[id(registry="dimension")] string,
+        block: #[id(registry="block")] string,
+        x: int,
+        y: int,
+        z: int,
+    }
 }

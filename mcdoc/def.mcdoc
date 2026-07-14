@@ -214,6 +214,7 @@ struct WorldSpecificInfo {
     
 }
 
+// NEW
 struct DatapackPathOverrideMap {
     [PackId]: DatapackPath
 }
