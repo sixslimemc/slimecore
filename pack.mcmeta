@@ -1,7 +1,8 @@
 {
   "pack": {
     "description": "The SlimeCore datapack loader.",
+    "pack_format": 110,
     "min_format": 101,
-    "max_format": 101
+    "max_format": 110
   }
 }

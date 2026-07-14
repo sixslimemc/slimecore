@@ -10,7 +10,7 @@ scoreboard objectives add _slimecore dummy
 
 # set slimecore metadata:
 data remove storage slimecore:data slimecore
-data modify storage slimecore:data slimecore set value {pack_id:"slimecore", author_id:"sixslime", dependencies:[], abstract_declarations:[], abstract_implementations:[], entrypoints:[], preload_entrypoints:[], is_library:false, display:{name:"SlimeCore", author_name:"SixSlime", summary:"The SlimeCore datapack loader.", links:{author:"https://github.com/sixslimemc", info:"https://github.com/sixslimemc/slimecore_docs", versions:"https://github.com/sixslimemc/slimecore/releases"}}, url:"https://github.com/sixslimemc/slimecore/releases/download/v0.2.0/sixslime.slimecore.0.2.0.zip", version:{major:0, minor:2, patch:0}}
+data modify storage slimecore:data slimecore set value {pack_id:"slimecore", author_id:"sixslime", dependencies:[], abstract_declarations:[], abstract_implementations:[], entrypoints:[], preload_entrypoints:[], is_library:false, display:{name:"SlimeCore", author_name:"SixSlime", summary:"The SlimeCore datapack loader.", links:{author:"https://github.com/sixslimemc", info:"https://github.com/sixslimemc/slimecore_docs", versions:"https://github.com/sixslimemc/slimecore/releases"}}, url:"https://github.com/sixslimemc/slimecore/releases/download/v0.3.0/sixslime.slimecore.0.3.0.zip", version:{major:0, minor:3, patch:0}}
 
 # init:
 execute unless score *init _slimecore matches 1 run function slimecore:_/init
