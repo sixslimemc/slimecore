@@ -50,8 +50,6 @@ data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out b
 
 #- populate {..new_links} and {..path_map}
 function slimecore:_/impl/rebuild/path_linking/do
-data modify storage slimecore:_ v.rebuild.packs set from storage slimecore:_ v.rebuild.build.packs
-execute if data storage slimecore:_ v.rebuild.packs[0] run function slimecore:_/impl/rebuild/path_linking/each
 
 execute if score *rebuild.error _slimecore matches 1 run return 0
 
