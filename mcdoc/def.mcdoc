@@ -198,10 +198,19 @@ struct BuildInfo {
 
 type SafeModeReason = (
     struct {
-        duplicate_pack_ids: [PackReference],
+        duplicate_installed_pack_ids: [struct DuplicateInstalledPackIdInfo {
+            pack_id: PackId,
+            packs: [PackManifest],
+        }],
     } | 
-    struct {
-        misloaded_datapacks_missing_path: [PackReference],
+    struct MisloadedDatapacksMissingPathInfo {
+        misloaded_datapacks_missing_path: [struct MisloadedDatapackMissingPath {
+        /// The misloaded pack's manifest.
+        pack: PackManifest,
+        /// If present, `slimecore:config datapack_path_overrides` contained a datapack path (this value) for the this pack's ID.
+        /// Expected this exact datapack path to exist; standard datapack paths are not checked when there is an override.
+        path_override?: DatapackPath
+    }],
     }
 )
 

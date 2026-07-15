@@ -7,6 +7,7 @@ use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::DatapackPath
 use ::slimecore::mcdoc::def::PartialPackInfo
 use ::slimecore::mcdoc::def::PackId
+use ::slimecore::mcdoc::def::SafeModeReason
 
 struct Out {
     /// Rebuild result.
@@ -41,21 +42,8 @@ struct Error {
     /// If present, an error occured when evaluating the build.
     /// Contains the error that `slimecore:eval/build` returned.
     build_error?: super::eval::build::Error,
-    /// If present, one or more pack manifests declared a pack ID that did not have a matching or standard datapack path.
-    /// Contains information about each problematic pack.
-    missing_datapack_paths?: [struct MissingDatapackPathInfo {
-        /// The problematic pack's manifest.
-        pack: PackManifest,
-        /// If present, `slimecore:config datapack_path_overrides` contained a datapack path (this value) for the this pack's ID.
-        /// Expected this exact datapack path to exist; standard datapack paths are not checked when there is an override.
-        path_override?: DatapackPath
-    }],
-    safe_mode_activated?: struct SafeModeActivatedInfo {
-        duplicate_installed_pack_ids?: [struct DuplicateInstalledPackIdsInfo {
-            pack_id: PackId,
-            packs: [PackManifest],
-        }]
-    }
+    /// If present, check {data -> world.safe_mode.reason}
+    safe_mode_activated?: SafeModeReason,
 }
 
 

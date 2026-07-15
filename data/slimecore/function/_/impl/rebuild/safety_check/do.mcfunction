@@ -21,5 +21,5 @@ execute if score *rebuild.unsafe _slimecore matches 1 run return run function sl
 # ~ SUCCESS REACHED
 
 scoreboard players reset *safe_mode _slimecore
-data modify storage slimecore:data world.safe_mode set value {calls:[], enabled:false}
+data remove storage slimecore:data world.safe_mode
 return 1
