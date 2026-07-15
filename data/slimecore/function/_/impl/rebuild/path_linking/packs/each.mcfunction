@@ -11,6 +11,7 @@ data modify storage slimecore:_ v.rebuild.this_pack.author_id set from storage s
 data modify storage slimecore:_ v.rebuild.this_pack.version set from storage slimecore:_ v.rebuild.packs[0].version
 
 data modify storage slimecore:_/in get_linked_path.pack set from storage slimecore:_ v.rebuild.this_pack
+data modify storage slimecore:_/in get_linked_path.force_load set value true
 execute store result score *rebuild.found_path _slimecore run function slimecore:_/util/get_linked_path/main
 data modify storage slimecore:_ v.rebuild.linked_out set from storage slimecore:_/out get_linked_path
 

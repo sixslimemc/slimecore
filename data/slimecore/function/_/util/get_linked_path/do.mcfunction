@@ -4,9 +4,10 @@
 # ./main
 #--------------------
 
-# check cached:
-$execute store success score *get_linked_path.cached _slimecore run data modify storage slimecore:_/out get_linked_path set from storage slimecore:_ data.cached_paths."$(author_id).$(pack_id).$(major).$(minor).$(patch)"
-execute if score *get_linked_path.cached _slimecore matches 1 run return run execute unless data storage slimecore:_/out {get_linked_path:false}
+# check cached (if not *.force_load):
+scoreboard players set *get_linked_path.cached _slimecore 0
+execute if score *get_linked_path.force_load _slimecore matches 0 store result score *x _slimecore run function slimecore:_/util/get_linked_path/get_cache
+execute if score *get_linked_path.force_load _slimecore matches 0 if score *get_linked_path.cached _slimecore matches 1 run return run scoreboard players get *x _slimecore
 
 # check override:
 $data modify storage slimecore:_/out get_linked_path.path_override set from storage slimecore:config datapack_path_overrides."$(pack_id)"
