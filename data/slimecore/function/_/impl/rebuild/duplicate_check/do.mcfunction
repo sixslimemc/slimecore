@@ -13,10 +13,10 @@ data modify storage slimecore:_ v.rebuild.pack_seen_map set value {}
 # - check duplicate installed ids
 data modify storage slimecore:_ v.rebuild.pack_checks set from storage slimecore:_ data.manifest_packs
 data modify storage slimecore:_ v.rebuild.pack_checks append from storage slimecore:data world.installed[{disabled:true}].pack
-execute if data storage slimecore:_ v.rebuild.pack_checks[0] run function slimecore:_/impl/rebuild/safety_check/packs/each
+execute if data storage slimecore:_ v.rebuild.pack_checks[0] run function slimecore:_/impl/rebuild/duplicate_check/packs/each
 
 # is unsafe:
-execute if score *rebuild.unsafe _slimecore matches 1 run return run function slimecore:_/impl/rebuild/safety_check/is_unsafe
+execute if score *rebuild.unsafe _slimecore matches 1 run return run function slimecore:_/impl/rebuild/duplicate_check/is_unsafe
 
 # ~ SUCCESS REACHED (safe)
 

@@ -21,7 +21,7 @@ function #slimecore:hook/meta_info/rebuild/start
 execute if data storage slimecore:in rebuild{force_clean:true} run function slimecore:_/util/wipe_data/main
 
 # check safety:
-execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/safety_check/do
+execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/duplicate_check/do
 
 # process:
 # - populate {..post_disables}
