@@ -20,7 +20,8 @@ function #slimecore:hook/meta_info/rebuild/start
 # wipe old data if force clean:
 execute if data storage slimecore:in rebuild{force_clean:true} run function slimecore:_/util/wipe_data/main
 
-# check safety:
+# check duplicate safety:
+# ~ store in *.success for easy fallthrough logic if 0
 execute store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/duplicate_check/do
 
 # process:
@@ -29,7 +30,7 @@ data modify storage slimecore:_ v.rebuild.post_disables set value []
 execute if score *rebuild.success _slimecore matches 1 store result score *rebuild.success _slimecore run function slimecore:_/impl/rebuild/process
 
 # disable {..post_disables}:
-# (logically should only run if rebuild fails)
+# ~ logically should only run if rebuild fails
 execute if data storage slimecore:_ v.rebuild.post_disables[0] run function slimecore:_/impl/rebuild/post_disables/each
 
 # remove success if error & vice versa:
