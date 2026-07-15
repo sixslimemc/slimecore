@@ -218,10 +218,6 @@ struct WorldSpecificInfo {
     /// List containing partial information about each installed pack.
     /// List is in arbitrary order.
     installed: [InstalledPackInfo],
-    // TODO / LEFTOFF:
-    // implement
-    // make loop in ./packs trigger a safe-mode activation (because load order may be incorrect)
-    // if this happens, enabled/disabled packs should still be setwise correct, but just order may not be.
     safe_mode?: struct SafeModeInfo {
         reason: SafeModeReason,
         calls: [PackReference],
