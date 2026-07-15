@@ -1,5 +1,5 @@
 # IMPL > slimecore:rebuild
-# packs/add_link
+# path_linking/packs/add_link
 #--------------------
 # ./each
 #--------------------

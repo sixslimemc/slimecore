@@ -17,3 +17,7 @@ execute if data storage slimecore:_ v.rebuild.install_entries[0] run function sl
 data modify storage slimecore:data build set from storage slimecore:_ v.rebuild.build
 data modify storage slimecore:data world.installed set from storage slimecore:_ v.rebuild.new_installed
 data modify storage slimecore:data world.aux.installed_map set from storage slimecore:_ v.rebuild.new_installed_map
+
+# unset safe mode:
+data remove storage slimecore:data world.safe_mode
+scoreboard players reset *safe_mode _slimecore

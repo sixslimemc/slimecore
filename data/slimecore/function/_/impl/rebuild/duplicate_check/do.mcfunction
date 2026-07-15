@@ -20,6 +20,4 @@ execute if score *rebuild.unsafe _slimecore matches 1 run return run function sl
 
 # ~ SUCCESS REACHED (safe)
 
-scoreboard players reset *safe_mode _slimecore
-data remove storage slimecore:data world.safe_mode
 return 1
