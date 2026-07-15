@@ -27,6 +27,13 @@ dispatch minecraft:storage[slimecore:_] to struct {
             },
             last_success: byte
         },
+        cached_paths: struct {
+            /// key format: `<author_id>.<pack_id>.<major>.<minor>.<patch>`
+            [string]: (struct {
+                path: DatapackPath,
+                path_override?: DatapackPath,
+            } | false)
+        }
     }
 }
 dispatch minecraft:storage[slimecore:_/in] to struct {

@@ -4,6 +4,10 @@
 # ./main
 #--------------------
 
+# check cached:
+$execute store success score *get_linked_path.cached _slimecore run data modify storage slimecore:_/out get_linked_path set from storage slimecore:_ data.cached_paths."$(author_id).$(pack_id).$(major).$(minor).$(patch)"
+execute if score *get_linked_path.cached _slimecore matches 1 run return run execute unless data storage slimecore:_/out {get_linked_path:false}
+
 # check override:
 $data modify storage slimecore:_/out get_linked_path.path_override set from storage slimecore:config datapack_path_overrides."$(pack_id)"
 data modify storage slimecore:_ x.path set from storage slimecore:_/out get_linked_path.path_override

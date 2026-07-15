@@ -12,6 +12,9 @@ schedule function slimecore:_/util/set_gamerules/main 1t
 # (may have been because rebuilding was initially a multi-tick process)
 # data remove storage slimecore:_ v.rebuild
 
+# clear cached paths:
+data modify storage slimecore:_ data.cached_paths set value {}
+
 scoreboard players set *just_rebuilt _slimecore 1
 
 # HOOK: meta_info/rebuild/start
