@@ -1,7 +1,7 @@
 # IMPL > slimecore:rebuild
-# safety_check/is_unsafe/do
+# safety_check/is_unsafe
 #--------------------
-# ../do
+# ./do
 #--------------------
 # must return 0.
 
