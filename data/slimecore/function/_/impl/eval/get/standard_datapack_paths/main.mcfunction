@@ -1,4 +1,4 @@
-#> slimecore : eval/get/standard_datapack_paths
+# IMPL > slimecore : eval/get/standard_datapack_paths
 # main
 
 data modify storage slimecore:_ x.macro set from storage slimecore:in standard_datapack_paths.pack_info
