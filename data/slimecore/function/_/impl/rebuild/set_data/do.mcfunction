@@ -13,7 +13,7 @@ execute if data storage slimecore:_ v.rebuild.install_entries[0] run data modify
 data modify storage slimecore:_ v.rebuild.install_entries append from storage slimecore:_ v.rebuild.build.packs[]
 execute if data storage slimecore:_ v.rebuild.install_entries[0] run function slimecore:_/impl/rebuild/set_data/install_entries/each
 
-# final sets:
+# data sets:
 data modify storage slimecore:data build set from storage slimecore:_ v.rebuild.build
 data modify storage slimecore:data world.installed set from storage slimecore:_ v.rebuild.new_installed
 data modify storage slimecore:data world.aux.installed_map set from storage slimecore:_ v.rebuild.new_installed_map
@@ -21,3 +21,7 @@ data modify storage slimecore:data world.aux.installed_map set from storage slim
 # unset safe mode:
 data remove storage slimecore:data world.safe_mode
 scoreboard players reset *safe_mode _slimecore
+
+# update rebuild check:
+function slimecore:_/get_manifests
+data modify storage slimecore:_ data.rebuild_check.manifests set from storage slimecore:_ data.manifest_packs
