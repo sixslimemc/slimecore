@@ -57,5 +57,6 @@ struct Error {
             /// If present, the 'download.version' did not fulfill the version requirement specified by 'version'.
             invalid_download_version?: super::version_req::Error,
         }
-    }]
+    }],
+    incompatible_slimecore_version?: super::version_req::Error
 }
