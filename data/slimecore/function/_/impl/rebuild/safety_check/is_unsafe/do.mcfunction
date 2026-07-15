@@ -5,15 +5,17 @@
 #--------------------
 # must return 0.
 
+data remove storage slimecore:data world.safe_mode
+
 data modify storage slimecore:_ v.rebuild.seen_unsafe_map set value {}
 data modify storage slimecore:_ v.rebuild.unsafe_calls set value []
 
-# - populate {..unsafe_calls}
-data modify storage slimecore:_ v.rebuild.unsafes set from storage slimecore:out rebuild.result.error.safe_mode_activated.duplicate_installed_pack_ids
-execute if data storage slimecore:_ v.rebuild.unsafes[0] run function slimecore:_/impl/rebuild/safety_check/is_unsafe/unsafes/each
+# set unsafe calls:
+data modify storage slimecore:_/in get_unsafe_calls.unsafes set from storage slimecore:out rebuild.result.error.safe_mode_activated.duplicate_installed_pack_ids
+function slimecore:_/util/get_unsafe_calls/main
+data modify storage slimecore:data world.safe_mode.calls set from storage slimecore:_/out get_unsafe_calls.result
 
-# set data:
-data modify storage slimecore:data world.safe_mode.calls set from storage slimecore:_ v.rebuild.unsafe_calls
+# set reason:
 data modify storage slimecore:data world.safe_mode.reason.duplicate_installed_pack_ids set from storage slimecore:out rebuild.result.error.safe_mode_activated.duplicate_installed_pack_ids
 
 scoreboard players set *safe_mode _slimecore 1
