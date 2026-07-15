@@ -1,5 +1,5 @@
 # IMPL > slimecore:rebuild
-# safety_check/packs/each
+# duplicate_check/packs/each
 #--------------------
 # ../do
 #--------------------

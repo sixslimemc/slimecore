@@ -1,5 +1,5 @@
 # IMPL > slimecore:rebuild
-# safety_check/do
+# duplicate_check/do
 #--------------------
 # ../main
 #--------------------

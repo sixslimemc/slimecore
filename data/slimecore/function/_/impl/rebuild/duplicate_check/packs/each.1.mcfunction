@@ -1,5 +1,5 @@
 # IMPL > slimecore:rebuild
-# safety_check/packs/each.1
+# duplicate_check/packs/each.1
 
 # return if duplicate:
 data remove storage slimecore:_ v.rebuild.seen_duplicate
