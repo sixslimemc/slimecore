@@ -6,9 +6,9 @@ scoreboard players set *pack.error _slimecore 0
 
 # check slimecore version; return early if incompatible:
 data modify storage slimecore:in version_req.version set from storage slimecore:data slimecore.version
-data modify storage slimecore:in version_req.requirement set from storage slimecore:in pack.pack.slimecore_version
+data modify storage slimecore:in version_req.requirement set from storage slimecore:in pack.pack.loader_version
 execute store result score *x _slimecore run function slimecore:eval/version_req
-execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack.result.error.incompatible_slimecore_version set from storage slimecore:out version_req.result.error
+execute if score *x _slimecore matches 0 run data modify storage slimecore:out pack.result.error.incompatible_loader_version set from storage slimecore:out version_req.result.error
 execute if score *x _slimecore matches 0 run return 0
 
 data modify storage slimecore:_ v.pack.key set value "dependencies"

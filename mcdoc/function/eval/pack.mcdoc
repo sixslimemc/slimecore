@@ -58,5 +58,5 @@ struct Error {
             invalid_download_version?: super::version_req::Error,
         }
     }],
-    incompatible_slimecore_version?: super::version_req::Error
+    incompatible_loader_version?: super::version_req::Error
 }
