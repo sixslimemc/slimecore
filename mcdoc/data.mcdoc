@@ -45,5 +45,9 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
         abstract_declarations: [any] @ 0,
         abstract_implementations: [any] @ 0,
         dependencies: [any] @ 0,
+        loader_version: struct {
+            major: 0,
+            minor: 3,
+        },
     })
 }
