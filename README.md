@@ -6,9 +6,6 @@
 
 ## Description
 
-From [The SC Proposition](https://sixslimemc.github.io/sc-proposition/):
-> [By default] datapack manifests (`pack.mcmeta`) do not support many fundamental features that software package manifests often have, such as dependencies, versioning, metadata, etc. Datapack loading is managed in an ad-hoc manner in-game via the `/datapack` command; this is very fragile and dependent on the user's knowledge of installed datapacks.
+> SlimeCore is a datapack loading framework that uses a package-manifest paradigm as a replacement for `#minecraft:load` and `#minecraft:tick`--it is a datapack that loads other datapacks. Its purpose is similar to [Lantern Load](https://github.com/LanternMC/load), but provides implementation for dependency resolution, versioning, explicit entrypoint ordering, metadata, and more. SlimeCore is designed as a greater foundation for a decentralized datapack ecosystem that is accessible regardless of existing toolchain(s).
 
-SlimeCore is a solution to these issues, and relieves both developers and users of technical responsibility. Developers define their packs' manifest, users run `/reload`, and SlimeCore does the rest.
-
-SlimeCore is part of [The SC Proposition](https://sixslimemc.github.io/sc-proposition/), information about SlimeCore's usage can be found there.
+See the [SlimeCore docs repository](https://github.com/sixslimemc/slimecore_docs).
