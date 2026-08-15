@@ -6,4 +6,4 @@
 
 ## Description
 
-*Refer to [the SlimeCore docs](https://github.com/sixslimemc/slimecore_docs).*
+*Refer to [the docs](https://github.com/sixslimemc/slimecore_docs).*
