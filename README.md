@@ -1,3 +1,5 @@
+> WIP
+
 # SlimeCore | `slimecore`
 
 **ID:** `sixslime.slimecore`
