@@ -12,10 +12,10 @@ data modify storage slimecore:_ v.rebuild.path_map set value {}
 # [DEPRICATED]
 # data modify storage slimecore:_ v.rebuild.new_links set value []
 
-# {pack_ref:PackId call_tag:boolean}
+# {pack_ref:PackId, call_tag:boolean}
 data modify storage slimecore:_ v.rebuild.disabling set value []
 
-# {pack_ref:PackId}
+# {pack_ref:PackId, call_disable:boolean}
 data modify storage slimecore:_ v.rebuild.uninstalling set value []
 
 #- re-enable all packs (for proper manifest gathering and disable/load calling)
