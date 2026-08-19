@@ -7,13 +7,15 @@
 data modify storage slimecore:out rebuild.result set value {success:{uninstall_paths:[]}}
 
 data modify storage slimecore:_ v.rebuild.new_disabled set value []
-data modify storage slimecore:_ v.rebuild.new_links set value []
 data modify storage slimecore:_ v.rebuild.path_map set value {}
 
-# {pack_ref:PackId, path:DatpackPath, call_tag:boolean}
+# [DEPRICATED]
+# data modify storage slimecore:_ v.rebuild.new_links set value []
+
+# {pack_ref:PackId call_tag:boolean}
 data modify storage slimecore:_ v.rebuild.disabling set value []
 
-# {pack_ref:PackId, path:DatpackPath}
+# {pack_ref:PackId}
 data modify storage slimecore:_ v.rebuild.uninstalling set value []
 
 #- re-enable all packs (for proper manifest gathering and disable/load calling)
@@ -38,8 +40,6 @@ execute if data storage slimecore:in rebuild.uninstall[0] run function slimecore
 #- remove from {..build_packs}
 execute if data storage slimecore:in rebuild.disable[0] run function slimecore:_/impl/rebuild/in_disables/each
 
-execute if score *rebuild.error _slimecore matches 1 run return 0
-
 # eval build into {..build}:
 data modify storage slimecore:in build.packs set from storage slimecore:_ v.rebuild.build_packs
 execute store result score *x _slimecore run function slimecore:eval/build
@@ -48,6 +48,7 @@ execute unless score *x _slimecore matches 1.. run function slimecore:_/impl/reb
 execute if score *rebuild.error _slimecore matches 1 run return 0
 data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out build.result.success
 
+# put packs in load order:
 #- populate {..new_links} and {..path_map}
 function slimecore:_/impl/rebuild/path_linking/do
 

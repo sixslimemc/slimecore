@@ -19,7 +19,7 @@ data modify storage slimecore:_ u.get_linked_path.macro set from storage slimeco
 data modify storage slimecore:_ u.get_linked_path.macro merge from storage slimecore:_/in get_linked_path.pack.version
 execute store result score *get_linked_path.found _slimecore run function slimecore:_/util/get_linked_path/do with storage slimecore:_ u.get_linked_path.macro
 
-execute if score *get_linked_path.cached _slimecore matches 0 run function slimecore:_/util/get_linked_path/cache with storage slimecore u.get_linked_path.macro
+execute if score *get_linked_path.cached _slimecore matches 0 run function slimecore:_/util/get_linked_path/cache with storage slimecore:_ u.get_linked_path.macro
 
 data remove storage slimecore:_ u.get_linked_path
 data remove storage slimecore:_/in get_linked_path

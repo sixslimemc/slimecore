@@ -8,6 +8,7 @@ use ::slimecore::mcdoc::def::DatapackPath
 use ::slimecore::mcdoc::def::PartialPackInfo
 use ::slimecore::mcdoc::def::PackId
 use ::slimecore::mcdoc::def::SafeModeReason
+use ::slimecore::mcdoc::def::MissingDatapackPathInfo
 
 struct Out {
     /// Rebuild result.
@@ -44,6 +45,8 @@ struct Error {
     build_error?: super::eval::build::Error,
     /// If present, check {data -> world.safe_mode.reason}
     safe_mode_activated?: SafeModeReason,
+    /// If present, disabled datapack(s) have missing datapack paths.
+    disabled_datapacks_missing_path?: [MissingDatapackPathInfo]
 }
 
 

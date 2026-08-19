@@ -205,15 +205,17 @@ type SafeModeReason = (
         }],
     } | 
     struct MisloadedDatapacksMissingPathInfo {
-        misloaded_datapacks_missing_path: [struct MisloadedDatapackMissingPath {
-        /// The misloaded pack's manifest.
-        pack: PackManifest,
-        /// If present, `slimecore:config datapack_path_overrides` contained a datapack path (this value) for the this pack's ID.
-        /// Expected this exact datapack path to exist; standard datapack paths are not checked when there is an override.
-        path_override?: DatapackPath
-    }],
+        misloaded_datapacks_missing_path: [MissingDatapackPathInfo],
     }
 )
+
+struct MissingDatapackPathInfo {
+    /// The misloaded pack's manifest.
+    pack: PackManifest,
+    /// If present, `slimecore:config datapack_path_overrides` contained a datapack path (this value) for the this pack's ID.
+    /// Expected this exact datapack path to exist; standard datapack paths are not checked when there is an override.
+    path_override?: DatapackPath
+}
 
 struct WorldSpecificInfo {
     /// List containing partial information about each installed pack.

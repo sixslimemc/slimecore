@@ -5,12 +5,13 @@
 #--------------------
 # forward load order
 
-data modify storage slimecore:_ v.rebuild.this_pack set value {pack_id:"", version:{}, author_id:""}
-data modify storage slimecore:_ v.rebuild.this_pack.pack_id set from storage slimecore:_ v.rebuild.packs[0].pack_id
-data modify storage slimecore:_ v.rebuild.this_pack.author_id set from storage slimecore:_ v.rebuild.packs[0].author_id
-data modify storage slimecore:_ v.rebuild.this_pack.version set from storage slimecore:_ v.rebuild.packs[0].version
+# set {..this_pack} and remove from {..unloading_packs}:
+function slimecore:_/impl/rebuild/path_linking/packs/get_pack with storage slimecore:_ v.rebuild.packs[0]
 
-data modify storage slimecore:_/in get_linked_path.pack set from storage slimecore:_ v.rebuild.this_pack
+data modify storage slimecore:_/in get_linked_path.pack set value {pack_id:"", author_id:"", version:{}}
+data modify storage slimecore:_/in get_linked_path.pack.pack_id set from storage slimecore:_ v.rebuild.this_pack.pack_id
+data modify storage slimecore:_/in get_linked_path.pack.author_id set from storage slimecore:_ v.rebuild.this_pack.author_id
+data modify storage slimecore:_/in get_linked_path.pack.version set from storage slimecore:_ v.rebuild.this_pack.version
 data modify storage slimecore:_/in get_linked_path.force_load set value true
 execute store result score *rebuild.found_path _slimecore run function slimecore:_/util/get_linked_path/main
 data modify storage slimecore:_ v.rebuild.linked_out set from storage slimecore:_/out get_linked_path
