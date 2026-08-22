@@ -4,5 +4,4 @@
 # ./each
 #--------------------
 
-$say enable $(path)
 $datapack enable "$(path)"
