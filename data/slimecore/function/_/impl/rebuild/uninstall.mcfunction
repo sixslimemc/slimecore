@@ -12,7 +12,7 @@ tellraw @a ["DISABLE: ", {'storage':'slimecore:_', 'nbt':'v.rebuild.call_disable
 
 # call disable if needed:
 data modify storage slimecore:_ v.rebuild.disable_from_uninstall set value true
-$execute if data storage slimecore:_ v.rebuild{call_disable:true} run function slimecore:_/impl/rebuild/disable {pack_ref:"$(pack_ref)", call_tag:true}
+$execute if data storage slimecore:_ v.rebuild{call_disable:true} run function slimecore:_/impl/rebuild/disable {pack_ref:'$(pack_ref)', call_tag:true, path:'$(path)'}
 data remove storage slimecore:_ v.rebuild.disable_from_uninstall
 
 # HOOK: meta_info/call/uninstall
