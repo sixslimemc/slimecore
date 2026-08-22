@@ -1,10 +1,10 @@
 #> slimecore :_/util/ get_linked_path
 #--------------------
 # -> pack: PartialPackInfo
+# => force_load?: boolean = false
 #--------------------
 # <- path?: DatapackPath
 # <- path_override?: DatapackPath
-# <= force_load?: boolean = false
 #--------------------
 # entire output can be `false` if no path found.
 #--------------------
