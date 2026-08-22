@@ -30,6 +30,9 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 function slimecore:_/get_manifests
 data modify storage slimecore:_ v.rebuild.build_packs set from storage slimecore:_ data.manifest_packs
 
+# DEBUG:
+tellraw @a ["MANIFEST: ", {'storage':'slimecore:_', 'nbt':'data.manifest_packs[{pack_id:"placeit"}]'}]
+
 #- populate {..uninstalling}
 #- remove from {..build_packs}
 #~ uninstalls take precedence over disables
