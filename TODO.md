@@ -1,6 +1,7 @@
 
-- maybe consider adding an 'enable' tag?
+- validate pack refs in manifests (e.g. entrypoint 'before'/'after' must be included in dependencies and reference valid entrypoints)
 
 # BUGS
-- cannot uninstall packs that are already disabled
-    - perhaps related to the fact that 'in_uninstalls/each.1' uses {_ -> data.manifest_packs}, and perhaps enabling datapacks in the same tick as collecting manifests doesnt actually work.
+
+# MAYBE
+- add 'enable' slimecore tag
