@@ -4,8 +4,14 @@
 $execute store success score *x _slimecore run data remove storage slimecore:_ t.safe_mode.unsafe_calls[{pack_ref:"$(pack_ref)"}]
 execute if score *x _slimecore matches 0 run return 0
 
-# HOOK: meta_info/call/safe_mode
+# HOOK: meta_info/call/pre/safe_mode
 $data modify storage slimecore:hook safe_mode set value {pack_id:"$(pack_ref)"}
-function #slimecore:hook/meta_info/call/safe_mode
+function #slimecore:hook/meta_info/call/pre/safe_mode
+data remove storage slimecore:hook safe_mode
 
 $function #$(pack_ref):safe_mode
+
+# HOOK: meta_info/call/post/safe_mode
+$data modify storage slimecore:hook safe_mode set value {pack_id:"$(pack_ref)"}
+function #slimecore:hook/meta_info/call/post/safe_mode
+data remove storage slimecore:hook safe_mode

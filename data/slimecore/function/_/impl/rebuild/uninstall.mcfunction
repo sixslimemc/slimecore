@@ -12,10 +12,16 @@ data modify storage slimecore:_ v.rebuild.disable_from_uninstall set value true
 $execute if data storage slimecore:_ v.rebuild{call_disable:true} run function slimecore:_/impl/rebuild/disable {pack_ref:'$(pack_ref)', call_tag:true, path:'$(path)'}
 data remove storage slimecore:_ v.rebuild.disable_from_uninstall
 
-# HOOK: meta_info/call/uninstall
+# HOOK: meta_info/call/pre/uninstall
 $data modify storage slimecore:hook uninstall set value {pack_id:"$(pack_ref)"}
-function #slimecore:hook/meta_info/call/uninstall
+function #slimecore:hook/meta_info/call/pre/uninstall
 data remove storage slimecore:hook uninstall
 
 $function #$(pack_ref):uninstall
+
+# HOOK: meta_info/call/post/uninstall
+$data modify storage slimecore:hook uninstall set value {pack_id:"$(pack_ref)"}
+function #slimecore:hook/meta_info/call/post/uninstall
+data remove storage slimecore:hook uninstall
+
 $datapack disable "$(path)"
