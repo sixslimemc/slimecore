@@ -2,9 +2,6 @@
 # main
 kill @s
 
-# DEBUG:
-tellraw @a ["pack eval: ", {'storage':'slimecore:in', 'nbt':'pack.pack.pack_id'}]
-
 scoreboard players set *pack.error _slimecore 0
 
 # check slimecore version; return early if incompatible:
