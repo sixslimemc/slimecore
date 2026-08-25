@@ -1,0 +1,7 @@
+// Called just after '#<pack_id>:load' load tag is called.
+
+use ::slimecore::mcdoc::def::PackId
+
+struct Hook {
+    pack_id: PackId    
+}
