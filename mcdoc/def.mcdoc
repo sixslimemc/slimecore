@@ -9,6 +9,7 @@ type PreloadEntrypointId = IdFormat
 type DatapackPath = string
 type EvalResult<T, E> = (struct {success: T} | struct {error: E})
 type PositiveInt = int @ 0..
+type StructKeyString = string
 
 type Mapping<K, T> = struct {
     [K]: T

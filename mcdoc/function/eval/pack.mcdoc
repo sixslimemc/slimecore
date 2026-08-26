@@ -5,7 +5,7 @@ use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::Dependency
-
+use ::slimecore::mcdoc::def::StructKeyString
 
 struct In {
     /// Pack manifest to evaluate.
@@ -21,7 +21,6 @@ type Result = EvalResult<Success, Error>
 
 type Success = true
 
-type StructKey = string
 
 struct Error {
     /// If present, <pack> contains one or more references to packs that are not included in it's dependencies.
@@ -29,7 +28,7 @@ struct Error {
         /// The invalid reference.
         reference: PackReference,
         /// The key within <pack> which holds the invalid reference.
-        in: StructKey,
+        in: StructKeyString,
         /// If present, the invalid reference was within an list.
         /// The list index of the invalid reference.
         index?: int @ 0..,
@@ -37,14 +36,14 @@ struct Error {
     /// If present, <pack> contained one or more instances where an list was supposed to be unique by an id/key, but duplicate ids were found within.
     duplicate_ids?: [struct DuplicateIdInfo {
         /// The key of the unique id (i.e. the key that the list was supposed to be unique by).
-        id: StructKey,
+        id: StructKeyString,
         /// The key within <pack> which holds the list with the duplicate ids.
-        in: StructKey,
+        in: StructKeyString,
     }],
     /// If present, <pack> contained one or more invalid URLs where valid URLs were expected.
     invalid_urls?: [struct InvalidUrlInfo {
         /// The key within <pack> that contains an invalid URL.
-        in: StructKey,
+        in: StructKeyString,
     }],
     /// If present, <pack.dependencies> had one or more invalid entries.
     invalid_dependencies?: [struct InvalidDependencyInfo {

@@ -12,6 +12,7 @@ use ::slimecore::mcdoc::def::AuthorId
 use ::slimecore::mcdoc::def::EntrypointReference
 use ::slimecore::mcdoc::def::EntrypointId
 use ::slimecore::mcdoc::def::PreloadEntrypointId
+use ::slimecore::mcdoc::def::StructKeyString
 
 struct In {
     /// Packs to include in the build.
@@ -31,6 +32,7 @@ type EntrypointOrderConflictInfo<T> = struct {
     conflicting_group: [EntrypointReference<T>],
 }
 
+
 struct Error {
     /// If present, one or more packs were invalid (returned an error when evaluated with `slimecore:eval/pack`.)
     invalid_packs?: [struct InvalidPackInfo {
@@ -38,6 +40,19 @@ struct Error {
         pack: PackManifest,
         /// The error returned from `slimecore:eval/pack`.
         error: super::pack::Error,
+    }],
+    // If present, one or more packs reference artifacts (entrypoints, preloads, interfaces) that do not exist.
+    packs_with_invalid_references?: [struct PackWithInvalidReferenceInfo {
+        pack: PackManifest,
+        invalid_references: [struct InvalidReferenceInfo {
+            type: enum(int) InvalidReferenceType {
+                Entrypoint = 1,
+                PreloadEntrypoint = 2,
+                AbstractInterface = 3,
+            },
+            value: (EntrypointReference<EntrypointId> | EntrypointReference<PreloadEntrypointId> | AbstractReference),
+            key: StructKeyString,
+        }],
     }],
     /// If present, there were instances of packs sharing the same pack ID.
     duplicate_pack_ids?: [struct DuplicatePackIdInfo {
