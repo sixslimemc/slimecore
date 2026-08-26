@@ -5,7 +5,7 @@ use ::slimecore::mcdoc::def::BuildInfo
 use ::slimecore::mcdoc::def::EvalResult
 use ::slimecore::mcdoc::def::PackManifest
 use ::slimecore::mcdoc::def::PackId
-use ::slimecore::mcdoc::def::AbstractReference
+use ::slimecore::mcdoc::def::ContractReference
 use ::slimecore::mcdoc::def::PackReference
 use ::slimecore::mcdoc::def::Dependency
 use ::slimecore::mcdoc::def::AuthorId
@@ -48,7 +48,7 @@ struct Error {
             type: enum(int) InvalidReferenceType {
                 Entrypoint = 1,
                 PreloadEntrypoint = 2,
-                AbstractInterface = 3,
+                ContractInterface = 3,
             },
             key: StructKeyString,
         }],
@@ -60,10 +60,10 @@ struct Error {
         /// The packs that shared this pack ID.
         packs: [PackManifest],
     }],
-    /// If present, there were instances of one abstract interface being implemented by multiple packs.
+    /// If present, there were instances of one contract interface being implemented by multiple packs.
     multiple_implementations?: [struct MultipleImplementationInfo {
-        /// The abstract interface with multiple implementations.
-        of: AbstractReference,
+        /// The contract interface with multiple implementations.
+        of: ContractReference,
         /// References to the packs that implemented the interface.
         sources: [PackReference],
     }],
@@ -88,8 +88,8 @@ struct Error {
             },
         },
     }],
-    /// If present, there were instances of packs that declared abstract interfaces, but did not have them implemented by any other pack.
-    unimplemented_abstracts?: [AbstractReference],
+    /// If present, there were instances of packs that declared contract interfaces, but did not have them implemented by any other pack.
+    unimplemented_contracts?: [ContractReference],
     /// If present, there exists at least one dependency cycle in <packs>.
     dependency_cycles?: [struct DependencyCycleInfo {
         /// The dependency cycle (arbitrary starting position).

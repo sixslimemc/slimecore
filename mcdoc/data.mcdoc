@@ -8,7 +8,7 @@ use super::def::PackManifest
 use super::def::EntrypointDeclaration
 use super::def::EntrypointId
 use super::def::PreloadEntrypointId
-use super::def::AbstractId
+use super::def::ContractId
 use super::def::PackReference
 use super::def::Dependency
 use super::def::WorldSpecificInfo

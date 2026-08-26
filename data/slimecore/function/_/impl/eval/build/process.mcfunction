@@ -9,14 +9,14 @@ scoreboard players set *build.error _slimecore 0
 # (pack's id) => (its manifest)
 data modify storage slimecore:_ v.build.maps.packs set value {}
 
-# (abstract's source) => (abstract's id) => (its implementation's manifest)
+# (contract's source) => (contract's id) => (its implementation's manifest)
 data modify storage slimecore:_ v.build.maps.impls set value {}
 
 # (pack's id) => (its dependents' manifests)
 data modify storage slimecore:_ v.build.maps.dependents set value {}
 
-# [{abstract: AbstractReference, implementation: PackManifest}]
-data modify storage slimecore:_ v.build.lists.abstracts set value []
+# [{contract: ContractReference, implementation: PackManifest}]
+data modify storage slimecore:_ v.build.lists.contracts set value []
 
 # (source pack id) => (entrypoint id) => {<pack ids...>:{<ids...>:true}} (for every entrypoint that this entrypoint comes before)
 data modify storage slimecore:_ v.build.maps.entrypoint_befores set value {}
@@ -50,7 +50,7 @@ execute if score *build.error _slimecore matches 1 run return 0
 #- check dependencies fulfilled
 #- check interfaces implemented
 #- check invalid references
-#- populate {..lists.abstracts}
+#- populate {..lists.contracts}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:in build.packs
 execute if data storage slimecore:_ v.build.packs[0] run function slimecore:_/impl/eval/build/pass_2/each
 execute if score *build.error _slimecore matches 1 run return 0

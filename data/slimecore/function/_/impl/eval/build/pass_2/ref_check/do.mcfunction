@@ -20,7 +20,7 @@ data modify storage slimecore:_ v.build.check_key set value "preload_entrypoints
 data modify storage slimecore:_ v.build.entrypoints set from storage slimecore:_ v.build.this_pack.preload_entrypoints
 execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecore:_/impl/eval/build/pass_2/ref_check/entrypoints/each
 
-# check abstract impls:
+# check contract impls:
 data modify storage slimecore:_ v.build.ref_type set value 3
 data modify storage slimecore:_ v.build.key_parts set value [{key:"contract_fulfillments", index:0}]
 data modify storage slimecore:_ v.build.check_key set value "contract_declarations"
