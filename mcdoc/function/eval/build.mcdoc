@@ -64,7 +64,7 @@ struct Error {
     oversatisfied_contracts?: [struct OversatisfiedContractInfo {
         /// The contract with multiple satisfiers.
         of: ContractReference,
-        /// References to the packs that implemented the contract.
+        /// References to the packs that satisfied the contract.
         sources: [PackReference],
     }],
     /// If present, there were instances were a pack's dependencies were not properly fulfilled.
@@ -88,7 +88,7 @@ struct Error {
             },
         },
     }],
-    /// If present, there were instances of packs that declared contracts, but did not have them implemented by any other pack.
+    /// If present, there were instances of packs that declared contracts, but did not have them satisfied by any other pack.
     unsatisfied_contracts?: [ContractReference],
     /// If present, there exists at least one dependency cycle in <packs>.
     dependency_cycles?: [struct DependencyCycleInfo {

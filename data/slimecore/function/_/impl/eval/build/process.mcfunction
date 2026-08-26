@@ -48,7 +48,7 @@ execute if score *build.error _slimecore matches 1 run return 0
 
 # pass 2:
 #- check dependencies fulfilled
-#- check contracts implemented
+#- check contracts satisfied
 #- check invalid references
 #- populate {..lists.contracts}
 data modify storage slimecore:_ v.build.packs set from storage slimecore:in build.packs
