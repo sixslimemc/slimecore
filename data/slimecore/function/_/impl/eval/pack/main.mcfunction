@@ -31,15 +31,15 @@ data modify storage slimecore:_ v.pack.id_key set value "id"
 data modify storage slimecore:_ v.pack.dupe_checks set from storage slimecore:in pack.pack.contract_declarations
 execute if data storage slimecore:_ v.pack.dupe_checks[0] run function slimecore:_/impl/eval/pack/dupe_check/each
 
-data modify storage slimecore:_ v.pack.key set value "contract_fulfillments"
+data modify storage slimecore:_ v.pack.key set value "contracts_satisfied"
 data modify storage slimecore:_ v.pack.id_key set value "id"
-data modify storage slimecore:_ v.pack.dupe_checks set from storage slimecore:in pack.pack.contract_fulfillments
+data modify storage slimecore:_ v.pack.dupe_checks set from storage slimecore:in pack.pack.contracts_satisfied
 execute if data storage slimecore:_ v.pack.dupe_checks[0] run function slimecore:_/impl/eval/pack/dupe_check/each
 
 execute if score *pack.error _slimecore matches 1 run return 0
 
-data modify storage slimecore:_ v.pack.key set value "contract_fulfillments"
-data modify storage slimecore:_ v.pack.ref_checks set from storage slimecore:in pack.pack.contract_fulfillments
+data modify storage slimecore:_ v.pack.key set value "contracts_satisfied"
+data modify storage slimecore:_ v.pack.ref_checks set from storage slimecore:in pack.pack.contracts_satisfied
 execute if data storage slimecore:_ v.pack.ref_checks[0] run function slimecore:_/impl/eval/pack/ref_check/each
 
 data modify storage slimecore:_ v.pack.entrypoint_key set value "entrypoints"

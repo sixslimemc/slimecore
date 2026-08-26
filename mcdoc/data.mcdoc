@@ -43,7 +43,7 @@ dispatch minecraft:storage[slimecore:data] to struct Data {
         // just 'false' doesn't work here? probably spyglass bug.
         is_library: (false | boolean),
         contract_declarations: [any] @ 0,
-        contract_fulfillments: [any] @ 0,
+        contracts_satisfied: [any] @ 0,
         dependencies: [any] @ 0,
         loader_version: struct {
             major: 0,

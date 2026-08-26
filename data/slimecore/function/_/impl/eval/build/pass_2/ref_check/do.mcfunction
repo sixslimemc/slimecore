@@ -22,7 +22,7 @@ execute if data storage slimecore:_ v.build.entrypoints[0] run function slimecor
 
 # check contract impls:
 data modify storage slimecore:_ v.build.ref_type set value 3
-data modify storage slimecore:_ v.build.key_parts set value [{key:"contract_fulfillments", index:0}]
+data modify storage slimecore:_ v.build.key_parts set value [{key:"contracts_satisfied", index:0}]
 data modify storage slimecore:_ v.build.check_key set value "contract_declarations"
-data modify storage slimecore:_ v.build.checks set from storage slimecore:_ v.build.this_pack.contract_fulfillments
+data modify storage slimecore:_ v.build.checks set from storage slimecore:_ v.build.this_pack.contracts_satisfied
 execute if data storage slimecore:_ v.build.checks[0] run function slimecore:_/impl/eval/build/pass_2/ref_check/checks/each

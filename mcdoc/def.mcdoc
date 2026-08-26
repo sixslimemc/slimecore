@@ -140,7 +140,7 @@ struct PackManifest {
     /// If a pack has one or more contract functions, it must declare at least one contract.
     contract_declarations: [ContractDeclaration],
     /// Contracts that this pack implements.
-    contract_fulfillments: [ContractReference],
+    contracts_satisfied: [ContractReference],
     /// Other packs that this pack references or requires (dependencies).
     /// ALL (SlimeCore compliant) packs that are referenced in *any way* by this pack must be included here.
     dependencies: [Dependency],

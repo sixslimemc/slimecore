@@ -3,10 +3,10 @@
 
 scoreboard players set *build.error _slimecore 1
 
-execute unless data storage slimecore:out build.result.error.unimplemented_contracts[0] run data modify storage slimecore:out build.result.error.unimplemented_contracts set value []
+execute unless data storage slimecore:out build.result.error.unsatisfied_contracts[0] run data modify storage slimecore:out build.result.error.unsatisfied_contracts set value []
 
 data modify storage slimecore:_ x.entry set value {pack_ref:"", id:""}
 data modify storage slimecore:_ x.entry.pack_ref set from storage slimecore:_ v.build.this_pack.pack_id
 data modify storage slimecore:_ x.entry.id set from storage slimecore:_ v.build.this_contract.id
 
-data modify storage slimecore:out build.result.error.unimplemented_contracts append from storage slimecore:_ x.entry
+data modify storage slimecore:out build.result.error.unsatisfied_contracts append from storage slimecore:_ x.entry

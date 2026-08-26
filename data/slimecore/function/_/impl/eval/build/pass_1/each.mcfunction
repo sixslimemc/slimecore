@@ -14,7 +14,7 @@ execute if data storage slimecore:_ v.build.pack_eval.error run function slimeco
 function slimecore:_/impl/eval/build/pass_1/try_add with storage slimecore:_ v.build.this_pack
 
 # {..map.impls}
-data modify storage slimecore:_ v.build.impls set from storage slimecore:_ v.build.this_pack.contract_fulfillments
+data modify storage slimecore:_ v.build.impls set from storage slimecore:_ v.build.this_pack.contracts_satisfied
 execute if data storage slimecore:_ v.build.impls[0] run function slimecore:_/impl/eval/build/pass_1/impls/each
 
 # {..maps.entrypoint_after_cache}

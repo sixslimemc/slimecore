@@ -41,14 +41,14 @@ struct Error {
         /// The error returned from `slimecore:eval/pack`.
         error: super::pack::Error,
     }],
-    // If present, one or more packs reference artifacts (entrypoints, preloads, interfaces) that do not exist.
+    // If present, one or more packs reference artifacts (entrypoints, preloads, contracts) that do not exist.
     packs_with_invalid_references?: [struct PackWithInvalidReferenceInfo {
         pack: PackManifest,
         invalid_references: [struct InvalidReferenceInfo {
             type: enum(int) InvalidReferenceType {
                 Entrypoint = 1,
                 PreloadEntrypoint = 2,
-                ContractInterface = 3,
+                ContractContract = 3,
             },
             key: StructKeyString,
         }],
@@ -61,10 +61,10 @@ struct Error {
         packs: [PackManifest],
     }],
     /// If present, there were instances of one contract being implemented by multiple packs.
-    multiple_implementations?: [struct MultipleImplementationInfo {
+    oversatisfied_contracts?: [struct MultipleImplementationInfo {
         /// The contract with multiple implementations.
         of: ContractReference,
-        /// References to the packs that implemented the interface.
+        /// References to the packs that implemented the contract.
         sources: [PackReference],
     }],
     /// If present, there were instances were a pack's dependencies were not properly fulfilled.
@@ -89,7 +89,7 @@ struct Error {
         },
     }],
     /// If present, there were instances of packs that declared contracts, but did not have them implemented by any other pack.
-    unimplemented_contracts?: [ContractReference],
+    unsatisfied_contracts?: [ContractReference],
     /// If present, there exists at least one dependency cycle in <packs>.
     dependency_cycles?: [struct DependencyCycleInfo {
         /// The dependency cycle (arbitrary starting position).
