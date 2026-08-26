@@ -9,13 +9,13 @@ scoreboard players set *build.error _slimecore 0
 # (pack's id) => (its manifest)
 data modify storage slimecore:_ v.build.maps.packs set value {}
 
-# (contract's source) => (contract's id) => (its implementation's manifest)
+# (contract's source) => (contract's id) => (its satisfier's manifest)
 data modify storage slimecore:_ v.build.maps.impls set value {}
 
 # (pack's id) => (its dependents' manifests)
 data modify storage slimecore:_ v.build.maps.dependents set value {}
 
-# [{contract: ContractReference, implementation: PackManifest}]
+# [{contract: ContractReference, satisfier: PackManifest}]
 data modify storage slimecore:_ v.build.lists.contracts set value []
 
 # (source pack id) => (entrypoint id) => {<pack ids...>:{<ids...>:true}} (for every entrypoint that this entrypoint comes before)
@@ -35,7 +35,7 @@ data modify storage slimecore:_ v.build.maps.preload_initial_order set value {}
 
 # pass 1:
 #- check duplicate packs
-#- check multiple implementations
+#- check oversatisfied contracts
 #- validate manifests
 #- populate {..maps.packs}
 #- populate {..maps.impls}

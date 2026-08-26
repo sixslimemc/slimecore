@@ -12,10 +12,10 @@ function slimecore:_/util/mline/5 with storage slimecore:_ x.mline
 execute unless data storage slimecore:_ v.build.impl_pack run function slimecore:_/impl/eval/build/pass_2/contracts/unimplemented
 
 # add to {..lists.contracts}
-data modify storage slimecore:_ x.entry set value {contract:{pack_ref:"", id:""}, implementation:{}}
+data modify storage slimecore:_ x.entry set value {contract:{pack_ref:"", id:""}, satisfier:{}}
 data modify storage slimecore:_ x.entry.contract.pack_ref set from storage slimecore:_ v.build.this_pack.pack_id
 data modify storage slimecore:_ x.entry.contract.id set from storage slimecore:_ v.build.this_contract.id
-data modify storage slimecore:_ x.entry.implementation set from storage slimecore:_ v.build.impl_pack
+data modify storage slimecore:_ x.entry.satisfier set from storage slimecore:_ v.build.impl_pack
 data modify storage slimecore:_ v.build.lists.contracts append from storage slimecore:_ x.entry
 
 data remove storage slimecore:_ v.build.contracts[-1]

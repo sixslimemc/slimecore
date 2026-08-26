@@ -60,9 +60,9 @@ struct Error {
         /// The packs that shared this pack ID.
         packs: [PackManifest],
     }],
-    /// If present, there were instances of one contract being implemented by multiple packs.
+    /// If present, there were instances of one contract being satisfied by multiple packs.
     oversatisfied_contracts?: [struct OversatisfiedContractInfo {
-        /// The contract with multiple implementations.
+        /// The contract with multiple satisfiers.
         of: ContractReference,
         /// References to the packs that implemented the contract.
         sources: [PackReference],
