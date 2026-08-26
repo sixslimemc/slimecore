@@ -6,6 +6,7 @@ execute store result score *x _slimecore run function slimecore:_/impl/eval/buil
 
 scoreboard players reset *build.error _slimecore
 scoreboard players reset *build.index _slimecore
+scoreboard players reset *build.index_j _slimecore
 scoreboard players reset *build.insert_index _slimecore
 data remove storage slimecore:_ v.build
 data remove storage slimecore:in build
