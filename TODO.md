@@ -1,6 +1,6 @@
 
 - validate pack refs in manifests (e.g. entrypoint 'before'/'after' must be included in dependencies and reference valid entrypoints)
-- rename contract interfaces to 'contracts'. this is just way more clear. (e.g 'contract_declarations' & 'contract_fulfillments').
+- rename contracts to 'contracts'. this is just way more clear. (e.g 'contract_declarations' & 'contract_fulfillments').
 
 # BUGS
 

@@ -55,13 +55,13 @@ struct PackReference {
 }
 
 struct ContractDeclaration {
-    /// Contract interface ID.
+    /// Contract ID.
     id: ContractId
 }
 
 struct ContractReference {
     ...PackReference,
-    /// Referencing contract interface ID.
+    /// Referencing contract ID.
     id: ContractId,
 }
 
@@ -132,14 +132,14 @@ struct PackManifest {
     /// Indicates whether this pack is a library or not.
     /// A library does not noticeably affect the game alone and is meant to be a dependency of other packs.
     is_library: boolean,
-    /// Declaration of contract interfaces.
-    /// An contract interface, in the most general sense, represents a conceptual contract that another pack in the user's world must fulfill (implement).
+    /// Declaration of contracts.
+    /// An contract, in the most general sense, represents a conceptual contract that another pack in the user's world must fulfill (implement).
     /// This contract is to be defined and documented by the declaring pack's author.
-    /// Every contract interface must be implemented exactly once by other packs; multiple packs implementing the same contract interface will result in a build error.
+    /// Every contract must be implemented exactly once by other packs; multiple packs implementing the same contract will result in a build error.
     ///
-    /// If a pack has one or more contract functions, it must declare at least one contract interface.
+    /// If a pack has one or more contract functions, it must declare at least one contract.
     contract_declarations: [ContractDeclaration],
-    /// Contract interfaces that this pack implements.
+    /// Contracts that this pack implements.
     contract_fulfillments: [ContractReference],
     /// Other packs that this pack references or requires (dependencies).
     /// ALL (SlimeCore compliant) packs that are referenced in *any way* by this pack must be included here.
@@ -186,7 +186,7 @@ struct BuildInfo {
     aux: struct BuildAux {
         /// Mapping of pack IDs to their respective manifests.
         pack_map: Mapping<PackId, PackManifest>,
-        /// Mapping of contract interfaces (in the form `<pack id>.<contract id>`) to it's implementing pack's manifest.
+        /// Mapping of contracts (in the form `<pack id>.<contract id>`) to it's implementing pack's manifest.
         // DEV: consider pointing to PackReference instead of PackManifest
         contract_map: Mapping<PackId, Mapping<ContractId, PackManifest>>,
 

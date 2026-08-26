@@ -60,9 +60,9 @@ struct Error {
         /// The packs that shared this pack ID.
         packs: [PackManifest],
     }],
-    /// If present, there were instances of one contract interface being implemented by multiple packs.
+    /// If present, there were instances of one contract being implemented by multiple packs.
     multiple_implementations?: [struct MultipleImplementationInfo {
-        /// The contract interface with multiple implementations.
+        /// The contract with multiple implementations.
         of: ContractReference,
         /// References to the packs that implemented the interface.
         sources: [PackReference],
@@ -88,7 +88,7 @@ struct Error {
             },
         },
     }],
-    /// If present, there were instances of packs that declared contract interfaces, but did not have them implemented by any other pack.
+    /// If present, there were instances of packs that declared contracts, but did not have them implemented by any other pack.
     unimplemented_contracts?: [ContractReference],
     /// If present, there exists at least one dependency cycle in <packs>.
     dependency_cycles?: [struct DependencyCycleInfo {
