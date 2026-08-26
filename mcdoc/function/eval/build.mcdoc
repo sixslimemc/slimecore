@@ -48,7 +48,7 @@ struct Error {
             type: enum(int) InvalidReferenceType {
                 Entrypoint = 1,
                 PreloadEntrypoint = 2,
-                ContractContract = 3,
+                Contract = 3,
             },
             key: StructKeyString,
         }],
