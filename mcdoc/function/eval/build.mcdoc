@@ -61,7 +61,7 @@ struct Error {
         packs: [PackManifest],
     }],
     /// If present, there were instances of one contract being implemented by multiple packs.
-    oversatisfied_contracts?: [struct MultipleImplementationInfo {
+    oversatisfied_contracts?: [struct OversatisfiedContractInfo {
         /// The contract with multiple implementations.
         of: ContractReference,
         /// References to the packs that implemented the contract.
