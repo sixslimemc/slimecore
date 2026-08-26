@@ -9,7 +9,7 @@ data modify storage slimecore:_ x.mline.2 set from storage slimecore:_ v.build.t
 data modify storage slimecore:_ x.mline.4 set from storage slimecore:_ v.build.this_contract.id
 function slimecore:_/util/mline/5 with storage slimecore:_ x.mline
 
-execute unless data storage slimecore:_ v.build.impl_pack run function slimecore:_/impl/eval/build/pass_2/contracts/unimplemented
+execute unless data storage slimecore:_ v.build.impl_pack run function slimecore:_/impl/eval/build/pass_2/contracts/unsatisfied
 
 # add to {..lists.contracts}
 data modify storage slimecore:_ x.entry set value {contract:{pack_ref:"", id:""}, satisfier:{}}
