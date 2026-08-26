@@ -8,7 +8,7 @@ data modify storage slimecore:_ v.build.deps set from storage slimecore:_ v.buil
 execute if data storage slimecore:_ v.build.deps[0] run function slimecore:_/impl/eval/build/pass_2/deps/each
 
 # declarations:
-data modify storage slimecore:_ v.build.abstracts set from storage slimecore:_ v.build.this_pack.abstract_declarations
+data modify storage slimecore:_ v.build.abstracts set from storage slimecore:_ v.build.this_pack.contract_declarations
 execute if data storage slimecore:_ v.build.abstracts[0] run function slimecore:_/impl/eval/build/pass_2/abstracts/each
 
 # invalid reference check:

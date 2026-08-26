@@ -138,9 +138,9 @@ struct PackManifest {
     /// Every abstract interface must be implemented exactly once by other packs; multiple packs implementing the same abstract interface will result in a build error.
     ///
     /// If a pack has one or more abstract functions, it must declare at least one abstract interface.
-    abstract_declarations: [AbstractDeclaration],
+    contract_declarations: [AbstractDeclaration],
     /// Abstract interfaces that this pack implements.
-    abstract_implementations: [AbstractReference],
+    contract_fulfillments: [AbstractReference],
     /// Other packs that this pack references or requires (dependencies).
     /// ALL (SlimeCore compliant) packs that are referenced in *any way* by this pack must be included here.
     dependencies: [Dependency],
