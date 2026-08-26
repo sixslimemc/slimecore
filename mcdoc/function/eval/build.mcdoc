@@ -50,7 +50,6 @@ struct Error {
                 PreloadEntrypoint = 2,
                 AbstractInterface = 3,
             },
-            value: (EntrypointReference<EntrypointId> | EntrypointReference<PreloadEntrypointId> | AbstractReference),
             key: StructKeyString,
         }],
     }],
