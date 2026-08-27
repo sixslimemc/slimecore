@@ -11,6 +11,6 @@
 
 data modify storage slimecore:data build set value {packs:[], order:{entrypoints:[], load:[], preload_entrypoints:[]}, aux:{contract_map:{}, pack_map:{}, dependent_map:{}, contracts:[]}}
 
-data modify storage slimecore:data world set value {installed:[], aux:{installed_map:{}}}
+data modify storage slimecore:data world set value {installed:[], aux:{installed_map:{}}, raw_manifests:[]}
 
 return 1

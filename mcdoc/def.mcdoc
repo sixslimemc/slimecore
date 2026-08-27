@@ -225,5 +225,5 @@ struct WorldSpecificInfo {
         /// Mapping of pack IDs to their installed pack info entry.
         installed_map: Mapping<PackId, InstalledPackInfo>,
     },
-    
+    raw_manifests: [PackManifest],
 }

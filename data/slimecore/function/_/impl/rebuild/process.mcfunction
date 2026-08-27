@@ -30,6 +30,9 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 function slimecore:_/get_manifests
 data modify storage slimecore:_ v.rebuild.build_packs set from storage slimecore:_ data.manifest_packs
 
+# set {data -> world.raw_manifests}:
+data modify storage slimecore:data world.raw_manifests set from storage slimecore:_ data.manifest_packs
+
 #- populate {..uninstalling}
 #- remove from {..build_packs}
 #~ uninstalls take precedence over disables
