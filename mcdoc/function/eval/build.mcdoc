@@ -70,7 +70,7 @@ struct Error {
     /// If present, there were instances were a pack's dependencies were not properly fulfilled.
     unfulfilled_dependencies?: [struct UnfulfilledDependencyInfo {
         /// The pack ID that specified the dependency.
-        from: PackId,
+        from: PackManifest,
         /// The dependency.
         dependency: Dependency,
         /// The reason the dependency was not fulfilled.

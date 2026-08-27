@@ -10,8 +10,8 @@ execute unless data storage slimecore:out build.result.error.unfulfilled_depende
 # 2 - wrong author
 # 3 - bad version; {..version_error} is set
 
-data modify storage slimecore:_ x.entry set value {reason:{}, from:"", dependency:{}}
-data modify storage slimecore:_ x.entry.from set from storage slimecore:_ v.build.this_pack.pack_id
+data modify storage slimecore:_ x.entry set value {reason:{}, from:{}, dependency:{}}
+data modify storage slimecore:_ x.entry.from set from storage slimecore:_ v.build.this_pack
 data modify storage slimecore:_ x.entry.dependency set from storage slimecore:_ v.build.this_dep
 
 execute if score *build.dep_error _slimecore matches 1 run data modify storage slimecore:_ x.entry.reason.not_present set from storage slimecore:_ v.build.this_dep.pack_id
