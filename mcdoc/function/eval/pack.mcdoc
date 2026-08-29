@@ -28,10 +28,7 @@ struct Error {
         /// The invalid reference.
         reference: PackReference,
         /// The key within <pack> which holds the invalid reference.
-        in: StructKeyString,
-        /// If present, the invalid reference was within an list.
-        /// The list index of the invalid reference.
-        index?: int @ 0..,
+        key: StructKeyString,
     }],
     /// If present, <pack> contained one or more instances where an list was supposed to be unique by an id/key, but duplicate ids were found within.
     duplicate_ids?: [struct DuplicateIdInfo {
@@ -43,7 +40,7 @@ struct Error {
     /// If present, <pack> contained one or more invalid URLs where valid URLs were expected.
     invalid_urls?: [struct InvalidUrlInfo {
         /// The key within <pack> that contains an invalid URL.
-        in: StructKeyString,
+        key: StructKeyString,
     }],
     /// If present, <pack.dependencies> had one or more invalid entries.
     invalid_dependencies?: [struct InvalidDependencyInfo {
