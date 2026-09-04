@@ -25,6 +25,8 @@ execute unless score *reload.needs_rebuild _slimecore matches 1 store success sc
 execute unless score *reload.needs_rebuild _slimecore matches 1 unless data storage slimecore:_ data.rebuild_check{last_success:1b} run scoreboard players set *reload.needs_rebuild _slimecore 1
 
 # rebuild:
+scoreboard players set *automatic_rebuild _slimecore 1
 execute if score *reload.needs_rebuild _slimecore matches 1 store result storage slimecore:_ data.rebuild_check.last_success byte 1 run return run function slimecore:rebuild
+scoreboard players reset *automatic_rebuild _slimecore
 
 function slimecore:_/load/main

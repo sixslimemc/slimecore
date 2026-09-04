@@ -3,5 +3,5 @@
 use ::slimecore::mcdoc::def::PackManifest
 
 struct Hook {
-
+    explicit?: super::super::super::super::function::rebuild::In,
 }

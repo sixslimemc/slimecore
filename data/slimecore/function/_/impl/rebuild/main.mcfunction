@@ -18,7 +18,10 @@ data modify storage slimecore:_ data.cached_paths set value {}
 scoreboard players set *just_rebuilt _slimecore 1
 
 # HOOK: meta_info/rebuild/start
+data modify storage slimecore:hook start set value {}
+execute unless score *automatic_rebuild _slimecore matches 1 run data modify storage slimecore:hook start.explicit set from storage slimecore:in rebuild
 function #slimecore:hook/meta_info/rebuild/start
+data remove storage slimecore:hook start
 
 # wipe old data if force clean:
 execute if data storage slimecore:in rebuild{force_clean:true} run function slimecore:_/util/wipe_data/main
