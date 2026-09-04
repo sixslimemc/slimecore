@@ -24,7 +24,7 @@ function #slimecore:hook/meta_info/rebuild/start
 data remove storage slimecore:hook start
 
 # wipe old data if force clean:
-execute if data storage slimecore:in rebuild{force_clean:true} run function slimecore:_/util/wipe_data/main
+execute if data storage slimecore:in rebuild{wipe_memory:true} run function slimecore:_/util/wipe_data/main
 
 # check duplicate safety:
 # ~ store in *.success for easy fallthrough logic if 0

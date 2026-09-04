@@ -29,7 +29,7 @@ struct In {
     /// This may be useful if there are issues with datapack paths or disable/enabling.
     ///
     /// IMPORTANT: Rebuilding is not atomic if this is true; if rebuild fails, SlimeCore may be left in an invalid state (`slimecore:data build` empty with enabled/running datapacks). However, a successful rebuild should fix this issue.
-    force_clean?: boolean,
+    wipe_memory?: boolean,
 }
 
 type Result = EvalResult<Success, Error>

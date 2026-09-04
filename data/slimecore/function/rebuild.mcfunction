@@ -3,7 +3,7 @@
 data remove storage slimecore:out rebuild
 
 execute unless data storage slimecore:in rebuild.uninstall run data modify storage slimecore:in rebuild.uninstall set value []
-execute unless data storage slimecore:in rebuild.force_clean run data modify storage slimecore:in rebuild.force_clean set value false
+execute unless data storage slimecore:in rebuild.wipe_memory run data modify storage slimecore:in rebuild.wipe_memory set value false
 execute store success score *rebuild.inherit_disables _slimecore unless data storage slimecore:in rebuild.disable
 execute unless data storage slimecore:in rebuild.disable run data modify storage slimecore:in rebuild.disable set value []
 
