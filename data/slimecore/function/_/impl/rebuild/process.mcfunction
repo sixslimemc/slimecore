@@ -9,9 +9,6 @@ data modify storage slimecore:out rebuild.result set value {success:{uninstall_p
 data modify storage slimecore:_ v.rebuild.new_disabled set value []
 data modify storage slimecore:_ v.rebuild.path_map set value {}
 
-# [DEPRICATED]
-# data modify storage slimecore:_ v.rebuild.new_links set value []
-
 # {pack_ref:PackId, call_tag:boolean}
 data modify storage slimecore:_ v.rebuild.disabling set value []
 
@@ -52,7 +49,7 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 data modify storage slimecore:_ v.rebuild.build set from storage slimecore:out build.result.success
 
 # put packs in load order:
-#- populate {..new_links} and {..path_map}
+#- populate {..path_map} for load-related packs
 function slimecore:_/impl/rebuild/path_linking/do
 
 execute if score *rebuild.error _slimecore matches 1 run return 0
@@ -68,6 +65,7 @@ data modify storage slimecore:_ v.rebuild.load_order set from storage slimecore:
 execute if data storage slimecore:_ v.rebuild.load_order[0] run function slimecore:_/impl/rebuild/closing_pass/each
 
 # disable remaining packs (not in previous build):
+#- populate {..path_map} for remaining disables (old disabled)
 execute if data storage slimecore:_ v.rebuild.disabling[0] run function slimecore:_/impl/rebuild/remaining_disables/each
 
 # uninstall remaining packs (not in previous build):
@@ -75,10 +73,5 @@ execute if data storage slimecore:_ v.rebuild.uninstalling[0] run function slime
 
 # set data:
 function slimecore:_/impl/rebuild/set_data/do
-
-# [DEPRECATED]
-# data modify storage slimecore:data world.disabled_packs set from storage slimecore:_ v.rebuild.new_disabled
-# data modify storage slimecore:data world.datapack_links set from storage slimecore:_ v.rebuild.new_links
-# data modify storage slimecore:data world.aux.datapack_link_map set from storage slimecore:_ v.rebuild.path_map
 
 return 1
