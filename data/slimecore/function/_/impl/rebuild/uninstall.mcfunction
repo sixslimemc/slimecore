@@ -24,4 +24,7 @@ $data modify storage slimecore:hook uninstall set value {pack_id:"$(pack_ref)"}
 function #slimecore:hook/meta_info/call/post/uninstall
 data remove storage slimecore:hook uninstall
 
+# remove from {data -> raw_manifests}:
+$data remove storage slimecore:data world.raw_manifests[{pack_id:'$(pack_ref)'}]
+
 $datapack disable "$(path)"

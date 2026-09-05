@@ -60,6 +60,8 @@ execute if score *rebuild.error _slimecore matches 1 run return 0
 # (because disables are handled below)
 data remove storage slimecore:_ v.rebuild.post_disables
 
+# ~ uninstalls are removed from {data -> world.raw_manifests} directly upon uninstall (via ./uninstall)
+
 # disable and uninstall packs in reverse load order:
 data modify storage slimecore:_ v.rebuild.load_order set from storage slimecore:data build.order.load
 execute if data storage slimecore:_ v.rebuild.load_order[0] run function slimecore:_/impl/rebuild/closing_pass/each
