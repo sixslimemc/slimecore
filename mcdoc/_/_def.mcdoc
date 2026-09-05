@@ -22,7 +22,7 @@ dispatch minecraft:storage[slimecore:_] to struct {
         },
         rebuild_check: struct {
             manifests: [PackManifest],
-            datapack_path_overrides: struct {
+            path_overrides: struct {
                 [PackId]: [DatapackPath]
             },
             last_success: byte

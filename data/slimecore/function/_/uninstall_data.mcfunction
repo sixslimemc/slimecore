@@ -10,7 +10,7 @@ data remove storage slimecore:data world
 data remove storage slimecore:data slimecore
 
 data remove storage slimecore:config build_time_gamerules
-data remove storage slimecore:config datapack_path_overrides
+data remove storage slimecore:config path_overrides
 data remove storage slimecore:config explicit_rebuild_only
 
 data remove storage slimecore:_ x

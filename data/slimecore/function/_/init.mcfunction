@@ -9,7 +9,7 @@ scoreboard players reset *just_rebuilt _slimecore
 scoreboard players reset *safe_mode _slimecore
 scoreboard players reset *automatic_rebuild _slimecore
 
-data modify storage slimecore:config datapack_path_overrides set value {}
+data modify storage slimecore:config path_overrides set value {}
 
 data remove storage slimecore:config build_time_gamerules
 data modify storage slimecore:config build_time_gamerules.max_command_forks set value 2147483647
