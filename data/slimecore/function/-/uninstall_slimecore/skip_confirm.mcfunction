@@ -1,4 +1,4 @@
-#> slimecore :-/ uninstall_slimecore/skip_prompt
+#> slimecore :-/ uninstall_slimecore/skip_confirm
 
 data modify storage slimecore:_ v.uninstall.args set value {force:true}
 
