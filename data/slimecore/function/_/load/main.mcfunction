@@ -6,26 +6,26 @@
 # check safe mode:
 execute if score *safe_mode _slimecore matches 1.. run return run function slimecore:_/load/safe_mode/do
 
-# HOOK: meta_info/load/start
-function #slimecore:hook/meta_info/load/start
+# HOOK: load/start
+function #slimecore:hook/load/start
 
-# HOOK: meta_info/load/preload_entrypoints
-function #slimecore:hook/meta_info/load/preload_entrypoints
+# HOOK: load/preload_entrypoints
+function #slimecore:hook/load/preload_entrypoints
 
 # preload entrypoints:
 data modify storage slimecore:_ t.load.tag_key set value "preload_entrypoint"
 data modify storage slimecore:_ t.load.entrypoints set from storage slimecore:data build.order.preload_entrypoints
 execute if data storage slimecore:_ t.load.entrypoints[0] run function slimecore:_/load/entrypoints/each
 
-# HOOK: meta_info/load/loads
-function #slimecore:hook/meta_info/load/loads
+# HOOK: load/loads
+function #slimecore:hook/load/loads
 
 # entrypoints:
 data modify storage slimecore:_ t.load.loads set from storage slimecore:data build.order.load
 execute if data storage slimecore:_ t.load.loads[0] run function slimecore:_/load/loads/each
 
-# HOOK: meta_info/load/entrypoints
-function #slimecore:hook/meta_info/load/entrypoints
+# HOOK: load/entrypoints
+function #slimecore:hook/load/entrypoints
 
 # entrypoints:
 data modify storage slimecore:_ t.load.tag_key set value "entrypoint"
@@ -36,7 +36,7 @@ execute if data storage slimecore:_ t.load.entrypoints[0] run function slimecore
 function slimecore:_/get_manifests
 data modify storage slimecore:_ data.rebuild_check.manifests set from storage slimecore:_ data.manifest_packs
 
-# HOOK: meta_info/load/end
-function #slimecore:hook/meta_info/load/end
+# HOOK: load/end
+function #slimecore:hook/load/end
 
 data remove storage slimecore:_ t.load

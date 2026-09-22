@@ -17,10 +17,10 @@ data modify storage slimecore:_ data.cached_paths set value {}
 
 scoreboard players set *just_rebuilt _slimecore 1
 
-# HOOK: meta_info/rebuild/start
+# HOOK: rebuild/start
 data modify storage slimecore:hook start set value {}
 execute unless score *automatic_rebuild _slimecore matches 1 run data modify storage slimecore:hook start.explicit set from storage slimecore:in rebuild
-function #slimecore:hook/meta_info/rebuild/start
+function #slimecore:hook/rebuild/start
 data remove storage slimecore:hook start
 
 # wipe old data if force clean:
@@ -43,9 +43,9 @@ execute if data storage slimecore:_ v.rebuild.post_disables[0] run function slim
 execute unless score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.success
 execute if score *rebuild.success _slimecore matches 1 run data remove storage slimecore:out rebuild.result.error
 
-# HOOK: meta_info/rebuild/end
+# HOOK: rebuild/end
 data modify storage slimecore:hook end.result set from storage slimecore:out rebuild.result
-function #slimecore:hook/meta_info/rebuild/end
+function #slimecore:hook/rebuild/end
 
 reload
 return run scoreboard players get *rebuild.success _slimecore

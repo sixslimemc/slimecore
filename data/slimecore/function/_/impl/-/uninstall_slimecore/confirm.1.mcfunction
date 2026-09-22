@@ -3,7 +3,7 @@
 
 tellraw @s {text:"Uninstalling SlimeCore (this may take a moment)...", color:gold, bold:true}
 
-# HOOK: meta_info/uninstall_slimecore
+# HOOK: uninstall_slimecore
 function #slimecore:hook/uninstall_slimecore
 
 # disable packs:
