@@ -221,9 +221,9 @@ struct WorldSpecificInfo {
         reason: SafeModeReason,
         calls: [PackReference],
     },
+    raw_manifests: [PackManifest],
     aux: struct WorldSpecificAux {
         /// Mapping of pack IDs to their installed pack info entry.
         installed_map: Mapping<PackId, InstalledPackInfo>,
     },
-    raw_manifests: [PackManifest],
 }
