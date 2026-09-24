@@ -1,8 +1,9 @@
 // Called just after an <entrypoint> ('#<entrypoint.pack_ref>:entrypoint/<entrypoint.id>' tag) is called.
 
-use ::slimecore::mcdoc::def::EntrypointReference
+use ::slimecore::mcdoc::def::PackId
 use ::slimecore::mcdoc::def::EntrypointId
 
 struct Hook {
-    entrypoint: EntrypointReference<EntrypointId>
+    pack_id: PackId,
+    id: EntrypointId,
 }
